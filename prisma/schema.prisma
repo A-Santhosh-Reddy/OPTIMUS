@@ -1,0 +1,186 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Organization {
+  id          String        @id @default(cuid())
+  name        String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  users       User[]
+  brandAssets BrandAsset[]
+  analyses    Analysis[]
+  incidents   Incident[]
+  auditEvents AuditEvent[]
+}
+
+model User {
+  id             String              @id @default(cuid())
+  name           String
+  username       String?             @unique
+  email          String              @unique
+  passwordHash   String
+  role           String              @default("ANALYST") // ADMIN, ANALYST, VIEWER
+  organizationId String
+  organization   Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+  incidents      Incident[]          @relation("AssignedIncidents")
+  notes          InvestigationNote[]
+  auditEvents    AuditEvent[]
+
+  @@index([organizationId])
+  @@index([email])
+  @@index([username])
+}
+
+model BrandAsset {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  brandName      String
+  officialDomain String
+  aliases        String?      @db.Text // JSON string array of alias domains or keywords
+  isActive       Boolean      @default(true)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+  @@index([officialDomain])
+}
+
+model Analysis {
+  id                  String                  @id @default(cuid())
+  organizationId      String
+  organization        Organization            @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  submittedUrl        String                  @db.Text
+  normalizedHostname  String
+  registrableDomain   String
+  riskScore           Int                     @default(0) // 0 - 100
+  severity            String                  @default("LOW") // CRITICAL, HIGH, MEDIUM, LOW, INFO
+  heuristicScore      Int                     @default(0)
+  analysisStatus      String                  @default("COMPLETED") // PENDING, COMPLETED, FAILED
+  intelligenceStatus  String                  @default("INCONCLUSIVE") // MATCH_FOUND, NO_MATCH, INCONCLUSIVE, UNAVAILABLE, NOT_CONFIGURED
+  aiExplanation       String?                 @db.Text // Explainable reasoning summary
+  limitations         String?                 @db.Text // JSON array of limitations
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
+  signals             DetectionSignal[]
+  intelResults        ThreatIntelResult[]
+  brandSimilarities   BrandSimilarityResult[]
+  incidents           Incident[]
+
+  @@index([organizationId])
+  @@index([normalizedHostname])
+  @@index([registrableDomain])
+  @@index([riskScore])
+  @@index([severity])
+  @@index([createdAt])
+}
+
+model DetectionSignal {
+  id          String   @id @default(cuid())
+  analysisId  String
+  analysis    Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  signalType  String   // e.g., IP_HOSTNAME, TYPOSQUATTING, HOMOGLYPH, HIGH_SUBDOMAINS, SUSPICIOUS_PATH
+  category    String   // DOMAIN_STRUCTURE, BRAND_IMPERSONATION, URL_ANOMALY, NETWORK_HEURISTIC
+  title       String
+  description String   @db.Text
+  evidence    String   @db.Text // Structured evidence description or JSON
+  weight      Int      // Points contribution to risk score
+  confidence  String   @default("HIGH") // HIGH, MEDIUM, LOW
+
+  @@index([analysisId])
+  @@index([signalType])
+}
+
+model ThreatIntelResult {
+  id              String   @id @default(cuid())
+  analysisId      String
+  analysis        Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  provider        String   // GOOGLE_SAFE_BROWSING, VIRUSTOTAL, URLSCAN, LOCAL_CACHE
+  status          String   // MATCH_FOUND, NO_MATCH, INCONCLUSIVE, UNAVAILABLE, NOT_CONFIGURED
+  matchDetails    String?  @db.Text // Threat types or match info (JSON or string)
+  lookupTimestamp DateTime @default(now())
+  rawResponse     String?  @db.Text // Sanitized raw API response snippet
+  errorDetails    String?  @db.Text
+
+  @@index([analysisId])
+  @@index([provider])
+  @@index([status])
+}
+
+model BrandSimilarityResult {
+  id              String   @id @default(cuid())
+  analysisId      String
+  analysis        Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  brandName       String
+  officialDomain  String
+  similarityScore Float    // e.g. 0.85
+  matchType       String   // EXACT_SUBDOMAIN, TYPOSQUATTING_LEVENSHTEIN, HOMOGLYPH_SUBSTITUTION, KEYWORD_INCLUSION
+  details         String   @db.Text
+
+  @@index([analysisId])
+}
+
+model Incident {
+  id                String              @id @default(cuid())
+  organizationId    String
+  organization      Organization        @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  analysisId        String
+  analysis          Analysis            @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  title             String
+  description       String              @db.Text
+  severity          String              @default("HIGH") // CRITICAL, HIGH, MEDIUM, LOW, INFO
+  status            String              @default("NEW")  // NEW, INVESTIGATING, ESCALATED, RESOLVED, FALSE_POSITIVE
+  assignedUserId    String?
+  assignedUser      User?               @relation("AssignedIncidents", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  analystConclusion String?             @db.Text
+  isFalsePositive   Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  resolvedAt        DateTime?
+  notes             InvestigationNote[]
+
+  @@index([organizationId])
+  @@index([analysisId])
+  @@index([status])
+  @@index([severity])
+}
+
+model InvestigationNote {
+  id         String   @id @default(cuid())
+  incidentId String
+  incident   Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  authorId   String?
+  author     User?    @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  authorName String
+  content    String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([incidentId])
+}
+
+model AuditEvent {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  actorId        String?
+  actor          User?        @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorEmail     String
+  action         String       // AUTH_LOGIN, URL_ANALYZED, INCIDENT_CREATED, INCIDENT_UPDATED, BRAND_CREATED, REPORT_GENERATED
+  resourceType   String       // User, Analysis, Incident, BrandAsset, Report
+  resourceId     String?
+  metadata       String?      @db.Text // JSON string with contextual event info
+  timestamp      DateTime     @default(now())
+
+  @@index([organizationId])
+  @@index([actorEmail])
+  @@index([action])
+  @@index([timestamp])
+}

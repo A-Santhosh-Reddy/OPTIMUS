@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #050814;
+    --foreground: #f1f5f9;
+  }
+
+  body {
+    color: var(--foreground);
+    background-color: var(--background);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+}
+
+/* Custom Cyber Glass Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 20, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+/* Liquid Glass Surfaces */
+.liquid-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(15, 23, 42, 0.45) 50%, rgba(10, 15, 30, 0.7) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.liquid-glass-card {
+  background: linear-gradient(135deg, rgba(16, 24, 48, 0.6) 0%, rgba(8, 12, 26, 0.75) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  box-shadow: 
+    0 12px 40px -10px rgba(0, 0, 0, 0.65),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 20px 0 rgba(6, 182, 212, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-card:hover {
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: 
+    0 16px 50px -10px rgba(0, 0, 0, 0.75),
+    0 0 25px -3px rgba(6, 182, 212, 0.22),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+}
+
+.liquid-glass-header {
+  background: linear-gradient(180deg, rgba(8, 14, 28, 0.8) 0%, rgba(5, 8, 20, 0.6) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.14);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.liquid-glass-sidebar {
+  background: linear-gradient(180deg, rgba(8, 13, 27, 0.85) 0%, rgba(5, 8, 18, 0.95) 100%);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border-right: 1px solid rgba(56, 189, 248, 0.14);
+  box-shadow: 10px 0 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.liquid-glass-input {
+  background: rgba(9, 14, 28, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.liquid-glass-input:focus {
+  border-color: rgba(6, 182, 212, 0.6);
+  box-shadow: 
+    inset 0 2px 4px 0 rgba(0, 0, 0, 0.4),
+    0 0 18px 2px rgba(6, 182, 212, 0.25);
+  background: rgba(12, 20, 40, 0.75);
+}
+
+/* Cyber Shimmer Specular Light Beam */
+.cyber-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: skewX(-25deg);
+  transition: all 0.75s ease;
+  pointer-events: none;
+}
+
+.cyber-shimmer:hover::before {
+  left: 150%;
+}
+
+/* Cyber Grid & Ambient Lighting */
+.cyber-grid-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+}
+
+.cyber-glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.45;
+  will-change: transform;
+}
+
+/* Cyber HUD Corner Brackets */
+.hud-corner {
+  position: relative;
+}
+
+.hud-corner::before,
+.hud-corner::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(6, 182, 212, 0.5);
+  pointer-events: none;
+}
+
+.hud-corner::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid rgba(6, 182, 212, 0.6);
+  border-left: 2px solid rgba(6, 182, 212, 0.6);
+}
+
+.hud-corner::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.6);
+  border-right: 2px solid rgba(6, 182, 212, 0.6);
+}
+
+/* Scanning Line Animation */
+@keyframes cyberScan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-cyber-scan {
+  animation: cyberScan 4s linear infinite;
+}
+
+/* Radar Wave Pulse */
+@keyframes radarPing {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { opacity: 0.3; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.animate-radar {
+  animation: radarPing 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
