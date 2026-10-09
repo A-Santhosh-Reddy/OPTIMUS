@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Optimus Digital Risk Protection Platform (DRP)
 
 An enterprise-grade, evidence-based Digital Risk Protection (DRP) and Threat Intelligence Platform built for security operations centers (SOCs) and incident responders.
@@ -185,3 +186,7 @@ optimus/
 
 ## 8. License
 Built for educational and defensive cybersecurity operations hackathons.
+=======
+# OPTIMUS
+An evidence-driven Digital Risk Protection Platform for detecting suspicious URLs, identifying potential brand impersonation, integrating threat intelligence, and assessing digital risks through explainable scoring, AI-powered insights, and incident investigation.
+>>>>>>> 5ee7f74f73e77930240d4cb96c31e59696aa2374
