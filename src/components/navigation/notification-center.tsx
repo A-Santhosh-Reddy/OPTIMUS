@@ -18,6 +18,7 @@ import {
   Radio,
   Zap,
 } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 export interface NotificationItem {
   id: string;
@@ -58,6 +59,7 @@ function playSecurityChime() {
 
 export function NotificationCenter() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [notifications, setNotifications] = useState<NotificationItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -279,14 +281,14 @@ export function NotificationCenter() {
               </div>
               <div>
                 <h3 className="text-xs font-semibold text-white tracking-wide flex items-center gap-1.5">
-                  Security Notifications
+                  {t("topbar.notifications", "Security Notifications")}
                   {unreadCount > 0 && (
                     <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30">
                       {unreadCount} new
                     </span>
                   )}
                 </h3>
-                <p className="text-[10px] text-slate-400 font-mono">Live SOC telemetry & incident feed</p>
+                <p className="text-[10px] text-slate-400 font-mono">{t("topbar.notifSub", "Live SOC telemetry & incident feed")}</p>
               </div>
             </div>
 
@@ -313,7 +315,7 @@ export function NotificationCenter() {
                   title="Mark all notifications as read"
                 >
                   <CheckCheck className="h-3 w-3" />
-                  Read All
+                  {t("topbar.readAll", "Read All")}
                 </button>
               )}
             </div>
@@ -331,7 +333,7 @@ export function NotificationCenter() {
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                All ({notifications.length})
+                {t("topbar.all", "All")} ({notifications.length})
               </button>
               <button
                 type="button"
@@ -342,7 +344,7 @@ export function NotificationCenter() {
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                Unread ({unreadCount})
+                {t("topbar.unread", "Unread")} ({unreadCount})
               </button>
               <button
                 type="button"
@@ -353,7 +355,7 @@ export function NotificationCenter() {
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                High/Critical
+                {t("topbar.critical", "High/Critical")}
               </button>
             </div>
 
@@ -366,7 +368,7 @@ export function NotificationCenter() {
               title="Dispatches a live simulated threat detection alert to test real-time reception"
             >
               <Zap className="h-3 w-3 text-cyan-400" />
-              {isSimulating ? "Simulating..." : "+ Test Alert"}
+              {isSimulating ? "Simulating..." : t("topbar.testAlert", "+ Test Alert")}
             </button>
           </div>
 
@@ -445,7 +447,7 @@ export function NotificationCenter() {
                           </button>
                         )}
                         <span className="text-[10px] font-mono text-cyan-400 flex items-center gap-0.5">
-                          Inspect
+                          {t("topbar.inspect", "Inspect")}
                           <ExternalLink className="h-2.5 w-2.5" />
                         </span>
                       </div>
@@ -471,7 +473,7 @@ export function NotificationCenter() {
                   className="text-[10px] text-slate-500 hover:text-red-400 transition-colors flex items-center gap-1"
                 >
                   <Trash2 className="h-3 w-3" />
-                  Clear List
+                  {t("topbar.clearList", "Clear List")}
                 </button>
               )}
             </div>

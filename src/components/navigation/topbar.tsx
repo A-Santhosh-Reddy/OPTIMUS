@@ -18,6 +18,8 @@ import {
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
 import { NotificationCenter } from "./notification-center";
+import { useLanguage } from "@/context/language-context";
+import { Globe } from "lucide-react";
 
 interface TopbarProps {
   userName?: string;
@@ -26,8 +28,10 @@ interface TopbarProps {
 
 export function Topbar({ userName, organizationName = "Security Operations" }: TopbarProps) {
   const router = useRouter();
+  const { language, setLanguage, t, availableLanguages, currentOption } = useLanguage();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const [isSsrfModalOpen, setIsSsrfModalOpen] = useState(false);
+  const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -53,12 +57,56 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             <span className="text-slate-600">/</span>
             <span className="text-cyan-400 font-mono text-[11px] bg-cyan-950/40 px-2.5 py-0.5 rounded-full border border-cyan-500/30 flex items-center gap-1 shadow-[0_0_10px_rgba(6,182,212,0.15)] flex-shrink-0">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              CYBER MATRIX SHIELD
+              {t("topbar.shield", "CYBER MATRIX SHIELD")}
             </span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Quick Language Switcher Dropdown in Topbar */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-900/60 border border-slate-700/80 hover:border-cyan-500/50 text-[11px] font-mono text-slate-200 hover:text-cyan-300 transition-all cursor-pointer shadow-sm"
+              title="Change Interface Language / Cambiar Idioma / Changer la Langue / Sprache Ändern"
+            >
+              <span className="text-xs">{currentOption.flag}</span>
+              <span className="font-semibold uppercase tracking-wider">{currentOption.code}</span>
+            </button>
+
+            {isLangMenuOpen && (
+              <div className="absolute right-0 mt-2 w-44 rounded-xl border border-cyan-500/30 bg-[#090e1a]/95 backdrop-blur-2xl p-1.5 shadow-2xl z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="text-[10px] font-mono text-slate-400 px-2 py-1 uppercase tracking-wider border-b border-slate-800">
+                  Select Language
+                </div>
+                <div className="space-y-0.5 mt-1 font-mono text-xs">
+                  {availableLanguages.map((l) => (
+                    <button
+                      key={l.code}
+                      type="button"
+                      onClick={() => {
+                        setLanguage(l.code);
+                        setIsLangMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors cursor-pointer ${
+                        language === l.code
+                          ? "bg-cyan-950/80 text-cyan-300 font-semibold border border-cyan-500/40"
+                          : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
+                      }`}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>{l.flag}</span>
+                        <span className="text-[11px] font-sans">{l.nativeName}</span>
+                      </span>
+                      {language === l.code && <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Interactive SSRF Status Pill Button */}
           <button
             type="button"
@@ -67,7 +115,9 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             title="Click to view SSRF Protection & Heuristic Engine telemetry"
           >
             <Terminal className="h-3.5 w-3.5 text-cyan-400 group-hover:rotate-6 transition-transform" />
-            <span className="font-mono text-[10px] tracking-wide font-medium">SSRF-SAFE LEXICAL ANALYSIS</span>
+            <span className="font-mono text-[10px] tracking-wide font-medium">
+              {t("topbar.ssrfPill", "SSRF-SAFE LEXICAL ANALYSIS")}
+            </span>
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
           </button>
 
@@ -82,7 +132,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             className="text-xs text-slate-300 border-white/[0.1] hover:border-red-500/40 hover:text-red-400 hover:bg-red-950/20"
           >
             <LogOut className="h-3.5 w-3.5 mr-1 sm:mr-1.5" />
-            <span className="hidden sm:inline">Sign Out</span>
+            <span className="hidden sm:inline">{t("topbar.signOut", "Sign Out")}</span>
           </Button>
         </div>
       </header>

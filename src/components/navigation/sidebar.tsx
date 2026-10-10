@@ -34,11 +34,13 @@ import {
   Bot,
   SlidersHorizontal,
   Check,
+  Globe,
 } from "lucide-react";
 import { Modal } from "../ui/modal";
 import { Button } from "../ui/button";
 import { AiHelpAgent } from "../help/ai-help-agent";
 import { EnterpriseLicenseModal } from "./enterprise-license-modal";
+import { useLanguage } from "@/context/language-context";
 
 interface SidebarProps {
   userRole?: string;
@@ -57,6 +59,7 @@ export function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
+  const { language, setLanguage, t, availableLanguages } = useLanguage();
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<
@@ -234,43 +237,43 @@ export function Sidebar({
 
   const navItems = [
     {
-      name: "Security Dashboard",
+      name: t("nav.dashboard", "Security Dashboard"),
       href: "/dashboard",
       icon: LayoutDashboard,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
-      name: "URL & Threat Analyzer",
+      name: t("nav.analyzer", "URL & Threat Analyzer"),
       href: "/analyzer",
       icon: Search,
       roles: ["ADMIN", "ANALYST"],
     },
     {
-      name: "Threat Findings",
+      name: t("nav.findings", "Threat Findings"),
       href: "/findings",
       icon: ShieldAlert,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
-      name: "Incident Cases",
+      name: t("nav.incidents", "Incident Cases"),
       href: "/incidents",
       icon: FileCheck2,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
-      name: "Brand Protection",
+      name: t("nav.brands", "Brand Protection"),
       href: "/brands",
       icon: Shield,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
-      name: "Threat Intelligence",
+      name: t("nav.threatIntel", "Threat Intelligence"),
       href: "/threat-intel",
       icon: Radio,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
-      name: "Security Audit Logs",
+      name: t("nav.auditLogs", "Security Audit Logs"),
       href: "/audit-logs",
       icon: History,
       roles: ["ADMIN"],
@@ -316,11 +319,11 @@ export function Sidebar({
                 </span>
                 <span className="text-slate-200 font-semibold text-[11px] tracking-wide flex items-center gap-1">
                   <Cpu className="h-3 w-3 text-cyan-400" />
-                  Heuristic Core
+                  {t("nav.heuristicCore", "Heuristic Core")}
                 </span>
               </div>
               <span className="text-[10px] text-emerald-400 font-mono font-bold tracking-widest bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 rounded">
-                ONLINE
+                {t("nav.online", "ONLINE")}
               </span>
             </div>
           </div>
@@ -397,7 +400,7 @@ export function Sidebar({
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
                 >
                   <Sparkles className="h-4 w-4 text-cyan-400 shrink-0" />
-                  <span>Upgrade plan</span>
+                  <span>{t("menu.upgrade", "Upgrade plan")}</span>
                   <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
                     PRO
                   </span>
@@ -412,7 +415,7 @@ export function Sidebar({
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
                 >
                   <Sliders className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span>Personalization</span>
+                  <span>{t("menu.personalization", "Personalization")}</span>
                 </button>
 
                 <button
@@ -424,7 +427,7 @@ export function Sidebar({
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
                 >
                   <User className="h-4 w-4 text-indigo-400 shrink-0" />
-                  <span>Profile</span>
+                  <span>{t("menu.profile", "Profile")}</span>
                 </button>
 
                 <button
@@ -436,7 +439,7 @@ export function Sidebar({
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
                 >
                   <Settings className="h-4 w-4 text-slate-400 shrink-0" />
-                  <span>Settings</span>
+                  <span>{t("menu.settings", "Settings")}</span>
                 </button>
 
                 <div className="h-px bg-white/[0.08] my-1" />
@@ -451,7 +454,7 @@ export function Sidebar({
                 >
                   <div className="flex items-center gap-2.5">
                     <Bot className="h-4 w-4 text-cyan-400 shrink-0 animate-pulse" />
-                    <span className="font-semibold text-cyan-300">Help Desk &amp; AI Copilot</span>
+                    <span className="font-semibold text-cyan-300">{t("menu.help", "Help Desk & AI Copilot")}</span>
                   </div>
                   <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/30">
                     AI AGENT
@@ -465,7 +468,7 @@ export function Sidebar({
                   className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors text-left"
                 >
                   <LogOut className="h-4 w-4 shrink-0" />
-                  <span>{isLoggingOut ? "Signing out..." : "Log out"}</span>
+                  <span>{isLoggingOut ? t("menu.loggingOut", "Signing out...") : t("menu.logout", "Log out")}</span>
                 </button>
               </div>
             </div>
@@ -511,22 +514,66 @@ export function Sidebar({
         onClose={() => setActiveModal(null)}
       />
 
-      {/* Modal 2: Personalization / Preferences (Fully Interactive) */}
+      {/* Modal 2: Personalization / Preferences (Fully Interactive & Multilingual) */}
       <Modal
         isOpen={activeModal === "personalization"}
         onClose={() => setActiveModal(null)}
-        title="CYBER INTERFACE PERSONALIZATION"
-        description="Configure your SOC console sound, visuals, and telemetry preferences."
+        title={t("personalization.title", "CYBER INTERFACE PERSONALIZATION")}
+        description={t("personalization.desc", "Configure your SOC console language, audio, visuals, and telemetry preferences.")}
         maxWidth="md"
       >
         <div className="space-y-4 pt-1 text-slate-200 text-xs">
+          {/* Multi-Language Selector (English, Spanish, French, German) */}
+          <div className="p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/30 space-y-2.5 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <Globe className="h-4 w-4 text-cyan-400 shrink-0" />
+                <div>
+                  <p className="font-semibold text-slate-100">{t("personalization.language", "Console Language")}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">{t("personalization.languageSub", "Select primary interface display locale")}</p>
+                </div>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 uppercase font-bold">
+                {language.toUpperCase()}
+              </span>
+            </div>
+
+            {/* 4 Supported Languages Grid */}
+            <div className="grid grid-cols-2 gap-2 pt-1 font-mono text-xs">
+              {availableLanguages.map((lang) => {
+                const isSelected = language === lang.code;
+                return (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={() => {
+                      setLanguage(lang.code);
+                      playTone(1050, 0.15);
+                    }}
+                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all text-left cursor-pointer ${
+                      isSelected
+                        ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.3)] font-semibold"
+                        : "bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-800"
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-base">{lang.flag}</span>
+                      <span className="text-[11px] font-sans">{lang.nativeName}</span>
+                    </span>
+                    {isSelected && <Check className="h-3.5 w-3.5 text-cyan-400 shrink-0" />}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Audio Beep Toggle */}
           <div className="flex items-center justify-between p-3.5 rounded-xl bg-slate-950/60 border border-white/[0.08]">
             <div className="flex items-center gap-3">
               <Volume2 className="h-4 w-4 text-cyan-400 shrink-0" />
               <div>
-                <p className="font-semibold text-slate-100">Audio Telemetry Cues</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Play synthetic frequency beep on threat detection</p>
+                <p className="font-semibold text-slate-100">{t("personalization.audio", "Audio Telemetry Cues")}</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">{t("personalization.audioSub", "Play synthetic frequency beep on threat detection")}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -535,7 +582,7 @@ export function Sidebar({
                 onClick={() => playTone(880, 0.25)}
                 className="text-[10px] font-mono px-2 py-1 rounded border border-cyan-500/30 text-cyan-300 hover:bg-cyan-950/50 cursor-pointer"
               >
-                Test
+                {t("personalization.testAudio", "Test")}
               </button>
               <button
                 type="button"
@@ -558,8 +605,8 @@ export function Sidebar({
             <div className="flex items-center gap-3">
               <Palette className="h-4 w-4 text-purple-400 shrink-0" />
               <div>
-                <p className="font-semibold text-slate-100">Holographic Cyber Grid</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Render matrix grid overlay in background</p>
+                <p className="font-semibold text-slate-100">{t("personalization.grid", "Holographic Cyber Grid")}</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">{t("personalization.gridSub", "Render matrix grid overlay in background")}</p>
               </div>
             </div>
             <button
@@ -586,8 +633,8 @@ export function Sidebar({
             <div className="flex items-center gap-3">
               <Activity className="h-4 w-4 text-emerald-400 shrink-0" />
               <div>
-                <p className="font-semibold text-slate-100">Telemetry Stream Refresh</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Dashboard live polling interval</p>
+                <p className="font-semibold text-slate-100">{t("personalization.refresh", "Telemetry Stream Refresh")}</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">{t("personalization.refreshSub", "Dashboard live polling interval")}</p>
               </div>
             </div>
             <select
@@ -604,13 +651,13 @@ export function Sidebar({
           {personalizationSaved && (
             <div className="flex items-center gap-2 p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 font-mono text-[11px] animate-in fade-in">
               <Check className="h-4 w-4 text-emerald-400" />
-              <span>Personalization preferences saved successfully!</span>
+              <span>{t("personalization.saved", "Personalization preferences saved successfully!")}</span>
             </div>
           )}
 
           <div className="flex justify-end pt-3 border-t border-white/[0.08]">
             <Button variant="cyan" size="sm" onClick={savePersonalization} className="text-xs">
-              Save Preferences
+              {t("personalization.save", "Save Preferences")}
             </Button>
           </div>
         </div>

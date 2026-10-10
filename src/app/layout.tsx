@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { APP_CONFIG } from "@/lib/constants";
 import { BilyAgent } from "@/components/ai/bily-agent";
+import { LanguageProvider } from "@/context/language-context";
 
 export const metadata: Metadata = {
   title: `${APP_CONFIG.name} | ${APP_CONFIG.tagline}`,
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-[#060b19] text-slate-100 antialiased selection:bg-cyan-500 selection:text-white relative">
-        {children}
-        {/* Floating AI Threat Copilot Widget (Bottom-Right Corner) */}
-        <BilyAgent />
+        <LanguageProvider>
+          {children}
+          {/* Floating AI Threat Copilot Widget (Bottom-Right Corner) */}
+          <BilyAgent />
+        </LanguageProvider>
       </body>
     </html>
   );
