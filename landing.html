@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-style="clay">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
-       OPTIMUS CYBER DEFENSE - CORE DESIGN SYSTEM & MULTI-STYLE THEME ENGINE
+       OPTIMUS CYBER DEFENSE - TACTILE CLAYMORPHISM DESIGN SYSTEM
        ========================================================================== */
     :root {
       --bg-base: #060b18;
       --bg-surface: #0a1329;
-      --bg-card: rgba(14, 25, 51, 0.7);
-      --bg-card-hover: rgba(19, 34, 69, 0.85);
-      --border-color: rgba(0, 240, 255, 0.2);
+      --bg-card: #0d1a38;
+      --bg-card-hover: #12234b;
+      --border-color: rgba(255, 255, 255, 0.08);
       --border-focus: #00f0ff;
       --text-main: #f1f5f9;
       --text-muted: #94a3b8;
@@ -43,60 +43,31 @@
       --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
 
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
       --radius-full: 9999px;
 
-      --card-blur: blur(16px);
-      --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
-      --card-border: 1px solid var(--border-color);
-      --card-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-
-    /* ---------------- STYLE SWITCHER MODES ---------------- */
-    /* 1. Flat Style */
-    [data-style="flat"] {
-      --bg-card: #0b152d;
-      --bg-card-hover: #101d3d;
-      --card-blur: none;
-      --card-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
-      --card-border: 1px solid rgba(255, 255, 255, 0.14);
-      --card-highlight: none;
-    }
-
-    /* 2. Glassmorphism */
-    [data-style="glass"] {
-      --bg-card: rgba(10, 20, 42, 0.55);
-      --bg-card-hover: rgba(16, 32, 66, 0.75);
-      --card-blur: blur(20px);
-      --card-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.5);
-      --card-border: 1px solid rgba(255, 255, 255, 0.15);
-      --card-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-
-    /* 3. Claymorphism */
-    [data-style="clay"] {
-      --bg-card: #0d1a38;
-      --bg-card-hover: #122247;
-      --card-blur: none;
-      --card-shadow: 12px 16px 32px rgba(2, 6, 18, 0.8),
-                     inset -6px -6px 12px rgba(0, 0, 0, 0.5),
-                     inset 6px 6px 12px rgba(255, 255, 255, 0.08);
-      --card-border: 1px solid rgba(255, 255, 255, 0.08);
-      --card-highlight: none;
-    }
-
-    /* 4. Liquid Glass (Default - Ultra Cyber Premium) */
-    [data-style="liquid"] {
-      --bg-card: rgba(12, 22, 48, 0.65);
-      --bg-card-hover: rgba(18, 33, 70, 0.82);
-      --card-blur: blur(24px) saturate(160%);
-      --card-shadow: 0 16px 45px -8px rgba(0, 0, 0, 0.7),
-                     0 0 25px -4px var(--color-cyan-glow);
-      --card-border: 1px solid rgba(0, 240, 255, 0.3);
-      --card-highlight: inset 0 1px 2px rgba(255, 255, 255, 0.25),
-                        inset 0 -1px 2px rgba(0, 240, 255, 0.15);
+      /* Signature Tactile Claymorphism Elevation Tokens */
+      --clay-shadow-card: 14px 18px 36px rgba(2, 6, 18, 0.85),
+                          -6px -6px 20px rgba(18, 32, 68, 0.25),
+                          inset 4px 4px 8px rgba(255, 255, 255, 0.08),
+                          inset -6px -6px 14px rgba(0, 0, 0, 0.55);
+      --clay-shadow-card-hover: 18px 24px 46px rgba(2, 6, 18, 0.95),
+                                -8px -8px 24px rgba(22, 40, 85, 0.35),
+                                inset 5px 5px 10px rgba(255, 255, 255, 0.12),
+                                inset -7px -7px 16px rgba(0, 0, 0, 0.6);
+      --clay-shadow-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.65),
+                           inset -2px -2px 6px rgba(255, 255, 255, 0.05);
+      --clay-shadow-pill: 4px 6px 14px rgba(2, 6, 18, 0.7),
+                          inset 2px 2px 4px rgba(255, 255, 255, 0.14),
+                          inset -2px -2px 5px rgba(0, 0, 0, 0.45);
+      --clay-shadow-btn-primary: 6px 10px 24px rgba(0, 240, 255, 0.35),
+                                 inset 2px 2px 5px rgba(255, 255, 255, 0.45),
+                                 inset -3px -3px 6px rgba(0, 0, 0, 0.35);
+      --clay-shadow-btn-secondary: 6px 8px 18px rgba(2, 6, 18, 0.75),
+                                   inset 2px 2px 4px rgba(255, 255, 255, 0.12),
+                                   inset -2px -2px 6px rgba(0, 0, 0, 0.5);
     }
 
     /* Reset & Base Setup */
@@ -196,9 +167,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(6, 11, 24, 0.85);
-      backdrop-filter: blur(16px);
+      background: #081226;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 28px rgba(2, 6, 18, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.08);
       transition: background 0.3s ease;
     }
     .header-inner {
@@ -223,7 +194,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 20px var(--color-cyan-glow);
+      box-shadow: 4px 6px 14px rgba(0, 240, 255, 0.35),
+                  inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+                  inset -2px -2px 4px rgba(0, 0, 0, 0.4);
       color: #060b18;
     }
     .logo-text {
@@ -270,38 +243,6 @@
       gap: 16px;
     }
 
-    /* Style Switcher */
-    .style-picker-wrap {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(14, 25, 51, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-    .style-picker-label {
-      color: var(--text-dim);
-      text-transform: uppercase;
-      font-size: 0.68rem;
-    }
-    .style-select {
-      background: transparent;
-      border: none;
-      color: var(--color-cyan);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      outline: none;
-    }
-    .style-select option {
-      background: #0a1329;
-      color: #fff;
-    }
-
     /* Primary & Outline Buttons */
     .btn {
       display: inline-flex;
@@ -320,25 +261,41 @@
       white-space: nowrap;
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--color-cyan) 0%, #0284c7 100%);
+      background: linear-gradient(145deg, var(--color-cyan) 0%, #0284c7 100%);
       color: #040914;
-      box-shadow: 0 4px 16px var(--color-cyan-glow);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: var(--clay-shadow-btn-primary);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(0, 240, 255, 0.55);
+      box-shadow: 8px 14px 28px rgba(0, 240, 255, 0.5),
+                  inset 2px 2px 5px rgba(255, 255, 255, 0.55),
+                  inset -3px -3px 6px rgba(0, 0, 0, 0.35);
+    }
+    .btn-primary:active {
+      transform: translateY(1px);
+      box-shadow: 2px 4px 10px rgba(0, 240, 255, 0.3),
+                  inset 3px 3px 6px rgba(0, 0, 0, 0.4);
     }
     .btn-secondary {
-      background: rgba(15, 26, 52, 0.8);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: #0d1a38;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text-main);
-      backdrop-filter: blur(8px);
+      box-shadow: var(--clay-shadow-btn-secondary);
     }
     .btn-secondary:hover {
-      background: rgba(22, 38, 77, 0.95);
-      border-color: var(--color-cyan);
+      background: #12234b;
+      border-color: rgba(0, 240, 255, 0.4);
       color: var(--color-cyan);
       transform: translateY(-2px);
+      box-shadow: 8px 12px 24px rgba(2, 6, 18, 0.9),
+                  inset 2px 2px 4px rgba(255, 255, 255, 0.18),
+                  inset -2px -2px 6px rgba(0, 0, 0, 0.5);
+    }
+    .btn-secondary:active {
+      transform: translateY(1px);
+      box-shadow: 2px 3px 8px rgba(2, 6, 18, 0.9),
+                  inset 3px 3px 6px rgba(0, 0, 0, 0.6);
     }
     .btn-lg {
       padding: 14px 28px;
@@ -364,8 +321,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 240, 255, 0.08);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: #0b1733;
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      box-shadow: var(--clay-shadow-pill);
       padding: 6px 14px;
       border-radius: var(--radius-full);
       font-family: var(--font-mono);
@@ -421,14 +379,16 @@
     /* Live Telemetry Console Panel */
     .telemetry-card {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--clay-shadow-card);
       padding: 24px;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .telemetry-card:hover {
+      box-shadow: var(--clay-shadow-card-hover);
     }
     .telemetry-card::before {
       content: '';
@@ -471,9 +431,10 @@
       grid-template-columns: auto 1fr;
       gap: 20px;
       align-items: center;
-      background: rgba(6, 12, 26, 0.65);
+      background: #070e20;
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-md);
+      box-shadow: var(--clay-shadow-inset);
       padding: 16px;
       margin-bottom: 20px;
       position: relative;
@@ -566,14 +527,20 @@
       gap: 12px;
       padding: 12px 14px;
       border-radius: var(--radius-sm);
-      background: rgba(6, 12, 26, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #0a142c;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 4px 6px 12px rgba(2, 6, 18, 0.6),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.08),
+                  inset -2px -2px 4px rgba(0, 0, 0, 0.4);
       transition: all 0.2s ease;
     }
     .finding-item:hover {
-      background: rgba(10, 20, 42, 0.85);
+      background: #0f1c3d;
       border-color: rgba(0, 240, 255, 0.25);
       transform: translateX(3px);
+      box-shadow: 6px 8px 16px rgba(2, 6, 18, 0.75),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.12),
+                  inset -2px -2px 4px rgba(0, 0, 0, 0.4);
     }
     .finding-left {
       display: flex;
@@ -605,6 +572,9 @@
       padding: 4px 9px;
       border-radius: 6px;
       flex-shrink: 0;
+      box-shadow: 2px 3px 8px rgba(2, 6, 18, 0.5),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.15),
+                  inset -1px -1px 2px rgba(0, 0, 0, 0.35);
     }
     .sev-critical {
       background: rgba(239, 68, 68, 0.15);
@@ -635,10 +605,9 @@
     }
     .stats-card {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      box-shadow: var(--card-shadow);
+      box-shadow: var(--clay-shadow-card);
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       divide-x: 1px solid rgba(255, 255, 255, 0.08);
@@ -707,9 +676,9 @@
     }
     .drp-container-box {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
+      box-shadow: var(--clay-shadow-card);
       padding: 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -750,9 +719,10 @@
     
     /* Interactive Perimeter Diagram Visual */
     .drp-diagram {
-      background: #081024;
-      border: 1px solid rgba(0, 240, 255, 0.15);
+      background: #070e20;
+      border: 1px solid rgba(0, 240, 255, 0.18);
       border-radius: var(--radius-md);
+      box-shadow: var(--clay-shadow-inset);
       padding: 28px;
       position: relative;
       display: flex;
@@ -760,11 +730,12 @@
       gap: 16px;
     }
     .diagram-perimeter-box {
-      border: 2px dashed rgba(255, 255, 255, 0.2);
+      border: 2px dashed rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-sm);
       padding: 16px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.02);
+      background: #0a142c;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
     .diagram-title {
       font-family: var(--font-mono);
@@ -780,14 +751,17 @@
       gap: 10px;
     }
     .threat-node {
-      background: rgba(239, 68, 68, 0.08);
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      background: #140b12;
+      border: 1px solid rgba(239, 68, 68, 0.35);
       padding: 12px 8px;
       border-radius: var(--radius-sm);
       text-align: center;
       font-family: var(--font-mono);
       font-size: 0.7rem;
       color: var(--color-red);
+      box-shadow: 3px 4px 10px rgba(2, 6, 18, 0.6),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.06),
+                  inset -2px -2px 4px rgba(0, 0, 0, 0.5);
     }
 
     /* ==========================================================================
@@ -803,17 +777,18 @@
     }
     .component-card {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
+      box-shadow: var(--clay-shadow-card);
       padding: 36px 28px;
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
     }
     .component-card:hover {
       background: var(--bg-card-hover);
+      box-shadow: var(--clay-shadow-card-hover);
       transform: translateY(-5px);
     }
     .step-number {
@@ -832,7 +807,9 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 22px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 6px 8px 18px rgba(2, 6, 18, 0.75),
+                  inset 2px 2px 4px rgba(255, 255, 255, 0.18),
+                  inset -3px -3px 6px rgba(0, 0, 0, 0.55);
     }
     .component-title {
       font-family: var(--font-display);
@@ -856,30 +833,33 @@
     .tag-pill {
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.05);
+      background: #091226;
       color: var(--text-muted);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 2px 3px 8px rgba(2, 6, 18, 0.5),
+                  inset 1px 1px 2px rgba(255, 255, 255, 0.08),
+                  inset -1px -1px 3px rgba(0, 0, 0, 0.4);
     }
 
     /* Component Card Color Accents */
     .comp-visibility .component-icon-box {
-      background: rgba(0, 240, 255, 0.12);
+      background: #091b36;
       border: 1px solid rgba(0, 240, 255, 0.4);
       color: var(--color-cyan);
     }
     .comp-visibility:hover { border-color: rgba(0, 240, 255, 0.5); }
 
     .comp-analysis .component-icon-box {
-      background: rgba(168, 85, 247, 0.12);
+      background: #140d2d;
       border: 1px solid rgba(168, 85, 247, 0.4);
       color: var(--color-violet);
     }
     .comp-analysis:hover { border-color: rgba(168, 85, 247, 0.5); }
 
     .comp-disruption .component-icon-box {
-      background: rgba(239, 68, 68, 0.12);
+      background: #200a0e;
       border: 1px solid rgba(239, 68, 68, 0.4);
       color: var(--color-red);
     }
@@ -898,19 +878,20 @@
     }
     .usecase-card {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
+      box-shadow: var(--clay-shadow-card);
       padding: 32px 26px;
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .usecase-card:hover {
       background: var(--bg-card-hover);
-      transform: translateY(-4px);
+      box-shadow: var(--clay-shadow-card-hover);
+      transform: translateY(-5px);
     }
 
     .usecase-top {
@@ -926,14 +907,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 5px 7px 16px rgba(2, 6, 18, 0.7),
+                  inset 2px 2px 4px rgba(255, 255, 255, 0.16),
+                  inset -2px -2px 5px rgba(0, 0, 0, 0.5);
     }
     .usecase-accent-badge {
       font-family: var(--font-mono);
       font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      box-shadow: 3px 4px 10px rgba(2, 6, 18, 0.6),
+                  inset 1px 1px 3px rgba(255, 255, 255, 0.15),
+                  inset -1px -1px 3px rgba(0, 0, 0, 0.4);
     }
     .usecase-title {
       font-family: var(--font-display);
@@ -967,41 +954,65 @@
       color: var(--text-main);
     }
 
-    /* Six Distinct Accent Styles */
+    /* Six Distinct Accent Styles with Tactile Clay Depth */
     /* 1. Domain (Cyan) */
-    .uc-domain { border-top: 3px solid var(--color-cyan); }
-    .uc-domain .usecase-icon-wrap { background: rgba(0, 240, 255, 0.15); color: var(--color-cyan); }
-    .uc-domain .usecase-accent-badge { background: rgba(0, 240, 255, 0.1); color: var(--color-cyan); }
+    .uc-domain {
+      border: 1px solid rgba(0, 240, 255, 0.25);
+      border-top: 3px solid var(--color-cyan);
+    }
+    .uc-domain:hover { border-color: rgba(0, 240, 255, 0.5); }
+    .uc-domain .usecase-icon-wrap { background: #081a33; border: 1px solid rgba(0, 240, 255, 0.35); color: var(--color-cyan); }
+    .uc-domain .usecase-accent-badge { background: #061429; border: 1px solid rgba(0, 240, 255, 0.3); color: var(--color-cyan); }
     .uc-domain .usecase-feature-item svg { color: var(--color-cyan); }
 
     /* 2. Brand (Violet) */
-    .uc-brand { border-top: 3px solid var(--color-violet); }
-    .uc-brand .usecase-icon-wrap { background: rgba(168, 85, 247, 0.15); color: var(--color-violet); }
-    .uc-brand .usecase-accent-badge { background: rgba(168, 85, 247, 0.1); color: var(--color-violet); }
+    .uc-brand {
+      border: 1px solid rgba(168, 85, 247, 0.25);
+      border-top: 3px solid var(--color-violet);
+    }
+    .uc-brand:hover { border-color: rgba(168, 85, 247, 0.5); }
+    .uc-brand .usecase-icon-wrap { background: #140d2d; border: 1px solid rgba(168, 85, 247, 0.35); color: var(--color-violet); }
+    .uc-brand .usecase-accent-badge { background: #100a24; border: 1px solid rgba(168, 85, 247, 0.3); color: var(--color-violet); }
     .uc-brand .usecase-feature-item svg { color: var(--color-violet); }
 
     /* 3. Social Media (Pink) */
-    .uc-social { border-top: 3px solid var(--color-pink); }
-    .uc-social .usecase-icon-wrap { background: rgba(236, 72, 153, 0.15); color: var(--color-pink); }
-    .uc-social .usecase-accent-badge { background: rgba(236, 72, 153, 0.1); color: var(--color-pink); }
+    .uc-social {
+      border: 1px solid rgba(236, 72, 153, 0.25);
+      border-top: 3px solid var(--color-pink);
+    }
+    .uc-social:hover { border-color: rgba(236, 72, 153, 0.5); }
+    .uc-social .usecase-icon-wrap { background: #1e0c20; border: 1px solid rgba(236, 72, 153, 0.35); color: var(--color-pink); }
+    .uc-social .usecase-accent-badge { background: #18091a; border: 1px solid rgba(236, 72, 153, 0.3); color: var(--color-pink); }
     .uc-social .usecase-feature-item svg { color: var(--color-pink); }
 
     /* 4. Executive VIP (Amber) */
-    .uc-vip { border-top: 3px solid var(--color-amber); }
-    .uc-vip .usecase-icon-wrap { background: rgba(245, 158, 11, 0.15); color: var(--color-amber); }
-    .uc-vip .usecase-accent-badge { background: rgba(245, 158, 11, 0.1); color: var(--color-amber); }
+    .uc-vip {
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-top: 3px solid var(--color-amber);
+    }
+    .uc-vip:hover { border-color: rgba(245, 158, 11, 0.5); }
+    .uc-vip .usecase-icon-wrap { background: #201507; border: 1px solid rgba(245, 158, 11, 0.35); color: var(--color-amber); }
+    .uc-vip .usecase-accent-badge { background: #1a1005; border: 1px solid rgba(245, 158, 11, 0.3); color: var(--color-amber); }
     .uc-vip .usecase-feature-item svg { color: var(--color-amber); }
 
     /* 5. Location Physical (Orange) */
-    .uc-location { border-top: 3px solid var(--color-orange); }
-    .uc-location .usecase-icon-wrap { background: rgba(249, 115, 22, 0.15); color: var(--color-orange); }
-    .uc-location .usecase-accent-badge { background: rgba(249, 115, 22, 0.1); color: var(--color-orange); }
+    .uc-location {
+      border: 1px solid rgba(249, 115, 22, 0.25);
+      border-top: 3px solid var(--color-orange);
+    }
+    .uc-location:hover { border-color: rgba(249, 115, 22, 0.5); }
+    .uc-location .usecase-icon-wrap { background: #221207; border: 1px solid rgba(249, 115, 22, 0.35); color: var(--color-orange); }
+    .uc-location .usecase-accent-badge { background: #1a0d05; border: 1px solid rgba(249, 115, 22, 0.3); color: var(--color-orange); }
     .uc-location .usecase-feature-item svg { color: var(--color-orange); }
 
     /* 6. Dark Web Credential (Red) */
-    .uc-darkweb { border-top: 3px solid var(--color-red); }
-    .uc-darkweb .usecase-icon-wrap { background: rgba(239, 68, 68, 0.15); color: var(--color-red); }
-    .uc-darkweb .usecase-accent-badge { background: rgba(239, 68, 68, 0.1); color: var(--color-red); }
+    .uc-darkweb {
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-top: 3px solid var(--color-red);
+    }
+    .uc-darkweb:hover { border-color: rgba(239, 68, 68, 0.5); }
+    .uc-darkweb .usecase-icon-wrap { background: #220a0d; border: 1px solid rgba(239, 68, 68, 0.35); color: var(--color-red); }
+    .uc-darkweb .usecase-accent-badge { background: #1a0709; border: 1px solid rgba(239, 68, 68, 0.3); color: var(--color-red); }
     .uc-darkweb .usecase-feature-item svg { color: var(--color-red); }
 
     /* ==========================================================================
@@ -1017,16 +1028,17 @@
     }
     .why-card {
       background: var(--bg-card);
-      backdrop-filter: var(--card-blur);
-      border: var(--card-border);
+      border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
+      box-shadow: var(--clay-shadow-card);
       padding: 38px 30px;
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .why-card:hover {
       background: var(--bg-card-hover);
-      transform: translateY(-4px);
+      box-shadow: var(--clay-shadow-card-hover);
+      transform: translateY(-5px);
     }
     .why-icon {
       width: 52px;
@@ -1036,8 +1048,11 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 22px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #091226;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 5px 7px 16px rgba(2, 6, 18, 0.7),
+                  inset 2px 2px 4px rgba(255, 255, 255, 0.14),
+                  inset -2px -2px 5px rgba(0, 0, 0, 0.5);
       color: #fff;
     }
     .why-title {
@@ -1060,14 +1075,17 @@
       padding: 60px 0 120px;
     }
     .cta-card {
-      background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.18) 0%, rgba(10, 20, 42, 0.95) 70%);
+      background: #0d1a38;
       border: 1px solid rgba(0, 240, 255, 0.35);
       border-radius: var(--radius-lg);
       padding: 70px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px -10px rgba(0, 240, 255, 0.2);
+      box-shadow: 18px 24px 50px rgba(2, 6, 18, 0.95),
+                  -8px -8px 28px rgba(18, 32, 68, 0.35),
+                  inset 6px 6px 14px rgba(255, 255, 255, 0.1),
+                  inset -8px -8px 18px rgba(0, 0, 0, 0.6);
     }
     .cta-card::after {
       content: '';
@@ -1242,7 +1260,7 @@
   </svg>
 
   <!-- ========================================================================
-       TOP HEADER & MULTI-STYLE SWITCHER
+       TOP HEADER
        ======================================================================== -->
   <header class="site-header">
     <div class="container header-inner">
@@ -1263,6 +1281,7 @@
       <!-- Desktop Nav -->
       <nav aria-label="Main Navigation">
         <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#how-it-works" class="nav-link">Architecture</a></li>
           <li><a href="#use-cases" class="nav-link">Use Cases</a></li>
           <li><a href="#why-it-matters" class="nav-link">Value Pillars</a></li>
@@ -1412,11 +1431,12 @@
   <!-- ========================================================================
        WHAT DIGITAL RISK PROTECTION (DRP) IS
        ======================================================================== -->
-  <section id="about-drp" class="drp-section">
+  <section id="about" class="drp-section">
+    <span id="about-drp" style="position: relative; top: -80px; visibility: hidden;"></span>
     <div class="container">
       <div class="section-head">
-        <span class="section-kicker">Threat Horizon</span>
-        <h2 class="section-title">Autonomous Perimeter Defense</h2>
+        <span class="section-kicker">Threat Horizon &bull; About DRP</span>
+        <h2 class="section-title">What is Digital Risk Protection (DRP)?</h2>
         <p class="section-desc">
           Defending what firewalls and endpoints cannot see: threats born outside your network on the public web.
         </p>
@@ -1800,19 +1820,12 @@
       </div>
 
       <ul class="footer-links">
-        <li><a href="#about-drp" class="footer-link">DRP Definition</a></li>
+        <li><a href="#about" class="footer-link">What is DRP</a></li>
         <li><a href="#how-it-works" class="footer-link">Lexical Engine</a></li>
         <li><a href="#use-cases" class="footer-link">Threat Coverage</a></li>
         <li><a href="/login" class="footer-link">SOC Portal</a></li>
       </ul>
     </div>
   </footer>
-
-  <!-- ========================================================================
-       STYLE SWITCHER ENGINE JAVASCRIPT
-       ======================================================================== -->
-  <script>
-    document.documentElement.setAttribute('data-style', 'clay');
-  </script>
 </body>
 </html>

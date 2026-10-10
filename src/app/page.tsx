@@ -30,7 +30,7 @@ import { Button } from "@/components/ui/button";
 export default function LandingPage() {
   // Pure claymorphism card styling with tactile inner highlights and deep outer drop shadows
   const getCardClasses = (accentBorder?: string) => {
-    return `bg-[#0d1a38] border ${accentBorder || "border-white/[0.08]"} shadow-[12px_16px_36px_rgba(2,6,18,0.85),inset_-6px_-6px_12px_rgba(0,0,0,0.5),inset_6px_6px_12px_rgba(255,255,255,0.08)] transition-all`;
+    return `bg-[#0d1a38] border ${accentBorder || "border-white/[0.08]"} shadow-[14px_18px_36px_rgba(2,6,18,0.85),-6px_-6px_20px_rgba(18,32,68,0.25),inset_4px_4px_8px_rgba(255,255,255,0.08),inset_-6px_-6px_14px_rgba(0,0,0,0.55)] hover:shadow-[18px_24px_46px_rgba(2,6,18,0.95),-8px_-8px_24px_rgba(22,40,85,0.35),inset_5px_5px_10px_rgba(255,255,255,0.12),inset_-7px_-7px_16px_rgba(0,0,0,0.6)] hover:-translate-y-1 transition-all duration-300`;
   };
 
   return (
@@ -58,7 +58,7 @@ export default function LandingPage() {
         <div className="cyber-glow-orb -bottom-40 left-1/4 w-[600px] h-[600px] bg-pink-600/18" />
       </div>
 
-      {/* Top Header & Interactive Style Switcher */}
+      {/* Top Header */}
       <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#060b18]/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
@@ -82,6 +82,9 @@ export default function LandingPage() {
 
           {/* Center Navigation Links */}
           <nav className="hidden md:flex items-center gap-7 font-plex-mono text-xs text-slate-300">
+            <a href="#about" className="hover:text-cyan-400 transition-colors">
+              About
+            </a>
             <a href="#capabilities" className="hover:text-cyan-400 transition-colors">
               Platform Architecture
             </a>
@@ -270,6 +273,78 @@ export default function LandingPage() {
           <div className="text-center px-4 pt-4 md:pt-0">
             <p className="text-3xl sm:text-4xl font-extrabold text-pink-400 font-unbounded">100%</p>
             <p className="text-xs font-plex-mono text-slate-400 uppercase tracking-wider mt-1">SSRF-Safe Lexical (0 Fetches)</p>
+          </div>
+        </div>
+      </section>
+
+      {/* What is Digital Risk Protection (DRP) Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="text-xs font-plex-mono text-cyan-400 uppercase tracking-widest block mb-2 font-semibold">
+            Threat Horizon &bull; About DRP
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white font-unbounded">
+            What is Digital Risk Protection (DRP)?
+          </h2>
+          <p className="text-slate-400 text-sm mt-3 font-plex-sans">
+            Defending what firewalls and endpoints cannot see: threats born outside your network on the public web.
+          </p>
+        </div>
+
+        <div className={`rounded-3xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${getCardClasses()}`}>
+          <div className="space-y-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-white font-unbounded">
+              Beyond The Security Perimeter
+            </h3>
+            <p className="text-sm text-slate-300 leading-relaxed font-plex-sans">
+              Traditional cybersecurity guards endpoints, email inboxes, and internal cloud infrastructure. However, over 80% of modern phishing campaigns, lookalike websites, and brand fraud originate on public web platforms completely outside your perimeter.
+            </p>
+            <p className="text-sm text-slate-300 leading-relaxed font-plex-sans">
+              <strong className="text-cyan-400 font-semibold">Digital Risk Protection (DRP)</strong> continuously scans the public, deep, and dark web to detect typosquatted domains, social media impersonations, leaked employee credentials, and hostile brand exploits the moment they are staged—long before malicious payloads reach your internal network.
+            </p>
+            <div className="space-y-3 pt-2 font-plex-sans text-xs sm:text-sm">
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200">Identifies attacker preparations weeks prior to active phishing execution.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200">Zero endpoint agent installations or complex firewall integrations required.</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <span className="text-slate-200">Automated legal-grade takedown requests sent directly to registrars and hosts.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Perimeter Diagram Visual */}
+          <div className="p-6 rounded-2xl bg-[#070e20] border border-cyan-500/20 shadow-[inset_4px_4px_10px_rgba(0,0,0,0.65),inset_-2px_-2px_6px_rgba(255,255,255,0.05)] space-y-4">
+            <div className="text-[11px] font-plex-mono text-slate-400 uppercase tracking-widest text-center">
+              External Wild Web (Threat Vector Stage)
+            </div>
+            <div className="grid grid-cols-3 gap-2.5 text-center font-plex-mono text-[11px]">
+              <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/35 text-red-400 shadow-[3px_4px_10px_rgba(2,6,18,0.6),inset_1px_1px_2px_rgba(255,255,255,0.06),inset_-2px_-2px_4px_rgba(0,0,0,0.5)]">
+                Lookalike Domains
+              </div>
+              <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/35 text-red-400 shadow-[3px_4px_10px_rgba(2,6,18,0.6),inset_1px_1px_2px_rgba(255,255,255,0.06),inset_-2px_-2px_4px_rgba(0,0,0,0.5)]">
+                Dark Web Dumps
+              </div>
+              <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/35 text-red-400 shadow-[3px_4px_10px_rgba(2,6,18,0.6),inset_1px_1px_2px_rgba(255,255,255,0.06),inset_-2px_-2px_4px_rgba(0,0,0,0.5)]">
+                Fake Profiles
+              </div>
+            </div>
+            <div className="text-center text-xs font-plex-mono text-cyan-400 py-1 font-semibold flex items-center justify-center gap-2">
+              <span>&darr;</span> Blocked by Optimus DRP <span>&darr;</span>
+            </div>
+            <div className="p-4 rounded-xl border-2 border-dashed border-white/20 bg-[#0a142c] text-center shadow-[inset_2px_2px_5px_rgba(0,0,0,0.5)]">
+              <div className="text-xs font-plex-mono text-emerald-400 font-bold uppercase tracking-wider mb-1">
+                Traditional Corporate Perimeter
+              </div>
+              <div className="text-[11px] font-plex-mono text-slate-400">
+                Firewalls &bull; EDR Agents &bull; Secure Email Gateways
+              </div>
+            </div>
           </div>
         </div>
       </section>
