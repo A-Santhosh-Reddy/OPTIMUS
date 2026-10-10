@@ -36,6 +36,10 @@ export default function DashboardPage() {
     setError(null);
     try {
       const res = await fetch("/api/dashboard/stats");
+      if (res.status === 401) {
+        window.location.href = "/login";
+        return;
+      }
       if (!res.ok) throw new Error("Failed to load statistics");
       const json = await res.json();
       setData(json);
@@ -65,9 +69,16 @@ export default function DashboardPage() {
         <AlertTriangle className="h-9 w-9 mx-auto mb-3 text-red-400" />
         <p className="font-semibold text-sm">Unable to connect to database metrics</p>
         <p className="text-slate-400 mt-1 max-w-md mx-auto">{error}</p>
-        <Button size="sm" variant="outline" onClick={fetchStats} className="mt-4">
-          Retry Connection
-        </Button>
+        <div className="flex items-center justify-center gap-3 mt-4">
+          <Button size="sm" variant="outline" onClick={fetchStats}>
+            Retry Connection
+          </Button>
+          <Link href="/login">
+            <Button size="sm" variant="cyan">
+              Sign In to Console
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }

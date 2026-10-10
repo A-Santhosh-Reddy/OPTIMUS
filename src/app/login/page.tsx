@@ -1,19 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { ShieldAlert, Lock, Mail, ArrowRight, AlertCircle, UserPlus } from "lucide-react";
+import { ShieldAlert, Lock, Mail, ArrowRight, AlertCircle, UserPlus, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { OAuthButtons } from "@/components/auth/oauth-buttons";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const errorParam = searchParams.get("error");
+    if (errorParam) {
+      if (errorParam === "google_not_configured") {
+        setError(
+          "Google OAuth credentials are not configured yet in .env.local. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, or click 'Quick Demo SSO' below to test instantly."
+        );
+      } else if (errorParam === "microsoft_not_configured") {
+        setError(
+          "Microsoft OAuth credentials are not configured yet in .env.local. Please add MICROSOFT_CLIENT_ID and MICROSOFT_CLIENT_SECRET, or click 'Quick Demo SSO' below to test instantly."
+        );
+      } else if (errorParam === "missing_oauth_code") {
+        setError("OAuth authorization code was not received. Please try again.");
+      } else {
+        setError(decodeURIComponent(errorParam));
+      }
+    }
+  }, [searchParams]);
 
   const executeLogin = async (loginEmail: string, loginPass: string) => {
     setIsLoading(true);
@@ -46,6 +66,88 @@ export default function LoginPage() {
   };
 
   return (
+    <Card glow="cyber" hudCorner={true} className="p-6 sm:p-8 backdrop-blur-2xl border-cyan-500/30">
+      <form onSubmit={handleLogin} className="space-y-4">
+        {error && (
+          <div className="flex items-start gap-2.5 rounded-xl border border-red-500/40 bg-red-950/60 p-3.5 text-xs text-red-300 backdrop-blur-md">
+            <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5" />
+            <span className="leading-relaxed">{error}</span>
+          </div>
+        )}
+
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
+            Email Address or Username
+          </label>
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+              <Mail className="h-4 w-4" />
+            </div>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your.email@domain.com"
+              required
+              autoComplete="username"
+              className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
+            Password
+          </label>
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+              <Lock className="h-4 w-4" />
+            </div>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              autoComplete="current-password"
+              className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500"
+            />
+          </div>
+        </div>
+
+        <Button
+          type="submit"
+          variant="cyan"
+          size="lg"
+          isLoading={isLoading}
+          className="w-full font-semibold text-xs mt-3 shadow-liquid-cyan"
+        >
+          Sign In to Console
+          <ArrowRight className="h-4 w-4 ml-2" />
+        </Button>
+      </form>
+
+      {/* Single Sign-On: Google & Microsoft */}
+      <div className="mt-5">
+        <OAuthButtons mode="login" />
+      </div>
+
+      {/* Register Prompt */}
+      <div className="mt-6 pt-5 border-t border-white/[0.08] text-center">
+        <Link
+          href="/register"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 hover:bg-cyan-900/40 text-xs text-cyan-300 hover:text-cyan-200 transition-all font-mono w-full justify-center"
+        >
+          <UserPlus className="h-4 w-4 text-cyan-400" />
+          <span>Need an account? <span className="underline font-bold text-white">Create New Credentials</span></span>
+        </Link>
+      </div>
+    </Card>
+  );
+}
+
+export default function LoginPage() {
+  return (
     <div className="min-h-screen bg-[#050814] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       {/* Background Liquid Ambient Light Orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -70,83 +172,11 @@ export default function LoginPage() {
           </p>
         </div>
 
-        <Card glow="cyber" hudCorner={true} className="p-6 sm:p-8 backdrop-blur-2xl border-cyan-500/30">
-          <form onSubmit={handleLogin} className="space-y-4">
-            {error && (
-              <div className="flex items-start gap-2.5 rounded-xl border border-red-500/40 bg-red-950/60 p-3.5 text-xs text-red-300 backdrop-blur-md">
-                <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5" />
-                <span className="leading-relaxed">{error}</span>
-              </div>
-            )}
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                Email Address or Username
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
-                  <Mail className="h-4 w-4" />
-                </div>
-                <input
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@domain.com"
-                  required
-                  autoComplete="username"
-                  className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5 font-mono">
-                Password
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
-                  <Lock className="h-4 w-4" />
-                </div>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                  autoComplete="current-password"
-                  className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500"
-                />
-              </div>
-            </div>
-
-            <Button
-              type="submit"
-              variant="cyan"
-              size="lg"
-              isLoading={isLoading}
-              className="w-full font-semibold text-xs mt-3 shadow-liquid-cyan"
-            >
-              Sign In to Console
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </form>
-
-          {/* Single Sign-On: Google & Microsoft */}
-          <div className="mt-5">
-            <OAuthButtons mode="login" />
-          </div>
-
-          {/* Register Prompt */}
-          <div className="mt-6 pt-5 border-t border-white/[0.08] text-center">
-            <Link
-              href="/register"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 hover:bg-cyan-900/40 text-xs text-cyan-300 hover:text-cyan-200 transition-all font-mono w-full justify-center"
-            >
-              <UserPlus className="h-4 w-4 text-cyan-400" />
-              <span>Need an account? <span className="underline font-bold text-white">Create New Credentials</span></span>
-            </Link>
-          </div>
-        </Card>
+        <Suspense fallback={
+          <div className="p-8 text-center text-xs font-mono text-cyan-400">Loading console access...</div>
+        }>
+          <LoginForm />
+        </Suspense>
       </div>
     </div>
   );

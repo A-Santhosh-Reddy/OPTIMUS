@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck } from "lucide-react";
+import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck, KeyRound, Loader2 } from "lucide-react";
 
 export function GoogleIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -47,36 +47,44 @@ interface OAuthButtonsProps {
 
 export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
   const router = useRouter();
-  const [activeProvider, setActiveProvider] = useState<"google" | "microsoft" | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [successInfo, setSuccessInfo] = useState<string | null>(null);
+  const [redirectingProvider, setRedirectingProvider] = useState<"google" | "microsoft" | null>(null);
+  const [activeDemoProvider, setActiveDemoProvider] = useState<"google" | "microsoft" | null>(null);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isDemoSubmitting, setIsDemoSubmitting] = useState(false);
+  const [demoError, setDemoError] = useState<string | null>(null);
+  const [demoSuccess, setDemoSuccess] = useState<string | null>(null);
 
-  // User input state
+  // Demo user input state
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-  const handleOpenProvider = (provider: "google" | "microsoft") => {
-    setActiveProvider(provider);
-    setError(null);
-    setSuccessInfo(null);
-    setEmail("");
-    setName("");
-    setIsModalOpen(true);
+  // Real OAuth redirect handler
+  const handleRealOAuth = (provider: "google" | "microsoft") => {
+    setRedirectingProvider(provider);
+    window.location.href = `/api/auth/oauth/${provider}`;
   };
 
-  const executeOAuth = async (e: React.FormEvent) => {
+  // Open simulated SSO for quick local testing without API keys
+  const handleOpenDemoModal = (provider: "google" | "microsoft") => {
+    setActiveDemoProvider(provider);
+    setDemoError(null);
+    setDemoSuccess(null);
+    setEmail("");
+    setName("");
+    setIsDemoModalOpen(true);
+  };
+
+  const executeDemoOAuth = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!activeProvider) return;
+    if (!activeDemoProvider) return;
     if (!email.trim()) {
-      setError("Please provide an email address.");
+      setDemoError("Please provide an email address.");
       return;
     }
 
-    setIsSubmitting(true);
-    setError(null);
-    setSuccessInfo(null);
+    setIsDemoSubmitting(true);
+    setDemoError(null);
+    setDemoSuccess(null);
 
     const userName = name.trim() || email.split("@")[0];
 
@@ -85,7 +93,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          provider: activeProvider,
+          provider: activeDemoProvider,
           email: email.trim(),
           name: userName,
         }),
@@ -96,21 +104,21 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         throw new Error(data.error || "Authentication failed");
       }
 
-      setSuccessInfo(`Verified identity for ${userName}. Loading console...`);
+      setDemoSuccess(`Verified identity for ${userName}. Loading console...`);
 
       setTimeout(() => {
-        setIsModalOpen(false);
+        setIsDemoModalOpen(false);
         if (onSuccess) {
           onSuccess();
         } else {
           router.push("/dashboard");
           router.refresh();
         }
-      }, 800);
+      }, 700);
     } catch (err: any) {
-      setError(err.message || "Failed to sign in with OAuth provider");
+      setDemoError(err.message || "Failed to sign in with OAuth provider");
     } finally {
-      setIsSubmitting(false);
+      setIsDemoSubmitting(false);
     }
   };
 
@@ -125,59 +133,111 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         <div className="flex-grow border-t border-slate-700/60"></div>
       </div>
 
-      {/* 2 Buttons */}
+      {/* Real OAuth Action Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-        {/* Google Button */}
+        {/* Google SSO Button */}
         <button
           type="button"
-          onClick={() => handleOpenProvider("google")}
-          className="flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-slate-600 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(66,133,244,0.15)] active:scale-[0.98]"
+          disabled={redirectingProvider !== null}
+          onClick={() => handleRealOAuth("google")}
+          className="relative flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-cyan-500/50 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(66,133,244,0.2)] active:scale-[0.98] disabled:opacity-60"
         >
-          <GoogleIcon className="h-4 w-4 shrink-0" />
-          <span>Google SSO</span>
+          {redirectingProvider === "google" ? (
+            <Loader2 className="h-4 w-4 animate-spin text-cyan-400" />
+          ) : (
+            <GoogleIcon className="h-4 w-4 shrink-0" />
+          )}
+          <span>{redirectingProvider === "google" ? "Connecting..." : "Google SSO"}</span>
         </button>
 
-        {/* Microsoft Button */}
+        {/* Microsoft SSO Button */}
         <button
           type="button"
-          onClick={() => handleOpenProvider("microsoft")}
-          className="flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-slate-600 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(5,166,240,0.15)] active:scale-[0.98]"
+          disabled={redirectingProvider !== null}
+          onClick={() => handleRealOAuth("microsoft")}
+          className="relative flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-cyan-500/50 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(5,166,240,0.2)] active:scale-[0.98] disabled:opacity-60"
         >
-          <MicrosoftIcon className="h-4 w-4 shrink-0" />
-          <span>Microsoft SSO</span>
+          {redirectingProvider === "microsoft" ? (
+            <Loader2 className="h-4 w-4 animate-spin text-cyan-400" />
+          ) : (
+            <MicrosoftIcon className="h-4 w-4 shrink-0" />
+          )}
+          <span>{redirectingProvider === "microsoft" ? "Connecting..." : "Microsoft SSO"}</span>
         </button>
       </div>
 
-      {/* OAuth SSO Authorization Modal */}
+      {/* Demo / Local Testing Fallback Option */}
+      <div className="text-center pt-1">
+        <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400 font-mono">
+          <span>Testing locally without OAuth keys?</span>
+          <button
+            type="button"
+            onClick={() => handleOpenDemoModal("google")}
+            className="text-cyan-400 hover:text-cyan-300 underline font-semibold flex items-center gap-1 transition-colors"
+          >
+            <KeyRound className="h-3 w-3" />
+            Quick Demo SSO
+          </button>
+        </div>
+      </div>
+
+      {/* Demo SSO Authorization Modal */}
       <Modal
-        isOpen={isModalOpen}
-        onClose={() => !isSubmitting && setIsModalOpen(false)}
+        isOpen={isDemoModalOpen}
+        onClose={() => !isDemoSubmitting && setIsDemoModalOpen(false)}
         title={
-          activeProvider === "google"
-            ? "Sign in with Google Account"
-            : "Sign in with Microsoft 365"
+          activeDemoProvider === "google"
+            ? "Quick Demo Sign-In (Google)"
+            : "Quick Demo Sign-In (Microsoft)"
         }
-        description={`Enter your ${activeProvider === "google" ? "Google" : "Microsoft"} email to authenticate and access Optimus Platform.`}
+        description={`Fast-track authentication for hackathon evaluation and local testing without OAuth configuration.`}
       >
         <div className="space-y-4">
-          {error && (
+          {demoError && (
             <div className="p-3 rounded-xl bg-red-950/60 border border-red-500/40 text-xs text-red-300 flex items-center gap-2">
               <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
-              <span>{error}</span>
+              <span>{demoError}</span>
             </div>
           )}
 
-          {successInfo && (
+          {demoSuccess && (
             <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-300 flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 animate-spin" />
-              <span>{successInfo}</span>
+              <span>{demoSuccess}</span>
             </div>
           )}
 
-          <form onSubmit={executeOAuth} className="space-y-3.5">
+          <div className="flex gap-2 p-1 bg-slate-900/60 rounded-lg border border-slate-800 text-xs font-mono">
+            <button
+              type="button"
+              onClick={() => setActiveDemoProvider("google")}
+              className={`flex-1 py-1.5 px-2 rounded flex items-center justify-center gap-1.5 transition-all ${
+                activeDemoProvider === "google"
+                  ? "bg-cyan-950 border border-cyan-500/40 text-cyan-200"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <GoogleIcon className="h-3.5 w-3.5" />
+              <span>Google</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveDemoProvider("microsoft")}
+              className={`flex-1 py-1.5 px-2 rounded flex items-center justify-center gap-1.5 transition-all ${
+                activeDemoProvider === "microsoft"
+                  ? "bg-cyan-950 border border-cyan-500/40 text-cyan-200"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <MicrosoftIcon className="h-3.5 w-3.5" />
+              <span>Microsoft</span>
+            </button>
+          </div>
+
+          <form onSubmit={executeDemoOAuth} className="space-y-3.5">
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                Your Full Name
+                Analyst Full Name
               </label>
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
@@ -187,7 +247,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Alex Johnson (Judge)"
+                  placeholder="Alex Johnson"
                   required
                   autoFocus
                   autoComplete="name"
@@ -198,7 +258,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
 
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                {activeProvider === "google" ? "Google Email Address" : "Microsoft Work or Personal Email"}
+                {activeDemoProvider === "google" ? "Google Email" : "Microsoft Corporate Email"}
               </label>
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
@@ -208,25 +268,26 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={activeProvider === "google" ? "judge@gmail.com" : "judge@microsoft.com"}
+                  placeholder={
+                    activeDemoProvider === "google"
+                      ? "analyst@gmail.com"
+                      : "analyst@enterprise.com"
+                  }
                   required
                   autoComplete="email"
                   className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
                 />
               </div>
-              <p className="text-[10px] text-slate-500 mt-1">
-                Your account will be provisioned directly under your email address.
-              </p>
             </div>
 
             <Button
               type="submit"
               variant="cyan"
               size="lg"
-              isLoading={isSubmitting}
+              isLoading={isDemoSubmitting}
               className="w-full text-xs font-semibold mt-2"
             >
-              Continue as {name.trim() || (email ? email.split("@")[0] : "Authorized User")}
+              Sign In Instantly as {name.trim() || (email ? email.split("@")[0] : "Authorized User")}
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </form>
@@ -234,7 +295,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
             <span className="flex items-center gap-1">
               <ShieldCheck className="h-3 w-3 text-emerald-400" />
-              SSO Token Exchange Encrypted
+              Demo Session Token Generation
             </span>
             <span>Optimus Enterprise Identity</span>
           </div>

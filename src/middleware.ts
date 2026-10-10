@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { jwtVerify } from "jose";
+import { createClient as createSupabaseMiddlewareClient } from "@/utils/supabase/middleware";
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || "drp-platform-hackathon-secure-jwt-secret-key-32chars"
@@ -17,6 +18,9 @@ const AUTH_ROUTES = ["/login", "/register"];
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get(SESSION_COOKIE_NAME)?.value;
+
+  // Refresh Supabase session cookies if present
+  const supabaseResponse = createSupabaseMiddlewareClient(request);
 
   let isValidSession = false;
   let sessionPayload: any = null;
@@ -45,8 +49,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  // 3. Add user context headers for downstream handlers
-  const response = NextResponse.next();
+  // 3. Add user context headers for downstream handlers on the Supabase response
+  const response = supabaseResponse;
   if (isValidSession && sessionPayload) {
     response.headers.set("x-user-id", sessionPayload.id as string);
     response.headers.set("x-user-role", sessionPayload.role as string);
@@ -66,5 +70,6 @@ export const config = {
     "/settings/:path*",
     "/login",
     "/register",
+    "/todos/:path*",
   ],
 };
