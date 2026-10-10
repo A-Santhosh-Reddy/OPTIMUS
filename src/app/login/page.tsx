@@ -21,14 +21,10 @@ function LoginForm() {
     if (errorParam) {
       if (errorParam === "google_not_configured") {
         setError(
-          "Google OAuth credentials are not configured yet in .env.local. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, or click 'Quick Demo SSO' below to test instantly."
-        );
-      } else if (errorParam === "microsoft_not_configured") {
-        setError(
-          "Microsoft OAuth credentials are not configured yet in .env.local. Please add MICROSOFT_CLIENT_ID and MICROSOFT_CLIENT_SECRET, or click 'Quick Demo SSO' below to test instantly."
+          "Google OAuth credentials are not configured yet in .env.local. Please add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, or use Google Sign-in below."
         );
       } else if (errorParam === "missing_oauth_code") {
-        setError("OAuth authorization code was not received. Please try again.");
+        setError("Google authorization code was not received. Please try again.");
       } else {
         setError(decodeURIComponent(errorParam));
       }

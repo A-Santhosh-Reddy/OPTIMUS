@@ -183,7 +183,7 @@ export default function RegisterPage() {
             </Button>
           </form>
 
-          {/* Single Sign-On: Google & Microsoft */}
+          {/* Google Sign-In */}
           <div className="mt-5">
             <OAuthButtons mode="register" />
           </div>
