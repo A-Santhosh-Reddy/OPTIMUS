@@ -1,31 +1,38 @@
 import { PrismaClient } from "@prisma/client";
 
 /**
- * Sanitizes connection URIs (e.g. if a MySQL password contains an unencoded '@').
- * In URI formats: mysql://user:password@host:port/database
- * An unencoded '@' in the password splits the URI incorrectly in Prisma/Node.
+ * Sanitizes connection URIs:
+ * 1. Encodes special characters in passwords if unencoded.
+ * 2. Replaces connection_limit=1 with connection_limit=10 to avoid connection pool exhaustion
+ *    when parallel telemetry queries execute on serverless platforms like Vercel.
  */
 export function sanitizeDatabaseUrl(rawUrl?: string): string | undefined {
   if (!rawUrl) return rawUrl;
+  let url = rawUrl;
 
-  if (rawUrl.startsWith("mysql://")) {
-    const atCount = (rawUrl.match(/@/g) || []).length;
+  if (url.startsWith("mysql://")) {
+    const atCount = (url.match(/@/g) || []).length;
     if (atCount > 1) {
-      const lastAtIndex = rawUrl.lastIndexOf("@");
-      const userPassPart = rawUrl.substring("mysql://".length, lastAtIndex);
-      const hostPart = rawUrl.substring(lastAtIndex + 1);
+      const lastAtIndex = url.lastIndexOf("@");
+      const userPassPart = url.substring("mysql://".length, lastAtIndex);
+      const hostPart = url.substring(lastAtIndex + 1);
 
       const firstColon = userPassPart.indexOf(":");
       if (firstColon !== -1) {
         const user = userPassPart.substring(0, firstColon);
         const pass = userPassPart.substring(firstColon + 1);
         const encodedPass = encodeURIComponent(decodeURIComponent(pass));
-        return `mysql://${user}:${encodedPass}@${hostPart}`;
+        url = `mysql://${user}:${encodedPass}@${hostPart}`;
       }
     }
   }
 
-  return rawUrl;
+  // Prevent connection starvation on Supabase / PostgreSQL poolers
+  if (url.includes("connection_limit=1&") || url.endsWith("connection_limit=1")) {
+    url = url.replace("connection_limit=1", "connection_limit=10&pool_timeout=20");
+  }
+
+  return url;
 }
 
 const sanitizedDbUrl = sanitizeDatabaseUrl(process.env.DATABASE_URL);
