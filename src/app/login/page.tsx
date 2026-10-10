@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ShieldAlert, Lock, Mail, ArrowRight, AlertCircle, Sparkles, CheckCircle2 } from "lucide-react";
+import { ShieldAlert, Lock, Mail, ArrowRight, AlertCircle, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { OAuthButtons } from "@/components/auth/oauth-buttons";
@@ -14,7 +14,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [activeRole, setActiveRole] = useState<string | null>(null);
 
   const executeLogin = async (loginEmail: string, loginPass: string) => {
     setIsLoading(true);
@@ -46,14 +45,6 @@ export default function LoginPage() {
     await executeLogin(email, password);
   };
 
-  const handleDemoAccount = async (roleName: string, demoEmail: string, demoPass: string) => {
-    setActiveRole(roleName);
-    setEmail(demoEmail);
-    setPassword(demoPass);
-    // Instant 1-click seamless login for instant access
-    await executeLogin(demoEmail, demoPass);
-  };
-
   return (
     <div className="min-h-screen bg-[#050814] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       {/* Background Liquid Ambient Light Orbs */}
@@ -75,7 +66,7 @@ export default function LoginPage() {
             SOC DEFENSE ACCESS
           </h1>
           <p className="text-xs text-cyan-300/70 font-mono">
-            Authenticate to access enterprise threat intelligence matrix
+            Authenticate with your credentials or SSO to access enterprise console
           </p>
         </div>
 
@@ -100,8 +91,9 @@ export default function LoginPage() {
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="analyst@optimus-drp.io or username"
+                  placeholder="your.email@domain.com"
                   required
+                  autoComplete="username"
                   className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
                 />
               </div>
@@ -119,8 +111,9 @@ export default function LoginPage() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
+                  placeholder="Enter your password"
                   required
+                  autoComplete="current-password"
                   className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500"
                 />
               </div>
@@ -133,7 +126,7 @@ export default function LoginPage() {
               isLoading={isLoading}
               className="w-full font-semibold text-xs mt-3 shadow-liquid-cyan"
             >
-              Authenticate &amp; Enter Console
+              Sign In to Console
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </form>
@@ -143,64 +136,14 @@ export default function LoginPage() {
             <OAuthButtons mode="login" />
           </div>
 
-          {/* 1-Click Quick Demo Role Access */}
-          <div className="mt-6 pt-5 border-t border-white/[0.08]">
-            <p className="text-[11px] font-semibold text-slate-400 mb-2.5 flex items-center justify-between font-mono">
-              <span className="flex items-center gap-1.5">
-                <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
-                <span>1-Click Demo Access:</span>
-              </span>
-              <span className="text-[10px] text-cyan-400/80">Click to enter directly</span>
-            </p>
-            <div className="grid grid-cols-3 gap-2 text-center font-mono text-[10px]">
-              <button
-                type="button"
-                disabled={isLoading}
-                onClick={() => handleDemoAccount("Admin", "admin@optimus-drp.io", "admin123!")}
-                className={`p-2.5 rounded-xl border transition-all shadow-sm flex flex-col items-center justify-center gap-1 ${
-                  activeRole === "Admin"
-                    ? "border-cyan-400 bg-cyan-900/60 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.4)]"
-                    : "border-cyan-500/30 bg-cyan-950/30 hover:bg-cyan-900/50 text-cyan-300"
-                }`}
-              >
-                <span className="font-bold">Admin</span>
-                <span className="text-[9px] text-slate-400">Full SecOps</span>
-              </button>
-              <button
-                type="button"
-                disabled={isLoading}
-                onClick={() => handleDemoAccount("Analyst", "analyst@optimus-drp.io", "analyst123!")}
-                className={`p-2.5 rounded-xl border transition-all shadow-sm flex flex-col items-center justify-center gap-1 ${
-                  activeRole === "Analyst"
-                    ? "border-blue-400 bg-blue-900/60 text-blue-200 shadow-[0_0_12px_rgba(59,130,246,0.4)]"
-                    : "border-blue-500/30 bg-blue-950/30 hover:bg-blue-900/50 text-blue-300"
-                }`}
-              >
-                <span className="font-bold">Analyst</span>
-                <span className="text-[9px] text-slate-400">Threat Hunter</span>
-              </button>
-              <button
-                type="button"
-                disabled={isLoading}
-                onClick={() => handleDemoAccount("Viewer", "viewer@optimus-drp.io", "viewer123!")}
-                className={`p-2.5 rounded-xl border transition-all shadow-sm flex flex-col items-center justify-center gap-1 ${
-                  activeRole === "Viewer"
-                    ? "border-indigo-400 bg-indigo-900/60 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.4)]"
-                    : "border-slate-700/60 bg-slate-900/40 hover:bg-slate-800/60 text-slate-300"
-                }`}
-              >
-                <span className="font-bold">Viewer</span>
-                <span className="text-[9px] text-slate-400">Read-Only</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-5 text-center">
+          {/* Register Prompt */}
+          <div className="mt-6 pt-5 border-t border-white/[0.08] text-center">
             <Link
               href="/register"
-              className="text-xs text-slate-400 hover:text-cyan-400 transition-colors font-mono"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 hover:bg-cyan-900/40 text-xs text-cyan-300 hover:text-cyan-200 transition-all font-mono w-full justify-center"
             >
-              Need an analyst account? <span className="underline font-medium text-cyan-300">Register here</span>
+              <UserPlus className="h-4 w-4 text-cyan-400" />
+              <span>Need an account? <span className="underline font-bold text-white">Create New Credentials</span></span>
             </Link>
           </div>
         </Card>

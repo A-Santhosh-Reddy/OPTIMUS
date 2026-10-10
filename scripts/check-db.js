@@ -38,9 +38,9 @@ async function checkDatabase() {
   const maskedUrl = rawUrl.replace(/:([^:@]+)@/, ':****@');
   console.log(`Target URL: ${maskedUrl}`);
 
-  if (rawUrl.includes('YOUR_PROJECT_REF') || rawUrl.includes('YOUR_PASSWORD')) {
-    console.error('\n⚠️ Supabase Placeholder Detected in .env:');
-    console.error('   You need to replace YOUR_PROJECT_REF and YOUR_PASSWORD with your actual Supabase credentials.');
+  if (rawUrl.includes('YOUR_PROJECT_REF') || rawUrl.includes('YOUR_PASSWORD') || rawUrl.includes('YOUR-PASSWORD') || rawUrl.includes('[YOUR-PASSWORD]')) {
+    console.error('\n⚠️ Supabase Placeholder Detected:');
+    console.error('   You still have "[YOUR-PASSWORD]" in your .env.local file.');
     console.error('\nHow to get your Supabase connection string:');
     console.error('   1. Open your Supabase Dashboard: https://supabase.com/dashboard');
     console.error('   2. Go to Project Settings -> Database -> Connection string');

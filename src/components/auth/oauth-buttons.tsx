@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function GoogleIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -53,26 +53,32 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
   const [error, setError] = useState<string | null>(null);
   const [successInfo, setSuccessInfo] = useState<string | null>(null);
 
-  // Custom account input state
-  const [customEmail, setCustomEmail] = useState("");
-  const [customName, setCustomName] = useState("");
-  const [useCustomAccount, setUseCustomAccount] = useState(false);
+  // User input state
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   const handleOpenProvider = (provider: "google" | "microsoft") => {
     setActiveProvider(provider);
     setError(null);
     setSuccessInfo(null);
-    setUseCustomAccount(false);
-    setCustomEmail("");
-    setCustomName("");
+    setEmail("");
+    setName("");
     setIsModalOpen(true);
   };
 
-  const executeOAuth = async (email: string, name: string) => {
+  const executeOAuth = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!activeProvider) return;
+    if (!email.trim()) {
+      setError("Please provide an email address.");
+      return;
+    }
+
     setIsSubmitting(true);
     setError(null);
     setSuccessInfo(null);
+
+    const userName = name.trim() || email.split("@")[0];
 
     try {
       const res = await fetch("/api/auth/oauth", {
@@ -81,7 +87,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         body: JSON.stringify({
           provider: activeProvider,
           email: email.trim(),
-          name: name.trim(),
+          name: userName,
         }),
       });
 
@@ -90,7 +96,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         throw new Error(data.error || "Authentication failed");
       }
 
-      setSuccessInfo(`Verified identity for ${name}. Loading SOC Console...`);
+      setSuccessInfo(`Verified identity for ${userName}. Loading console...`);
 
       setTimeout(() => {
         setIsModalOpen(false);
@@ -100,43 +106,13 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           router.push("/dashboard");
           router.refresh();
         }
-      }, 1000);
+      }, 800);
     } catch (err: any) {
       setError(err.message || "Failed to sign in with OAuth provider");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const googlePresetAccounts = [
-    {
-      name: "Siva Santhosh",
-      email: "siva.santhosh@gmail.com",
-      desc: "Personal Google Account",
-      avatar: "S",
-    },
-    {
-      name: "Alex Vance (SecOps Lead)",
-      email: "alex.vance@google.com",
-      desc: "Google Workspace Corporate Account",
-      avatar: "A",
-    },
-  ];
-
-  const microsoftPresetAccounts = [
-    {
-      name: "Siva Santhosh",
-      email: "santhosh@microsoft.com",
-      desc: "Microsoft Entra ID / 365 Work Account",
-      avatar: "S",
-    },
-    {
-      name: "Jordan Rivera (Threat Analyst)",
-      email: "analyst@optimus-drp.onmicrosoft.com",
-      desc: "Corporate Azure AD Directory",
-      avatar: "J",
-    },
-  ];
 
   return (
     <div className="space-y-3">
@@ -158,7 +134,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           className="flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-slate-600 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(66,133,244,0.15)] active:scale-[0.98]"
         >
           <GoogleIcon className="h-4 w-4 shrink-0" />
-          <span>Google</span>
+          <span>Google SSO</span>
         </button>
 
         {/* Microsoft Button */}
@@ -168,24 +144,20 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           className="flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-xl border border-slate-700/80 bg-[#0c121e]/90 hover:bg-[#111927] hover:border-slate-600 text-slate-200 text-xs font-semibold shadow-sm transition-all hover:shadow-[0_0_12px_rgba(5,166,240,0.15)] active:scale-[0.98]"
         >
           <MicrosoftIcon className="h-4 w-4 shrink-0" />
-          <span>Microsoft</span>
+          <span>Microsoft SSO</span>
         </button>
       </div>
 
-      {/* OAuth SSO Selection / Consent Modal */}
+      {/* OAuth SSO Authorization Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
         title={
           activeProvider === "google"
-            ? "Sign in with Google"
-            : "Pick an account • Microsoft Single Sign-On"
+            ? "Sign in with Google Account"
+            : "Sign in with Microsoft 365"
         }
-        description={
-          activeProvider === "google"
-            ? "Choose an account to proceed to Optimus Digital Risk Protection Platform"
-            : "Sign in with your Microsoft 365 or Azure Entra ID corporate identity"
-        }
+        description={`Enter your ${activeProvider === "google" ? "Google" : "Microsoft"} email to authenticate and access Optimus Platform.`}
       >
         <div className="space-y-4">
           {error && (
@@ -202,110 +174,62 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
             </div>
           )}
 
-          {!useCustomAccount ? (
-            <div className="space-y-2">
-              <p className="text-[11px] font-semibold text-slate-400 font-mono">
-                Select an account to authorize:
-              </p>
-
-              {(activeProvider === "google" ? googlePresetAccounts : microsoftPresetAccounts).map(
-                (acc, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    disabled={isSubmitting}
-                    onClick={() => executeOAuth(acc.email, acc.name)}
-                    className="w-full text-left p-3 rounded-xl border border-slate-800 bg-[#070b14] hover:bg-[#0c121e] hover:border-cyan-500/40 transition-all flex items-center justify-between group disabled:opacity-50"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`h-9 w-9 rounded-full flex items-center justify-center font-bold text-xs ${
-                          activeProvider === "google"
-                            ? "bg-blue-950/80 text-blue-400 border border-blue-500/30"
-                            : "bg-indigo-950/80 text-indigo-400 border border-indigo-500/30"
-                        }`}
-                      >
-                        {acc.avatar}
-                      </div>
-                      <div>
-                        <div className="text-xs font-semibold text-white group-hover:text-cyan-300 transition-colors">
-                          {acc.name}
-                        </div>
-                        <div className="text-[11px] font-mono text-slate-400">{acc.email}</div>
-                        <div className="text-[10px] text-slate-500">{acc.desc}</div>
-                      </div>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-slate-600 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" />
-                  </button>
-                )
-              )}
-
-              {/* Use custom account option */}
-              <button
-                type="button"
-                onClick={() => setUseCustomAccount(true)}
-                className="w-full text-left p-3 rounded-xl border border-dashed border-slate-700 bg-transparent hover:bg-slate-900/50 text-slate-300 text-xs flex items-center gap-2.5 transition-colors"
-              >
-                <User className="h-4 w-4 text-slate-400" />
-                <span>Use another {activeProvider === "google" ? "Google" : "Microsoft"} account...</span>
-              </button>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                executeOAuth(customEmail, customName || customEmail.split("@")[0]);
-              }}
-              className="space-y-3"
-            >
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                  Full Name
-                </label>
+          <form onSubmit={executeOAuth} className="space-y-3.5">
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
+                Your Full Name
+              </label>
+              <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <User className="h-4 w-4" />
+                </div>
                 <input
                   type="text"
-                  value={customName}
-                  onChange={(e) => setCustomName(e.target.value)}
-                  placeholder="Taylor Smith"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="e.g. Alex Johnson (Judge)"
                   required
-                  className="w-full rounded-lg border border-slate-700 bg-[#070b14] px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
+                  autoFocus
+                  autoComplete="name"
+                  className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
                 />
               </div>
+            </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                  {activeProvider === "google" ? "Google Workspace Email" : "Microsoft Account Email"}
-                </label>
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
+                {activeProvider === "google" ? "Google Email Address" : "Microsoft Work or Personal Email"}
+              </label>
+              <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                  <Mail className="h-4 w-4" />
+                </div>
                 <input
                   type="email"
-                  value={customEmail}
-                  onChange={(e) => setCustomEmail(e.target.value)}
-                  placeholder={activeProvider === "google" ? "user@gmail.com" : "user@microsoft.com"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={activeProvider === "google" ? "judge@gmail.com" : "judge@microsoft.com"}
                   required
-                  className="w-full rounded-lg border border-slate-700 bg-[#070b14] px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
+                  autoComplete="email"
+                  className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
                 />
               </div>
+              <p className="text-[10px] text-slate-500 mt-1">
+                Your account will be provisioned directly under your email address.
+              </p>
+            </div>
 
-              <div className="flex items-center justify-between pt-2">
-                <button
-                  type="button"
-                  onClick={() => setUseCustomAccount(false)}
-                  className="text-xs text-slate-400 hover:text-white"
-                >
-                  &larr; Back to accounts
-                </button>
-                <Button
-                  type="submit"
-                  variant="cyan"
-                  size="sm"
-                  isLoading={isSubmitting}
-                  className="text-xs font-semibold"
-                >
-                  Continue with {activeProvider === "google" ? "Google" : "Microsoft"}
-                </Button>
-              </div>
-            </form>
-          )}
+            <Button
+              type="submit"
+              variant="cyan"
+              size="lg"
+              isLoading={isSubmitting}
+              className="w-full text-xs font-semibold mt-2"
+            >
+              Continue as {name.trim() || (email ? email.split("@")[0] : "Authorized User")}
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </Button>
+          </form>
 
           <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
             <span className="flex items-center gap-1">
