@@ -10,7 +10,16 @@ const JWT_SECRET = new TextEncoder().encode(
 const SESSION_COOKIE_NAME = "drp_session";
 
 // Routes that require an active session
-const PROTECTED_PREFIXES = ["/dashboard", "/analyses", "/incidents", "/brands", "/reports", "/settings"];
+const PROTECTED_PREFIXES = [
+  "/dashboard",
+  "/analyses",
+  "/incidents",
+  "/brands",
+  "/reports",
+  "/settings",
+  "/domains",
+  "/takedowns",
+];
 
 // Public auth routes (logged-in users will be redirected to /dashboard)
 const AUTH_ROUTES = ["/login", "/register"];
@@ -66,6 +75,8 @@ export const config = {
     "/analyses/:path*",
     "/incidents/:path*",
     "/brands/:path*",
+    "/domains/:path*",
+    "/takedowns/:path*",
     "/reports/:path*",
     "/settings/:path*",
     "/login",

@@ -22,6 +22,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   en: {
     // Navigation
     "nav.dashboard": "Security Dashboard",
+    "nav.domains": "Domain Monitoring",
+    "nav.takedowns": "Takedown Center",
     "nav.analyzer": "URL & Threat Analyzer",
     "nav.findings": "Threat Findings",
     "nav.incidents": "Incident Cases",
@@ -96,6 +98,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   es: {
     // Navigation
     "nav.dashboard": "Panel de Seguridad",
+    "nav.domains": "Monitoreo de Dominios",
+    "nav.takedowns": "Centro de Desmantelamiento",
     "nav.analyzer": "Analizador de URLs y Amenazas",
     "nav.findings": "Hallazgos de Amenazas",
     "nav.incidents": "Casos de Incidentes",
@@ -170,6 +174,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   fr: {
     // Navigation
     "nav.dashboard": "Tableau de Bord Sécurité",
+    "nav.domains": "Surveillance de Domaines",
+    "nav.takedowns": "Centre de Neutralisation",
     "nav.analyzer": "Analyseur d'URL & Menaces",
     "nav.findings": "Détections de Menaces",
     "nav.incidents": "Dossiers d'Incidents",
@@ -244,6 +250,8 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, string>> = {
   de: {
     // Navigation
     "nav.dashboard": "Sicherheits-Dashboard",
+    "nav.domains": "Domain-Überwachung",
+    "nav.takedowns": "Takedown-Zentrum",
     "nav.analyzer": "URL- & Bedrohungs-Analyzer",
     "nav.findings": "Bedrohungs-Ergebnisse",
     "nav.incidents": "Vorfalls-Fälle",

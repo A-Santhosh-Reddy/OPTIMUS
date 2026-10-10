@@ -35,6 +35,7 @@ import {
   SlidersHorizontal,
   Check,
   Globe,
+  Gavel,
 } from "lucide-react";
 import { Modal } from "../ui/modal";
 import { Button } from "../ui/button";
@@ -240,6 +241,18 @@ export function Sidebar({
       name: t("nav.dashboard", "Security Dashboard"),
       href: "/dashboard",
       icon: LayoutDashboard,
+      roles: ["ADMIN", "ANALYST", "VIEWER"],
+    },
+    {
+      name: t("nav.domains", "Domain Monitoring"),
+      href: "/domains",
+      icon: Globe,
+      roles: ["ADMIN", "ANALYST", "VIEWER"],
+    },
+    {
+      name: t("nav.takedowns", "Takedown Center"),
+      href: "/takedowns",
+      icon: Gavel,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
     },
     {
