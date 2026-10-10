@@ -87,23 +87,29 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
-      {/* Top Header & Fast Action */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
-              TELEMETRY FEED
+      {/* Cyber Shield Command Header */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl liquid-glass border border-cyan-500/35 relative overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
+        <div className="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="relative z-10">
+          <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+              CYBER SHIELD DEFENSE // ACTIVE
+            </span>
+            <span className="text-[10px] font-mono text-cyan-300/70 border border-cyan-900/60 bg-cyan-950/30 px-2 py-0.5 rounded-md">
+              PERIMETER SURVEILLANCE MATRIX
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2 font-mono">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(6,182,212,0.3)]">
+            <ShieldAlert className="h-7 w-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
             Security Operations Console
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-300 mt-1">
             Real-time digital asset risk posture, threat intelligence telemetry, and incident tracking
           </p>
         </div>
-        <Link href="/analyzer">
-          <Button variant="cyan" size="md" className="font-semibold text-xs shadow-liquid-cyan">
+        <Link href="/analyzer" className="relative z-10 shrink-0">
+          <Button variant="cyan" size="md" className="font-semibold text-xs shadow-liquid-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
             <Search className="h-4 w-4 mr-2" />
             Analyze Threat Vector
           </Button>
