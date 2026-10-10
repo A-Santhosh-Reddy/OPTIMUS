@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-style="liquid">
+<html lang="en" data-style="clay">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1270,19 +1270,9 @@
         </ul>
       </nav>
 
-      <!-- Action Items & Style Switcher -->
+      <!-- Action Items -->
       <div class="header-actions">
-        <!-- Style Switcher (Flat, Glass, Clay, Liquid) -->
-        <div class="style-picker-wrap" title="Change visual rendering style">
-          <span class="style-picker-label">Style:</span>
-          <select id="themeStyleSelect" class="style-select" aria-label="Choose visual style">
-            <option value="liquid">Liquid Glass</option>
-            <option value="glass">Glassmorphism</option>
-            <option value="clay">Claymorphism</option>
-            <option value="flat">Flat</option>
-          </select>
-        </div>
-
+        <a href="/login" class="btn btn-secondary" style="padding: 9px 18px; font-size: 0.8rem;">Console Login</a>
         <a href="#assessment" class="btn btn-primary">Start Assessment</a>
       </div>
     </div>
@@ -1822,35 +1812,7 @@
        STYLE SWITCHER ENGINE JAVASCRIPT
        ======================================================================== -->
   <script>
-    (function initOptimusStyleSwitcher() {
-      const STORAGE_KEY = 'optimus_landing_style';
-      const selectElement = document.getElementById('themeStyleSelect');
-      const rootHtml = document.documentElement;
-
-      // 1. Load saved style from localStorage or default to 'liquid'
-      const savedStyle = localStorage.getItem(STORAGE_KEY) || 'liquid';
-      applyStyle(savedStyle);
-
-      if (selectElement) {
-        selectElement.value = savedStyle;
-        selectElement.addEventListener('change', function(e) {
-          const chosen = e.target.value;
-          applyStyle(chosen);
-          try {
-            localStorage.setItem(STORAGE_KEY, chosen);
-          } catch (err) {
-            console.warn('localStorage not accessible:', err);
-          }
-        });
-      }
-
-      function applyStyle(styleName) {
-        if (!['flat', 'glass', 'clay', 'liquid'].includes(styleName)) {
-          styleName = 'liquid';
-        }
-        rootHtml.setAttribute('data-style', styleName);
-      }
-    })();
+    document.documentElement.setAttribute('data-style', 'clay');
   </script>
 </body>
 </html>

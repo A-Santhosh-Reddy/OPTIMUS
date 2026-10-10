@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   ShieldAlert,
@@ -27,41 +27,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type VisualStyle = "liquid" | "glass" | "clay" | "flat";
-
 export default function LandingPage() {
-  const [style, setStyle] = useState<VisualStyle>("liquid");
-
-  // Load saved style on mount
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("optimus_landing_style") as VisualStyle;
-      if (saved && ["liquid", "glass", "clay", "flat"].includes(saved)) {
-        setStyle(saved);
-      }
-    } catch {}
-  }, []);
-
-  const changeStyle = (newStyle: VisualStyle) => {
-    setStyle(newStyle);
-    try {
-      localStorage.setItem("optimus_landing_style", newStyle);
-    } catch {}
-  };
-
-  // Helper styles based on active style switcher mode
+  // Pure claymorphism card styling with tactile inner highlights and deep outer drop shadows
   const getCardClasses = (accentBorder?: string) => {
-    switch (style) {
-      case "flat":
-        return `bg-[#0c162f] border ${accentBorder || "border-slate-700/80"} shadow-sm transition-all`;
-      case "glass":
-        return `bg-[#0a142c]/55 backdrop-blur-xl border ${accentBorder || "border-white/[0.12]"} shadow-[0_12px_36px_rgba(0,0,0,0.5)] transition-all`;
-      case "clay":
-        return `bg-[#0d1a38] border border-white/[0.08] shadow-[12px_16px_32px_rgba(2,6,18,0.8),inset_-6px_-6px_12px_rgba(0,0,0,0.5),inset_6px_6px_12px_rgba(255,255,255,0.08)] transition-all`;
-      case "liquid":
-      default:
-        return `bg-[#0c1630]/75 backdrop-blur-2xl border ${accentBorder || "border-cyan-500/30"} shadow-[0_16px_45px_rgba(0,0,0,0.7),0_0_20px_rgba(6,182,212,0.15)] transition-all`;
-    }
+    return `bg-[#0d1a38] border ${accentBorder || "border-white/[0.08]"} shadow-[12px_16px_36px_rgba(2,6,18,0.85),inset_-6px_-6px_12px_rgba(0,0,0,0.5),inset_6px_6px_12px_rgba(255,255,255,0.08)] transition-all`;
   };
 
   return (
@@ -124,31 +93,15 @@ export default function LandingPage() {
             </a>
           </nav>
 
-          {/* Actions & 4-Way Style Switcher */}
+          {/* Header Action Buttons */}
           <div className="flex items-center gap-3 flex-shrink-0">
-            {/* Style Switcher Selector */}
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80 text-xs font-plex-mono">
-              <span className="text-slate-400 text-[10px] uppercase hidden sm:inline">Style:</span>
-              <select
-                value={style}
-                onChange={(e) => changeStyle(e.target.value as VisualStyle)}
-                className="bg-transparent text-cyan-400 font-semibold focus:outline-none cursor-pointer text-xs"
-                title="Switch visual rendering style"
-              >
-                <option value="liquid" className="bg-slate-900 text-white">Liquid Glass</option>
-                <option value="glass" className="bg-slate-900 text-white">Glassmorphism</option>
-                <option value="clay" className="bg-slate-900 text-white">Claymorphism</option>
-                <option value="flat" className="bg-slate-900 text-white">Flat</option>
-              </select>
-            </div>
-
             <Link href="/login">
-              <Button variant="outline" size="sm" className="text-xs font-plex-mono">
+              <Button variant="outline" size="sm" className="text-xs font-plex-mono border-white/10 bg-[#0d1a38] text-slate-200 hover:text-white hover:bg-[#12234b] shadow-[4px_6px_16px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]">
                 Console Login
               </Button>
             </Link>
             <Link href="/register">
-              <Button variant="cyan" size="sm" className="text-xs font-plex-mono shadow-liquid-cyan">
+              <Button variant="cyan" size="sm" className="text-xs font-plex-mono shadow-[6px_8px_20px_rgba(0,240,255,0.25),inset_2px_2px_4px_rgba(255,255,255,0.3)]">
                 Start Assessment
               </Button>
             </Link>
@@ -629,7 +582,7 @@ export default function LandingPage() {
 
       {/* Closing Call to Action */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
-        <div className={`rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden bg-gradient-to-b from-[#091530] to-[#040814] border border-cyan-500/40 shadow-[0_20px_60px_rgba(0,240,255,0.2)]`}>
+        <div className={`rounded-3xl p-10 sm:p-16 text-center relative overflow-hidden bg-[#0d1a38] border border-cyan-500/40 shadow-[14px_18px_40px_rgba(2,6,18,0.9),inset_-6px_-6px_14px_rgba(0,0,0,0.6),inset_6px_6px_14px_rgba(255,255,255,0.08)]`}>
           <div className="max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white font-unbounded tracking-tight">
               See your exposure before attackers do
@@ -639,13 +592,13 @@ export default function LandingPage() {
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/register" className="w-full sm:w-auto">
-                <Button size="lg" variant="cyan" className="w-full sm:w-auto text-xs font-semibold px-8 font-plex-mono shadow-liquid-cyan">
+                <Button size="lg" variant="cyan" className="w-full sm:w-auto text-xs font-semibold px-8 font-plex-mono shadow-[6px_8px_20px_rgba(0,240,255,0.3),inset_2px_2px_4px_rgba(255,255,255,0.35)]">
                   Request an assessment
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
               </Link>
               <Link href="/login" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto text-xs font-semibold px-7 font-plex-mono border-slate-700 bg-slate-900/60 hover:bg-slate-800">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto text-xs font-semibold px-7 font-plex-mono border-white/10 bg-[#070e20] hover:bg-[#0c1630] text-slate-200 hover:text-white shadow-[4px_6px_16px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)]">
                   Explore capabilities
                 </Button>
               </Link>
