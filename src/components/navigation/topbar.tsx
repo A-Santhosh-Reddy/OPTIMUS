@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
+import { NotificationCenter } from "./notification-center";
 
 interface TopbarProps {
   userName?: string;
@@ -69,6 +70,9 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             <span className="font-mono text-[10px] tracking-wide font-medium">SSRF-SAFE LEXICAL ANALYSIS</span>
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
           </button>
+
+          {/* Real Security Notifications Center */}
+          <NotificationCenter />
 
           <Button
             variant="outline"
