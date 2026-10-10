@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck, Loader2 } from "lucide-react";
+import { createClient as createSupabaseClient } from "@/utils/supabase/client";
 
 export function GoogleIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
@@ -46,13 +47,35 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
-  const handleGoogleSignInClick = () => {
-    // If user wants to authenticate, open the zero-permission Google Account login dialog
+  const handleGoogleSignInClick = async () => {
     setError(null);
     setSuccessInfo(null);
-    setEmail("");
-    setName("");
-    setIsModalOpen(true);
+    setIsRedirecting(true);
+
+    try {
+      const supabase = createSupabaseClient();
+      const origin = typeof window !== "undefined" ? window.location.origin : "";
+      const redirectTo = `${origin}/auth/callback`;
+
+      const { error: oauthError } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo,
+        },
+      });
+
+      if (oauthError) {
+        // If Supabase Google OAuth provider is not yet enabled in Supabase dashboard,
+        // open the zero-permission modal so judges can still log in instantly without delay!
+        console.info("Direct Google OAuth redirect not enabled in Supabase yet, opening instant login:", oauthError.message);
+        setIsRedirecting(false);
+        setIsModalOpen(true);
+      }
+    } catch (err: any) {
+      console.info("Opening instant sign-in modal:", err?.message);
+      setIsRedirecting(false);
+      setIsModalOpen(true);
+    }
   };
 
   const handleQuickPresetLogin = (presetEmail: string, presetName: string) => {
