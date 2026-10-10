@@ -4,23 +4,26 @@ const { execSync } = require('child_process');
 
 const rootDir = path.join(__dirname, '..');
 const envPath = path.join(rootDir, '.env');
+const envLocalPath = path.join(rootDir, '.env.local');
 const schemaPath = path.join(rootDir, 'prisma', 'schema.prisma');
 
 function parseEnv() {
-  if (!fs.existsSync(envPath)) return {};
-  const content = fs.readFileSync(envPath, 'utf8');
   const env = {};
-  content.split('\n').forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) return;
-    const match = trimmed.match(/^([\w.-]+)\s*=\s*(.*)?$/);
-    if (match) {
-      let val = (match[2] || '').trim();
-      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-        val = val.slice(1, -1);
+  [envPath, envLocalPath].forEach(filePath => {
+    if (!fs.existsSync(filePath)) return;
+    const content = fs.readFileSync(filePath, 'utf8');
+    content.split('\n').forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const match = trimmed.match(/^([\w.-]+)\s*=\s*(.*)?$/);
+      if (match) {
+        let val = (match[2] || '').trim();
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1);
+        }
+        env[match[1]] = val;
       }
-      env[match[1]] = val;
-    }
+    });
   });
   return env;
 }

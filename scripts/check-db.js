@@ -7,21 +7,24 @@ syncProvider();
 
 // 2. Read environment
 const envPath = path.join(__dirname, '..', '.env');
-if (fs.existsSync(envPath)) {
-  const envText = fs.readFileSync(envPath, 'utf8');
-  envText.split('\n').forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) return;
-    const match = trimmed.match(/^([\w.-]+)\s*=\s*(.*)?$/);
-    if (match) {
-      let val = (match[2] || '').trim();
-      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-        val = val.slice(1, -1);
+const envLocalPath = path.join(__dirname, '..', '.env.local');
+[envPath, envLocalPath].forEach(filePath => {
+  if (fs.existsSync(filePath)) {
+    const envText = fs.readFileSync(filePath, 'utf8');
+    envText.split('\n').forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const match = trimmed.match(/^([\w.-]+)\s*=\s*(.*)?$/);
+      if (match) {
+        let val = (match[2] || '').trim();
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.slice(1, -1);
+        }
+        process.env[match[1]] = val;
       }
-      process.env[match[1]] = val;
-    }
-  });
-}
+    });
+  }
+});
 
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
