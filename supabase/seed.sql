@@ -1,0 +1,2 @@
+-- Seed file for local Supabase development (if using Supabase CLI)
+-- Tables and schema for Optimus DRP Platform are managed via Prisma (prisma/schema.prisma)
