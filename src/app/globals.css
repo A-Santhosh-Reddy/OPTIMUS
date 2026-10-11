@@ -18,18 +18,18 @@
 
 @layer base {
   :root {
-    --background: #060b19;
-    --foreground: #f1f5f9;
+    --background: #090d16;
+    --foreground: #f8fafc;
   }
 
   body {
     color: var(--foreground);
     background-color: var(--background);
     background-image: 
-      radial-gradient(ellipse 90% 60% at 50% -15%, rgba(6, 182, 212, 0.18), transparent 70%),
-      radial-gradient(ellipse 80% 50% at 90% 25%, rgba(37, 99, 235, 0.16), transparent 60%),
-      radial-gradient(ellipse 70% 60% at 10% 75%, rgba(14, 165, 233, 0.12), transparent 70%),
-      radial-gradient(circle at 50% 50%, rgba(2, 6, 23, 0.4), #050a16);
+      radial-gradient(ellipse 85% 55% at 50% -12%, rgba(37, 99, 235, 0.12), transparent 70%),
+      radial-gradient(ellipse 75% 45% at 88% 22%, rgba(56, 189, 248, 0.08), transparent 60%),
+      radial-gradient(ellipse 65% 55% at 12% 75%, rgba(30, 64, 175, 0.07), transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(9, 13, 22, 0.4), #090d16);
     background-attachment: fixed;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
@@ -45,263 +45,233 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(6, 11, 25, 0.9);
+  background: #090d16;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.25);
+  background: rgba(148, 163, 184, 0.2);
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.55);
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  background: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
 /* =========================================================================
-   PURE CLAYMORPHISM DESIGN SYSTEM & MULTI-COLOUR PALETTES
+   OBSIDIAN COBALT & STEALTH TITANIUM DESIGN SYSTEM
    ========================================================================= */
 
 :root {
-  --clay-bg-canvas: #060b19;
-  --clay-bg-surface: #0a142c;
-  --clay-bg-card: #0d1a38;
-  --clay-bg-card-hover: #112248;
+  --clay-bg-canvas: #090d16;
+  --clay-bg-surface: #0c1220;
+  --clay-bg-card: #0e1526;
+  --clay-bg-card-hover: #131c31;
 
-  /* Standard Tactile Clay Shadow Tokens */
+  /* Refined Precision Specular Shadow Tokens */
   --clay-shadow-card:
-    10px 14px 28px rgba(2, 6, 18, 0.8),
-    -4px -4px 18px rgba(20, 36, 75, 0.25),
-    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.12),
-    inset -3.5px -3.5px 7px rgba(0, 0, 0, 0.55);
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
   --clay-shadow-card-hover:
-    14px 20px 38px rgba(2, 6, 18, 0.95),
-    -6px -6px 24px rgba(20, 36, 75, 0.38),
-    inset 3.5px 3.5px 7px rgba(255, 255, 255, 0.18),
-    inset -4.5px -4.5px 9px rgba(0, 0, 0, 0.65);
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 12px 36px rgba(14, 21, 38, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
   --clay-shadow-inset:
-    inset 3px 3px 6px rgba(0, 0, 0, 0.65),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.06);
+    inset 0 1.5px 3px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.2);
 
   --clay-shadow-pill:
-    4px 6px 14px rgba(2, 6, 18, 0.6),
-    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.2),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.45);
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-/* 1. Base Claymorphic Card */
+/* 1. Base Obsidian Stealth Card */
 .clay-card,
 .liquid-glass-card {
   background: var(--clay-bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.125rem;
   box-shadow: var(--clay-shadow-card);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .clay-card:hover,
 .liquid-glass-card:hover {
   background: var(--clay-bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.14);
   box-shadow: var(--clay-shadow-card-hover);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
-/* 2. Premium Multi-Colour Clay Palettes */
+/* 2. Premium Refined Palettes */
 
-/* A. Electric Cyan / Cyber Aqua */
+/* A. Electric Cobalt / Sapphire */
 .clay-cyan,
 .clay-card-cyan {
-  background: #081d38;
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(0, 240, 255, 0.1),
-              inset 3px 3px 6px rgba(0, 240, 255, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #0f1930;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              0 0 24px rgba(37, 99, 235, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .clay-cyan:hover,
 .clay-card-cyan:hover {
-  background: #0b2446;
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(0, 240, 255, 0.2),
-              inset 4px 4px 8px rgba(0, 240, 255, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #142240;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              0 0 32px rgba(37, 99, 235, 0.18),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 /* B. Imperial Violet / Royal Purple */
 .clay-purple,
 .clay-card-purple {
-  background: #170d2f;
-  border: 1px solid rgba(168, 85, 247, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(168, 85, 247, 0.1),
-              inset 3px 3px 6px rgba(168, 85, 247, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #130f24;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-purple:hover,
 .clay-card-purple:hover {
-  background: #1e113c;
-  border-color: rgba(168, 85, 247, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(168, 85, 247, 0.2),
-              inset 4px 4px 8px rgba(168, 85, 247, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #1a1433;
+  border-color: rgba(168, 85, 247, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* C. Matrix Jade / Emerald */
 .clay-emerald,
 .clay-card-emerald {
-  background: #08211d;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(16, 185, 129, 0.1),
-              inset 3px 3px 6px rgba(16, 185, 129, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #091a18;
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-emerald:hover,
 .clay-card-emerald:hover {
-  background: #0b2b25;
-  border-color: rgba(16, 185, 129, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(16, 185, 129, 0.2),
-              inset 4px 4px 8px rgba(16, 185, 129, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #0d2421;
+  border-color: rgba(16, 185, 129, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* D. Sunset Gold / Amber */
 .clay-amber,
 .clay-card-amber {
-  background: #201507;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(245, 158, 11, 0.1),
-              inset 3px 3px 6px rgba(245, 158, 11, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #1a1309;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-amber:hover,
 .clay-card-amber:hover {
-  background: #2a1b0a;
-  border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(245, 158, 11, 0.2),
-              inset 4px 4px 8px rgba(245, 158, 11, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #241b0d;
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* E. Crimson Shield / Rose */
 .clay-rose,
 .clay-card-rose {
-  background: #220912;
-  border: 1px solid rgba(244, 63, 94, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(244, 63, 94, 0.1),
-              inset 3px 3px 6px rgba(244, 63, 94, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #1a0b12;
+  border: 1px solid rgba(244, 63, 94, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-rose:hover,
 .clay-card-rose:hover {
-  background: #2d0d19;
-  border-color: rgba(244, 63, 94, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(244, 63, 94, 0.2),
-              inset 4px 4px 8px rgba(244, 63, 94, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #250f1a;
+  border-color: rgba(244, 63, 94, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* F. Deep Cobalt Sapphire / Indigo */
 .clay-indigo,
 .clay-card-indigo {
-  background: #0a1538;
-  border: 1px solid rgba(59, 130, 246, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(59, 130, 246, 0.1),
-              inset 3px 3px 6px rgba(59, 130, 246, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #0c152e;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-indigo:hover,
 .clay-card-indigo:hover {
-  background: #0d1c4a;
-  border-color: rgba(59, 130, 246, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(59, 130, 246, 0.2),
-              inset 4px 4px 8px rgba(59, 130, 246, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #111d3d;
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* G. Radiant Tangerine / Orange */
 .clay-orange,
 .clay-card-orange {
-  background: #221207;
-  border: 1px solid rgba(249, 115, 22, 0.35);
-  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
-              -4px -4px 16px rgba(249, 115, 22, 0.1),
-              inset 3px 3px 6px rgba(249, 115, 22, 0.22),
-              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+  background: #1c1109;
+  border: 1px solid rgba(249, 115, 22, 0.22);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .clay-orange:hover,
 .clay-card-orange:hover {
-  background: #2c170a;
-  border-color: rgba(249, 115, 22, 0.6);
-  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
-              -6px -6px 22px rgba(249, 115, 22, 0.2),
-              inset 4px 4px 8px rgba(249, 115, 22, 0.32),
-              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
-  transform: translateY(-3px);
+  background: #27180d;
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 /* 3. Clay Sidebar & Header Infrastructure */
 .clay-sidebar,
 .liquid-glass-sidebar {
-  background: #070f24;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 14px 0 36px rgba(2, 6, 18, 0.88),
-              inset -1.5px 0 4px rgba(255, 255, 255, 0.05);
+  background: #0c1220;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 6px 0 24px rgba(0, 0, 0, 0.4);
 }
 
 .clay-header,
 .liquid-glass-header {
-  background: #08132b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 28px rgba(2, 6, 18, 0.8),
-              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  background: rgba(12, 18, 32, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .clay-container,
 .liquid-glass {
-  background: #0b1735;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
+  background: #0e1526;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1.125rem;
   box-shadow: var(--clay-shadow-card);
 }
 
 /* 4. Clay Input (Tactile Sunken Bevel) */
 .clay-input,
 .liquid-glass-input {
-  background: #060d1f;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.875rem;
+  background: #0a0f1d;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.75rem;
   box-shadow: var(--clay-shadow-inset);
-  color: #fff;
+  color: #f8fafc;
   transition: all 0.2s ease;
 }
 
 .clay-input:focus,
 .liquid-glass-input:focus {
-  border-color: rgba(0, 240, 255, 0.6);
-  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.7),
-              0 0 18px rgba(0, 240, 255, 0.28);
-  background: #08122c;
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12),
+              inset 0 1.5px 3px rgba(0, 0, 0, 0.5);
+  background: #0c1426;
 }
 
 /* 5. Claymorphic Button Elevation Engine */

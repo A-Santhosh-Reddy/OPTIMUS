@@ -48,7 +48,7 @@ export function CardHeader({
     <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4 mb-5">
       <div className="flex items-center gap-3">
         {Icon && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#091226] border border-white/10 text-cyan-400 shadow-[4px_6px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.15)]">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#101728] border border-white/[0.08] text-sky-400 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.1)]">
             <Icon className="h-5 w-5" />
           </div>
         )}

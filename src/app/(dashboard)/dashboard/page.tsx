@@ -90,19 +90,19 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Cyber Shield Command Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-3xl clay-card-cyan border border-cyan-500/40 relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-[#0d162a] via-[#101b33] to-[#0a1122] border border-blue-500/20 shadow-[0_4px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-sky-300 shadow-[0_1px_4px_rgba(0,0,0,0.3)] flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
               {t("cyberShieldActive")}
             </span>
-            <span className="text-[10px] font-mono text-cyan-300/70 border border-cyan-900/60 bg-cyan-950/30 px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-mono text-slate-400 border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 rounded-md">
               {t("perimeterSurveillance")}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(6,182,212,0.3)]">
-            <ShieldAlert className="h-7 w-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(37,99,235,0.25)]">
+            <ShieldAlert className="h-7 w-7 text-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]" />
             {t("Security Operations Console")}
           </h1>
           <p className="text-xs text-slate-300 mt-1">
@@ -110,7 +110,7 @@ export default function DashboardPage() {
           </p>
         </div>
         <Link href="/analyzer" className="relative z-10 shrink-0">
-          <Button variant="cyan" size="md" className="font-semibold text-xs shadow-liquid-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+          <Button variant="cyan" size="md" className="font-semibold text-xs">
             <Search className="h-4 w-4 mr-2" />
             {t("Analyze Threat Vector")}
           </Button>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
       />
 
       {/* Recent Analysis Activity Table */}
-      <Card glow="cyber">
+      <Card glow="blue">
         <CardHeader
           title={t("Recent Threat Telemetry Stream")}
           description={t("Latest digital assets evaluated by the heuristic and brand protection engine")}
@@ -181,13 +181,13 @@ export default function DashboardPage() {
 
         {recentAnalyses.length === 0 ? (
           <div className="py-14 text-center text-xs text-slate-500 font-mono">
-            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-cyan-400" />
+            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-sky-400" />
             {t("No threat analyses recorded yet. Submit a URL to begin monitoring.")}
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="border-b border-white/[0.08] text-cyan-300/80 font-mono text-[11px]">
+              <thead className="border-b border-white/[0.08] text-slate-400 font-mono text-[11px]">
                 <tr>
                   <th className="pb-3 pl-2">{t("Target Asset Hostname")}</th>
                   <th className="pb-3">{t("Risk Score")}</th>
@@ -199,9 +199,9 @@ export default function DashboardPage() {
               </thead>
               <tbody className="divide-y divide-white/[0.05] font-mono">
                 {recentAnalyses.map((item: any) => (
-                  <tr key={item.id} className="hover:bg-white/[0.04] transition-colors group">
+                  <tr key={item.id} className="hover:bg-white/[0.03] transition-colors group">
                     <td className="py-3.5 pl-2 font-semibold text-slate-200">
-                      <div className="max-w-xs sm:max-w-sm truncate text-cyan-200/90 group-hover:text-cyan-300 transition-colors">
+                      <div className="max-w-xs sm:max-w-sm truncate text-slate-200 group-hover:text-sky-300 transition-colors">
                         {item.normalizedHostname || item.submittedUrl}
                       </div>
                     </td>
@@ -209,12 +209,12 @@ export default function DashboardPage() {
                       <span
                         className={`font-bold ${
                           item.riskScore >= 70
-                            ? "text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+                            ? "text-rose-400 drop-shadow-[0_0_8px_rgba(244,63,94,0.4)]"
                             : item.riskScore >= 40
                             ? "text-orange-400"
                             : item.riskScore >= 20
                             ? "text-amber-400"
-                            : "text-blue-400"
+                            : "text-sky-400"
                         }`}
                       >
                         {item.riskScore}/100
@@ -231,7 +231,7 @@ export default function DashboardPage() {
                     </td>
                     <td className="py-3.5 text-right pr-2">
                       <Link href={`/findings?id=${item.id}`}>
-                        <button className="text-xs text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-medium transition-colors">
+                        <button className="text-xs text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-medium transition-colors">
                           {t("Inspect")} <ExternalLink className="h-3 w-3" />
                         </button>
                       </Link>

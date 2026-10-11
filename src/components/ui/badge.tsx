@@ -21,35 +21,35 @@ export function SeverityBadge({ severity, size = "md" }: SeverityBadgeProps) {
   switch (s) {
     case "CRITICAL":
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full border border-rose-500/50 bg-[#220912] text-rose-300 shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)] ${sizeClasses}`}>
-          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse shadow-[0_0_6px_#fb7185]" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full border border-rose-500/25 bg-rose-500/10 text-rose-300 shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)] ${sizeClasses}`}>
+          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
           {t("CRITICAL")}
         </span>
       );
     case "HIGH":
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full border border-orange-500/50 bg-[#221207] text-orange-300 shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)] ${sizeClasses}`}>
-          <span className="h-1.5 w-1.5 rounded-full bg-orange-400 shadow-[0_0_6px_#fb923c]" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full border border-amber-500/25 bg-amber-500/10 text-amber-300 shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)] ${sizeClasses}`}>
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
           {t("HIGH")}
         </span>
       );
     case "MEDIUM":
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-[#201507] text-amber-300 shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)] ${sizeClasses}`}>
-          <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full border border-yellow-500/25 bg-yellow-500/10 text-yellow-300 shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)] ${sizeClasses}`}>
+          <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
           {t("MEDIUM")}
         </span>
       );
     case "LOW":
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full border border-cyan-500/50 bg-[#081d38] text-cyan-300 shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)] ${sizeClasses}`}>
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_#22d3ee]" />
+        <span className={`inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-sky-500/10 text-sky-300 shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)] ${sizeClasses}`}>
+          <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
           {t("LOW")}
         </span>
       );
     default:
       return (
-        <span className={`inline-flex items-center gap-1.5 rounded-full border border-slate-700/80 bg-[#0d1a38] text-slate-300 shadow-[3px_5px_12px_rgba(2,6,18,0.6),inset_1.5px_1.5px_3px_rgba(255,255,255,0.15),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.45)] ${sizeClasses}`}>
+        <span className={`inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-slate-300 shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)] ${sizeClasses}`}>
           <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
           {t(s)}
         </span>
@@ -63,41 +63,41 @@ export function StatusBadge({ status }: { status: IncidentStatus | string }) {
   switch (st) {
     case "NEW":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/50 bg-[#081d38] text-cyan-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_6px_#22d3ee]" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-sky-500/10 text-sky-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
           {t("NEW")}
         </span>
       );
     case "INVESTIGATING":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-[#201507] text-amber-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)]">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/25 bg-amber-500/10 text-amber-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping" />
           {t("INVESTIGATING")}
         </span>
       );
     case "ESCALATED":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/50 bg-[#220912] text-rose-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse shadow-[0_0_6px_#fb7185]" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/25 bg-rose-500/10 text-rose-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
           {t("ESCALATED", "ESCALATED")}
         </span>
       );
     case "RESOLVED":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/50 bg-[#08211d] text-emerald-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[3px_5px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.22),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.5)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 text-emerald-300 px-2.5 py-0.5 text-xs font-mono font-bold tracking-wide shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           {t("RESOLVED")}
         </span>
       );
     case "FALSE_POSITIVE":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-900/60 text-slate-400 px-2.5 py-0.5 text-xs font-mono font-semibold backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-slate-400 px-2.5 py-0.5 text-xs font-mono font-semibold">
           {t("FALSE POSITIVE", "FALSE POSITIVE")}
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800/60 text-slate-300 px-2.5 py-0.5 text-xs font-mono font-semibold backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-slate-300 px-2.5 py-0.5 text-xs font-mono font-semibold">
           {t(st)}
         </span>
       );
@@ -110,33 +110,33 @@ export function IntelStatusBadge({ status }: { status: IntelStatus | string }) {
   switch (is) {
     case "MATCH_FOUND":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-950/70 text-red-300 px-2.5 py-0.5 text-[11px] font-mono font-bold backdrop-blur-md shadow-[0_0_10px_rgba(239,68,68,0.2)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse shadow-[0_0_6px_#f87171]" />
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-500/10 text-red-300 px-2.5 py-0.5 text-[11px] font-mono font-bold shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
           {t("IoC MATCH", "IoC MATCH")}
         </span>
       );
     case "NO_MATCH":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/35 bg-emerald-950/60 text-emerald-300 px-2.5 py-0.5 text-[11px] font-mono font-bold backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 px-2.5 py-0.5 text-[11px] font-mono font-bold shadow-[0_1px_3px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.08)]">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
           {t("CLEAN")}
         </span>
       );
     case "UNAVAILABLE":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/35 bg-amber-950/60 text-amber-300 px-2.5 py-0.5 text-[11px] font-mono backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 px-2.5 py-0.5 text-[11px] font-mono shadow-[0_1px_3px_rgba(0,0,0,0.25)]">
           {t("FEED OFFLINE", "FEED OFFLINE")}
         </span>
       );
     case "NOT_CONFIGURED":
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/80 bg-slate-900/60 text-slate-400 px-2.5 py-0.5 text-[11px] font-mono backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-slate-400 px-2.5 py-0.5 text-[11px] font-mono">
           {t("OPTIONAL", "OPTIONAL")}
         </span>
       );
     default:
       return (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/80 bg-slate-900/60 text-slate-400 px-2.5 py-0.5 text-[11px] font-mono backdrop-blur-md">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-slate-400 px-2.5 py-0.5 text-[11px] font-mono">
           {t("INCONCLUSIVE", "INCONCLUSIVE")}
         </span>
       );

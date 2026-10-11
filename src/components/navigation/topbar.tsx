@@ -54,7 +54,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("toggle-mobile-sidebar"))}
-            className="md:hidden p-2 rounded-xl bg-[#091530] border border-white/10 text-cyan-400 hover:text-white transition-all shrink-0 shadow-[2px_3px_8px_rgba(2,6,18,0.7)]"
+            className="md:hidden p-2 rounded-xl bg-[#0e1628] border border-white/[0.08] text-sky-400 hover:text-white transition-all shrink-0 shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
             aria-label="Toggle navigation menu"
           >
             <Menu className="h-4 w-4" />
@@ -63,16 +63,16 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <img
             src="/logo.png"
             alt="OPTIMUS Eagle Shield"
-            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(0,240,255,0.45)] shrink-0"
+            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(37,99,235,0.4)] shrink-0"
           />
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-400 min-w-0">
             <span className="font-semibold text-slate-100 flex items-center gap-1.5 truncate">
-              <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 hidden sm:block" />
+              <ShieldCheck className="h-4 w-4 text-sky-400 shrink-0 hidden sm:block" />
               <span className="truncate max-w-[110px] sm:max-w-none">{organizationName}</span>
             </span>
             <span className="text-slate-600 hidden sm:inline">/</span>
-            <span className="text-cyan-400 font-mono text-[10px] sm:text-[11px] bg-[#081d38] px-2 py-0.5 rounded-full border border-cyan-500/40 hidden xs:flex items-center gap-1 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)] shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-sky-400 font-mono text-[10px] sm:text-[11px] bg-blue-950/60 px-2 py-0.5 rounded-full border border-sky-500/25 hidden xs:flex items-center gap-1 shadow-[0_1px_4px_rgba(0,0,0,0.3)] shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
               <span className="hidden md:inline">{t("topbar.shield", "CYBER MATRIX SHIELD")}</span>
               <span className="md:hidden">ACTIVE</span>
             </span>
@@ -85,7 +85,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             <button
               type="button"
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#091530] border border-white/10 hover:border-cyan-500/50 text-[11px] font-mono text-slate-200 hover:text-cyan-300 transition-all cursor-pointer shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)]"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#0e1628] border border-white/[0.08] hover:border-sky-500/30 text-[11px] font-mono text-slate-200 hover:text-white transition-all cursor-pointer shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]"
               title="Change Interface Language / Cambiar Idioma / Changer la Langue / Sprache Ändern"
             >
               <span className="text-xs">{currentOption.flag}</span>
@@ -93,8 +93,8 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             </button>
 
             {isLangMenuOpen && (
-              <div className="absolute right-0 mt-2 w-44 rounded-xl border border-cyan-500/40 bg-[#0d1a38] p-1.5 shadow-[12px_16px_36px_rgba(2,6,18,0.95),inset_2px_2px_4px_rgba(255,255,255,0.12)] z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono text-slate-400 px-2 py-1 uppercase tracking-wider border-b border-white/10">
+              <div className="absolute right-0 mt-2 w-44 rounded-xl border border-white/[0.1] bg-[#0e1628] p-1.5 shadow-[0_12px_36px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.08)] z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="text-[10px] font-mono text-slate-400 px-2 py-1 uppercase tracking-wider border-b border-white/[0.08]">
                   Select Language
                 </div>
                 <div className="space-y-0.5 mt-1 font-mono text-xs">
@@ -108,7 +108,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
                       }}
                       className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors cursor-pointer ${
                         language === l.code
-                          ? "bg-[#091e38] text-cyan-300 font-semibold border border-cyan-500/40 shadow-[2px_3px_8px_rgba(2,6,18,0.6)]"
+                          ? "bg-[#16223b] text-sky-300 font-semibold border border-sky-500/30 shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
                           : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
                       }`}
                     >
@@ -116,7 +116,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
                         <span>{l.flag}</span>
                         <span className="text-[11px] font-sans">{l.nativeName}</span>
                       </span>
-                      {language === l.code && <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />}
+                      {language === l.code && <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />}
                     </button>
                   ))}
                 </div>
@@ -128,10 +128,10 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <button
             type="button"
             onClick={() => setIsSsrfModalOpen(true)}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#091530] border border-cyan-500/35 text-[11px] text-cyan-300 hover:border-cyan-400 hover:bg-[#0c1f44] shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(0,240,255,0.2),inset_-2px_-2px_4px_rgba(0,0,0,0.45)] transition-all cursor-pointer group"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#0e1628] border border-sky-500/25 text-[11px] text-sky-300 hover:border-sky-400/40 hover:bg-[#131d33] shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] transition-all cursor-pointer group"
             title="Click to view SSRF Protection & Heuristic Engine telemetry"
           >
-            <Terminal className="h-3.5 w-3.5 text-cyan-400 group-hover:rotate-6 transition-transform" />
+            <Terminal className="h-3.5 w-3.5 text-sky-400 group-hover:rotate-6 transition-transform" />
             <span className="font-mono text-[10px] tracking-wide font-medium">
               {t("topbar.ssrfPill", "SSRF-SAFE LEXICAL ANALYSIS")}
             </span>

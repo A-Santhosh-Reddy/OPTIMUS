@@ -49,24 +49,23 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
                 stroke="#64748b"
                 fontSize={10}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                axisLine={{ stroke: "rgba(255, 255, 255, 0.08)" }}
               />
               <YAxis
                 stroke="#64748b"
                 fontSize={10}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                axisLine={{ stroke: "rgba(255, 255, 255, 0.08)" }}
                 allowDecimals={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "rgba(8, 14, 28, 0.85)",
-                  backdropFilter: "blur(16px)",
-                  borderColor: "rgba(56, 189, 248, 0.3)",
+                  backgroundColor: "#0e1526",
+                  borderColor: "rgba(255, 255, 255, 0.1)",
                   borderRadius: "12px",
                   fontSize: "12px",
                   color: "#f8fafc",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
                 }}
               />
               <Bar dataKey="count" radius={[6, 6, 0, 0]}>
@@ -101,7 +100,7 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
                   stroke="#64748b"
                   fontSize={10}
                   tickLine={false}
-                  axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                  axisLine={{ stroke: "rgba(255, 255, 255, 0.08)" }}
                   allowDecimals={false}
                 />
                 <YAxis
@@ -110,20 +109,19 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
                   stroke="#64748b"
                   fontSize={9}
                   tickLine={false}
-                  axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                  axisLine={{ stroke: "rgba(255, 255, 255, 0.08)" }}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "rgba(8, 14, 28, 0.85)",
-                    backdropFilter: "blur(16px)",
-                    borderColor: "rgba(56, 189, 248, 0.3)",
+                    backgroundColor: "#0e1526",
+                    borderColor: "rgba(255, 255, 255, 0.1)",
                     borderRadius: "12px",
                     fontSize: "12px",
                     color: "#f8fafc",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
                   }}
                 />
-                <Bar dataKey="count" fill="#06b6d4" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="count" fill="#38bdf8" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
