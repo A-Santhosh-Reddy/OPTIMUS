@@ -37,12 +37,19 @@
 
 ## 🔄 How OPTIMUS Works (In 4 Steps)
 
-```mermaid
-graph LR
-    A["1️⃣ Paste a Link\nAny web address or batch"] --> B["2️⃣ OPTIMUS Checks It\nOffline heuristics, brands & WHOIS"]
-    B --> C["3️⃣ Get a Risk Score\n0 (safe) to 100 (danger)"]
-    C --> D["4️⃣ Open a Case\nTrack investigation to resolution"]
+```text
+┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
+│ 1. Paste a Link │ ───► │ 2. OPTIMUS Check│ ───► │ 3. Risk Score   │ ───► │ 4. Open a Case  │
+│  Any URL/Domain │      │ Offline Analysis│      │  0 to 100 scale │      │ Track to Close  │
+└─────────────────┘      └─────────────────┘      └─────────────────┘      └─────────────────┘
 ```
+
+| Step | Phase | What Happens |
+| :---: | :--- | :--- |
+| **1** | **Paste a Link** | Submit any suspicious web address, domain name, or bulk CSV/TXT batch. |
+| **2** | **OPTIMUS Checks It** | Evaluates Shannon entropy, homoglyphs, brand assets, threat intelligence, and WHOIS. |
+| **3** | **Get a Risk Score** | Generates an explainable score from **0 (safe)** to **100 (danger)** with exact reasons. |
+| **4** | **Open a Case** | Escalate critical threats to active incident tracking and compile forensic PDF reports. |
 
 ---
 
@@ -63,40 +70,30 @@ Every analyzed asset receives a score from **0 to 100**. Scores are grouped into
 
 When a link represents an active threat, analysts open an incident case. Cases move through structured stages:
 
-```mermaid
-graph LR
-    New["New\n(Case Created)"] --> Investigating["Investigating\n(Evidence Reviewed)"]
-    Investigating --> Escalated["Escalated\n(Takedown / Tier 2)"]
-    Escalated --> Resolved["Resolved\n(Takedown Complete)"]
-    Investigating --> FalseAlarm["False Alarm\n(Marked as Safe)"]
+```text
+   [ New ] ──────► [ Investigating ] ──────► [ Escalated ] ──────► [ Resolved ]
+                           │
+                           └───────────────► [ False Alarm ]
 ```
 
-* **Download a report**: Compile and download comprehensive forensic PDF reports with a single click to share with executive leadership or external registrars.
+* **New**: Initial triage case opened from automated analysis findings.
+* **Investigating**: Evidence reviewed, brand match validated, registrar/host details gathered.
+* **Escalated**: Critical threat escalated for legal takedown or executive review.
+* **Resolved**: Malicious infrastructure neutralized or confirmed taken down.
+* **False Alarm**: Verified as benign or authorized domain; case closed without action.
+* **Download a report**: Compile and download forensic PDF reports with a single click to share with executive leadership or registrars.
 
 ---
 
-## 👥 Access: Roles & Sample Accounts
+## 👥 Access Control & Roles
 
 Each user is assigned one of three role tiers. Every significant action is automatically logged in an immutable security audit trail.
 
 | Role | Permissions & Capabilities |
 | :--- | :--- |
-| **Admin** | Manages everything: users, protected brand assets, alert channels, cases, and audit logs |
-| **Analyst** | Investigates threats, analyzes links and emails, manages incident cases, exports PDF reports |
-| **Viewer** | Read-only access: reviews executive dashboards, findings, and reports without modification rights |
-
-### Pre-Configured Demonstration Accounts
-
-The default seed database comes pre-configured with the following credentials:
-
-| Role | Email | Password | Access Level |
-| :--- | :--- | :--- | :--- |
-| **Admin** | `admin@optimus-drp.io` | `admin123!` | Full administrator permissions |
-| **Analyst** | `analyst@optimus-drp.io` | `analyst123!` | Check links, triage cases, export reports |
-| **Viewer** | `viewer@optimus-drp.io` | `viewer123!` | Read-only dashboards and findings |
-
-> [!WARNING]
-> **Before going live in production**: Change these default passwords or remove the sample accounts.
+| **Admin** | Manages platform configuration, protected brand assets, alert channels, cases, and audit logs |
+| **Analyst** | Investigates threats, analyzes links and emails, manages incident cases, exports forensic reports |
+| **Viewer** | Read-only access: reviews executive dashboards, telemetry trends, findings, and reports |
 
 ---
 
