@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import {
-  Bot,
   X,
   Send,
   Sparkles,
@@ -218,33 +217,25 @@ Select a prompt below or type your question:`,
             setIsOpen(true);
             setIsMinimized(false);
           }}
-          className="group relative flex items-center gap-3 px-4 py-3 rounded-full bg-gradient-to-r from-[#0c162d]/95 via-[#0e1f3d]/95 to-[#0b1426]/95 border border-cyan-400/50 text-white shadow-[0_0_25px_rgba(6,182,212,0.35)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-gradient-to-r from-[#07132b]/95 via-[#0b1c3d]/95 to-[#060f24]/95 border border-cyan-400/50 hover:border-cyan-300 text-white shadow-[0_0_25px_rgba(6,182,212,0.4),inset_0_1px_2px_rgba(255,255,255,0.15)] hover:shadow-[0_0_35px_rgba(6,182,212,0.7)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
           aria-label="Open Bily AI Threat Copilot"
         >
-          {/* Animated Glow Beacon */}
-          <div className="relative flex items-center justify-center h-8 w-8 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 shadow-inner group-hover:bg-cyan-500/30">
-            <Bot className="h-4 w-4 drop-shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
+          {/* Optimus Prime Premium Emblem with Live Radar Dot */}
+          <div className="relative flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-cyan-950/90 to-blue-950/90 border border-cyan-400/60 p-1 shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_22px_rgba(6,182,212,0.8)] group-hover:border-cyan-300 transition-all shrink-0">
+            <img
+              src="/bily-avatar.png"
+              alt="Bily Agent"
+              className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,240,255,0.7)]"
+            />
             <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
             </span>
           </div>
 
-          <div className="text-left">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold tracking-wider font-mono text-cyan-300 group-hover:text-cyan-200">
-                BILY
-              </span>
-              <span className="text-[9px] font-mono uppercase px-1.5 py-0.2 rounded bg-cyan-950 border border-cyan-500/30 text-cyan-400">
-                AI COPILOT
-              </span>
-            </div>
-            <p className="text-[10px] text-slate-400 group-hover:text-slate-300">
-              {t("Ask threat intelligence")}
-            </p>
-          </div>
-
-          <Sparkles className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
+          <span className="text-sm font-extrabold tracking-widest font-mono text-cyan-300 group-hover:text-cyan-100 drop-shadow-[0_0_10px_rgba(6,182,212,0.6)]">
+            BILY
+          </span>
         </button>
       )}
 
@@ -260,21 +251,25 @@ Select a prompt below or type your question:`,
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-[#0a1122]/90 border-b border-cyan-500/30">
             <div className="flex items-center gap-2.5">
-              <div className="relative flex items-center justify-center h-8 w-8 rounded-xl bg-cyan-500/20 border border-cyan-400/40 text-cyan-300">
-                <Bot className="h-4 w-4" />
+              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-cyan-950/90 to-blue-950/90 border border-cyan-400/50 p-1 shadow-[0_0_12px_rgba(6,182,212,0.4)] shrink-0">
+                <img
+                  src="/bily-avatar.png"
+                  alt="Bily Agent"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,240,255,0.7)]"
+                />
                 <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="text-xs font-bold text-white font-mono tracking-wider">
-                    {t("BILY // AI SEC-COPILOT")}
+                    BILY
                   </h3>
                   <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-300">
                     ONLINE
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-400 font-mono">
-                  Autonomous SecOps Analyst
+                <p className="text-[10px] text-cyan-300/80 font-mono">
+                  Autonomous SecOps Copilot
                 </p>
               </div>
             </div>
@@ -323,8 +318,15 @@ Select a prompt below or type your question:`,
                     }`}
                   >
                     <div className="flex items-center gap-1.5 mb-1 px-1">
-                      <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500">
-                        {msg.role === "user" ? "SecOps Analyst" : "Bily AI Engine"}
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 flex items-center gap-1">
+                        {msg.role === "user" ? (
+                          "SecOps Analyst"
+                        ) : (
+                          <>
+                            <img src="/bily-avatar.png" alt="Bily" className="h-3.5 w-3.5 object-contain inline-block filter drop-shadow-[0_1px_3px_rgba(0,240,255,0.6)]" />
+                            <span className="text-cyan-400 font-bold">Bily</span>
+                          </>
+                        )}
                       </span>
                       <span className="text-[9px] text-slate-600 font-mono">
                         {msg.timestamp}
@@ -365,8 +367,8 @@ Select a prompt below or type your question:`,
                 {/* Loading indicator */}
                 {isLoading && (
                   <div className="flex items-start gap-2">
-                    <div className="h-7 w-7 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-300 flex items-center justify-center shrink-0">
-                      <Bot className="h-3.5 w-3.5 animate-pulse" />
+                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-cyan-950 to-blue-950 border border-cyan-500/40 p-1 flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.4)]">
+                      <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain animate-pulse filter drop-shadow-[0_1px_4px_rgba(0,240,255,0.7)]" />
                     </div>
                     <div className="p-3 rounded-2xl bg-[#0c1426]/90 border border-cyan-500/30 text-slate-300 text-xs flex items-center gap-2">
                       <Loader2 className="h-3.5 w-3.5 animate-spin text-cyan-400" />

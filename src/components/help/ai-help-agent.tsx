@@ -188,13 +188,13 @@ Need details on a specific topic? Try asking about **SSRF protection**, **risk s
       {/* Copilot Header */}
       <div className="p-3.5 border-b border-white/[0.08] bg-gradient-to-r from-cyan-950/50 via-slate-900/50 to-blue-950/50 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white shadow-md border border-cyan-400/40">
-            <Bot className="h-4 w-4" />
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-950 to-blue-950 p-1 text-white shadow-md border border-cyan-400/40 shrink-0">
+            <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain filter drop-shadow-[0_1px_4px_rgba(0,240,255,0.7)]" />
             <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-slate-950 animate-pulse" />
           </div>
           <div>
             <h4 className="text-xs font-bold text-white font-mono flex items-center gap-1.5">
-              OPTIMUS AI COPILOT
+              BILY COPILOT
               <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 font-normal">
                 Autonomous SOC Agent
               </span>
@@ -233,10 +233,10 @@ Need details on a specific topic? Try asking about **SSRF protection**, **risk s
               className={`h-7 w-7 rounded-xl flex items-center justify-center shrink-0 border ${
                 m.sender === "user"
                   ? "bg-blue-600/30 border-blue-400/40 text-blue-300"
-                  : "bg-cyan-600/30 border-cyan-400/40 text-cyan-300"
+                  : "bg-cyan-950/80 border-cyan-400/40 p-0.5 shadow-[0_0_6px_rgba(6,182,212,0.4)]"
               }`}
             >
-              {m.sender === "user" ? <User className="h-3.5 w-3.5" /> : <Bot className="h-3.5 w-3.5" />}
+              {m.sender === "user" ? <User className="h-3.5 w-3.5" /> : <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain filter drop-shadow-[0_1px_3px_rgba(0,240,255,0.6)]" />}
             </div>
 
             <div

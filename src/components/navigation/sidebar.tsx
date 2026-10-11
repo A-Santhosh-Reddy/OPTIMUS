@@ -496,11 +496,11 @@ export function Sidebar({
                   className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Bot className="h-4 w-4 text-cyan-400 shrink-0 animate-pulse" />
+                    <img src="/bily-avatar.png" alt="Bily" className="h-4 w-4 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
                     <span className="font-semibold text-cyan-300">{t("menu.help", "Help Desk & AI Copilot")}</span>
                   </div>
                   <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/30">
-                    AI AGENT
+                    BILY
                   </span>
                 </button>
 
