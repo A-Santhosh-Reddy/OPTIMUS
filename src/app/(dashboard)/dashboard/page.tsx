@@ -90,27 +90,27 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Cyber Shield Command Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-3xl clay-card-cyan border border-cyan-500/40 relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-[24px] bg-[#f4f6ff] border border-[#ccd0f4] shadow-[10px_14px_28px_rgba(180,188,232,0.65),-4px_-4px_18px_rgba(255,255,255,0.95),inset_2.5px_2.5px_5px_rgba(255,255,255,0.9),inset_-3.5px_-3.5px_7px_rgba(180,188,232,0.45)] relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-[12px] bg-[#f0f2ff] border border-[#b4bce8] text-[#1e3a8a] shadow-[2px_3px_6px_rgba(30,58,138,0.15)] flex items-center gap-1.5 font-bold">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#15803d] animate-ping" />
               {t("cyberShieldActive")}
             </span>
-            <span className="text-[10px] font-mono text-cyan-300/70 border border-cyan-900/60 bg-cyan-950/30 px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-mono text-[#6070b0] border border-[#ccd0f4] bg-[#f0f2ff] px-2 py-0.5 rounded-[12px]">
               {t("perimeterSurveillance")}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(6,182,212,0.3)]">
-            <ShieldAlert className="h-7 w-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#080f2a] flex items-center gap-2.5 font-mono">
+            <ShieldAlert className="h-7 w-7 text-[#1e3a8a]" />
             {t("Security Operations Console")}
           </h1>
-          <p className="text-xs text-slate-300 mt-1">
+          <p className="text-xs text-[#6070b0] mt-1">
             {t("dash.socDesc")}
           </p>
         </div>
         <Link href="/analyzer" className="relative z-10 shrink-0">
-          <Button variant="cyan" size="md" className="font-semibold text-xs shadow-liquid-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+          <Button variant="primary" size="md" className="font-semibold text-xs">
             <Search className="h-4 w-4 mr-2" />
             {t("Analyze Threat Vector")}
           </Button>
@@ -164,7 +164,7 @@ export default function DashboardPage() {
       />
 
       {/* Recent Analysis Activity Table */}
-      <Card glow="cyber">
+      <Card glow="none">
         <CardHeader
           title={t("Recent Threat Telemetry Stream")}
           description={t("Latest digital assets evaluated by the heuristic and brand protection engine")}
@@ -180,28 +180,28 @@ export default function DashboardPage() {
         />
 
         {recentAnalyses.length === 0 ? (
-          <div className="py-14 text-center text-xs text-slate-500 font-mono">
-            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-cyan-400" />
+          <div className="py-14 text-center text-xs text-[#6070b0] font-mono">
+            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-[#1e3a8a]" />
             {t("No threat analyses recorded yet. Submit a URL to begin monitoring.")}
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="border-b border-white/[0.08] text-cyan-300/80 font-mono text-[11px]">
+              <thead className="border-b border-[#ccd0f4] text-[#6070b0] font-mono text-[11px] bg-[#eef0fc]">
                 <tr>
-                  <th className="pb-3 pl-2">{t("Target Asset Hostname")}</th>
-                  <th className="pb-3">{t("Risk Score")}</th>
-                  <th className="pb-3">{t("Severity")}</th>
-                  <th className="pb-3">{t("Threat Intel")}</th>
-                  <th className="pb-3">{t("Timestamp")}</th>
-                  <th className="pb-3 text-right pr-2">{t("Action")}</th>
+                  <th className="py-2.5 pl-3">{t("Target Asset Hostname")}</th>
+                  <th className="py-2.5">{t("Risk Score")}</th>
+                  <th className="py-2.5">{t("Severity")}</th>
+                  <th className="py-2.5">{t("Threat Intel")}</th>
+                  <th className="py-2.5">{t("Timestamp")}</th>
+                  <th className="py-2.5 text-right pr-3">{t("Action")}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.05] font-mono">
+              <tbody className="divide-y divide-[#ccd0f4]/60 font-mono">
                 {recentAnalyses.map((item: any) => (
-                  <tr key={item.id} className="hover:bg-white/[0.04] transition-colors group">
-                    <td className="py-3.5 pl-2 font-semibold text-slate-200">
-                      <div className="max-w-xs sm:max-w-sm truncate text-cyan-200/90 group-hover:text-cyan-300 transition-colors">
+                  <tr key={item.id} className="hover:bg-[#f0f2ff] transition-colors group">
+                    <td className="py-3.5 pl-3 font-semibold text-[#080f2a]">
+                      <div className="max-w-xs sm:max-w-sm truncate text-[#080f2a] group-hover:text-[#1e3a8a] transition-colors">
                         {item.normalizedHostname || item.submittedUrl}
                       </div>
                     </td>
@@ -209,12 +209,12 @@ export default function DashboardPage() {
                       <span
                         className={`font-bold ${
                           item.riskScore >= 70
-                            ? "text-red-400 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]"
+                            ? "text-[#dc2626]"
                             : item.riskScore >= 40
-                            ? "text-orange-400"
+                            ? "text-[#ea580c]"
                             : item.riskScore >= 20
-                            ? "text-amber-400"
-                            : "text-blue-400"
+                            ? "text-[#d97706]"
+                            : "text-[#1e3a8a]"
                         }`}
                       >
                         {item.riskScore}/100
@@ -226,12 +226,12 @@ export default function DashboardPage() {
                     <td className="py-3.5">
                       <IntelStatusBadge status={item.intelligenceStatus} />
                     </td>
-                    <td className="py-3.5 text-slate-400 text-[11px]">
+                    <td className="py-3.5 text-[#6070b0] text-[11px]">
                       {new Date(item.createdAt).toLocaleDateString()} {new Date(item.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </td>
-                    <td className="py-3.5 text-right pr-2">
+                    <td className="py-3.5 text-right pr-3">
                       <Link href={`/findings?id=${item.id}`}>
-                        <button className="text-xs text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-medium transition-colors">
+                        <button className="text-xs text-[#1e3a8a] hover:text-[#172554] inline-flex items-center gap-1 font-semibold transition-colors">
                           {t("Inspect")} <ExternalLink className="h-3 w-3" />
                         </button>
                       </Link>

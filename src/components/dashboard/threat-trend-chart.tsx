@@ -46,27 +46,26 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
             <BarChart data={localizedRisk} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
               <XAxis
                 dataKey="name"
-                stroke="#64748b"
+                stroke="#6070b0"
                 fontSize={10}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                axisLine={{ stroke: "#ccd0f4" }}
               />
               <YAxis
-                stroke="#64748b"
+                stroke="#6070b0"
                 fontSize={10}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                axisLine={{ stroke: "#ccd0f4" }}
                 allowDecimals={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "rgba(8, 14, 28, 0.85)",
-                  backdropFilter: "blur(16px)",
-                  borderColor: "rgba(56, 189, 248, 0.3)",
+                  backgroundColor: "#f4f6ff",
+                  borderColor: "#ccd0f4",
                   borderRadius: "12px",
                   fontSize: "12px",
-                  color: "#f8fafc",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                  color: "#080f2a",
+                  boxShadow: "0 10px 30px rgba(180, 188, 232, 0.45)",
                 }}
               />
               <Bar dataKey="count" radius={[6, 6, 0, 0]}>
@@ -88,7 +87,7 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
         />
         <div className="h-64 w-full flex items-center justify-center">
           {categoryStats.length === 0 ? (
-            <p className="text-xs text-slate-500 font-mono">{t("No detection signals recorded yet")}</p>
+            <p className="text-xs text-[#6070b0] font-mono">{t("No detection signals recorded yet")}</p>
           ) : (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
@@ -98,32 +97,31 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
               >
                 <XAxis
                   type="number"
-                  stroke="#64748b"
+                  stroke="#6070b0"
                   fontSize={10}
                   tickLine={false}
-                  axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                  axisLine={{ stroke: "#ccd0f4" }}
                   allowDecimals={false}
                 />
                 <YAxis
                   type="category"
                   dataKey="category"
-                  stroke="#64748b"
+                  stroke="#6070b0"
                   fontSize={9}
                   tickLine={false}
-                  axisLine={{ stroke: "rgba(56, 189, 248, 0.16)" }}
+                  axisLine={{ stroke: "#ccd0f4" }}
                 />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "rgba(8, 14, 28, 0.85)",
-                    backdropFilter: "blur(16px)",
-                    borderColor: "rgba(56, 189, 248, 0.3)",
+                    backgroundColor: "#f4f6ff",
+                    borderColor: "#ccd0f4",
                     borderRadius: "12px",
                     fontSize: "12px",
-                    color: "#f8fafc",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+                    color: "#080f2a",
+                    boxShadow: "0 10px 30px rgba(180, 188, 232, 0.45)",
                   }}
                 />
-                <Bar dataKey="count" fill="#06b6d4" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="count" fill="#1e3a8a" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}

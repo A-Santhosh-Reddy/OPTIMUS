@@ -364,23 +364,23 @@ export function Sidebar({
       >
         <div className="flex-1 overflow-y-auto min-h-0">
           {/* Brand Logo & Header */}
-          <div className="p-4 sm:p-5 border-b border-white/[0.08] flex items-center justify-between gap-3">
+          <div className="p-4 sm:p-5 border-b border-[#ccd0f4] flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center">
                 <img
                   src="/logo.png"
                   alt="OPTIMUS Cyber Defense"
-                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,240,255,0.4)]"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(30,58,138,0.3)]"
                 />
               </div>
               <div className="min-w-0">
-                <h1 className="text-sm font-bold tracking-wider text-white flex items-center gap-1.5 font-mono">
+                <h1 className="text-sm font-bold tracking-wider text-[#080f2a] flex items-center gap-1.5 font-mono">
                   OPTIMUS{" "}
-                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-sm shadow-cyan-500/20">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-[12px] bg-[#fdf2f0] text-[#dc2626] border border-[#fca5a5] shadow-sm font-bold">
                     DRP
                   </span>
                 </h1>
-                <p className="text-[11px] text-cyan-300/70 font-medium tracking-tight truncate">Cyber Defense Platform</p>
+                <p className="text-[11px] text-[#6070b0] font-medium tracking-tight truncate">Cyber Defense Platform</p>
               </div>
             </div>
 
@@ -388,7 +388,7 @@ export function Sidebar({
             <button
               type="button"
               onClick={() => setIsMobileOpen(false)}
-              className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
+              className="md:hidden p-1.5 rounded-[12px] text-[#6070b0] hover:text-[#080f2a] hover:bg-[#f0f2ff] transition-colors shrink-0"
               aria-label="Close sidebar"
             >
               <X className="h-4 w-4" />
@@ -397,18 +397,18 @@ export function Sidebar({
 
           {/* Live System Status Tag with Radar Pulse */}
           <div className="px-4 py-3">
-            <div className="relative overflow-hidden flex items-center justify-between rounded-xl bg-gradient-to-r from-cyan-950/30 via-slate-900/40 to-blue-950/30 border border-cyan-500/20 px-3.5 py-2.5 text-xs shadow-inner">
+            <div className="relative overflow-hidden flex items-center justify-between rounded-[12px] bg-[#f0f2ff] border border-[#ccd0f4] px-3.5 py-2.5 text-xs shadow-[inset_1.5px_1.5px_3px_rgba(255,255,255,0.9)]">
               <div className="flex items-center gap-2.5">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-sm shadow-emerald-400" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#15803d] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#15803d]" />
                 </span>
-                <span className="text-slate-200 font-semibold text-[11px] tracking-wide flex items-center gap-1">
-                  <Cpu className="h-3 w-3 text-cyan-400" />
+                <span className="text-[#080f2a] font-semibold text-[11px] tracking-wide flex items-center gap-1">
+                  <Cpu className="h-3 w-3 text-[#1e3a8a]" />
                   {t("nav.heuristicCore", "Heuristic Core")}
                 </span>
               </div>
-              <span className="text-[10px] text-emerald-400 font-mono font-bold tracking-widest bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] text-[#15803d] font-mono font-bold tracking-widest bg-[#f0fdf4] border border-[#bbf7d0] px-1.5 py-0.5 rounded-[12px]">
                 {t("nav.online", "ONLINE")}
               </span>
             </div>
@@ -425,20 +425,20 @@ export function Sidebar({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 select-none ${
+                    className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-[12px] text-xs font-medium transition-all duration-200 select-none ${
                       isActive
-                        ? "bg-[#091e38] text-cyan-300 border border-cyan-400/40 shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(0,240,255,0.25),inset_-2px_-2px_4px_rgba(0,0,0,0.5)] font-semibold"
-                        : "text-slate-400 hover:text-white hover:bg-[#0c1834] hover:shadow-[3px_5px_10px_rgba(2,6,18,0.5),inset_1px_1px_2px_rgba(255,255,255,0.08)] border border-transparent hover:border-white/10"
+                        ? "bg-[#1e3a8a] text-white border border-[#1e3a8a] shadow-[4px_6px_14px_rgba(30,58,138,0.35),inset_1.5px_1.5px_3px_rgba(255,255,255,0.35)] font-semibold"
+                        : "text-[#6070b0] hover:text-[#080f2a] hover:bg-[#f0f2ff] hover:border-[#ccd0f4] border border-transparent"
                     }`}
                   >
                     <Icon
                       className={`h-4 w-4 transition-colors shrink-0 ${
-                        isActive ? "text-cyan-400" : "text-slate-400 group-hover:text-cyan-300"
+                        isActive ? "text-white" : "text-[#6070b0] group-hover:text-[#1e3a8a]"
                       }`}
                     />
                     <span className="tracking-wide font-plex-mono text-[11px] truncate">{item.name}</span>
                     {isActive && (
-                      <span className="ml-auto h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] shrink-0" />
+                      <span className="ml-auto h-2 w-2 rounded-full bg-[#dc2626] shadow-[0_0_8px_#dc2626] shrink-0" />
                     )}
                   </Link>
                 );
@@ -447,47 +447,47 @@ export function Sidebar({
         </div>
 
         {/* User Info Pill & Interactive Dropdown Menu Container */}
-        <div className="shrink-0 relative p-3 border-t border-white/[0.08] bg-[#050c1e]" ref={menuRef}>
-          {/* The Rich Popup Dropdown (Matches Image 2) */}
+        <div className="shrink-0 relative p-3 border-t border-[#ccd0f4] bg-[#f4f6ff]" ref={menuRef}>
+          {/* The Rich Popup Dropdown */}
           {isUserMenuOpen && (
-            <div className="absolute bottom-[72px] left-3 right-3 rounded-2xl border border-cyan-500/40 bg-[#0d1a38] p-2.5 shadow-[12px_16px_36px_rgba(2,6,18,0.95),inset_2px_2px_4px_rgba(255,255,255,0.15),inset_-3px_-3px_6px_rgba(0,0,0,0.6)] z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
+            <div className="absolute bottom-[72px] left-3 right-3 rounded-[24px] border border-[#ccd0f4] bg-[#f4f6ff] p-2.5 shadow-[12px_16px_36px_rgba(180,188,232,0.85),inset_2px_2px_4px_rgba(255,255,255,0.9)] z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
               {/* Header: User identity */}
               <div
                 onClick={() => {
                   setIsUserMenuOpen(false);
                   setActiveModal("profile");
                 }}
-                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group"
+                className="flex items-center justify-between p-2.5 rounded-[12px] hover:bg-[#f0f2ff] transition-colors cursor-pointer group"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md border border-cyan-400/30 shrink-0">
+                  <div className="h-9 w-9 rounded-[12px] bg-[#1e3a8a] text-white flex items-center justify-center font-bold text-xs shadow-md border border-[#3b82f6]/40 shrink-0">
                     {getInitials(userName)}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold text-slate-100 truncate group-hover:text-cyan-300 transition-colors">
+                    <p className="text-xs font-semibold text-[#080f2a] truncate group-hover:text-[#1e3a8a] transition-colors">
                       {userName}
                     </p>
-                    <p className="text-[10px] text-slate-400 font-mono truncate">{userRole} &bull; Active</p>
+                    <p className="text-[10px] text-[#6070b0] font-mono truncate">{userRole} &bull; Active</p>
                   </div>
                 </div>
-                <ChevronRight className="h-4 w-4 text-slate-500 group-hover:text-cyan-400 transition-colors shrink-0" />
+                <ChevronRight className="h-4 w-4 text-[#6070b0] group-hover:text-[#1e3a8a] transition-colors shrink-0" />
               </div>
 
-              <div className="h-px bg-white/[0.08] my-1" />
+              <div className="h-px bg-[#ccd0f4] my-1" />
 
               {/* Menu items */}
-              <div className="space-y-0.5 text-xs text-slate-300 font-medium">
+              <div className="space-y-0.5 text-xs text-[#080f2a] font-medium">
                 <button
                   type="button"
                   onClick={() => {
                     setIsUserMenuOpen(false);
                     setActiveModal("upgrade");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-[12px] hover:bg-[#f0f2ff] hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  <Sparkles className="h-4 w-4 text-cyan-400 shrink-0" />
+                  <Sparkles className="h-4 w-4 text-[#1e3a8a] shrink-0" />
                   <span>{t("menu.upgrade", "Upgrade plan")}</span>
-                  <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
+                  <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded-[12px] bg-[#f0f2ff] text-[#1e3a8a] border border-[#b4bce8]">
                     PRO
                   </span>
                 </button>
@@ -498,9 +498,9 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("personalization");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-[12px] hover:bg-[#f0f2ff] hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  <Sliders className="h-4 w-4 text-sky-400 shrink-0" />
+                  <Sliders className="h-4 w-4 text-[#1e3a8a] shrink-0" />
                   <span>{t("menu.personalization", "Personalization")}</span>
                 </button>
 
@@ -510,9 +510,9 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("profile");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-[12px] hover:bg-[#f0f2ff] hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  <User className="h-4 w-4 text-indigo-400 shrink-0" />
+                  <User className="h-4 w-4 text-[#1e3a8a] shrink-0" />
                   <span>{t("menu.profile", "Profile")}</span>
                 </button>
 
@@ -522,13 +522,13 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("settings");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-[12px] hover:bg-[#f0f2ff] hover:text-[#1e3a8a] transition-colors text-left"
                 >
-                  <Settings className="h-4 w-4 text-slate-400 shrink-0" />
+                  <Settings className="h-4 w-4 text-[#6070b0] shrink-0" />
                   <span>{t("menu.settings", "Settings")}</span>
                 </button>
 
-                <div className="h-px bg-white/[0.08] my-1" />
+                <div className="h-px bg-[#ccd0f4] my-1" />
 
                 <button
                   type="button"
@@ -536,13 +536,13 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("help");
                   }}
-                  className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-cyan-300 transition-colors text-left"
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-[12px] hover:bg-[#f0f2ff] hover:text-[#1e3a8a] transition-colors text-left"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src="/bily-avatar.png" alt="Bily" className="h-4 w-4 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(6,182,212,0.8)]" />
-                    <span className="font-semibold text-cyan-300">{t("menu.help", "Help Desk & AI Copilot")}</span>
+                    <img src="/bily-avatar.png" alt="Bily" className="h-4 w-4 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(30,58,138,0.4)]" />
+                    <span className="font-semibold text-[#1e3a8a]">{t("menu.help", "Help Desk & AI Copilot")}</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/30">
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-[12px] bg-[#fdf2f0] text-[#dc2626] border border-[#fca5a5]">
                     BILY
                   </span>
                 </button>
@@ -551,7 +551,7 @@ export function Sidebar({
                   type="button"
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-[12px] hover:bg-[#fdf2f0] text-[#6070b0] hover:text-[#dc2626] transition-colors text-left"
                 >
                   <LogOut className="h-4 w-4 shrink-0" />
                   <span>{isLoggingOut ? t("menu.loggingOut", "Signing out...") : t("menu.logout", "Log out")}</span>
@@ -560,31 +560,31 @@ export function Sidebar({
             </div>
           )}
 
-          {/* The Clickable User Pill Trigger (Matches image 1) */}
+          {/* The Clickable User Pill Trigger */}
           <button
             type="button"
             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-            className={`w-full flex items-center gap-3 p-2 rounded-2xl border transition-all text-left group cursor-pointer ${
+            className={`w-full flex items-center gap-3 p-2 rounded-[12px] border transition-all text-left group cursor-pointer ${
               isUserMenuOpen
-                ? "bg-[#0c1a38] border-cyan-400/50 shadow-[6px_8px_20px_rgba(2,6,18,0.85),inset_2px_2px_4px_rgba(255,255,255,0.18)]"
-                : "bg-[#081329] border-white/10 hover:border-cyan-400/40 hover:bg-[#0c1a38] shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.1),inset_-2px_-2px_4px_rgba(0,0,0,0.45)]"
+                ? "bg-[#e4e7fa] border-[#1e3a8a] shadow-[6px_8px_20px_rgba(180,188,232,0.85),inset_2px_2px_4px_rgba(255,255,255,0.9)]"
+                : "bg-[#f0f2ff] border-[#ccd0f4] hover:border-[#1e3a8a] hover:bg-[#e4e7fa] shadow-[3px_4px_10px_rgba(180,188,232,0.4),inset_1.5px_1.5px_3px_rgba(255,255,255,0.9)]"
             }`}
           >
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-600/40 to-blue-500/30 border border-cyan-500/40 flex items-center justify-center font-bold text-xs text-cyan-300 shadow-inner shrink-0 group-hover:scale-105 transition-transform">
+            <div className="h-9 w-9 rounded-[12px] bg-[#1e3a8a] text-white border border-[#3b82f6]/40 flex items-center justify-center font-bold text-xs shadow-inner shrink-0 group-hover:scale-105 transition-transform">
               {userName ? userName.charAt(0).toUpperCase() : "U"}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold text-slate-100 truncate group-hover:text-cyan-300 transition-colors">
+              <p className="text-xs font-semibold text-[#080f2a] truncate group-hover:text-[#1e3a8a] transition-colors">
                 {userName}
               </p>
               <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/80 border border-cyan-500/30 px-1.5 py-0.2 rounded font-semibold tracking-wider">
+                <span className="text-[10px] font-mono text-[#1e3a8a] bg-[#f4f6ff] border border-[#ccd0f4] px-1.5 py-0.2 rounded-[12px] font-semibold tracking-wider">
                   {userRole}
                 </span>
               </div>
             </div>
             <ChevronDown
-              className={`h-4 w-4 text-slate-400 group-hover:text-cyan-400 transition-transform ${
+              className={`h-4 w-4 text-[#6070b0] group-hover:text-[#1e3a8a] transition-transform ${
                 isUserMenuOpen ? "rotate-180" : ""
               }`}
             />

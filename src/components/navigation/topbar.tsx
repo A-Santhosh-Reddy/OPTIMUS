@@ -54,7 +54,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("toggle-mobile-sidebar"))}
-            className="md:hidden p-2 rounded-xl bg-[#091530] border border-white/10 text-cyan-400 hover:text-white transition-all shrink-0 shadow-[2px_3px_8px_rgba(2,6,18,0.7)]"
+            className="md:hidden p-2 rounded-[12px] bg-[#f0f2ff] border border-[#ccd0f4] text-[#1e3a8a] hover:text-[#080f2a] hover:bg-[#e4e7fa] transition-all shrink-0 shadow-[2px_3px_8px_rgba(180,188,232,0.4)]"
             aria-label="Toggle navigation menu"
           >
             <Menu className="h-4 w-4" />
@@ -63,16 +63,16 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <img
             src="/logo.png"
             alt="OPTIMUS Eagle Shield"
-            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(0,240,255,0.45)] shrink-0"
+            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(30,58,138,0.3)] shrink-0"
           />
-          <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-400 min-w-0">
-            <span className="font-semibold text-slate-100 flex items-center gap-1.5 truncate">
-              <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 hidden sm:block" />
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-[#6070b0] min-w-0">
+            <span className="font-semibold text-[#080f2a] flex items-center gap-1.5 truncate">
+              <ShieldCheck className="h-4 w-4 text-[#1e3a8a] shrink-0 hidden sm:block" />
               <span className="truncate max-w-[110px] sm:max-w-none">{organizationName}</span>
             </span>
-            <span className="text-slate-600 hidden sm:inline">/</span>
-            <span className="text-cyan-400 font-mono text-[10px] sm:text-[11px] bg-[#081d38] px-2 py-0.5 rounded-full border border-cyan-500/40 hidden xs:flex items-center gap-1 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)] shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-[#ccd0f4] hidden sm:inline">/</span>
+            <span className="text-[#1e3a8a] font-mono text-[10px] sm:text-[11px] bg-[#f0f2ff] px-2 py-0.5 rounded-[12px] border border-[#ccd0f4] hidden xs:flex items-center gap-1 shadow-[2px_3px_6px_rgba(180,188,232,0.3),inset_1px_1px_2px_rgba(255,255,255,0.9)] shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#dc2626] animate-pulse" />
               <span className="hidden md:inline">{t("topbar.shield", "CYBER MATRIX SHIELD")}</span>
               <span className="md:hidden">ACTIVE</span>
             </span>
@@ -85,7 +85,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             <button
               type="button"
               onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#091530] border border-white/10 hover:border-cyan-500/50 text-[11px] font-mono text-slate-200 hover:text-cyan-300 transition-all cursor-pointer shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)]"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-[12px] bg-[#f0f2ff] border border-[#ccd0f4] hover:border-[#1e3a8a] text-[11px] font-mono text-[#080f2a] hover:text-[#1e3a8a] transition-all cursor-pointer shadow-[2px_3px_8px_rgba(180,188,232,0.4),inset_1px_1px_2px_rgba(255,255,255,0.9)]"
               title="Change Interface Language / Cambiar Idioma / Changer la Langue / Sprache Ändern"
             >
               <span className="text-xs">{currentOption.flag}</span>
@@ -93,8 +93,8 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             </button>
 
             {isLangMenuOpen && (
-              <div className="absolute right-0 mt-2 w-44 rounded-xl border border-cyan-500/40 bg-[#0d1a38] p-1.5 shadow-[12px_16px_36px_rgba(2,6,18,0.95),inset_2px_2px_4px_rgba(255,255,255,0.12)] z-50 animate-in fade-in zoom-in-95 duration-100">
-                <div className="text-[10px] font-mono text-slate-400 px-2 py-1 uppercase tracking-wider border-b border-white/10">
+              <div className="absolute right-0 mt-2 w-44 rounded-[12px] border border-[#ccd0f4] bg-[#f4f6ff] p-1.5 shadow-[12px_16px_36px_rgba(180,188,232,0.85),inset_2px_2px_4px_rgba(255,255,255,0.9)] z-50 animate-in fade-in zoom-in-95 duration-100">
+                <div className="text-[10px] font-mono text-[#6070b0] px-2 py-1 uppercase tracking-wider border-b border-[#ccd0f4]">
                   Select Language
                 </div>
                 <div className="space-y-0.5 mt-1 font-mono text-xs">
@@ -106,17 +106,17 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
                         setLanguage(l.code);
                         setIsLangMenuOpen(false);
                       }}
-                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-left transition-colors cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-[12px] text-left transition-colors cursor-pointer ${
                         language === l.code
-                          ? "bg-[#091e38] text-cyan-300 font-semibold border border-cyan-500/40 shadow-[2px_3px_8px_rgba(2,6,18,0.6)]"
-                          : "text-slate-300 hover:bg-white/[0.06] hover:text-white"
+                          ? "bg-[#f0f2ff] text-[#1e3a8a] font-semibold border border-[#b4bce8] shadow-[2px_3px_8px_rgba(180,188,232,0.5)]"
+                          : "text-[#080f2a] hover:bg-[#f0f2ff] hover:text-[#1e3a8a]"
                       }`}
                     >
                       <span className="flex items-center gap-2">
                         <span>{l.flag}</span>
                         <span className="text-[11px] font-sans">{l.nativeName}</span>
                       </span>
-                      {language === l.code && <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />}
+                      {language === l.code && <span className="h-1.5 w-1.5 rounded-full bg-[#1e3a8a]" />}
                     </button>
                   ))}
                 </div>
@@ -128,14 +128,14 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <button
             type="button"
             onClick={() => setIsSsrfModalOpen(true)}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#091530] border border-cyan-500/35 text-[11px] text-cyan-300 hover:border-cyan-400 hover:bg-[#0c1f44] shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(0,240,255,0.2),inset_-2px_-2px_4px_rgba(0,0,0,0.45)] transition-all cursor-pointer group"
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-[12px] bg-[#f0f2ff] border border-[#ccd0f4] text-[11px] text-[#1e3a8a] hover:border-[#1e3a8a] hover:bg-[#e4e7fa] shadow-[3px_4px_10px_rgba(180,188,232,0.4),inset_1.5px_1.5px_3px_rgba(255,255,255,0.9)] transition-all cursor-pointer group font-semibold"
             title="Click to view SSRF Protection & Heuristic Engine telemetry"
           >
-            <Terminal className="h-3.5 w-3.5 text-cyan-400 group-hover:rotate-6 transition-transform" />
-            <span className="font-mono text-[10px] tracking-wide font-medium">
+            <Terminal className="h-3.5 w-3.5 text-[#1e3a8a] group-hover:rotate-6 transition-transform" />
+            <span className="font-mono text-[10px] tracking-wide font-medium text-[#080f2a]">
               {t("topbar.ssrfPill", "SSRF-SAFE LEXICAL ANALYSIS")}
             </span>
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
+            <span className="h-1.5 w-1.5 rounded-full bg-[#15803d] animate-pulse ml-0.5" />
           </button>
 
           {/* Real Security Notifications Center */}
@@ -146,7 +146,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
             size="sm"
             onClick={handleLogout}
             isLoading={isLoggingOut}
-            className="text-xs text-slate-300 border-white/[0.1] hover:border-red-500/40 hover:text-red-400 hover:bg-red-950/20"
+            className="text-xs text-[#6070b0] border-[#ccd0f4] hover:border-[#dc2626] hover:text-[#dc2626] hover:bg-[#fdf2f0] rounded-[12px]"
           >
             <LogOut className="h-3.5 w-3.5 mr-1 sm:mr-1.5" />
             <span className="hidden sm:inline">{t("topbar.signOut", "Sign Out")}</span>
