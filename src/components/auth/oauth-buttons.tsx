@@ -174,10 +174,10 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         type="button"
         disabled={isRedirecting || isSubmitting}
         onClick={handleGoogleSignInClick}
-        className="w-full relative flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-slate-700/80 bg-[#0c121e]/95 hover:bg-[#111927] hover:border-cyan-500/50 text-slate-100 text-xs font-semibold shadow-md transition-all hover:shadow-[0_0_16px_rgba(66,133,244,0.25)] active:scale-[0.98] disabled:opacity-60"
+        className="w-full relative flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-white/[0.08] bg-[#0c121e]/95 hover:bg-[#111927] hover:border-blue-500/40 text-slate-100 text-xs font-semibold shadow-md transition-all hover:shadow-[0_0_16px_rgba(37,99,235,0.25)] active:scale-[0.98] disabled:opacity-60"
       >
         {isRedirecting ? (
-          <Loader2 className="h-4 w-4 animate-spin text-cyan-400" />
+          <Loader2 className="h-4 w-4 animate-spin text-sky-400" />
         ) : (
           <GoogleIcon className="h-4 w-4 shrink-0" />
         )}
@@ -215,7 +215,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                   Your Gmail Address
                 </label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400">
                     <Mail className="h-4 w-4" />
                   </div>
                   <input
@@ -226,14 +226,14 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                     required
                     autoFocus
                     autoComplete="email"
-                    className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
+                    className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-blue-500 focus:outline-none font-mono"
                   />
                 </div>
               </div>
 
               <Button
                 type="button"
-                variant="cyan"
+                variant="primary"
                 size="lg"
                 isLoading={isSubmitting}
                 onClick={() => handleSendLink(email)}
@@ -245,7 +245,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
             </div>
           ) : (
             <div className="space-y-3">
-              <div className="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/30 space-y-2">
+              <div className="p-3 rounded-xl bg-[#101a30] border border-blue-500/25 space-y-2">
                 <a
                   href="https://mail.google.com"
                   target="_blank"
@@ -261,7 +261,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                   <div className="text-center pt-1">
                     <a
                       href={directVerifyUrl}
-                      className="text-[11px] text-cyan-400 hover:underline flex items-center justify-center gap-1"
+                      className="text-[11px] text-sky-400 hover:underline flex items-center justify-center gap-1"
                     >
                       <Sparkles className="h-3 w-3" />
                       <span>Or Click Here to Complete Instant Verification</span>
@@ -276,7 +276,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                     Enter 6-Digit Passcode from Email
                   </label>
                   <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400">
                       <KeyRound className="h-4 w-4" />
                     </div>
                     <input
@@ -286,14 +286,14 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                       onChange={(e) => setPasscode(e.target.value.replace(/\D/g, ""))}
                       placeholder="e.g. 748291"
                       required
-                      className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-center text-sm tracking-widest text-cyan-300 focus:border-cyan-500 focus:outline-none font-mono font-bold"
+                      className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-center text-sm tracking-widest text-sky-300 focus:border-blue-500 focus:outline-none font-mono font-bold"
                     />
                   </div>
                 </div>
 
                 <Button
                   type="submit"
-                  variant="cyan"
+                  variant="primary"
                   size="lg"
                   isLoading={isSubmitting}
                   className="w-full text-xs font-semibold"

@@ -217,15 +217,15 @@ Select a prompt below or type your question:`,
             setIsOpen(true);
             setIsMinimized(false);
           }}
-          className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-gradient-to-r from-[#07132b]/95 via-[#0b1c3d]/95 to-[#060f24]/95 border border-cyan-400/50 hover:border-cyan-300 text-white shadow-[0_0_25px_rgba(6,182,212,0.4),inset_0_1px_2px_rgba(255,255,255,0.15)] hover:shadow-[0_0_35px_rgba(6,182,212,0.7)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-gradient-to-r from-[#0d162a]/95 via-[#101b33]/95 to-[#0b1324]/95 border border-blue-500/30 hover:border-blue-400/60 text-white shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_20px_rgba(37,99,235,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
           aria-label="Open Bily AI Threat Copilot"
         >
           {/* Optimus Prime Premium Emblem with Live Radar Dot */}
-          <div className="relative flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-cyan-950/90 to-blue-950/90 border border-cyan-400/60 p-1 shadow-[0_0_15px_rgba(6,182,212,0.5)] group-hover:shadow-[0_0_22px_rgba(6,182,212,0.8)] group-hover:border-cyan-300 transition-all shrink-0">
+          <div className="relative flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 shadow-[0_2px_8px_rgba(37,99,235,0.25)] group-hover:border-blue-400/60 transition-all shrink-0">
             <img
               src="/bily-avatar.png"
               alt="Bily Agent"
-              className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,240,255,0.7)]"
+              className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(37,99,235,0.5)]"
             />
             <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -233,7 +233,7 @@ Select a prompt below or type your question:`,
             </span>
           </div>
 
-          <span className="text-sm font-extrabold tracking-widest font-mono text-cyan-300 group-hover:text-cyan-100 drop-shadow-[0_0_10px_rgba(6,182,212,0.6)]">
+          <span className="text-sm font-extrabold tracking-widest font-mono text-sky-300 group-hover:text-white drop-shadow-[0_1px_4px_rgba(37,99,235,0.4)]">
             BILY
           </span>
         </button>
@@ -242,20 +242,20 @@ Select a prompt below or type your question:`,
       {/* Expanded Floating Chat Panel */}
       {isOpen && (
         <div
-          className={`flex flex-col bg-[#070b18]/95 backdrop-blur-2xl border border-cyan-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(6,182,212,0.2)] rounded-2xl overflow-hidden transition-all duration-300 ${
+          className={`flex flex-col bg-[#0c1220]/95 backdrop-blur-2xl border border-white/[0.1] shadow-[0_24px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(37,99,235,0.15),inset_0_1px_0_rgba(255,255,255,0.08)] rounded-2xl overflow-hidden transition-all duration-300 ${
             isMinimized
               ? "w-80 h-14"
               : "w-[92vw] sm:w-[420px] h-[580px] max-h-[85vh]"
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-[#0a1122]/90 border-b border-cyan-500/30">
+          <div className="flex items-center justify-between px-4 py-3 bg-[#0e1628]/95 border-b border-white/[0.08]">
             <div className="flex items-center gap-2.5">
-              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-cyan-950/90 to-blue-950/90 border border-cyan-400/50 p-1 shadow-[0_0_12px_rgba(6,182,212,0.4)] shrink-0">
+              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 shadow-md shrink-0">
                 <img
                   src="/bily-avatar.png"
                   alt="Bily Agent"
-                  className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,240,255,0.7)]"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(37,99,235,0.5)]"
                 />
                 <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
               </div>
@@ -268,7 +268,7 @@ Select a prompt below or type your question:`,
                     ONLINE
                   </span>
                 </div>
-                <p className="text-[10px] text-cyan-300/80 font-mono">
+                <p className="text-[10px] text-slate-400 font-mono">
                   Autonomous SecOps Copilot
                 </p>
               </div>
@@ -323,8 +323,8 @@ Select a prompt below or type your question:`,
                           "SecOps Analyst"
                         ) : (
                           <>
-                            <img src="/bily-avatar.png" alt="Bily" className="h-3.5 w-3.5 object-contain inline-block filter drop-shadow-[0_1px_3px_rgba(0,240,255,0.6)]" />
-                            <span className="text-cyan-400 font-bold">Bily</span>
+                            <img src="/bily-avatar.png" alt="Bily" className="h-3.5 w-3.5 object-contain inline-block filter drop-shadow-[0_1px_3px_rgba(37,99,235,0.5)]" />
+                            <span className="text-sky-400 font-bold">Bily</span>
                           </>
                         )}
                       </span>
@@ -336,8 +336,8 @@ Select a prompt below or type your question:`,
                     <div
                       className={`relative group max-w-[88%] rounded-2xl p-3 text-xs shadow-md transition-all ${
                         msg.role === "user"
-                          ? "bg-gradient-to-r from-cyan-600/90 to-blue-600/90 text-white rounded-br-sm border border-cyan-400/30"
-                          : "bg-[#0c1426]/90 border border-slate-800 hover:border-cyan-500/30 text-slate-200 rounded-bl-sm"
+                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm border border-blue-400/30"
+                          : "bg-[#0f172a]/90 border border-white/[0.08] hover:border-blue-500/30 text-slate-200 rounded-bl-sm"
                       }`}
                     >
                       {msg.role === "user" ? (
@@ -350,7 +350,7 @@ Select a prompt below or type your question:`,
                       {msg.role === "assistant" && (
                         <button
                           onClick={() => copyToClipboard(msg.id, msg.content)}
-                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-cyan-300 transition-all text-[10px]"
+                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-sky-300 transition-all text-[10px]"
                           title="Copy response"
                         >
                           {copiedId === msg.id ? (
@@ -367,12 +367,12 @@ Select a prompt below or type your question:`,
                 {/* Loading indicator */}
                 {isLoading && (
                   <div className="flex items-start gap-2">
-                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-cyan-950 to-blue-950 border border-cyan-500/40 p-1 flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.4)]">
-                      <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain animate-pulse filter drop-shadow-[0_1px_4px_rgba(0,240,255,0.7)]" />
+                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 flex items-center justify-center shrink-0 shadow-md">
+                      <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain animate-pulse filter drop-shadow-[0_1px_4px_rgba(37,99,235,0.5)]" />
                     </div>
-                    <div className="p-3 rounded-2xl bg-[#0c1426]/90 border border-cyan-500/30 text-slate-300 text-xs flex items-center gap-2">
-                      <Loader2 className="h-3.5 w-3.5 animate-spin text-cyan-400" />
-                      <span className="font-mono text-[11px] text-cyan-300">
+                    <div className="p-3 rounded-2xl bg-[#0f172a]/90 border border-blue-500/30 text-slate-300 text-xs flex items-center gap-2">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin text-sky-400" />
+                      <span className="font-mono text-[11px] text-sky-300">
                         {t("Bily analyzing threat vectors...")}
                       </span>
                     </div>
@@ -384,9 +384,9 @@ Select a prompt below or type your question:`,
 
               {/* Quick Prompts (visible when 2 or fewer messages) */}
               {messages.length <= 3 && !isLoading && (
-                <div className="px-3 py-1.5 bg-[#080d1c]/80 border-t border-slate-800/80">
+                <div className="px-3 py-1.5 bg-[#090e1c]/80 border-t border-white/[0.06]">
                   <p className="text-[10px] text-slate-400 font-mono mb-1.5 flex items-center gap-1">
-                    <Terminal className="h-3 w-3 text-cyan-400" />
+                    <Terminal className="h-3 w-3 text-sky-400" />
                     Recommended queries:
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -394,7 +394,7 @@ Select a prompt below or type your question:`,
                       <button
                         key={i}
                         onClick={() => handleSendMessage(prompt)}
-                        className="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/30 text-cyan-300 hover:text-white transition-all font-mono"
+                        className="text-[10px] px-2.5 py-1 rounded-lg bg-[#0e172a] hover:bg-[#14203a] border border-white/[0.08] hover:border-blue-500/30 text-slate-300 hover:text-sky-300 transition-all font-mono"
                       >
                         {t(prompt)}
                       </button>
@@ -404,7 +404,7 @@ Select a prompt below or type your question:`,
               )}
 
               {/* Chat Input Bar */}
-              <div className="p-3 bg-[#0a1122]/95 border-t border-cyan-500/30">
+              <div className="p-3 bg-[#0e1628]/95 border-t border-white/[0.08]">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -420,12 +420,12 @@ Select a prompt below or type your question:`,
                     onKeyDown={handleKeyDown}
                     disabled={isLoading}
                     placeholder={t("Ask Bily about threats, URLs, or SOC playbooks...")}
-                    className="flex-1 bg-[#050814] border border-slate-700/80 focus:border-cyan-400 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none transition-all font-mono disabled:opacity-50"
+                    className="flex-1 bg-[#090d16] border border-slate-700/80 focus:border-blue-500 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none transition-all font-mono disabled:opacity-50"
                   />
                   <button
                     type="submit"
                     disabled={isLoading || !input.trim()}
-                    className="h-8 w-8 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-cyan-500/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95"
+                    className="h-8 w-8 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95"
                     aria-label="Send message"
                   >
                     {isLoading ? (
@@ -437,7 +437,7 @@ Select a prompt below or type your question:`,
                 </form>
                 <div className="mt-1.5 flex items-center justify-between text-[9px] text-slate-500 font-mono px-1">
                   <span>Press Enter to send</span>
-                  <span className="flex items-center gap-1 text-cyan-400/80">
+                  <span className="flex items-center gap-1 text-sky-400/80">
                     <ShieldAlert className="h-2.5 w-2.5" />
                     Optimus Cyber Copilot
                   </span>

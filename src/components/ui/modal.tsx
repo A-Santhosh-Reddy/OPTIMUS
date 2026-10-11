@@ -47,7 +47,7 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in duration-200">
       <div
-        className={`w-full ${widthClasses} rounded-3xl border border-cyan-500/40 bg-[#0d1a38] p-6 sm:p-7 shadow-[16px_22px_45px_rgba(2,6,18,0.95),inset_2.5px_2.5px_5px_rgba(255,255,255,0.15),inset_-4px_-4px_8px_rgba(0,0,0,0.6)] max-h-[90vh] overflow-y-auto relative`}
+        className={`w-full ${widthClasses} rounded-3xl border border-white/[0.1] bg-[#0e1526] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] max-h-[90vh] overflow-y-auto relative`}
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4 mb-4">
           <div>
@@ -60,7 +60,7 @@ export function Modal({
           </div>
           <button
             onClick={onClose}
-            className="rounded-xl p-1.5 text-slate-400 hover:bg-white/[0.06] hover:text-cyan-300 transition-colors"
+            className="rounded-xl p-1.5 text-slate-400 hover:bg-white/[0.06] hover:text-sky-300 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>

@@ -172,11 +172,11 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
                 <p className="text-emerald-300 font-semibold text-xs mt-0.5">ACTIVE &bull; 100% ONLINE</p>
               </div>
             </div>
-            <div className="p-3 rounded-xl bg-slate-950/60 border border-cyan-500/30 flex items-center gap-2.5">
-              <Lock className="h-4 w-4 text-cyan-400 flex-shrink-0" />
+            <div className="p-3 rounded-xl bg-[#0f172a] border border-blue-500/25 flex items-center gap-2.5">
+              <Lock className="h-4 w-4 text-sky-400 flex-shrink-0" />
               <div>
                 <p className="text-[10px] text-slate-400 uppercase">SSRF Prevention</p>
-                <p className="text-cyan-300 font-semibold text-xs mt-0.5">ZERO OUTBOUND FETCH</p>
+                <p className="text-sky-300 font-semibold text-xs mt-0.5">ZERO OUTBOUND FETCH</p>
               </div>
             </div>
           </div>
@@ -184,15 +184,15 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           {/* Architecture Explanation */}
           <div className="p-4 rounded-xl bg-slate-950/40 border border-white/[0.08] space-y-2 text-xs leading-relaxed text-slate-300">
             <h4 className="font-semibold text-white font-mono flex items-center gap-2 text-xs">
-              <Cpu className="h-4 w-4 text-cyan-400" />
+              <Cpu className="h-4 w-4 text-sky-400" />
               What is SSRF-Safe Lexical Analysis?
             </h4>
             <p>
               Traditional scanners often initiate blind HTTP/GET requests to target URLs, making servers vulnerable to 
-              <span className="text-red-300 font-mono"> Server-Side Request Forgery (SSRF)</span>, internal network port scanning, and cloud metadata theft (such as <code className="text-cyan-300 font-mono">169.254.169.254</code>).
+              <span className="text-red-300 font-mono"> Server-Side Request Forgery (SSRF)</span>, internal network port scanning, and cloud metadata theft (such as <code className="text-sky-300 font-mono">169.254.169.254</code>).
             </p>
             <p>
-              Optimus eliminates this vulnerability by executing <span className="text-cyan-300 font-semibold">100% offline lexical analysis</span>:
+              Optimus eliminates this vulnerability by executing <span className="text-sky-300 font-semibold">100% offline lexical analysis</span>:
             </p>
             <ul className="list-disc list-inside space-y-1 text-slate-400 font-mono text-[11px] pl-1">
               <li><strong className="text-slate-200">Zero Target Connections:</strong> Evaluates target URLs in memory without pinging target IPs.</li>
@@ -214,13 +214,13 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
               Close
             </Button>
             <Button
-              variant="cyan"
+              variant="primary"
               size="sm"
               onClick={() => {
                 setIsSsrfModalOpen(false);
                 router.push("/analyzer");
               }}
-              className="text-xs shadow-liquid-cyan"
+              className="text-xs shadow-md shadow-blue-500/20"
             >
               Open Threat Vector Analyzer
               <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
