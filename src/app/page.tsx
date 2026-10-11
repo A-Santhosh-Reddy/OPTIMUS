@@ -63,9 +63,12 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 min-w-0 group">
-            <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-purple-600 text-white shadow-lg shadow-cyan-500/30 border border-cyan-400/40 group-hover:scale-105 transition-transform">
-              <ShieldAlert className="h-6 w-6 drop-shadow-md" />
-              <div className="absolute inset-0 rounded-2xl bg-white/20 animate-pulse pointer-events-none" />
+            <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl overflow-hidden bg-[#091530] border border-cyan-400/50 shadow-[0_0_18px_rgba(0,240,255,0.35),inset_1.5px_1.5px_3px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform">
+              <img
+                src="/logo.png"
+                alt="OPTIMUS Cyber Defense"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="min-w-0">
               <span className="text-base font-extrabold tracking-wider text-white flex items-center gap-2 font-unbounded">

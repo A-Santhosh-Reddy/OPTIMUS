@@ -156,9 +156,9 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-6 relative z-10">
         {/* Brand Logo Header */}
         <div className="text-center space-y-2.5">
-          <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 text-white shadow-xl shadow-cyan-500/30 border border-cyan-400/40 p-2.5">
-            <ShieldAlert className="h-7 w-7 drop-shadow-md" />
-            <div className="absolute inset-0 rounded-2xl bg-white/20 animate-pulse pointer-events-none" />
+          <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#091530] text-white shadow-xl shadow-cyan-500/30 border border-cyan-400/50 p-1.5 overflow-hidden">
+            <img src="/logo.png" alt="OPTIMUS SOC Defense" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 rounded-2xl bg-cyan-400/10 pointer-events-none" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white font-mono flex items-center justify-center gap-2">
             SOC DEFENSE ACCESS
