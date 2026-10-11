@@ -155,9 +155,9 @@ function LoginForm() {
   };
 
   return (
-    <Card glow="cyber" className="p-5 sm:p-8 backdrop-blur-2xl border-cyan-500/30">
+    <Card glow="none" className="p-5 sm:p-8 backdrop-blur-2xl border-white/[0.08] bg-[#0e1526] shadow-[0_12px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)]">
       {/* Mode Switcher Tabs */}
-      <div className="grid grid-cols-2 gap-2 p-1 bg-black/40 border border-white/10 rounded-xl mb-5 font-mono text-xs">
+      <div className="grid grid-cols-2 gap-2 p-1 bg-[#090f1d] border border-white/[0.08] rounded-xl mb-5 font-mono text-xs">
         <button
           type="button"
           onClick={() => {
@@ -167,7 +167,7 @@ function LoginForm() {
           }}
           className={`py-2 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             authMode === "email-link"
-              ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30"
+              ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30 border border-blue-400/30"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -183,7 +183,7 @@ function LoginForm() {
           }}
           className={`py-2 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             authMode === "password"
-              ? "bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/30"
+              ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30 border border-blue-400/30"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -194,14 +194,14 @@ function LoginForm() {
 
       {/* Global Alerts */}
       {error && (
-        <div className="flex items-start gap-2.5 rounded-xl border border-red-500/40 bg-red-950/60 p-3.5 text-xs text-red-300 backdrop-blur-md mb-4">
+        <div className="flex items-start gap-2.5 rounded-xl border border-red-500/30 bg-red-950/40 p-3.5 text-xs text-red-300 backdrop-blur-md mb-4 shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
           <AlertCircle className="h-4 w-4 shrink-0 text-red-400 mt-0.5" />
           <span className="leading-relaxed">{error}</span>
         </div>
       )}
 
       {successMsg && (
-        <div className="flex items-start gap-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/60 p-3.5 text-xs text-emerald-300 backdrop-blur-md mb-4">
+        <div className="flex items-start gap-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/40 p-3.5 text-xs text-emerald-300 backdrop-blur-md mb-4 shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
           <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
           <span className="leading-relaxed">{successMsg}</span>
         </div>
@@ -217,7 +217,7 @@ function LoginForm() {
                   Your Gmail or Corporate Email
                 </label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400/80">
                     <Mail className="h-4 w-4" />
                   </div>
                   <input
@@ -227,7 +227,7 @@ function LoginForm() {
                     placeholder="name@gmail.com"
                     required
                     autoComplete="email"
-                    className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
+                    className="clay-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
                   />
                 </div>
                 <p className="text-[11px] text-slate-400 mt-1.5 font-sans leading-normal">
@@ -237,10 +237,10 @@ function LoginForm() {
 
               <Button
                 type="submit"
-                variant="cyan"
+                variant="primary"
                 size="lg"
                 isLoading={isSendingLink}
-                className="w-full font-semibold text-xs mt-2 shadow-liquid-cyan"
+                className="w-full font-semibold text-xs mt-2"
               >
                 Send Verification Link to Gmail
                 <ArrowRight className="h-4 w-4 ml-2" />
@@ -249,16 +249,16 @@ function LoginForm() {
           ) : (
             <div className="space-y-4 animate-in fade-in duration-200">
               {/* Quick Actions after link sent */}
-              <div className="p-3.5 rounded-xl bg-cyan-950/30 border border-cyan-500/30 space-y-3">
+              <div className="p-3.5 rounded-xl bg-[#0a1122] border border-blue-500/25 space-y-3">
                 <div className="flex items-center justify-between text-xs text-slate-300 font-mono">
-                  <span>Sent to: <strong className="text-cyan-300">{emailInput}</strong></span>
+                  <span>Sent to: <strong className="text-sky-300">{emailInput}</strong></span>
                   <button
                     type="button"
                     onClick={() => {
                       setIsLinkSent(false);
                       setPasscode("");
                     }}
-                    className="text-[11px] text-cyan-400 hover:underline flex items-center gap-1"
+                    className="text-[11px] text-sky-400 hover:underline flex items-center gap-1"
                   >
                     <RefreshCw className="h-3 w-3" /> Change
                   </button>
@@ -269,7 +269,7 @@ function LoginForm() {
                   href={`https://mail.google.com/mail/u/0/#search/OPTIMUS+verification`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-200 text-xs font-semibold font-mono transition-all"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-red-600/15 hover:bg-red-600/25 border border-red-500/30 text-red-200 text-xs font-semibold font-mono transition-all"
                 >
                   <Mail className="h-4 w-4 text-red-400" />
                   <span>Open Gmail Inbox to Check Link</span>
@@ -278,12 +278,12 @@ function LoginForm() {
 
                 {/* 1-Click Direct Validation Option */}
                 {directVerifyUrl && (
-                  <div className="pt-2 border-t border-white/10 text-center">
+                  <div className="pt-2 border-t border-white/[0.08] text-center">
                     <a
                       href={directVerifyUrl}
-                      className="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 underline font-mono"
+                      className="inline-flex items-center gap-1.5 text-xs text-sky-400 hover:text-sky-300 underline font-mono"
                     >
-                      <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+                      <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                       <span>Or Click Here for Instant 1-Click Verification</span>
                     </a>
                   </div>
@@ -297,7 +297,7 @@ function LoginForm() {
                     Enter 6-Digit Security Passcode
                   </label>
                   <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400/80">
                       <KeyRound className="h-4 w-4" />
                     </div>
                     <input
@@ -307,17 +307,17 @@ function LoginForm() {
                       onChange={(e) => setPasscode(e.target.value.replace(/\D/g, ""))}
                       placeholder="e.g. 748291"
                       required
-                      className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-sm tracking-widest text-center text-cyan-300 placeholder-slate-500 font-mono font-bold"
+                      className="clay-input w-full rounded-xl pl-10 pr-4 py-2.5 text-sm tracking-widest text-center text-sky-300 placeholder-slate-500 font-mono font-bold"
                     />
                   </div>
                 </div>
 
                 <Button
                   type="submit"
-                  variant="cyan"
+                  variant="primary"
                   size="lg"
                   isLoading={isVerifyingCode}
-                  className="w-full font-semibold text-xs shadow-liquid-cyan"
+                  className="w-full font-semibold text-xs"
                 >
                   Verify Code &amp; Enter Console
                   <ShieldCheck className="h-4 w-4 ml-2" />
@@ -336,7 +336,7 @@ function LoginForm() {
               Email Address or Username
             </label>
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400/80">
                 <Mail className="h-4 w-4" />
               </div>
               <input
@@ -346,7 +346,7 @@ function LoginForm() {
                 placeholder="your.email@domain.com"
                 required
                 autoComplete="username"
-                className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
+                className="clay-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
               />
             </div>
           </div>
@@ -356,7 +356,7 @@ function LoginForm() {
               Password
             </label>
             <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400/70">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400/80">
                 <Lock className="h-4 w-4" />
               </div>
               <input
@@ -366,17 +366,17 @@ function LoginForm() {
                 placeholder="Enter your password"
                 required
                 autoComplete="current-password"
-                className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500"
+                className="clay-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500"
               />
             </div>
           </div>
 
           <Button
             type="submit"
-            variant="cyan"
+            variant="primary"
             size="lg"
             isLoading={isPasswordLoading}
-            className="w-full font-semibold text-xs mt-3 shadow-liquid-cyan"
+            className="w-full font-semibold text-xs mt-3"
           >
             Sign In with Password
             <ArrowRight className="h-4 w-4 ml-2" />
@@ -393,9 +393,9 @@ function LoginForm() {
       <div className="mt-6 pt-5 border-t border-white/[0.08] text-center">
         <Link
           href="/register"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-cyan-500/30 bg-cyan-950/20 hover:bg-cyan-900/40 text-xs text-cyan-300 hover:text-cyan-200 transition-all font-mono w-full justify-center"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.08] bg-[#0c1322] hover:bg-[#11192e] hover:border-sky-500/30 text-xs text-slate-300 hover:text-white transition-all font-mono w-full justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
         >
-          <UserPlus className="h-4 w-4 text-cyan-400" />
+          <UserPlus className="h-4 w-4 text-sky-400" />
           <span>Need an account? <span className="underline font-bold text-white">Create New Credentials</span></span>
         </Link>
       </div>
@@ -405,13 +405,13 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-[#050814] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#090d16] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
       {/* Background Liquid Ambient Light Orbs */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="cyber-glow-orb -top-32 -left-32 w-[500px] h-[500px] bg-cyan-500/20" />
-        <div className="cyber-glow-orb top-1/2 -right-40 w-[550px] h-[550px] bg-blue-600/15" />
-        <div className="cyber-glow-orb -bottom-40 left-1/3 w-[500px] h-[500px] bg-indigo-600/20" />
-        <div className="absolute inset-0 cyber-grid-overlay opacity-30" />
+        <div className="cyber-glow-orb -top-32 -left-32 w-[500px] h-[500px] bg-blue-600/10" />
+        <div className="cyber-glow-orb top-1/2 -right-40 w-[550px] h-[550px] bg-sky-500/08" />
+        <div className="cyber-glow-orb -bottom-40 left-1/3 w-[500px] h-[500px] bg-blue-700/08" />
+        <div className="absolute inset-0 cyber-grid-overlay opacity-20" />
       </div>
 
       <div className="w-full max-w-md space-y-6 relative z-10">
@@ -421,20 +421,20 @@ export default function LoginPage() {
             <img
               src="/logo.png"
               alt="OPTIMUS Cyber Defense"
-              className="h-full w-full object-contain filter drop-shadow-[0_4px_16px_rgba(0,240,255,0.45)]"
+              className="h-full w-full object-contain filter drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]"
             />
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono flex items-center justify-center gap-2">
             CYBER DEFENSE LOGIN
           </h1>
-          <p className="text-xs text-cyan-300/80 font-sans max-w-sm mx-auto leading-relaxed">
+          <p className="text-xs text-slate-400 font-sans max-w-sm mx-auto leading-relaxed">
             Secure login with instant Gmail verification link, 6-digit passcode, or console credentials
           </p>
         </div>
 
         <Suspense
           fallback={
-            <div className="p-8 text-center text-xs font-mono text-cyan-400">Loading secure access...</div>
+            <div className="p-8 text-center text-xs font-mono text-sky-400">Loading secure access...</div>
           }
         >
           <LoginForm />

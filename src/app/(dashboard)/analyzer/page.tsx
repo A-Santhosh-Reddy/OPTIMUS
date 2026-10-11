@@ -41,7 +41,7 @@ export default function AnalyzerPage() {
     <div className="space-y-8 animate-in fade-in duration-300">
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
+          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-300">
             OFFLINE LEXICAL ENGINE
           </span>
         </div>
@@ -60,14 +60,14 @@ export default function AnalyzerPage() {
 
       {/* Loading Skeleton */}
       {isLoading && (
-        <div className="space-y-4 rounded-2xl border border-cyan-500/30 liquid-glass-card p-10 text-center animate-pulse">
-          <div className="relative h-12 w-12 mx-auto rounded-2xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-liquid-cyan">
+        <div className="space-y-4 rounded-2xl border border-sky-500/30 liquid-glass-card p-10 text-center animate-pulse">
+          <div className="relative h-12 w-12 mx-auto rounded-2xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400 shadow-lg shadow-blue-500/20">
             <Search className="h-6 w-6 animate-spin" />
           </div>
           <h3 className="text-sm font-semibold text-slate-100 font-mono tracking-wide">
             Executing Multi-Layer Threat Heuristics & Brand Shields...
           </h3>
-          <p className="text-xs text-cyan-300/60 font-mono">
+          <p className="text-xs text-sky-300/70 font-mono">
             Evaluating Shannon Entropy &bull; Levenshtein Edit Distance &bull; Homoglyph Normalization
           </p>
         </div>
