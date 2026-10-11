@@ -143,7 +143,7 @@ export default function AnalyticsDashboardPage() {
 
       {/* Charts Area */}
       {isLoading ? (
-        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-16 text-center animate-pulse hud-corner">
+        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-16 text-center animate-pulse">
           <TrendingUp className="h-10 w-10 mx-auto text-cyan-400 animate-pulse mb-3" />
           <h3 className="text-sm font-semibold text-slate-100 font-mono tracking-wide">
             Aggregating SOC Historical Telemetry...

@@ -60,7 +60,6 @@ export function MetricCard({
   const content = (
     <Card
       glow={variantStyles.glow}
-      hudCorner={true}
       className={`relative overflow-hidden group transition-all duration-200 h-full flex flex-col justify-between ${
         href ? `cursor-pointer ${variantStyles.hoverBorder} hover:-translate-y-1 hover:shadow-xl` : ""
       }`}

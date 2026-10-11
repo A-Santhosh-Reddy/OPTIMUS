@@ -67,7 +67,7 @@ export default function BatchScannerPage() {
       </div>
 
       {/* Upload & Form Card */}
-      <Card glow="cyber" hudCorner={true}>
+      <Card glow="cyber">
         <BatchUpload onStartScan={handleStartScan} isLoading={isLoading} />
       </Card>
 
@@ -80,7 +80,7 @@ export default function BatchScannerPage() {
 
       {/* Loading State */}
       {isLoading && (
-        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-12 text-center animate-pulse hud-corner">
+        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-12 text-center animate-pulse">
           <Layers className="h-10 w-10 mx-auto text-cyan-400 animate-spin mb-3" />
           <h3 className="text-sm font-semibold text-slate-100 font-mono tracking-wide">
             Processing Parallel Batches (10 URLs/chunk)...

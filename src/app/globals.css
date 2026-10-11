@@ -373,34 +373,7 @@
   will-change: transform;
 }
 
-/* Cyber HUD Corner Brackets */
-.hud-corner {
-  position: relative;
-}
 
-.hud-corner::before,
-.hud-corner::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: rgba(6, 182, 212, 0.65);
-  pointer-events: none;
-}
-
-.hud-corner::before {
-  top: 0;
-  left: 0;
-  border-top: 2px solid rgba(34, 211, 238, 0.85);
-  border-left: 2px solid rgba(34, 211, 238, 0.85);
-}
-
-.hud-corner::after {
-  bottom: 0;
-  right: 0;
-  border-bottom: 2px solid rgba(34, 211, 238, 0.85);
-  border-right: 2px solid rgba(34, 211, 238, 0.85);
-}
 
 /* Scanning Line Animation */
 @keyframes cyberScan {

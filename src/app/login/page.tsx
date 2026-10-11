@@ -155,7 +155,7 @@ function LoginForm() {
   };
 
   return (
-    <Card glow="cyber" hudCorner={true} className="p-5 sm:p-8 backdrop-blur-2xl border-cyan-500/30">
+    <Card glow="cyber" className="p-5 sm:p-8 backdrop-blur-2xl border-cyan-500/30">
       {/* Mode Switcher Tabs */}
       <div className="grid grid-cols-2 gap-2 p-1 bg-black/40 border border-white/10 rounded-xl mb-5 font-mono text-xs">
         <button

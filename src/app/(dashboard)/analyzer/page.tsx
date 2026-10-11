@@ -54,13 +54,13 @@ export default function AnalyzerPage() {
       </div>
 
       {/* Analysis Input Form in Liquid Glass */}
-      <Card glow="cyber" hudCorner={true}>
+      <Card glow="cyber">
         <UrlAnalyzerForm onAnalyze={handleAnalyze} isLoading={isLoading} />
       </Card>
 
       {/* Loading Skeleton */}
       {isLoading && (
-        <div className="space-y-4 rounded-2xl border border-cyan-500/30 liquid-glass-card p-10 text-center animate-pulse hud-corner">
+        <div className="space-y-4 rounded-2xl border border-cyan-500/30 liquid-glass-card p-10 text-center animate-pulse">
           <div className="relative h-12 w-12 mx-auto rounded-2xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-liquid-cyan">
             <Search className="h-6 w-6 animate-spin" />
           </div>

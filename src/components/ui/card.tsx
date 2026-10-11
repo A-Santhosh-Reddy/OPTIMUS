@@ -25,7 +25,7 @@ export function Card({
 
   return (
     <div
-      className={`rounded-2xl p-6 transition-all duration-300 ${glowClasses} ${hudCorner ? "hud-corner" : ""} ${className}`}
+      className={`rounded-2xl p-6 transition-all duration-300 ${glowClasses} ${className}`}
       {...props}
     >
       {children}

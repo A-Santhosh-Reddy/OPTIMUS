@@ -541,7 +541,7 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {/* 1. Fake Website Scanner */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-cyan-400 flex flex-col justify-between ${getCardClasses("border-cyan-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-cyan-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 flex items-center justify-center">
@@ -571,7 +571,7 @@ export default function LandingPage() {
           </div>
 
           {/* 2. Brand & Logo Defense */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-purple-400 flex flex-col justify-between ${getCardClasses("border-purple-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-purple-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-purple-950/80 border border-purple-500/30 text-purple-400 flex items-center justify-center">
@@ -601,7 +601,7 @@ export default function LandingPage() {
           </div>
 
           {/* 3. Phishing Email Inspector */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-pink-500 flex flex-col justify-between ${getCardClasses("border-pink-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-pink-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-pink-950/80 border border-pink-500/30 text-pink-400 flex items-center justify-center">
@@ -631,7 +631,7 @@ export default function LandingPage() {
           </div>
 
           {/* 4. Domain & WHOIS Explorer */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-amber-400 flex flex-col justify-between ${getCardClasses("border-amber-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-amber-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-amber-950/80 border border-amber-500/30 text-amber-400 flex items-center justify-center">
@@ -661,7 +661,7 @@ export default function LandingPage() {
           </div>
 
           {/* 5. Stolen Password & Dark Web Watch */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-red-500 flex flex-col justify-between ${getCardClasses("border-red-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-red-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-red-950/80 border border-red-500/30 text-red-400 flex items-center justify-center">
@@ -691,7 +691,7 @@ export default function LandingPage() {
           </div>
 
           {/* 6. BILY AI Assistant */}
-          <div className={`rounded-3xl p-6 sm:p-7 border-t-4 border-t-emerald-400 flex flex-col justify-between ${getCardClasses("border-emerald-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-emerald-500/40")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="h-10 w-10 rounded-xl bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 flex items-center justify-center">

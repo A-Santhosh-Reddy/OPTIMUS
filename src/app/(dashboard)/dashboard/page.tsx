@@ -164,7 +164,7 @@ export default function DashboardPage() {
       />
 
       {/* Recent Analysis Activity Table */}
-      <Card glow="cyber" hudCorner={true}>
+      <Card glow="cyber">
         <CardHeader
           title={t("Recent Threat Telemetry Stream")}
           description={t("Latest digital assets evaluated by the heuristic and brand protection engine")}

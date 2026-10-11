@@ -108,7 +108,7 @@ export default function FindingsPage() {
 
       {/* Selected Detail View Overlay / Panel in Liquid Glass */}
       {selectedAnalysis && (
-        <div className="space-y-4 rounded-2xl border border-cyan-500/40 liquid-glass-card p-6 shadow-liquid-cyan hud-corner">
+        <div className="space-y-4 rounded-2xl border border-cyan-500/40 liquid-glass-card p-6 shadow-liquid-cyan">
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <h2 className="text-base font-bold text-white flex items-center gap-2 font-mono">
               <ShieldAlert className="h-5 w-5 text-cyan-400" />
@@ -128,7 +128,7 @@ export default function FindingsPage() {
       )}
 
       {/* Filter & Search Bar in Liquid Glass */}
-      <Card glow="cyan" hudCorner={true}>
+      <Card glow="cyan">
         <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
             <Search className="h-4 w-4 absolute inset-y-0 left-3.5 my-auto text-cyan-400" />

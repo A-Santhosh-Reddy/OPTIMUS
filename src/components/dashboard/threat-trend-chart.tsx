@@ -35,7 +35,7 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Risk Distribution Bar Chart */}
-      <Card glow="blue" hudCorner={true}>
+      <Card glow="blue">
         <CardHeader
           title={t("Risk Level Distribution")}
           description={t("Distribution of analyzed digital assets across composite risk tiers")}
@@ -80,7 +80,7 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
       </Card>
 
       {/* Detection Signal Category Stats */}
-      <Card glow="cyan" hudCorner={true}>
+      <Card glow="cyan">
         <CardHeader
           title={t("Threat Indicators by Category")}
           description={t("Breakdown of specific heuristic and brand impersonation signals")}

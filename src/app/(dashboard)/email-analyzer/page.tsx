@@ -115,7 +115,7 @@ export default function EmailAnalyzerPage() {
       </div>
 
       {/* Input Card */}
-      <Card glow="cyber" hudCorner={true}>
+      <Card glow="cyber">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <label className="text-xs font-semibold text-slate-200 font-mono flex items-center gap-2">
@@ -189,7 +189,7 @@ export default function EmailAnalyzerPage() {
 
       {/* Loading Skeleton */}
       {isLoading && (
-        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-10 text-center animate-pulse hud-corner">
+        <div className="rounded-2xl border border-cyan-500/30 liquid-glass-card p-10 text-center animate-pulse">
           <Mail className="h-10 w-10 mx-auto text-cyan-400 animate-bounce mb-3" />
           <h3 className="text-sm font-semibold text-slate-100 font-mono tracking-wide">
             Deconstructing Authentication & Transport Topology...

@@ -67,7 +67,7 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        <Card glow="cyber" hudCorner={true} className="p-8 backdrop-blur-2xl border-cyan-500/30">
+        <Card glow="cyber" className="p-8 backdrop-blur-2xl border-cyan-500/30">
           <form onSubmit={handleRegister} className="space-y-4">
             {error && (
               <div className="flex items-center gap-2 rounded-xl border border-red-500/40 bg-red-950/50 p-3.5 text-xs text-red-300 backdrop-blur-md">
