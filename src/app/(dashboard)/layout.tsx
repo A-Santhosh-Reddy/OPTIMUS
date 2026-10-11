@@ -16,20 +16,24 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex relative overflow-hidden font-sans">
-      {/* Precision Ambient Atmosphere */}
+    <div className="min-h-screen bg-[#030712] text-slate-100 flex relative overflow-hidden font-sans">
+      {/* Precision Ambient Aurora Atmosphere */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Subtle Atmospheric Cobalt & Titanium Glows */}
-        <div className="cyber-glow-orb -top-28 -left-28 w-[750px] h-[750px] bg-blue-600/10 blur-[130px]" />
-        <div className="cyber-glow-orb top-1/4 -right-40 w-[850px] h-[850px] bg-sky-500/08 blur-[140px]" />
-        <div className="cyber-glow-orb -bottom-32 left-1/3 w-[800px] h-[800px] bg-indigo-600/06 blur-[140px]" />
+        {/* Northern Lights - Ribbon 1: Luminous Emerald & Mint */}
+        <div className="cyber-glow-orb -top-28 -left-28 w-[750px] h-[750px] bg-emerald-500/18 blur-[140px] animate-aurora-1" />
+        
+        {/* Northern Lights - Ribbon 2: Royal Indigo & Violet */}
+        <div className="cyber-glow-orb top-1/4 -right-40 w-[850px] h-[850px] bg-indigo-600/18 blur-[150px] animate-aurora-2" />
+        
+        {/* Northern Lights - Ribbon 3: Arctic Teal */}
+        <div className="cyber-glow-orb -bottom-32 left-1/3 w-[800px] h-[800px] bg-teal-500/15 blur-[135px] animate-aurora-3" />
 
         {/* Refined Hairline Grid Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:48px_48px] opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)]" />
 
         {/* Precision Defense Radar Shield Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] pointer-events-none opacity-[0.08] animate-shield-pulse">
-          <svg viewBox="0 0 400 400" className="w-full h-full text-blue-400">
+          <svg viewBox="0 0 400 400" className="w-full h-full text-teal-400">
             {/* Concentric Defense Radar Rings */}
             <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="6 6" className="opacity-40" />
             <circle cx="200" cy="200" r="140" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />

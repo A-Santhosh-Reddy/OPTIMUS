@@ -31,13 +31,13 @@ import { Button } from "@/components/ui/button";
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Obsidian Cobalt & Stealth Titanium Card styling
+  // Aurora Borealis Frosted Glass Card styling
   const getCardClasses = (accentBorder?: string) => {
-    return `bg-[#0e1526] border ${accentBorder || "border-white/[0.08]"} rounded-3xl shadow-[0_4px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] hover:shadow-[0_8px_32px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.12)] hover:-translate-y-1 transition-all duration-300`;
+    return `aurora-card backdrop-blur-2xl bg-[#0c1428]/75 border ${accentBorder || "border-white/[0.08]"} rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-emerald-500/35 hover:shadow-[0_16px_48px_rgba(0,0,0,0.7),0_0_32px_rgba(20,184,166,0.15),inset_0_1px_0_rgba(255,255,255,0.18)] hover:-translate-y-1 transition-all duration-300`;
   };
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 selection:bg-blue-600 selection:text-white relative overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[#030712] text-slate-100 selection:bg-teal-500/30 selection:text-teal-200 relative overflow-x-hidden font-sans">
       {/* Google Fonts Preconnect & Stylesheet */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Unbounded:wght@400;600;700;800;900&display=swap');
@@ -53,16 +53,26 @@ export default function LandingPage() {
         }
       `}</style>
 
-      {/* Titanium Grid & Subtle Ambient Glow Orbs */}
+      {/* Northern Lights (Aurora Borealis) Ambient Atmospheric Curtains */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:40px_40px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_80%)]" />
-        <div className="cyber-glow-orb -top-32 -left-32 w-[600px] h-[600px] bg-blue-600/10" />
-        <div className="cyber-glow-orb top-1/3 -right-40 w-[650px] h-[650px] bg-sky-500/08" />
-        <div className="cyber-glow-orb -bottom-40 left-1/4 w-[600px] h-[600px] bg-blue-700/08" />
+        {/* Aurora Ribbon 1: Luminous Mint & Emerald glow */}
+        <div className="absolute -top-[15%] left-[8%] w-[750px] h-[600px] rounded-full bg-gradient-to-br from-emerald-500/22 via-teal-400/20 to-transparent blur-[140px] animate-aurora-1" />
+
+        {/* Aurora Ribbon 2: Royal Indigo & Electric Violet glow */}
+        <div className="absolute top-[28%] -right-[12%] w-[800px] h-[700px] rounded-full bg-gradient-to-bl from-indigo-500/25 via-purple-600/20 to-transparent blur-[150px] animate-aurora-2" />
+
+        {/* Aurora Ribbon 3: Deep Arctic Cyan & Teal glow */}
+        <div className="absolute -bottom-[10%] left-[20%] w-[850px] h-[650px] rounded-full bg-gradient-to-tr from-teal-500/20 via-cyan-500/16 to-transparent blur-[140px] animate-aurora-3" />
+
+        {/* Subtle Cyber Starlight Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)]" />
+
+        {/* Soft Vignette Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(3,7,18,0.5)_100%)]" />
       </div>
 
       {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#090d16]/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#030712]/80 backdrop-blur-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 min-w-0 group">
@@ -70,13 +80,13 @@ export default function LandingPage() {
               <img
                 src="/logo.png"
                 alt="OPTIMUS Cyber Defense"
-                className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(37,99,235,0.4)]"
+                className="h-full w-full object-contain filter drop-shadow-[0_2px_12px_rgba(20,184,166,0.5)]"
               />
             </div>
             <div className="min-w-0">
               <span className="text-sm sm:text-base font-extrabold tracking-wider text-white flex items-center gap-1.5 sm:gap-2 font-unbounded">
                 OPTIMUS{" "}
-                <span className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-md bg-blue-950/80 text-sky-400 border border-blue-500/30 shadow-sm shadow-blue-500/20 font-plex-mono font-semibold">
+                <span className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 shadow-sm shadow-emerald-500/20 font-plex-mono font-semibold">
                   DRP
                 </span>
               </span>
@@ -88,16 +98,16 @@ export default function LandingPage() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7 font-plex-mono text-xs text-slate-300">
-            <a href="#about" className="hover:text-sky-400 transition-colors">
+            <a href="#about" className="hover:text-teal-300 transition-colors">
               About
             </a>
-            <a href="#how-it-works" className="hover:text-sky-400 transition-colors">
+            <a href="#how-it-works" className="hover:text-teal-300 transition-colors">
               How It Works
             </a>
-            <a href="#features" className="hover:text-sky-400 transition-colors">
+            <a href="#features" className="hover:text-teal-300 transition-colors">
               Features
             </a>
-            <a href="#benefits" className="hover:text-sky-400 transition-colors">
+            <a href="#benefits" className="hover:text-teal-300 transition-colors">
               Benefits
             </a>
           </nav>
@@ -127,7 +137,7 @@ export default function LandingPage() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl bg-[#0e1628] border border-white/[0.08] text-sky-400 hover:text-white transition-colors"
+              className="lg:hidden p-2 rounded-xl bg-[#091428] border border-white/[0.08] text-teal-400 hover:text-white transition-colors"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -187,16 +197,16 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Hero Left Content */}
           <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-500/25 bg-blue-950/40 text-sky-300 text-xs font-plex-mono backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-emerald-300 text-xs font-plex-mono backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.15)]">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-semibold tracking-wide text-[11px] sm:text-xs">
-                CYBER DEFENSE SYSTEM &bull; LIVE PROTECTION
+                AURORA CYBER DEFENSE &bull; REAL-TIME INTELLIGENCE
               </span>
             </div>
 
             <h1 className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.15] font-unbounded">
               Protect Your Website, Brand &amp; Links from{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-400 drop-shadow-[0_2px_20px_rgba(37,99,235,0.35)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300 drop-shadow-[0_2px_24px_rgba(16,185,129,0.35)]">
                 Cyber Threats
               </span>
             </h1>
@@ -230,44 +240,45 @@ export default function LandingPage() {
 
           {/* Hero Right: Live Threat Telemetry Console Panel */}
           <div className="lg:col-span-5 w-full">
-            <div className={`rounded-3xl p-5 sm:p-7 relative overflow-hidden ${getCardClasses("border-blue-500/25")}`}>
-              {/* Scan Beam Effect */}
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 opacity-80" />
+            <div className={`rounded-3xl p-5 sm:p-7 relative overflow-hidden ${getCardClasses("border-emerald-500/30 hover:border-emerald-400/50 shadow-[0_20px_50px_rgba(3,7,18,0.85),0_0_40px_rgba(16,185,129,0.1)]")}`}>
+              {/* Scan Beam Effect with Aurora colors */}
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-500 opacity-90 shadow-[0_0_12px_rgba(20,184,166,0.6)]" />
 
               <div className="flex items-center justify-between pb-3.5 border-b border-white/[0.08]">
                 <div className="flex items-center gap-2.5">
-                  <div className="h-8 w-8 rounded-lg bg-[#101728] border border-white/[0.08] flex items-center justify-center text-sky-400 shrink-0">
+                  <div className="h-8 w-8 rounded-lg bg-[#071318] border border-teal-500/30 flex items-center justify-center text-teal-400 shrink-0 shadow-[0_0_12px_rgba(20,184,166,0.2)]">
                     <Activity className="h-4 w-4" />
                   </div>
                   <div>
                     <h3 className="text-xs font-bold text-white font-unbounded">LIVE LINK SAFETY SCANNER</h3>
-                    <p className="text-[10px] font-plex-mono text-sky-400">INSTANT CHECKS &bull; ZERO RISK</p>
+                    <p className="text-[10px] font-plex-mono text-teal-400">INSTANT CHECKS &bull; ZERO RISK</p>
                   </div>
                 </div>
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
               </div>
 
               {/* Risk Gauge Header */}
-              <div className="my-4 sm:my-5 p-3.5 sm:p-4 rounded-2xl bg-[#090f1d] border border-white/[0.08] flex items-center gap-3.5 sm:gap-4 relative overflow-hidden">
+              <div className="my-4 sm:my-5 p-3.5 sm:p-4 rounded-2xl bg-[#06101c]/80 border border-white/[0.08] flex items-center gap-3.5 sm:gap-4 relative overflow-hidden backdrop-blur-xl">
                 <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 flex items-center justify-center">
                   <svg className="w-full h-full -rotate-90" viewBox="0 0 64 64">
-                    <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="5" />
+                    <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="5" />
                     <circle
                       cx="32"
                       cy="32"
                       r="26"
                       fill="none"
-                      stroke="url(#risk-grad)"
+                      stroke="url(#risk-grad-aurora)"
                       strokeWidth="5"
                       strokeDasharray="163"
                       strokeDashoffset="20"
                       strokeLinecap="round"
                     />
                     <defs>
-                      <linearGradient id="risk-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#38bdf8" />
-                        <stop offset="50%" stopColor="#6366f1" />
-                        <stop offset="100%" stopColor="#ef4444" />
+                      <linearGradient id="risk-grad-aurora" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#10b981" />
+                        <stop offset="40%" stopColor="#14b8a6" />
+                        <stop offset="70%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#f43f5e" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -285,7 +296,7 @@ export default function LandingPage() {
               {/* 4 Live Telemetry Findings */}
               <div className="space-y-2 sm:space-y-2.5 font-plex-mono">
                 {/* 1. Critical */}
-                <div className="p-2.5 sm:p-3 rounded-xl bg-[#090f1d] border border-rose-500/25 flex items-center justify-between gap-2.5 text-xs">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-[#091424]/75 border border-rose-500/25 flex items-center justify-between gap-2.5 text-xs backdrop-blur-md">
                   <div className="min-w-0">
                     <div className="font-semibold text-slate-200 truncate text-[11px] sm:text-xs">
                       paypaI-security-login.com
@@ -300,7 +311,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* 2. Review */}
-                <div className="p-2.5 sm:p-3 rounded-xl bg-[#090f1d] border border-amber-500/25 flex items-center justify-between gap-2.5 text-xs">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-[#091424]/75 border border-amber-500/25 flex items-center justify-between gap-2.5 text-xs backdrop-blur-md">
                   <div className="min-w-0">
                     <div className="font-semibold text-slate-200 truncate text-[11px] sm:text-xs">
                       optimus-support-fake.net
@@ -315,7 +326,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* 3. Matched */}
-                <div className="p-2.5 sm:p-3 rounded-xl bg-[#090f1d] border border-purple-500/25 flex items-center justify-between gap-2.5 text-xs">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-[#091424]/75 border border-purple-500/25 flex items-center justify-between gap-2.5 text-xs backdrop-blur-md">
                   <div className="min-w-0">
                     <div className="font-semibold text-slate-200 truncate text-[11px] sm:text-xs">
                       pastebin.com/raw/leak
@@ -330,7 +341,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* 4. Clear */}
-                <div className="p-2.5 sm:p-3 rounded-xl bg-[#090f1d] border border-emerald-500/25 flex items-center justify-between gap-2.5 text-xs">
+                <div className="p-2.5 sm:p-3 rounded-xl bg-[#091424]/75 border border-emerald-500/25 flex items-center justify-between gap-2.5 text-xs backdrop-blur-md">
                   <div className="min-w-0">
                     <div className="font-semibold text-slate-200 truncate text-[11px] sm:text-xs">
                       optimus-drp.io
@@ -349,29 +360,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Key Stats Row (Clean & Mobile-Compact) */}
+      {/* Key Stats Row (Clean, Mobile-Compact, Aurora Palette) */}
       <section className="py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
-        <div className={`rounded-3xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 ${getCardClasses()}`}>
+        <div className={`rounded-3xl p-5 sm:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 ${getCardClasses("border-emerald-500/25 shadow-[0_16px_40px_rgba(3,7,18,0.7),0_0_30px_rgba(16,185,129,0.06)]")}`}>
           <div className="text-center p-2">
-            <p className="text-2xl sm:text-4xl font-extrabold text-sky-400 font-unbounded">100+</p>
+            <p className="text-2xl sm:text-4xl font-extrabold text-emerald-400 font-unbounded drop-shadow-[0_0_12px_rgba(16,185,129,0.3)]">100+</p>
             <p className="text-[11px] sm:text-xs font-plex-mono text-slate-400 uppercase tracking-wider mt-1">
               Attacks Stopped
             </p>
           </div>
           <div className="text-center p-2">
-            <p className="text-2xl sm:text-4xl font-extrabold text-blue-400 font-unbounded">24/7</p>
+            <p className="text-2xl sm:text-4xl font-extrabold text-teal-300 font-unbounded drop-shadow-[0_0_12px_rgba(20,184,166,0.3)]">24/7</p>
             <p className="text-[11px] sm:text-xs font-plex-mono text-slate-400 uppercase tracking-wider mt-1">
               Active Monitoring
             </p>
           </div>
           <div className="text-center p-2">
-            <p className="text-2xl sm:text-4xl font-extrabold text-emerald-400 font-unbounded">&lt; 10s</p>
+            <p className="text-2xl sm:text-4xl font-extrabold text-cyan-400 font-unbounded drop-shadow-[0_0_12px_rgba(6,182,212,0.3)]">&lt; 10s</p>
             <p className="text-[11px] sm:text-xs font-plex-mono text-slate-400 uppercase tracking-wider mt-1">
               Instant Scan Time
             </p>
           </div>
           <div className="text-center p-2">
-            <p className="text-2xl sm:text-4xl font-extrabold text-indigo-400 font-unbounded">0 - 100</p>
+            <p className="text-2xl sm:text-4xl font-extrabold text-indigo-400 font-unbounded drop-shadow-[0_0_12px_rgba(99,102,241,0.3)]">0 - 100</p>
             <p className="text-[11px] sm:text-xs font-plex-mono text-slate-400 uppercase tracking-wider mt-1">
               Simple Risk Score
             </p>
@@ -379,10 +390,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* About Section (Simple Explanations) */}
+      {/* About Section (Simple Explanations, Aurora Glow) */}
       <section id="about" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="text-xs font-plex-mono text-sky-400 uppercase tracking-widest block mb-2 font-semibold">
+          <span className="text-xs font-plex-mono text-emerald-400 uppercase tracking-widest block mb-2 font-semibold">
             About OPTIMUS
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-unbounded">
@@ -393,16 +404,16 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className={`rounded-3xl p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center ${getCardClasses()}`}>
+        <div className={`rounded-3xl p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center ${getCardClasses("border-teal-500/25")}`}>
           <div className="space-y-5">
-            <h3 className="text-lg sm:2xl font-bold text-white font-unbounded">
+            <h3 className="text-lg sm:text-2xl font-bold text-white font-unbounded">
               Stopping Scams Before They Reach Your Users
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-plex-sans">
               Most phishing attacks and online fraud don't hack your server directly. Instead, scammers buy similar domain names, copy your website logo, and send fake links to your customers.
             </p>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-plex-sans">
-              <strong className="text-sky-400 font-semibold">OPTIMUS Digital Risk Protection</strong> watches the entire internet 24/7. When someone registers a fake copy of your website or leaks your credentials, you get an instant alert and a ready-to-use takedown report.
+              <strong className="text-emerald-300 font-semibold">OPTIMUS Digital Risk Protection</strong> watches the entire internet 24/7. When someone registers a fake copy of your website or leaks your credentials, you get an instant alert and a ready-to-use takedown report.
             </p>
             <div className="space-y-2.5 pt-2 font-plex-sans text-xs sm:text-sm">
               <div className="flex items-start gap-2.5">
@@ -420,8 +431,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Simple Visual Diagram */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-[#0a0f1d] border border-white/[0.08] space-y-3.5">
+          {/* Simple Visual Diagram with Aurora accents */}
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#06101c]/90 border border-white/[0.08] space-y-3.5 backdrop-blur-xl">
             <div className="text-[10px] sm:text-[11px] font-plex-mono text-slate-400 uppercase tracking-widest text-center">
               The Threat Lifecycle
             </div>
@@ -436,10 +447,10 @@ export default function LandingPage() {
                 Leaked Data
               </div>
             </div>
-            <div className="text-center text-xs font-plex-mono text-sky-400 py-1 font-semibold flex items-center justify-center gap-2">
+            <div className="text-center text-xs font-plex-mono text-teal-300 py-1 font-semibold flex items-center justify-center gap-2">
               <span>&darr;</span> Blocked &amp; Reported by OPTIMUS <span>&darr;</span>
             </div>
-            <div className="p-3 sm:p-4 rounded-xl border border-dashed border-emerald-500/40 bg-[#0c1628] text-center">
+            <div className="p-3 sm:p-4 rounded-xl border border-dashed border-emerald-500/40 bg-[#081b22]/70 text-center shadow-[inset_0_0_20px_rgba(16,185,129,0.1)]">
               <div className="text-xs font-plex-mono text-emerald-400 font-bold uppercase tracking-wider mb-1">
                 Your Protected Organization
               </div>
@@ -451,10 +462,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works (3 Easy Steps) */}
+      {/* How It Works (3 Easy Steps, Aurora Aurora gradient stages) */}
       <section id="how-it-works" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="text-xs font-plex-mono text-sky-400 uppercase tracking-widest block mb-2 font-semibold">
+          <span className="text-xs font-plex-mono text-emerald-400 uppercase tracking-widest block mb-2 font-semibold">
             Simple 3-Step Process
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-unbounded">
@@ -466,13 +477,13 @@ export default function LandingPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {/* Step 1 */}
-          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-sky-500/30")}`}>
+          {/* Step 1 - Emerald */}
+          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-emerald-500/30 hover:border-emerald-400/50 shadow-[0_12px_36px_rgba(3,7,18,0.7),0_0_20px_rgba(16,185,129,0.08)]")}`}>
             <div>
-              <div className="h-11 w-11 rounded-2xl bg-[#101b33] border border-sky-500/30 text-sky-400 flex items-center justify-center mb-5">
+              <div className="h-11 w-11 rounded-2xl bg-[#06181b] border border-emerald-500/35 text-emerald-400 flex items-center justify-center mb-5 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                 <Search className="h-5 w-5" />
               </div>
-              <span className="text-[10px] font-plex-mono text-sky-400 uppercase tracking-wider font-bold">STEP 01</span>
+              <span className="text-[10px] font-plex-mono text-emerald-400 uppercase tracking-wider font-bold">STEP 01</span>
               <h3 className="text-lg sm:text-xl font-bold text-white font-unbounded mt-1 mb-2.5">
                 Paste or Monitor Links
               </h3>
@@ -480,18 +491,18 @@ export default function LandingPage() {
                 Paste any link, email, or domain into OPTIMUS. We also automatically scan newly registered domains across the web 24/7.
               </p>
             </div>
-            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-sky-400">
+            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-emerald-400">
               &bull; Instant link checks &bull; Domain watchlist
             </div>
           </div>
 
-          {/* Step 2 */}
-          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-blue-500/30")}`}>
+          {/* Step 2 - Arctic Teal */}
+          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-teal-500/30 hover:border-teal-400/50 shadow-[0_12px_36px_rgba(3,7,18,0.7),0_0_20px_rgba(20,184,166,0.08)]")}`}>
             <div>
-              <div className="h-11 w-11 rounded-2xl bg-[#101b33] border border-blue-500/30 text-blue-400 flex items-center justify-center mb-5">
+              <div className="h-11 w-11 rounded-2xl bg-[#071922] border border-teal-500/35 text-teal-400 flex items-center justify-center mb-5 shadow-[0_0_15px_rgba(20,184,166,0.2)]">
                 <Activity className="h-5 w-5" />
               </div>
-              <span className="text-[10px] font-plex-mono text-blue-400 uppercase tracking-wider font-bold">STEP 02</span>
+              <span className="text-[10px] font-plex-mono text-teal-300 uppercase tracking-wider font-bold">STEP 02</span>
               <h3 className="text-lg sm:text-xl font-bold text-white font-unbounded mt-1 mb-2.5">
                 Instant Risk Analysis
               </h3>
@@ -499,18 +510,18 @@ export default function LandingPage() {
                 Get a clear safety score from 0 (safe) to 100 (dangerous). We check for lookalike letters, hidden redirects, and WHOIS details in seconds.
               </p>
             </div>
-            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-blue-400">
+            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-teal-300">
               &bull; Clear 0-100 score &bull; Plain-English explanation
             </div>
           </div>
 
-          {/* Step 3 */}
-          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-indigo-500/30")}`}>
+          {/* Step 3 - Aurora Indigo */}
+          <div className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${getCardClasses("border-indigo-500/30 hover:border-indigo-400/50 shadow-[0_12px_36px_rgba(3,7,18,0.7),0_0_20px_rgba(99,102,241,0.08)]")}`}>
             <div>
-              <div className="h-11 w-11 rounded-2xl bg-[#131c31] border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-5">
+              <div className="h-11 w-11 rounded-2xl bg-[#0e1329] border border-indigo-500/35 text-indigo-400 flex items-center justify-center mb-5 shadow-[0_0_15px_rgba(99,102,241,0.2)]">
                 <Zap className="h-5 w-5" />
               </div>
-              <span className="text-[10px] font-plex-mono text-indigo-400 uppercase tracking-wider font-bold">STEP 03</span>
+              <span className="text-[10px] font-plex-mono text-indigo-300 uppercase tracking-wider font-bold">STEP 03</span>
               <h3 className="text-lg sm:text-xl font-bold text-white font-unbounded mt-1 mb-2.5">
                 Fast Takedown &amp; Removal
               </h3>
@@ -518,17 +529,17 @@ export default function LandingPage() {
                 When a threat is confirmed, OPTIMUS prepares legal abuse notices so domain registrars and web hosts take down the malicious site.
               </p>
             </div>
-            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-indigo-400">
+            <div className="pt-5 border-t border-white/[0.06] text-[11px] font-plex-mono text-indigo-300">
               &bull; One-click report &bull; Threat neutralised
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6 Key Features (Intuitive, Simple Names) */}
+      {/* 6 Key Features (Intuitive, Simple Names, Aurora Palettes) */}
       <section id="features" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="text-xs font-plex-mono text-sky-400 uppercase tracking-widest block mb-2 font-semibold">
+          <span className="text-xs font-plex-mono text-emerald-400 uppercase tracking-widest block mb-2 font-semibold">
             All-In-One Protection
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-unbounded">
@@ -541,13 +552,13 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {/* 1. Fake Website Scanner */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-sky-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-emerald-500/30 hover:border-emerald-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#101b33] border border-sky-500/30 text-sky-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#06181b] border border-emerald-500/35 text-emerald-400 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.2)]">
                   <Globe className="h-5 w-5" />
                 </div>
-                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 font-bold border border-sky-500/25">
+                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-bold border border-emerald-500/25">
                   Link Scanner
                 </span>
               </div>
@@ -560,24 +571,24 @@ export default function LandingPage() {
             </div>
             <div className="pt-4 border-t border-white/[0.08] space-y-1 font-plex-mono text-[11px] text-slate-300">
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                 <span>Spots typosquatting &amp; lookalike URLs</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                 <span>Explains why a link is risky in seconds</span>
               </div>
             </div>
           </div>
 
           {/* 2. Brand & Logo Defense */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-blue-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-teal-500/30 hover:border-teal-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#101b33] border border-blue-500/30 text-blue-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#071922] border border-teal-500/35 text-teal-400 flex items-center justify-center shadow-[0_0_12px_rgba(20,184,166,0.2)]">
                   <Shield className="h-5 w-5" />
                 </div>
-                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-300 font-bold border border-blue-500/25">
+                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 font-bold border border-teal-500/25">
                   Brand Defense
                 </span>
               </div>
@@ -590,21 +601,21 @@ export default function LandingPage() {
             </div>
             <div className="pt-4 border-t border-white/[0.08] space-y-1 font-plex-mono text-[11px] text-slate-300">
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-teal-400 shrink-0" />
                 <span>Monitors unauthorized logo copying</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-blue-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-teal-400 shrink-0" />
                 <span>Catches fake customer service sites</span>
               </div>
             </div>
           </div>
 
           {/* 3. Phishing Email Inspector */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-indigo-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-indigo-500/30 hover:border-indigo-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#101b33] border border-indigo-500/30 text-indigo-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#0e1329] border border-indigo-500/35 text-indigo-400 flex items-center justify-center shadow-[0_0_12px_rgba(99,102,241,0.2)]">
                   <Mail className="h-5 w-5" />
                 </div>
                 <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 font-bold border border-indigo-500/25">
@@ -631,13 +642,13 @@ export default function LandingPage() {
           </div>
 
           {/* 4. Domain & WHOIS Explorer */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-amber-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-cyan-500/30 hover:border-cyan-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#1a1710] border border-amber-500/30 text-amber-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#071824] border border-cyan-500/35 text-cyan-400 flex items-center justify-center shadow-[0_0_12px_rgba(6,182,212,0.2)]">
                   <Eye className="h-5 w-5" />
                 </div>
-                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 font-bold border border-amber-500/25">
+                <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 font-bold border border-cyan-500/25">
                   Domain Intel
                 </span>
               </div>
@@ -650,21 +661,21 @@ export default function LandingPage() {
             </div>
             <div className="pt-4 border-t border-white/[0.08] space-y-1 font-plex-mono text-[11px] text-slate-300">
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
                 <span>Domain age and creation timestamp</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                <Check className="h-3.5 w-3.5 text-cyan-400 shrink-0" />
                 <span>DNS mail records and name servers</span>
               </div>
             </div>
           </div>
 
           {/* 5. Stolen Password & Dark Web Watch */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-rose-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-rose-500/30 hover:border-rose-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#1f1015] border border-rose-500/30 text-rose-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#1d0e16] border border-rose-500/35 text-rose-400 flex items-center justify-center shadow-[0_0_12px_rgba(244,63,94,0.2)]">
                   <KeyRound className="h-5 w-5" />
                 </div>
                 <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 font-bold border border-rose-500/25">
@@ -691,10 +702,10 @@ export default function LandingPage() {
           </div>
 
           {/* 6. BILY AI Assistant */}
-          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-emerald-500/30")}`}>
+          <div className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between ${getCardClasses("border-emerald-500/30 hover:border-emerald-400/50")}`}>
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="h-10 w-10 rounded-xl bg-[#0e1d18] border border-emerald-500/30 text-emerald-400 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-[#06181b] border border-emerald-500/35 text-emerald-400 flex items-center justify-center shadow-[0_0_12px_rgba(16,185,129,0.2)]">
                   <Bot className="h-5 w-5" />
                 </div>
                 <span className="text-[10px] font-plex-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 font-bold border border-emerald-500/25">
@@ -725,7 +736,7 @@ export default function LandingPage() {
       {/* Strategic Value / Benefits */}
       <section id="benefits" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <span className="text-xs font-plex-mono text-sky-400 uppercase tracking-widest block mb-2 font-semibold">
+          <span className="text-xs font-plex-mono text-emerald-400 uppercase tracking-widest block mb-2 font-semibold">
             Real-World Impact
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-unbounded">
@@ -737,8 +748,8 @@ export default function LandingPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-sky-500/30")}`}>
-            <div className="h-11 w-11 rounded-2xl bg-[#101b33] border border-sky-500/30 text-sky-400 flex items-center justify-center mb-5">
+          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-emerald-500/30 hover:border-emerald-400/50")}`}>
+            <div className="h-11 w-11 rounded-2xl bg-[#06181b] border border-emerald-500/35 text-emerald-400 flex items-center justify-center mb-5 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
               <Eye className="h-5 w-5" />
             </div>
             <h3 className="text-base sm:text-lg font-bold text-white font-unbounded mb-2.5">
@@ -749,8 +760,8 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-amber-500/30")}`}>
-            <div className="h-11 w-11 rounded-2xl bg-[#1a1710] border border-amber-500/30 text-amber-300 flex items-center justify-center mb-5">
+          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-teal-500/30 hover:border-teal-400/50")}`}>
+            <div className="h-11 w-11 rounded-2xl bg-[#071922] border border-teal-500/35 text-teal-300 flex items-center justify-center mb-5 shadow-[0_0_12px_rgba(20,184,166,0.2)]">
               <Shield className="h-5 w-5" />
             </div>
             <h3 className="text-base sm:text-lg font-bold text-white font-unbounded mb-2.5">
@@ -761,8 +772,8 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-indigo-500/30")}`}>
-            <div className="h-11 w-11 rounded-2xl bg-[#101b33] border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-5">
+          <div className={`rounded-3xl p-6 sm:p-8 ${getCardClasses("border-indigo-500/30 hover:border-indigo-400/50")}`}>
+            <div className="h-11 w-11 rounded-2xl bg-[#0e1329] border border-indigo-500/35 text-indigo-400 flex items-center justify-center mb-5 shadow-[0_0_12px_rgba(99,102,241,0.2)]">
               <CheckCircle2 className="h-5 w-5" />
             </div>
             <h3 className="text-base sm:text-lg font-bold text-white font-unbounded mb-2.5">
@@ -777,7 +788,7 @@ export default function LandingPage() {
 
       {/* Closing Call to Action */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
-        <div className={`rounded-3xl p-7 sm:p-12 lg:p-16 text-center relative overflow-hidden bg-gradient-to-r from-[#0d162a] via-[#101b33] to-[#0a1122] border border-blue-500/30 shadow-[0_20px_50px_rgba(3,7,18,0.8),inset_0_1px_0_rgba(255,255,255,0.1)]`}>
+        <div className={`rounded-3xl p-7 sm:p-12 lg:p-16 text-center relative overflow-hidden bg-gradient-to-r from-[#041419] via-[#08182b] to-[#0c102a] border border-emerald-500/30 shadow-[0_24px_60px_rgba(2,6,23,0.9),inset_0_1px_0_rgba(255,255,255,0.12),0_0_50px_rgba(16,185,129,0.1)]`}>
           <div className="max-w-3xl mx-auto space-y-5 sm:space-y-6">
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white font-unbounded tracking-tight">
               See your exposure before attackers do
@@ -789,7 +800,8 @@ export default function LandingPage() {
               <Link href="/analyzer" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto text-xs font-semibold px-6 sm:px-8 py-3.5 font-plex-mono bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-600/30"
+                  variant="primary"
+                  className="w-full sm:w-auto text-xs font-semibold px-6 sm:px-8 py-3.5 font-plex-mono"
                 >
                   Scan a Link Now Free
                   <ArrowRight className="h-4 w-4 ml-2" />
@@ -799,7 +811,7 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto text-xs font-semibold px-6 sm:px-7 py-3.5 font-plex-mono border-white/10 bg-[#0d1527] hover:bg-[#121c33] text-slate-200 hover:text-white"
+                  className="w-full sm:w-auto text-xs font-semibold px-6 sm:px-7 py-3.5 font-plex-mono"
                 >
                   Sign In to Console
                 </Button>
@@ -809,26 +821,26 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Footer (Mobile Friendly) */}
-      <footer className="border-t border-white/[0.08] bg-[#070b13] py-8 sm:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative font-plex-mono text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      {/* Footer (Mobile Friendly, Aurora Accents) */}
+      <footer className="border-t border-white/[0.08] bg-[#02050c] py-8 sm:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative font-plex-mono text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div className="flex items-center gap-2.5">
           <img
             src="/logo.png"
             alt="OPTIMUS"
-            className="h-6 w-6 object-contain filter drop-shadow-[0_2px_6px_rgba(59,130,246,0.45)]"
+            className="h-6 w-6 object-contain filter drop-shadow-[0_2px_8px_rgba(16,185,129,0.45)]"
           />
           <div>
             <span className="font-unbounded font-bold text-white">OPTIMUS</span> &bull; Cyber Defense Platform &copy; 2026.
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <Link href="/login" className="hover:text-sky-400 transition-colors">
+          <Link href="/login" className="hover:text-teal-300 transition-colors">
             Login
           </Link>
-          <Link href="/analyzer" className="hover:text-sky-400 transition-colors">
+          <Link href="/analyzer" className="hover:text-teal-300 transition-colors">
             Link Scanner
           </Link>
-          <Link href="/register" className="hover:text-sky-400 transition-colors">
+          <Link href="/register" className="hover:text-teal-300 transition-colors">
             Register
           </Link>
         </div>

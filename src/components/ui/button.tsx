@@ -17,7 +17,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#090d16] disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]";
+    "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#030712] disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]";
 
   const sizeClasses = {
     sm: "px-3.5 py-1.5 text-xs gap-1.5",
@@ -27,15 +27,15 @@ export function Button({
 
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white border border-blue-400/30 shadow-[0_2px_10px_rgba(37,99,235,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] focus:ring-blue-500",
+      "bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 hover:from-emerald-400 hover:via-teal-400 hover:to-indigo-500 text-white border border-emerald-400/30 shadow-[0_0_24px_rgba(20,184,166,0.35),inset_0_1px_0_rgba(255,255,255,0.25)] focus:ring-teal-400",
     cyan:
-      "bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white border border-sky-400/30 shadow-[0_2px_10px_rgba(56,189,248,0.25),inset_0_1px_0_rgba(255,255,255,0.2)] focus:ring-sky-400",
+      "bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-400 hover:to-emerald-500 text-white border border-teal-400/30 shadow-[0_0_20px_rgba(20,184,166,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] focus:ring-teal-400",
     liquid:
-      "bg-[#0e172a] hover:bg-[#13203c] text-sky-300 hover:text-white border border-sky-500/25 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] focus:ring-sky-500",
+      "bg-[#0a1526]/80 hover:bg-[#0e1d35] text-teal-300 hover:text-white border border-teal-500/25 shadow-[0_0_16px_rgba(20,184,166,0.2),inset_0_1px_0_rgba(255,255,255,0.08)] focus:ring-teal-500",
     secondary:
-      "bg-[#101728] hover:bg-[#16223b] text-slate-200 border border-white/[0.08] hover:border-white/[0.14] shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] focus:ring-slate-500",
+      "bg-[#091224]/80 hover:bg-[#0f1b34] text-slate-200 border border-white/[0.08] hover:border-emerald-500/30 backdrop-blur-md shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] focus:ring-slate-500",
     outline:
-      "bg-[#0c1220]/70 hover:bg-[#11192e] text-slate-300 hover:text-white border border-white/[0.08] hover:border-sky-500/30 shadow-[0_2px_6px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)] focus:ring-sky-500",
+      "bg-[#070e1c]/70 hover:bg-[#0c162c] text-slate-300 hover:text-white border border-white/[0.08] hover:border-teal-400/30 backdrop-blur-md shadow-[0_2px_6px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.06)] focus:ring-teal-500",
     danger:
       "bg-gradient-to-r from-red-600 to-rose-700 hover:from-red-500 hover:to-rose-600 text-white border border-red-400/30 shadow-[0_2px_10px_rgba(239,68,68,0.3),inset_0_1px_0_rgba(255,255,255,0.2)] focus:ring-red-500",
     ghost:

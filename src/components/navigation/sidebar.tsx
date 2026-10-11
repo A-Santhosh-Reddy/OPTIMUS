@@ -370,13 +370,13 @@ export function Sidebar({
                 <img
                   src="/logo.png"
                   alt="OPTIMUS Cyber Defense"
-                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(37,99,235,0.4)]"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(16,185,129,0.45)]"
                 />
               </div>
               <div className="min-w-0">
                 <h1 className="text-sm font-bold tracking-wider text-white flex items-center gap-1.5 font-mono">
                   OPTIMUS{" "}
-                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-blue-950/80 text-sky-400 border border-blue-500/30 shadow-sm shadow-blue-500/20">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 shadow-sm shadow-emerald-500/20">
                     DRP
                   </span>
                 </h1>
@@ -397,14 +397,14 @@ export function Sidebar({
 
           {/* Live System Status Tag with Radar Pulse */}
           <div className="px-4 py-3">
-            <div className="relative overflow-hidden flex items-center justify-between rounded-xl bg-[#0a0f1d] border border-white/[0.08] px-3.5 py-2.5 text-xs shadow-inner">
+            <div className="relative overflow-hidden flex items-center justify-between rounded-xl bg-[#06101c]/80 border border-white/[0.08] px-3.5 py-2.5 text-xs shadow-inner backdrop-blur-md">
               <div className="flex items-center gap-2.5">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-sm shadow-emerald-400" />
                 </span>
                 <span className="text-slate-200 font-semibold text-[11px] tracking-wide flex items-center gap-1">
-                  <Cpu className="h-3 w-3 text-sky-400" />
+                  <Cpu className="h-3 w-3 text-teal-400" />
                   {t("nav.heuristicCore", "Heuristic Core")}
                 </span>
               </div>
@@ -427,18 +427,18 @@ export function Sidebar({
                     href={item.href}
                     className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 select-none ${
                       isActive
-                        ? "bg-[#16223b] text-sky-300 border border-sky-500/30 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)] font-semibold"
-                        : "text-slate-400 hover:text-white hover:bg-[#11192e] hover:shadow-[0_2px_6px_rgba(0,0,0,0.25)] border border-transparent hover:border-white/[0.06]"
+                        ? "bg-[#081a20] text-teal-200 border border-teal-500/35 shadow-[0_2px_10px_rgba(0,0,0,0.4),0_0_14px_rgba(20,184,166,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] font-semibold"
+                        : "text-slate-400 hover:text-white hover:bg-[#071322] hover:shadow-[0_2px_6px_rgba(0,0,0,0.25)] border border-transparent hover:border-white/[0.06]"
                     }`}
                   >
                     <Icon
                       className={`h-4 w-4 transition-colors shrink-0 ${
-                        isActive ? "text-sky-400" : "text-slate-400 group-hover:text-sky-300"
+                        isActive ? "text-teal-400" : "text-slate-400 group-hover:text-teal-300"
                       }`}
                     />
                     <span className="tracking-wide font-plex-mono text-[11px] truncate">{item.name}</span>
                     {isActive && (
-                      <span className="ml-auto h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8] shrink-0" />
+                      <span className="ml-auto h-2 w-2 rounded-full bg-teal-400 shadow-[0_0_8px_#2dd4bf] shrink-0" />
                     )}
                   </Link>
                 );

@@ -157,7 +157,7 @@ function LoginForm() {
   return (
     <Card glow="none" className="p-5 sm:p-8 backdrop-blur-2xl border-white/[0.08] bg-[#0e1526] shadow-[0_12px_40px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.08)]">
       {/* Mode Switcher Tabs */}
-      <div className="grid grid-cols-2 gap-2 p-1 bg-[#090f1d] border border-white/[0.08] rounded-xl mb-5 font-mono text-xs">
+      <div className="grid grid-cols-2 gap-2 p-1 bg-[#070e1c]/80 border border-white/[0.08] rounded-xl mb-5 font-mono text-xs backdrop-blur-md">
         <button
           type="button"
           onClick={() => {
@@ -167,7 +167,7 @@ function LoginForm() {
           }}
           className={`py-2 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             authMode === "email-link"
-              ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30 border border-blue-400/30"
+              ? "bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 text-white shadow-md shadow-teal-500/25 border border-emerald-400/30"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -183,7 +183,7 @@ function LoginForm() {
           }}
           className={`py-2 px-3 rounded-lg font-semibold flex items-center justify-center gap-1.5 transition-all ${
             authMode === "password"
-              ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/30 border border-blue-400/30"
+              ? "bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-600 text-white shadow-md shadow-teal-500/25 border border-emerald-400/30"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -393,9 +393,9 @@ function LoginForm() {
       <div className="mt-6 pt-5 border-t border-white/[0.08] text-center">
         <Link
           href="/register"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.08] bg-[#0c1322] hover:bg-[#11192e] hover:border-sky-500/30 text-xs text-slate-300 hover:text-white transition-all font-mono w-full justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.08] bg-[#0a1224]/80 hover:bg-[#0e1a33] hover:border-emerald-500/30 text-xs text-slate-300 hover:text-white transition-all font-mono w-full justify-center shadow-[0_2px_8px_rgba(0,0,0,0.3)] backdrop-blur-md"
         >
-          <UserPlus className="h-4 w-4 text-sky-400" />
+          <UserPlus className="h-4 w-4 text-teal-400" />
           <span>Need an account? <span className="underline font-bold text-white">Create New Credentials</span></span>
         </Link>
       </div>
@@ -405,13 +405,13 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
-      {/* Background Liquid Ambient Light Orbs */}
+    <div className="min-h-screen bg-[#030712] text-slate-100 flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
+      {/* Aurora Borealis Ambient Light Curtains */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="cyber-glow-orb -top-32 -left-32 w-[500px] h-[500px] bg-blue-600/10" />
-        <div className="cyber-glow-orb top-1/2 -right-40 w-[550px] h-[550px] bg-sky-500/08" />
-        <div className="cyber-glow-orb -bottom-40 left-1/3 w-[500px] h-[500px] bg-blue-700/08" />
-        <div className="absolute inset-0 cyber-grid-overlay opacity-20" />
+        <div className="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-emerald-500/22 via-teal-400/18 to-transparent blur-[140px] animate-aurora-1" />
+        <div className="absolute top-1/2 -right-40 w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-indigo-500/24 via-purple-600/18 to-transparent blur-[150px] animate-aurora-2" />
+        <div className="absolute -bottom-40 left-1/3 w-[550px] h-[550px] rounded-full bg-gradient-to-tr from-teal-500/18 via-cyan-500/15 to-transparent blur-[135px] animate-aurora-3" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px] opacity-35" />
       </div>
 
       <div className="w-full max-w-md space-y-6 relative z-10">
@@ -421,10 +421,10 @@ export default function LoginPage() {
             <img
               src="/logo.png"
               alt="OPTIMUS Cyber Defense"
-              className="h-full w-full object-contain filter drop-shadow-[0_4px_16px_rgba(37,99,235,0.4)]"
+              className="h-full w-full object-contain filter drop-shadow-[0_4px_20px_rgba(20,184,166,0.4)]"
             />
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-white font-mono flex items-center justify-center gap-2">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300 bg-clip-text text-transparent font-mono flex items-center justify-center gap-2">
             CYBER DEFENSE LOGIN
           </h1>
           <p className="text-xs text-slate-400 font-sans max-w-sm mx-auto leading-relaxed">
@@ -434,7 +434,7 @@ export default function LoginPage() {
 
         <Suspense
           fallback={
-            <div className="p-8 text-center text-xs font-mono text-sky-400">Loading secure access...</div>
+            <div className="p-8 text-center text-xs font-mono text-teal-400">Loading secure access...</div>
           }
         >
           <LoginForm />

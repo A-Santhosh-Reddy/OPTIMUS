@@ -54,7 +54,7 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent("toggle-mobile-sidebar"))}
-            className="md:hidden p-2 rounded-xl bg-[#0e1628] border border-white/[0.08] text-sky-400 hover:text-white transition-all shrink-0 shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+            className="md:hidden p-2 rounded-xl bg-[#06101c] border border-white/[0.08] text-teal-400 hover:text-white transition-all shrink-0 shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
             aria-label="Toggle navigation menu"
           >
             <Menu className="h-4 w-4" />
@@ -63,16 +63,16 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
           <img
             src="/logo.png"
             alt="OPTIMUS Eagle Shield"
-            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(37,99,235,0.4)] shrink-0"
+            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(16,185,129,0.4)] shrink-0"
           />
           <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-400 min-w-0">
             <span className="font-semibold text-slate-100 flex items-center gap-1.5 truncate">
-              <ShieldCheck className="h-4 w-4 text-sky-400 shrink-0 hidden sm:block" />
+              <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0 hidden sm:block" />
               <span className="truncate max-w-[110px] sm:max-w-none">{organizationName}</span>
             </span>
             <span className="text-slate-600 hidden sm:inline">/</span>
-            <span className="text-sky-400 font-mono text-[10px] sm:text-[11px] bg-blue-950/60 px-2 py-0.5 rounded-full border border-sky-500/25 hidden xs:flex items-center gap-1 shadow-[0_1px_4px_rgba(0,0,0,0.3)] shrink-0">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
+            <span className="text-teal-300 font-mono text-[10px] sm:text-[11px] bg-emerald-950/60 px-2 py-0.5 rounded-full border border-teal-500/25 hidden xs:flex items-center gap-1 shadow-[0_1px_4px_rgba(0,0,0,0.3)] shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="hidden md:inline">{t("topbar.shield", "CYBER MATRIX SHIELD")}</span>
               <span className="md:hidden">ACTIVE</span>
             </span>

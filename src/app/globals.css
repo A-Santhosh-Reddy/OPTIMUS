@@ -18,18 +18,19 @@
 
 @layer base {
   :root {
-    --background: #090d16;
+    --background: #030712;
     --foreground: #f8fafc;
   }
 
   body {
     color: var(--foreground);
-    background-color: var(--background);
+    background-color: #030712;
     background-image: 
-      radial-gradient(ellipse 85% 55% at 50% -12%, rgba(37, 99, 235, 0.12), transparent 70%),
-      radial-gradient(ellipse 75% 45% at 88% 22%, rgba(56, 189, 248, 0.08), transparent 60%),
-      radial-gradient(ellipse 65% 55% at 12% 75%, rgba(30, 64, 175, 0.07), transparent 70%),
-      radial-gradient(circle at 50% 50%, rgba(9, 13, 22, 0.4), #090d16);
+      radial-gradient(ellipse 95% 65% at 50% -18%, rgba(16, 185, 129, 0.18), transparent 60%),
+      radial-gradient(ellipse 75% 55% at 85% 20%, rgba(99, 102, 241, 0.16), transparent 55%),
+      radial-gradient(ellipse 75% 55% at 15% 45%, rgba(20, 184, 166, 0.14), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 85%, rgba(139, 92, 246, 0.12), transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.4), #030712);
     background-attachment: fixed;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
@@ -38,14 +39,14 @@
   }
 }
 
-/* Custom Cyber Glass Scrollbars */
+/* Custom Cyber Aurora Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #030712;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -55,94 +56,108 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  background: rgba(20, 184, 166, 0.5);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
 }
 
 /* =========================================================================
-   OBSIDIAN COBALT & STEALTH TITANIUM DESIGN SYSTEM
+   AURORA BOREALIS & NORDIC GLASS DESIGN SYSTEM
    ========================================================================= */
 
 :root {
-  --clay-bg-canvas: #090d16;
-  --clay-bg-surface: #0c1220;
-  --clay-bg-card: #0e1526;
-  --clay-bg-card-hover: #131c31;
+  --aurora-bg-canvas: #030712;
+  --aurora-bg-surface: #070d1e;
+  --aurora-bg-card: rgba(10, 17, 34, 0.72);
+  --aurora-bg-card-hover: rgba(13, 23, 46, 0.85);
 
-  /* Refined Precision Specular Shadow Tokens */
-  --clay-shadow-card:
-    0 1px 2px rgba(0, 0, 0, 0.4),
-    0 8px 24px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --aurora-shadow-card:
+    0 4px 20px -2px rgba(0, 0, 0, 0.5),
+    0 12px 36px -4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(16, 185, 129, 0.03);
 
-  --clay-shadow-card-hover:
-    0 4px 20px rgba(0, 0, 0, 0.5),
-    0 12px 36px rgba(14, 21, 38, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  --aurora-shadow-card-hover:
+    0 8px 30px -4px rgba(0, 0, 0, 0.6),
+    0 20px 48px -8px rgba(0, 0, 0, 0.5),
+    0 0 35px rgba(20, 184, 166, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
 
-  --clay-shadow-inset:
+  --aurora-shadow-inset:
     inset 0 1.5px 3px rgba(0, 0, 0, 0.5),
     0 1px 2px rgba(0, 0, 0, 0.2);
 
-  --clay-shadow-pill:
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --clay-bg-canvas: var(--aurora-bg-canvas);
+  --clay-bg-surface: var(--aurora-bg-surface);
+  --clay-bg-card: var(--aurora-bg-card);
+  --clay-bg-card-hover: var(--aurora-bg-card-hover);
+  --clay-shadow-card: var(--aurora-shadow-card);
+  --clay-shadow-card-hover: var(--aurora-shadow-card-hover);
+  --clay-shadow-inset: var(--aurora-shadow-inset);
+  --clay-shadow-pill: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* 1. Base Obsidian Stealth Card */
+/* 1. Base Aurora Frosted Glass Card */
 .clay-card,
-.liquid-glass-card {
-  background: var(--clay-bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 1.125rem;
-  box-shadow: var(--clay-shadow-card);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.liquid-glass-card,
+.aurora-card {
+  background: var(--aurora-bg-card);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: var(--aurora-shadow-card);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .clay-card:hover,
-.liquid-glass-card:hover {
-  background: var(--clay-bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: var(--clay-shadow-card-hover);
+.liquid-glass-card:hover,
+.aurora-card:hover {
+  background: var(--aurora-bg-card-hover);
+  border-color: rgba(52, 211, 153, 0.35);
+  box-shadow: var(--aurora-shadow-card-hover);
   transform: translateY(-2px);
 }
 
-/* 2. Premium Refined Palettes */
+/* 2. Aurora Spectrum Accented Palettes */
 
-/* A. Electric Cobalt / Sapphire */
+/* A. Emerald / Mint Aurora Wave */
 .clay-cyan,
 .clay-card-cyan {
-  background: #0f1930;
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              0 0 24px rgba(37, 99, 235, 0.12),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(8, 24, 38, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+              0 0 24px rgba(20, 184, 166, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 .clay-cyan:hover,
 .clay-card-cyan:hover {
-  background: #142240;
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              0 0 32px rgba(37, 99, 235, 0.18),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: rgba(12, 32, 50, 0.85);
+  border-color: rgba(45, 212, 191, 0.5);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6),
+              0 0 36px rgba(20, 184, 166, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-/* B. Imperial Violet / Royal Purple */
+/* B. Royal Indigo & Violet Wave */
 .clay-purple,
 .clay-card-purple {
-  background: #130f24;
-  border: 1px solid rgba(168, 85, 247, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: rgba(18, 14, 38, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+              0 0 24px rgba(139, 92, 246, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .clay-purple:hover,
 .clay-card-purple:hover {
-  background: #1a1433;
+  background: rgba(24, 18, 50, 0.85);
   border-color: rgba(168, 85, 247, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6),
+              0 0 36px rgba(139, 92, 246, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
@@ -233,32 +248,41 @@
 
 /* 3. Clay Sidebar & Header Infrastructure */
 .clay-sidebar,
-.liquid-glass-sidebar {
-  background: #0c1220;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 6px 0 24px rgba(0, 0, 0, 0.4);
+.liquid-glass-sidebar,
+.aurora-sidebar {
+  background: rgba(5, 11, 24, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.5), inset -1px 0 0 rgba(20, 184, 166, 0.05);
 }
 
 .clay-header,
-.liquid-glass-header {
-  background: rgba(12, 18, 32, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+.liquid-glass-header,
+.aurora-header {
+  background: rgba(4, 9, 20, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(20, 184, 166, 0.06);
 }
 
 .clay-container,
-.liquid-glass {
-  background: #0e1526;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+.liquid-glass,
+.aurora-container {
+  background: rgba(8, 16, 32, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.125rem;
-  box-shadow: var(--clay-shadow-card);
+  box-shadow: var(--aurora-shadow-card);
 }
 
 /* 4. Clay Input (Tactile Sunken Bevel) */
 .clay-input,
-.liquid-glass-input {
-  background: #0a0f1d;
+.liquid-glass-input,
+.aurora-input {
+  background: rgba(6, 12, 24, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 0.75rem;
   box-shadow: var(--clay-shadow-inset);
@@ -267,11 +291,12 @@
 }
 
 .clay-input:focus,
-.liquid-glass-input:focus {
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12),
+.liquid-glass-input:focus,
+.aurora-input:focus {
+  border-color: rgba(45, 212, 191, 0.5);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15),
               inset 0 1.5px 3px rgba(0, 0, 0, 0.5);
-  background: #0c1426;
+  background: rgba(8, 17, 34, 0.95);
 }
 
 /* 5. Claymorphic Button Elevation Engine */
@@ -314,13 +339,13 @@
    CYBER SHIELD DEFENSE MATRIX & WATERMARKS
    ========================================================================= */
 
-/* Cyber Grid & Hexagonal Shield Matrix */
+/* Cyber Grid & Aurora Matrix */
 .cyber-grid-overlay {
-  background-size: 48px 48px, 48px 48px, 240px 240px;
+  background-size: 52px 52px, 52px 52px, 260px 260px;
   background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-    radial-gradient(circle at 1px 1px, rgba(34, 211, 238, 0.15) 1.5px, transparent 0);
+    linear-gradient(to right, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(52, 211, 153, 0.12) 1.5px, transparent 0);
 }
 
 /* Hex Defense Circuit Pattern */
@@ -370,14 +395,64 @@
 @keyframes shieldPulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4));
+    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 0.4));
   }
   50% {
     transform: scale(1.03);
-    filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.7));
+    filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.6));
   }
 }
 
 .animate-shield-pulse {
   animation: shieldPulse 6s ease-in-out infinite;
 }
+
+/* =========================================================================
+   NORTHERN LIGHTS (AURORA BOREALIS) UNDULATING KEYFRAMES
+   ========================================================================= */
+
+@keyframes auroraWave1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(40px, -25px) scale(1.12) rotate(6deg);
+    opacity: 0.85;
+  }
+}
+
+@keyframes auroraWave2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(1.15) rotate(-6deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes auroraWave3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(25px, 20px) scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+.animate-aurora-1 {
+  animation: auroraWave1 18s ease-in-out infinite;
+}
+
+.animate-aurora-2 {
+  animation: auroraWave2 22s ease-in-out infinite;
+}
+
+.animate-aurora-3 {
+  animation: auroraWave3 26s ease-in-out infinite;
+}
+
