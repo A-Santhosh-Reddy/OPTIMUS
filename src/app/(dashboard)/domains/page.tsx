@@ -33,6 +33,7 @@ import {
 import { Card, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { useLanguage } from "@/context/language-context";
 
 export interface MonitoredDomain {
   id: string;
@@ -373,6 +374,7 @@ const INITIAL_DOMAINS: MonitoredDomain[] = [
 ];
 
 export default function DomainMonitoringPage() {
+  const { t } = useLanguage();
   const [domains, setDomains] = useState<MonitoredDomain[]>([]);
   const [selectedDomain, setSelectedDomain] = useState<MonitoredDomain | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
@@ -675,10 +677,10 @@ export default function DomainMonitoringPage() {
             <span>PERIMETER HEURISTIC RADAR &bull; CONTINUOUS RECONNAISSANCE</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-unbounded">
-            Domain Monitoring
+            {t("Domain Monitoring")}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-1 font-plex-sans max-w-2xl">
-            Autonomous reconnaissance hunting combosquats, homoglyphs, and unauthorized lookalike domains before weaponisation.
+            {t("domains.desc")}
           </p>
         </div>
 
@@ -690,7 +692,7 @@ export default function DomainMonitoringPage() {
             className="text-xs font-plex-mono border-white/10 hover:bg-white/5 text-slate-300"
           >
             <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
-            Reset Demo Data
+            {t("Reset Demo Data", "Reset Demo Data")}
           </Button>
           <Button
             variant="cyan"
@@ -699,7 +701,7 @@ export default function DomainMonitoringPage() {
             className="font-semibold text-xs font-plex-mono shadow-liquid-cyan"
           >
             <Plus className="w-4 h-4 mr-1.5" />
-            Add Domain
+            {t("Add Domain")}
           </Button>
         </div>
       </div>
@@ -722,7 +724,7 @@ export default function DomainMonitoringPage() {
         {/* Metric 1 - Cyber Cyan */}
         <div className="p-4 sm:p-5 rounded-2xl clay-cyan relative overflow-hidden transition-all duration-300">
           <div className="flex items-center justify-between text-cyan-200/80 text-xs font-plex-mono">
-            <span>DOMAINS MONITORED</span>
+            <span>{t("DOMAINS MONITORED")}</span>
             <Globe className="w-4 h-4 text-cyan-400" />
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold text-white font-unbounded mt-2">
@@ -737,7 +739,7 @@ export default function DomainMonitoringPage() {
         {/* Metric 2 - Sunset Amber */}
         <div className="p-4 sm:p-5 rounded-2xl clay-amber relative overflow-hidden transition-all duration-300">
           <div className="flex items-center justify-between text-amber-200/80 text-xs font-plex-mono">
-            <span>CRITICAL LOOKALIKES</span>
+            <span>{t("CRITICAL LOOKALIKES")}</span>
             <AlertTriangle className="w-4 h-4 text-amber-400" />
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 font-unbounded mt-2">
@@ -751,7 +753,7 @@ export default function DomainMonitoringPage() {
         {/* Metric 3 - Crimson Rose */}
         <div className="p-4 sm:p-5 rounded-2xl clay-rose relative overflow-hidden transition-all duration-300">
           <div className="flex items-center justify-between text-rose-200/80 text-xs font-plex-mono">
-            <span>ACTIVE TAKEDOWNS</span>
+            <span>{t("ACTIVE TAKEDOWNS")}</span>
             <ShieldAlert className="w-4 h-4 text-rose-400" />
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold text-rose-300 font-unbounded mt-2">
@@ -766,7 +768,7 @@ export default function DomainMonitoringPage() {
         {/* Metric 4 - Matrix Emerald */}
         <div className="p-4 sm:p-5 rounded-2xl clay-emerald relative overflow-hidden transition-all duration-300">
           <div className="flex items-center justify-between text-emerald-200/80 text-xs font-plex-mono">
-            <span>AVG DETECTION TIME</span>
+            <span>{t("AVG DETECTION TIME")}</span>
             <Clock className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold text-emerald-300 font-unbounded mt-2">
@@ -786,7 +788,7 @@ export default function DomainMonitoringPage() {
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Search by domain name, brand, or registrar..."
+              placeholder={t("Search by domain, brand, or registrar...")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 text-xs font-plex-mono bg-[#091226] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/60"
@@ -806,32 +808,32 @@ export default function DomainMonitoringPage() {
             {/* Status Filter */}
             <div className="flex items-center gap-1.5 text-xs font-plex-mono text-slate-400">
               <Filter className="w-3.5 h-3.5" />
-              <span>Status:</span>
+              <span>{t("Status")}:</span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
                 className="bg-[#091226] border border-white/10 text-slate-200 text-xs font-plex-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-400"
               >
-                <option value="ALL">All Statuses</option>
-                <option value="Monitoring">Monitoring</option>
-                <option value="Flagged">Flagged</option>
-                <option value="Taken down">Taken down</option>
+                <option value="ALL">{t("All Statuses")}</option>
+                <option value="Monitoring">{t("Monitoring")}</option>
+                <option value="Flagged">{t("Flagged")}</option>
+                <option value="Taken down">{t("Taken down")}</option>
               </select>
             </div>
 
             {/* Risk Filter */}
             <div className="flex items-center gap-1.5 text-xs font-plex-mono text-slate-400">
-              <span>Risk:</span>
+              <span>{t("Risk Score")}:</span>
               <select
                 value={riskFilter}
                 onChange={(e) => setRiskFilter(e.target.value)}
                 className="bg-[#091226] border border-white/10 text-slate-200 text-xs font-plex-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-400"
               >
-                <option value="ALL">All Severities</option>
-                <option value="CRITICAL">Critical (&gt; 75)</option>
-                <option value="HIGH">High (50 - 74)</option>
-                <option value="MEDIUM">Medium (25 - 49)</option>
-                <option value="LOW">Low (&lt; 25)</option>
+                <option value="ALL">{t("All Risk Levels")}</option>
+                <option value="CRITICAL">{t("CRITICAL")} (&gt; 75)</option>
+                <option value="HIGH">{t("HIGH")} (50 - 74)</option>
+                <option value="MEDIUM">{t("MEDIUM")} (25 - 49)</option>
+                <option value="LOW">{t("LOW")} (&lt; 25)</option>
               </select>
             </div>
 
@@ -846,7 +848,7 @@ export default function DomainMonitoringPage() {
                 }}
                 className="text-xs font-plex-mono text-cyan-400 hover:text-cyan-300 p-1.5"
               >
-                Clear Filters
+                {t("Reset Filters")}
               </Button>
             )}
           </div>
@@ -859,12 +861,12 @@ export default function DomainMonitoringPage() {
           <table className="w-full text-left text-xs font-plex-sans border-collapse">
             <thead>
               <tr className="border-b border-white/10 bg-[#081124] text-slate-400 font-plex-mono text-[11px] tracking-wider uppercase">
-                <th className="py-3.5 px-4">Monitored Domain</th>
-                <th className="py-3.5 px-4">Risk Score</th>
-                <th className="py-3.5 px-4">Status</th>
-                <th className="py-3.5 px-4 hidden md:table-cell">First Seen</th>
-                <th className="py-3.5 px-4 hidden sm:table-cell">Last Checked</th>
-                <th className="py-3.5 px-4 text-right">Actions</th>
+                <th className="py-3.5 px-4">{t("Domain")}</th>
+                <th className="py-3.5 px-4">{t("Risk Score")}</th>
+                <th className="py-3.5 px-4">{t("Status")}</th>
+                <th className="py-3.5 px-4 hidden md:table-cell">{t("First Seen")}</th>
+                <th className="py-3.5 px-4 hidden sm:table-cell">{t("Last Checked")}</th>
+                <th className="py-3.5 px-4 text-right">{t("Actions")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/[0.06]">

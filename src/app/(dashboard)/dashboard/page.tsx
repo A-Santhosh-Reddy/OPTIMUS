@@ -21,11 +21,13 @@ import { ThreatTrendChart } from "@/components/dashboard/threat-trend-chart";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SeverityBadge, IntelStatusBadge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/language-context";
 
 export default function DashboardPage() {
   const [data, setData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     fetchStats();
@@ -93,24 +95,24 @@ export default function DashboardPage() {
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
-              CYBER SHIELD DEFENSE // ACTIVE
+              {t("cyberShieldActive")}
             </span>
             <span className="text-[10px] font-mono text-cyan-300/70 border border-cyan-900/60 bg-cyan-950/30 px-2 py-0.5 rounded-md">
-              PERIMETER SURVEILLANCE MATRIX
+              {t("perimeterSurveillance")}
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(6,182,212,0.3)]">
             <ShieldAlert className="h-7 w-7 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
-            Security Operations Console
+            {t("Security Operations Console")}
           </h1>
           <p className="text-xs text-slate-300 mt-1">
-            Real-time digital asset risk posture, threat intelligence telemetry, and incident tracking
+            {t("dash.socDesc")}
           </p>
         </div>
         <Link href="/analyzer" className="relative z-10 shrink-0">
           <Button variant="cyan" size="md" className="font-semibold text-xs shadow-liquid-cyan hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
             <Search className="h-4 w-4 mr-2" />
-            Analyze Threat Vector
+            {t("Analyze Threat Vector")}
           </Button>
         </Link>
       </div>
@@ -164,13 +166,13 @@ export default function DashboardPage() {
       {/* Recent Analysis Activity Table */}
       <Card glow="cyber" hudCorner={true}>
         <CardHeader
-          title="Recent Threat Telemetry Stream"
-          description="Latest digital assets evaluated by the heuristic and brand protection engine"
+          title={t("Recent Threat Telemetry Stream")}
+          description={t("Latest digital assets evaluated by the heuristic and brand protection engine")}
           icon={ShieldCheck}
           action={
             <Link href="/findings">
               <Button variant="outline" size="sm" className="text-xs">
-                View All Findings
+                {t("View All Findings")}
                 <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
               </Button>
             </Link>
@@ -180,19 +182,19 @@ export default function DashboardPage() {
         {recentAnalyses.length === 0 ? (
           <div className="py-14 text-center text-xs text-slate-500 font-mono">
             <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-cyan-400" />
-            No threat analyses recorded yet. Submit a URL to begin monitoring.
+            {t("No threat analyses recorded yet. Submit a URL to begin monitoring.")}
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="border-b border-white/[0.08] text-cyan-300/80 font-mono text-[11px]">
                 <tr>
-                  <th className="pb-3 pl-2">Target Asset Hostname</th>
-                  <th className="pb-3">Risk Score</th>
-                  <th className="pb-3">Severity</th>
-                  <th className="pb-3">Threat Intel</th>
-                  <th className="pb-3">Timestamp</th>
-                  <th className="pb-3 text-right pr-2">Action</th>
+                  <th className="pb-3 pl-2">{t("Target Asset Hostname")}</th>
+                  <th className="pb-3">{t("Risk Score")}</th>
+                  <th className="pb-3">{t("Severity")}</th>
+                  <th className="pb-3">{t("Threat Intel")}</th>
+                  <th className="pb-3">{t("Timestamp")}</th>
+                  <th className="pb-3 text-right pr-2">{t("Action")}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.05] font-mono">
@@ -230,7 +232,7 @@ export default function DashboardPage() {
                     <td className="py-3.5 text-right pr-2">
                       <Link href={`/findings?id=${item.id}`}>
                         <button className="text-xs text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-medium transition-colors">
-                          Inspect <ExternalLink className="h-3 w-3" />
+                          {t("Inspect")} <ExternalLink className="h-3 w-3" />
                         </button>
                       </Link>
                     </td>

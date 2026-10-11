@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Card } from "../ui/card";
+import { useLanguage } from "@/context/language-context";
 
 interface MetricCardProps {
   title: string;
@@ -22,6 +23,7 @@ export function MetricCard({
   variant = "blue",
   href,
 }: MetricCardProps) {
+  const { t } = useLanguage();
   const variantStyles = {
     blue: {
       glow: "blue" as const,
@@ -67,7 +69,7 @@ export function MetricCard({
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
             <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest font-mono truncate">
-              {title}
+              {t(title)}
             </p>
             {href && (
               <ArrowUpRight className="h-3 w-3 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
@@ -76,7 +78,7 @@ export function MetricCard({
           <h4 className={`text-3xl font-extrabold tracking-tight mt-2 font-mono ${variantStyles.valueColor}`}>
             {value}
           </h4>
-          {subtitle && <p className="text-xs text-slate-400 mt-1.5 truncate">{subtitle}</p>}
+          {subtitle && <p className="text-xs text-slate-400 mt-1.5 truncate">{t(subtitle)}</p>}
         </div>
 
         <div
@@ -90,11 +92,11 @@ export function MetricCard({
         <div className="mt-4 pt-2 flex items-center justify-between border-t border-white/[0.05]">
           <p className="text-[11px] text-cyan-300/80 font-mono flex items-center gap-1.5 bg-cyan-950/40 border border-cyan-500/20 px-2 py-0.5 rounded-md w-fit">
             <span className="h-1 w-1 rounded-full bg-cyan-400" />
-            {trend}
+            {t(trend)}
           </p>
           {href && (
             <span className="text-[10px] font-mono text-slate-500 group-hover:text-cyan-400 transition-colors hidden sm:inline">
-              View page &rarr;
+              {t("View page →")}
             </span>
           )}
         </div>

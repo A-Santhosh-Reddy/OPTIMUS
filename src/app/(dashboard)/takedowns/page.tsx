@@ -40,6 +40,7 @@ import {
 import { Card, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
+import { useLanguage } from "@/context/language-context";
 
 export type TakedownStage = "Requested" | "Submitted to host" | "Awaiting removal" | "Resolved";
 
@@ -334,6 +335,7 @@ const STAGES: { id: TakedownStage; label: string; accentColor: string; bgAccent:
 ];
 
 export default function TakedownCenterPage() {
+  const { t } = useLanguage();
   const [cases, setCases] = useState<TakedownCase[]>([]);
   const [selectedCase, setSelectedCase] = useState<TakedownCase | null>(null);
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(false);
@@ -538,10 +540,10 @@ export default function TakedownCenterPage() {
             <span>ENFORCEMENT DISPATCH &bull; REGISTRAR &amp; CDN ESCALATION</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-unbounded">
-            Takedown Center
+            {t("Takedown Center")}
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-1 font-plex-sans max-w-2xl">
-            Autonomous takedown orchestration, formal abuse packaging, and legal status tracking across Tier-1 hosting providers and registrars.
+            {t("takedowns.desc")}
           </p>
         </div>
 
@@ -553,7 +555,7 @@ export default function TakedownCenterPage() {
             className="text-xs font-plex-mono border-white/10 hover:bg-white/5 text-slate-300"
           >
             <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
-            Reset Sample Cases
+            {t("Reset Sample Cases", "Reset Sample Cases")}
           </Button>
           <Button
             variant="cyan"
@@ -562,7 +564,7 @@ export default function TakedownCenterPage() {
             className="font-semibold text-xs font-plex-mono shadow-liquid-cyan"
           >
             <Plus className="w-4 h-4 mr-1.5" />
-            New Takedown
+            {t("New Takedown", "New Takedown")}
           </Button>
         </div>
       </div>
@@ -586,7 +588,7 @@ export default function TakedownCenterPage() {
         <div className="p-4 rounded-2xl clay-rose flex items-center justify-between transition-all duration-300">
           <div>
             <div className="text-[11px] text-rose-200/80 font-plex-mono uppercase tracking-wider font-semibold">
-              Open Takedowns
+              {t("Open Takedown Cases")}
             </div>
             <div className="text-2xl font-extrabold text-rose-300 font-unbounded mt-1">
               {summaryStrip.openTakedowns}
@@ -604,7 +606,7 @@ export default function TakedownCenterPage() {
         <div className="p-4 rounded-2xl clay-emerald flex items-center justify-between transition-all duration-300">
           <div>
             <div className="text-[11px] text-emerald-200/80 font-plex-mono uppercase tracking-wider font-semibold">
-              Median Time to Removal
+              {t("Median Takedown Time")}
             </div>
             <div className="text-2xl font-extrabold text-emerald-300 font-unbounded mt-1">
               {summaryStrip.medianTimeToRemoval}
@@ -622,7 +624,7 @@ export default function TakedownCenterPage() {
         <div className="p-4 rounded-2xl clay-cyan flex items-center justify-between transition-all duration-300">
           <div>
             <div className="text-[11px] text-cyan-200/80 font-plex-mono uppercase tracking-wider font-semibold">
-              Success Rate This Month
+              {t("Success Rate This Month")}
             </div>
             <div className="text-2xl font-extrabold text-cyan-200 font-unbounded mt-1">
               {summaryStrip.successRate}
@@ -653,7 +655,7 @@ export default function TakedownCenterPage() {
                   <div className="flex items-center gap-2">
                     <span className={`w-2 h-2 rounded-full ${col.id === "Resolved" ? "bg-emerald-400" : col.id === "Awaiting removal" ? "bg-purple-400" : col.id === "Submitted to host" ? "bg-amber-400" : "bg-cyan-400"}`} />
                     <h2 className="font-plex-mono font-bold text-xs text-white uppercase tracking-wider">
-                      {col.label}
+                      {t(col.label)}
                     </h2>
                   </div>
                   <span className="px-2 py-0.5 rounded-full bg-black/40 text-xs font-plex-mono text-slate-300 font-semibold border border-white/5">
@@ -820,34 +822,34 @@ export default function TakedownCenterPage() {
                 <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-2.5 flex items-center justify-between">
                   <span className="flex items-center gap-2">
                     <FileText className="w-4 h-4 text-cyan-400" />
-                    <span>Evidence Attached &amp; Abuse Telemetry</span>
+                    <span>{t("Evidence Attached & Abuse Telemetry")}</span>
                   </span>
                   <button
                     onClick={() => handleCopyNotice(selectedCase.formalNoticeText)}
                     className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-plex-mono lowercase"
                   >
                     <Copy className="w-3 h-3" />
-                    <span>{copiedNotice ? "copied!" : "copy notice"}</span>
+                    <span>{copiedNotice ? t("copied!") : t("copy notice")}</span>
                   </button>
                 </h3>
 
                 <div className="p-4 rounded-xl bg-[#0a1530] border border-white/10 space-y-3 text-xs">
                   <div>
-                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-0.5">Summary of Threat:</span>
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-0.5">{t("Summary of Threat:")}</span>
                     <p className="text-white font-plex-sans leading-relaxed">
                       {selectedCase.evidenceSummary}
                     </p>
                   </div>
 
                   <div className="pt-2 border-t border-white/[0.08]">
-                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">Host Abuse Channel:</span>
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">{t("Host Abuse Channel:")}</span>
                     <span className="font-plex-mono text-cyan-300 bg-black/40 px-2 py-1 rounded inline-block">
                       {selectedCase.abuseEmail}
                     </span>
                   </div>
 
                   <div className="pt-2 border-t border-white/[0.08]">
-                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">Formal Legal Abuse Notice:</span>
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">{t("Formal Legal Abuse Notice:")}</span>
                     <pre className="p-2.5 rounded-lg bg-black/50 text-[11px] font-plex-mono text-slate-300 whitespace-pre-wrap leading-relaxed overflow-x-auto max-h-36">
                       {selectedCase.formalNoticeText}
                     </pre>
@@ -859,7 +861,7 @@ export default function TakedownCenterPage() {
               <div>
                 <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-3 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-cyan-400" />
-                  <span>Timeline of Status Changes ({selectedCase.timeline.length} Events)</span>
+                  <span>{t("Timeline of Status Changes")} ({selectedCase.timeline.length} Events)</span>
                 </h3>
 
                 <div className="relative pl-5 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-white/10">

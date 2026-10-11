@@ -17,6 +17,8 @@ import {
   Copy,
 } from "lucide-react";
 
+import { useLanguage } from "@/context/language-context";
+
 interface Message {
   id: string;
   role: "user" | "assistant";
@@ -25,13 +27,14 @@ interface Message {
 }
 
 const QUICK_PROMPTS = [
-  "How does Risk Scoring work?",
-  "What is Homoglyph Spoofing?",
+  "Analyze suspicious link",
+  "Explain typosquatting score",
   "Incident response playbook",
   "How to configure SSO?",
 ];
 
 export function BilyAgent() {
+  const { t, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState("");
@@ -237,7 +240,7 @@ Select a prompt below or type your question:`,
               </span>
             </div>
             <p className="text-[10px] text-slate-400 group-hover:text-slate-300">
-              Ask threat intelligence
+              {t("Ask threat intelligence")}
             </p>
           </div>
 
@@ -264,7 +267,7 @@ Select a prompt below or type your question:`,
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="text-xs font-bold text-white font-mono tracking-wider">
-                    BILY // AI SEC-COPILOT
+                    {t("BILY // AI SEC-COPILOT")}
                   </h3>
                   <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-300">
                     ONLINE
@@ -368,7 +371,7 @@ Select a prompt below or type your question:`,
                     <div className="p-3 rounded-2xl bg-[#0c1426]/90 border border-cyan-500/30 text-slate-300 text-xs flex items-center gap-2">
                       <Loader2 className="h-3.5 w-3.5 animate-spin text-cyan-400" />
                       <span className="font-mono text-[11px] text-cyan-300">
-                        Bily analyzing threat vectors...
+                        {t("Bily analyzing threat vectors...")}
                       </span>
                     </div>
                   </div>
@@ -391,7 +394,7 @@ Select a prompt below or type your question:`,
                         onClick={() => handleSendMessage(prompt)}
                         className="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/30 text-cyan-300 hover:text-white transition-all font-mono"
                       >
-                        {prompt}
+                        {t(prompt)}
                       </button>
                     ))}
                   </div>
@@ -414,7 +417,7 @@ Select a prompt below or type your question:`,
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                     disabled={isLoading}
-                    placeholder="Ask Bily about threats, URLs, or SOC playbooks..."
+                    placeholder={t("Ask Bily about threats, URLs, or SOC playbooks...")}
                     className="flex-1 bg-[#050814] border border-slate-700/80 focus:border-cyan-400 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none transition-all font-mono disabled:opacity-50"
                   />
                   <button

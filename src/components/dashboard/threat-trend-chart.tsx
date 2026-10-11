@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import { Card, CardHeader } from "../ui/card";
 import { BarChart3, PieChart as PieIcon } from "lucide-react";
+import { useLanguage } from "@/context/language-context";
 
 interface ThreatChartsProps {
   riskDistribution: Array<{ name: string; count: number; color: string }>;
@@ -19,18 +20,30 @@ interface ThreatChartsProps {
 }
 
 export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChartsProps) {
+  const { t } = useLanguage();
+
+  const localizedRisk = riskDistribution.map((entry) => ({
+    ...entry,
+    name: t(entry.name),
+  }));
+
+  const localizedCategory = categoryStats.map((entry) => ({
+    ...entry,
+    category: t(entry.category),
+  }));
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Risk Distribution Bar Chart */}
       <Card glow="blue" hudCorner={true}>
         <CardHeader
-          title="Risk Level Distribution"
-          description="Distribution of analyzed digital assets across composite risk tiers"
+          title={t("Risk Level Distribution")}
+          description={t("Distribution of analyzed digital assets across composite risk tiers")}
           icon={BarChart3}
         />
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={riskDistribution} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
+            <BarChart data={localizedRisk} margin={{ top: 10, right: 10, left: -20, bottom: 20 }}>
               <XAxis
                 dataKey="name"
                 stroke="#64748b"
@@ -69,18 +82,18 @@ export function ThreatTrendChart({ riskDistribution, categoryStats }: ThreatChar
       {/* Detection Signal Category Stats */}
       <Card glow="cyan" hudCorner={true}>
         <CardHeader
-          title="Threat Indicators by Category"
-          description="Breakdown of specific heuristic and brand impersonation signals"
+          title={t("Threat Indicators by Category")}
+          description={t("Breakdown of specific heuristic and brand impersonation signals")}
           icon={PieIcon}
         />
         <div className="h-64 w-full flex items-center justify-center">
           {categoryStats.length === 0 ? (
-            <p className="text-xs text-slate-500 font-mono">No detection signals recorded yet</p>
+            <p className="text-xs text-slate-500 font-mono">{t("No detection signals recorded yet")}</p>
           ) : (
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 layout="vertical"
-                data={categoryStats}
+                data={localizedCategory}
                 margin={{ top: 10, right: 20, left: 40, bottom: 10 }}
               >
                 <XAxis
