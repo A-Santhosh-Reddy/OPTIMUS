@@ -36,6 +36,9 @@ import {
   Check,
   Globe,
   Gavel,
+  Mail,
+  Layers,
+  TrendingUp,
 } from "lucide-react";
 import { Modal } from "../ui/modal";
 import { Button } from "../ui/button";
@@ -262,6 +265,18 @@ export function Sidebar({
       roles: ["ADMIN", "ANALYST"],
     },
     {
+      name: t("nav.emailAnalyzer", "Email Forensics"),
+      href: "/email-analyzer",
+      icon: Mail,
+      roles: ["ADMIN", "ANALYST"],
+    },
+    {
+      name: t("nav.batchScanner", "Bulk Threat Scanner"),
+      href: "/batch-scanner",
+      icon: Layers,
+      roles: ["ADMIN", "ANALYST"],
+    },
+    {
       name: t("nav.findings", "Threat Findings"),
       href: "/findings",
       icon: ShieldAlert,
@@ -284,6 +299,18 @@ export function Sidebar({
       href: "/threat-intel",
       icon: Radio,
       roles: ["ADMIN", "ANALYST", "VIEWER"],
+    },
+    {
+      name: t("nav.analytics", "Trend Analytics"),
+      href: "/analytics",
+      icon: TrendingUp,
+      roles: ["ADMIN", "ANALYST", "VIEWER"],
+    },
+    {
+      name: t("nav.alerts", "Real-Time Alerts"),
+      href: "/alerts",
+      icon: Bell,
+      roles: ["ADMIN", "ANALYST"],
     },
     {
       name: t("nav.auditLogs", "Security Audit Logs"),

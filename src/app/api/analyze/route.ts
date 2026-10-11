@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
 import { runCompleteThreatAnalysis } from "@/lib/detection/engine";
 import { logAuditEvent } from "@/lib/audit/logger";
+import { dispatchAlerts } from "@/lib/alerts/alert-engine";
 
 const AnalyzeRequestSchema = z.object({
   url: z.string().min(1, "URL or domain name is required").max(2000, "URL exceeds maximum supported length"),
@@ -126,6 +127,20 @@ export async function POST(req: Request) {
         severity: report.riskScore.severity,
       },
     });
+
+    // Fire real-time notification alerts (Slack, Webhook, Email) based on thresholds
+    dispatchAlerts(
+      savedAnalysis.id,
+      report.riskScore.severity,
+      report.riskScore.finalScore,
+      report.normalizedHostname,
+      report.submittedUrl,
+      report.signals.length,
+      report.signals.slice(0, 5).map((s) => s.title),
+      report.brandMatches.map((bm) => bm.brandName),
+      report.overallIntelStatus,
+      report.aiExplanation.summary
+    ).catch((err) => console.error("Alert dispatch error:", err));
 
     return NextResponse.json({
       success: true,

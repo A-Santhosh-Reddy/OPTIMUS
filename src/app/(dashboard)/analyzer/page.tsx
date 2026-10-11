@@ -24,8 +24,12 @@ export default function AnalyzerPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Analysis failed");
 
-      // Extract complete structured analysis result
-      setCurrentAnalysis(data.analysis);
+      // Extract complete structured analysis result including WHOIS/DNS intelligence
+      setCurrentAnalysis({
+        ...data.analysis,
+        whoisDns: data.report?.whoisDns || null,
+        report: data.report,
+      });
     } catch (err: any) {
       throw err;
     } finally {

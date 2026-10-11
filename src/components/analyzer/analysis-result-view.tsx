@@ -25,6 +25,7 @@ import { Button } from "../ui/button";
 import { SeverityBadge, IntelStatusBadge } from "../ui/badge";
 import { Modal } from "../ui/modal";
 import { generateThreatInvestigationPdf } from "@/lib/pdf/report-generator";
+import { WhoisPanel } from "./whois-panel";
 
 interface AnalysisResultViewProps {
   analysis: any;
@@ -315,6 +316,14 @@ export function AnalysisResultView({
           )}
         </Card>
       </div>
+
+      {/* WHOIS & DNS Infrastructure Intelligence */}
+      {(analysis.whoisDns || analysis.report?.whoisDns) && (
+        <WhoisPanel
+          whoisDns={analysis.whoisDns || analysis.report?.whoisDns}
+          registrableDomain={analysis.registrableDomain}
+        />
+      )}
 
       {/* Detected Heuristic Signals Table */}
       <Card>
