@@ -307,11 +307,11 @@ export function Sidebar({
         <div className="flex-1 overflow-y-auto min-h-0">
           {/* Brand Logo & Header */}
           <div className="p-5 border-b border-white/[0.08] flex items-center gap-3">
-            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl overflow-hidden bg-[#091530] border border-cyan-400/50 shadow-[0_0_18px_rgba(0,240,255,0.35),inset_1.5px_1.5px_3px_rgba(255,255,255,0.2)]">
+            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center">
               <img
                 src="/logo.png"
                 alt="OPTIMUS Cyber Defense"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,240,255,0.4)]"
               />
             </div>
             <div>

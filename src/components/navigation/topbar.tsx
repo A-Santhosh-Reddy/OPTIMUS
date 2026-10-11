@@ -49,6 +49,11 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
     <>
       <header className="h-16 clay-header px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
         <div className="flex items-center gap-3">
+          <img
+            src="/logo.png"
+            alt="OPTIMUS Eagle Shield"
+            className="h-7 w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(0,240,255,0.45)]"
+          />
           <div className="flex items-center gap-2 text-xs text-slate-400">
             <span className="font-semibold text-slate-100 flex items-center gap-1.5">
               <ShieldCheck className="h-4 w-4 text-cyan-400 flex-shrink-0" />

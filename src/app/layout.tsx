@@ -7,6 +7,15 @@ import { LanguageProvider } from "@/context/language-context";
 export const metadata: Metadata = {
   title: `${APP_CONFIG.name} | ${APP_CONFIG.tagline}`,
   description: APP_CONFIG.description,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Optimus Cyber Defense</title>
   <meta name="description" content="OPTIMUS Cyber Defense Platform by CyberDefend. Continuous Digital Risk Protection (DRP), threat vector discovery, heuristic analysis and automated adversary infrastructure disruption.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -189,17 +192,12 @@
     .logo-icon {
       width: 44px;
       height: 44px;
-      border-radius: var(--radius-sm);
-      background: #091530;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 4px 6px 14px rgba(0, 240, 255, 0.35),
-                  inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.3);
-      border: 1px solid rgba(0, 240, 255, 0.4);
-      overflow: hidden;
-      padding: 2px;
-      color: #060b18;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
     .logo-text {
       font-family: var(--font-display);
@@ -1268,7 +1266,7 @@
     <div class="container header-inner">
       <a href="#" class="brand-logo" aria-label="Optimus Cyber Defense Home">
         <div class="logo-icon" aria-hidden="true">
-          <img src="logo.png" alt="OPTIMUS" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;" />
+          <img src="logo.png" alt="OPTIMUS" style="width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 10px rgba(0, 240, 255, 0.45));" />
         </div>
         <div>
           <span class="logo-text">OPTIMUS</span>
@@ -1809,7 +1807,8 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="logo.png" alt="OPTIMUS" style="width: 26px; height: 26px; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0, 240, 255, 0.45));" />
           <span style="font-family: var(--font-display); font-weight: 700; color: #fff;">OPTIMUS</span>
           <span style="color: var(--text-dim);">&bull;</span>
           <span>CyberDefend Global Defense</span>

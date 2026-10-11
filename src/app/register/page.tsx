@@ -56,9 +56,8 @@ export default function RegisterPage() {
 
       <div className="w-full max-w-md space-y-6 relative z-10">
         <div className="text-center space-y-2.5">
-          <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#091530] text-white shadow-xl shadow-cyan-500/30 border border-cyan-400/50 p-1.5 overflow-hidden">
-            <img src="/logo.png" alt="OPTIMUS SOC Defense" className="h-full w-full object-cover" />
-            <div className="absolute inset-0 rounded-2xl bg-cyan-400/10 pointer-events-none" />
+          <div className="relative inline-flex h-16 w-16 items-center justify-center">
+            <img src="/logo.png" alt="OPTIMUS SOC Defense" className="h-full w-full object-contain filter drop-shadow-[0_4px_16px_rgba(0,240,255,0.45)]" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white font-mono">
             ANALYST REGISTRATION

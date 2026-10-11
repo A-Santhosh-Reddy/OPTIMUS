@@ -63,11 +63,11 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 min-w-0 group">
-            <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl overflow-hidden bg-[#091530] border border-cyan-400/50 shadow-[0_0_18px_rgba(0,240,255,0.35),inset_1.5px_1.5px_3px_rgba(255,255,255,0.2)] group-hover:scale-105 transition-transform">
+            <div className="relative flex h-11 w-11 flex-shrink-0 items-center justify-center group-hover:scale-105 transition-transform">
               <img
                 src="/logo.png"
                 alt="OPTIMUS Cyber Defense"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,240,255,0.4)]"
               />
             </div>
             <div className="min-w-0">
@@ -687,8 +687,11 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t border-white/[0.08] bg-[#040812] py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative font-plex-mono text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <span className="font-unbounded font-bold text-white">OPTIMUS</span> &bull; CyberDefend Global Defense Platform &copy; 2026.
+        <div className="flex items-center gap-2.5">
+          <img src="/logo.png" alt="OPTIMUS" className="h-6 w-6 object-contain filter drop-shadow-[0_2px_6px_rgba(0,240,255,0.45)]" />
+          <div>
+            <span className="font-unbounded font-bold text-white">OPTIMUS</span> &bull; CyberDefend Global Defense Platform &copy; 2026.
+          </div>
         </div>
         <div className="flex items-center gap-6">
           <Link href="/login" className="hover:text-cyan-400 transition-colors">SOC Portal</Link>
