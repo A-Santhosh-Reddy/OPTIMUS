@@ -342,7 +342,7 @@ export function Sidebar({
           </div>
 
           {/* Navigation Links */}
-          <nav className="p-3 space-y-1.5">
+          <nav className="p-3 space-y-2">
             {navItems
               .filter((item) => item.roles.includes(userRole))
               .map((item) => {
@@ -352,20 +352,20 @@ export function Sidebar({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                    className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 select-none ${
                       isActive
-                        ? "bg-gradient-to-r from-cyan-500/20 via-blue-600/15 to-transparent text-cyan-300 border border-cyan-400/30 shadow-[0_0_20px_rgba(6,182,212,0.15)]"
-                        : "text-slate-400 hover:text-slate-100 hover:bg-white/[0.04] border border-transparent hover:border-white/[0.06]"
+                        ? "bg-[#091e38] text-cyan-300 border border-cyan-400/40 shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(0,240,255,0.25),inset_-2px_-2px_4px_rgba(0,0,0,0.5)] font-semibold"
+                        : "text-slate-400 hover:text-white hover:bg-[#0c1834] hover:shadow-[3px_5px_10px_rgba(2,6,18,0.5),inset_1px_1px_2px_rgba(255,255,255,0.08)] border border-transparent hover:border-white/10"
                     }`}
                   >
                     <Icon
-                      className={`h-4 w-4 transition-colors ${
+                      className={`h-4 w-4 transition-colors shrink-0 ${
                         isActive ? "text-cyan-400" : "text-slate-400 group-hover:text-cyan-300"
                       }`}
                     />
-                    <span className="tracking-wide">{item.name}</span>
+                    <span className="tracking-wide font-plex-mono text-[11px] truncate">{item.name}</span>
                     {isActive && (
-                      <span className="absolute right-2.5 h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]" />
+                      <span className="ml-auto h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] shrink-0" />
                     )}
                   </Link>
                 );
@@ -374,10 +374,10 @@ export function Sidebar({
         </div>
 
         {/* User Info Pill & Interactive Dropdown Menu Container */}
-        <div className="shrink-0 relative p-3 border-t border-white/[0.08] bg-slate-950/40 backdrop-blur-xl" ref={menuRef}>
+        <div className="shrink-0 relative p-3 border-t border-white/[0.08] bg-[#050c1e]" ref={menuRef}>
           {/* The Rich Popup Dropdown (Matches Image 2) */}
           {isUserMenuOpen && (
-            <div className="absolute bottom-[72px] left-3 right-3 rounded-2xl border border-cyan-500/30 bg-[#0d1424]/95 backdrop-blur-2xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
+            <div className="absolute bottom-[72px] left-3 right-3 rounded-2xl border border-cyan-500/40 bg-[#0d1a38] p-2.5 shadow-[12px_16px_36px_rgba(2,6,18,0.95),inset_2px_2px_4px_rgba(255,255,255,0.15),inset_-3px_-3px_6px_rgba(0,0,0,0.6)] z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
               {/* Header: User identity */}
               <div
                 onClick={() => {
@@ -493,8 +493,8 @@ export function Sidebar({
             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
             className={`w-full flex items-center gap-3 p-2 rounded-2xl border transition-all text-left group cursor-pointer ${
               isUserMenuOpen
-                ? "bg-slate-900 border-cyan-400/50 shadow-[0_0_15px_rgba(6,182,212,0.25)]"
-                : "bg-slate-900/60 border-cyan-500/25 hover:border-cyan-400/40 hover:bg-slate-900"
+                ? "bg-[#0c1a38] border-cyan-400/50 shadow-[6px_8px_20px_rgba(2,6,18,0.85),inset_2px_2px_4px_rgba(255,255,255,0.18)]"
+                : "bg-[#081329] border-white/10 hover:border-cyan-400/40 hover:bg-[#0c1a38] shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.1),inset_-2px_-2px_4px_rgba(0,0,0,0.45)]"
             }`}
           >
             <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-600/40 to-blue-500/30 border border-cyan-500/40 flex items-center justify-center font-bold text-xs text-cyan-300 shadow-inner shrink-0 group-hover:scale-105 transition-transform">

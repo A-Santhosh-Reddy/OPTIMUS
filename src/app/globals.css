@@ -60,91 +60,261 @@
 }
 
 /* =========================================================================
-   ULTRA-PREMIUM CYBER SHIELD SURFACES & GLASSMORPHISM
+   PURE CLAYMORPHISM DESIGN SYSTEM & MULTI-COLOUR PALETTES
    ========================================================================= */
 
-/* Liquid Glass Base */
-.liquid-glass {
-  background: linear-gradient(135deg, rgba(20, 35, 68, 0.45) 0%, rgba(12, 22, 45, 0.65) 50%, rgba(7, 13, 28, 0.85) 100%);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  box-shadow: 
-    0 12px 35px -5px rgba(0, 0, 0, 0.6),
-    0 0 20px -3px rgba(6, 182, 212, 0.12),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+:root {
+  --clay-bg-canvas: #060b19;
+  --clay-bg-surface: #0a142c;
+  --clay-bg-card: #0d1a38;
+  --clay-bg-card-hover: #112248;
+
+  /* Standard Tactile Clay Shadow Tokens */
+  --clay-shadow-card:
+    10px 14px 28px rgba(2, 6, 18, 0.8),
+    -4px -4px 18px rgba(20, 36, 75, 0.25),
+    inset 2.5px 2.5px 5px rgba(255, 255, 255, 0.12),
+    inset -3.5px -3.5px 7px rgba(0, 0, 0, 0.55);
+
+  --clay-shadow-card-hover:
+    14px 20px 38px rgba(2, 6, 18, 0.95),
+    -6px -6px 24px rgba(20, 36, 75, 0.38),
+    inset 3.5px 3.5px 7px rgba(255, 255, 255, 0.18),
+    inset -4.5px -4.5px 9px rgba(0, 0, 0, 0.65);
+
+  --clay-shadow-inset:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.65),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.06);
+
+  --clay-shadow-pill:
+    4px 6px 14px rgba(2, 6, 18, 0.6),
+    inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.45);
 }
 
-/* Cyber Shield Card with Dual Rim Glow */
+/* 1. Base Claymorphic Card */
+.clay-card,
 .liquid-glass-card {
-  background: linear-gradient(135deg, rgba(14, 27, 54, 0.72) 0%, rgba(9, 18, 38, 0.88) 100%);
-  backdrop-filter: blur(28px) saturate(220%);
-  -webkit-backdrop-filter: blur(28px) saturate(220%);
-  border: 1px solid rgba(56, 189, 248, 0.24);
-  box-shadow: 
-    0 16px 45px -10px rgba(0, 0, 0, 0.75),
-    0 0 25px -4px rgba(6, 182, 212, 0.16),
-    inset 0 1px 2px 0 rgba(147, 197, 253, 0.3),
-    inset 0 0 25px 0 rgba(6, 182, 212, 0.06);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--clay-bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: var(--clay-shadow-card);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
-.liquid-glass-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
-  pointer-events: none;
-}
-
+.clay-card:hover,
 .liquid-glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 
-    0 20px 55px -10px rgba(0, 0, 0, 0.85),
-    0 0 35px 2px rgba(6, 182, 212, 0.35),
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  background: var(--clay-bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: var(--clay-shadow-card-hover);
+  transform: translateY(-3px);
 }
 
-/* Glass Header with Cyber Rim Light */
-.liquid-glass-header {
-  background: linear-gradient(180deg, rgba(10, 18, 38, 0.88) 0%, rgba(6, 11, 25, 0.75) 100%);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
-  box-shadow: 0 6px 35px rgba(0, 0, 0, 0.5), 0 1px 15px rgba(6, 182, 212, 0.15);
+/* 2. Premium Multi-Colour Clay Palettes */
+
+/* A. Electric Cyan / Cyber Aqua */
+.clay-cyan,
+.clay-card-cyan {
+  background: #081d38;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(0, 240, 255, 0.1),
+              inset 3px 3px 6px rgba(0, 240, 255, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-cyan:hover,
+.clay-card-cyan:hover {
+  background: #0b2446;
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(0, 240, 255, 0.2),
+              inset 4px 4px 8px rgba(0, 240, 255, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
 }
 
-/* Glass Sidebar with Deep Navy Tint */
+/* B. Imperial Violet / Royal Purple */
+.clay-purple,
+.clay-card-purple {
+  background: #170d2f;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(168, 85, 247, 0.1),
+              inset 3px 3px 6px rgba(168, 85, 247, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-purple:hover,
+.clay-card-purple:hover {
+  background: #1e113c;
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(168, 85, 247, 0.2),
+              inset 4px 4px 8px rgba(168, 85, 247, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* C. Matrix Jade / Emerald */
+.clay-emerald,
+.clay-card-emerald {
+  background: #08211d;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(16, 185, 129, 0.1),
+              inset 3px 3px 6px rgba(16, 185, 129, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-emerald:hover,
+.clay-card-emerald:hover {
+  background: #0b2b25;
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(16, 185, 129, 0.2),
+              inset 4px 4px 8px rgba(16, 185, 129, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* D. Sunset Gold / Amber */
+.clay-amber,
+.clay-card-amber {
+  background: #201507;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(245, 158, 11, 0.1),
+              inset 3px 3px 6px rgba(245, 158, 11, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-amber:hover,
+.clay-card-amber:hover {
+  background: #2a1b0a;
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(245, 158, 11, 0.2),
+              inset 4px 4px 8px rgba(245, 158, 11, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* E. Crimson Shield / Rose */
+.clay-rose,
+.clay-card-rose {
+  background: #220912;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(244, 63, 94, 0.1),
+              inset 3px 3px 6px rgba(244, 63, 94, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-rose:hover,
+.clay-card-rose:hover {
+  background: #2d0d19;
+  border-color: rgba(244, 63, 94, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(244, 63, 94, 0.2),
+              inset 4px 4px 8px rgba(244, 63, 94, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* F. Deep Cobalt Sapphire / Indigo */
+.clay-indigo,
+.clay-card-indigo {
+  background: #0a1538;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(59, 130, 246, 0.1),
+              inset 3px 3px 6px rgba(59, 130, 246, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-indigo:hover,
+.clay-card-indigo:hover {
+  background: #0d1c4a;
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(59, 130, 246, 0.2),
+              inset 4px 4px 8px rgba(59, 130, 246, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* G. Radiant Tangerine / Orange */
+.clay-orange,
+.clay-card-orange {
+  background: #221207;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  box-shadow: 10px 14px 28px rgba(2, 6, 18, 0.82),
+              -4px -4px 16px rgba(249, 115, 22, 0.1),
+              inset 3px 3px 6px rgba(249, 115, 22, 0.22),
+              inset -4px -4px 8px rgba(0, 0, 0, 0.58);
+}
+.clay-orange:hover,
+.clay-card-orange:hover {
+  background: #2c170a;
+  border-color: rgba(249, 115, 22, 0.6);
+  box-shadow: 14px 20px 38px rgba(2, 6, 18, 0.95),
+              -6px -6px 22px rgba(249, 115, 22, 0.2),
+              inset 4px 4px 8px rgba(249, 115, 22, 0.32),
+              inset -5px -5px 10px rgba(0, 0, 0, 0.65);
+  transform: translateY(-3px);
+}
+
+/* 3. Clay Sidebar & Header Infrastructure */
+.clay-sidebar,
 .liquid-glass-sidebar {
-  background: linear-gradient(180deg, rgba(8, 16, 34, 0.92) 0%, rgba(5, 10, 22, 0.98) 100%);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border-right: 1px solid rgba(56, 189, 248, 0.2);
-  box-shadow: 12px 0 45px -10px rgba(0, 0, 0, 0.6), inset -1px 0 15px rgba(6, 182, 212, 0.08);
+  background: #070f24;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 14px 0 36px rgba(2, 6, 18, 0.88),
+              inset -1.5px 0 4px rgba(255, 255, 255, 0.05);
 }
 
-/* Glass Input */
+.clay-header,
+.liquid-glass-header {
+  background: #08132b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 28px rgba(2, 6, 18, 0.8),
+              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.clay-container,
+.liquid-glass {
+  background: #0b1735;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: var(--clay-shadow-card);
+}
+
+/* 4. Clay Input (Tactile Sunken Bevel) */
+.clay-input,
 .liquid-glass-input {
-  background: rgba(10, 18, 38, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  box-shadow: inset 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+  background: #060d1f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.875rem;
+  box-shadow: var(--clay-shadow-inset);
+  color: #fff;
   transition: all 0.2s ease;
 }
 
+.clay-input:focus,
 .liquid-glass-input:focus {
-  border-color: rgba(6, 182, 212, 0.75);
-  box-shadow: 
-    inset 0 2px 4px 0 rgba(0, 0, 0, 0.4),
-    0 0 20px 2px rgba(6, 182, 212, 0.35);
-  background: rgba(14, 25, 52, 0.85);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.7),
+              0 0 18px rgba(0, 240, 255, 0.28);
+  background: #08122c;
+}
+
+/* 5. Claymorphic Button Elevation Engine */
+.clay-btn {
+  border-radius: 0.875rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+.clay-btn:hover {
+  transform: translateY(-2px);
+}
+.clay-btn:active {
+  transform: translateY(1px);
 }
 
 /* Cyber Shimmer Specular Light Beam */

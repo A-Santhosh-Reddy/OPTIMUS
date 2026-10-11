@@ -27,17 +27,17 @@ export function Button({
 
   const variantClasses = {
     primary:
-      "cyber-shimmer bg-gradient-to-r from-blue-600/90 to-cyan-500/90 hover:from-blue-500 hover:to-cyan-400 text-white shadow-lg shadow-cyan-500/25 border border-cyan-400/40 backdrop-blur-md focus:ring-cyan-500",
+      "bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white border border-cyan-400/40 shadow-[5px_7px_16px_rgba(2,6,18,0.7),0_0_18px_rgba(6,182,212,0.35),inset_2px_2px_4px_rgba(255,255,255,0.45),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] focus:ring-cyan-500",
     cyan:
-      "cyber-shimmer bg-gradient-to-r from-cyan-600/90 via-sky-500/90 to-blue-600/90 hover:from-cyan-500 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/30 border border-cyan-300/40 backdrop-blur-md focus:ring-cyan-400",
+      "bg-gradient-to-r from-cyan-600 via-sky-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white border border-cyan-300/50 shadow-[5px_7px_18px_rgba(2,6,18,0.75),0_0_20px_rgba(6,182,212,0.4),inset_2px_2px_4px_rgba(255,255,255,0.5),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] focus:ring-cyan-400",
     liquid:
-      "liquid-glass hover:bg-white/[0.08] text-cyan-300 hover:text-white border border-cyan-500/30 shadow-liquid-cyan hover:border-cyan-400/60 focus:ring-cyan-500",
+      "bg-[#081d38] hover:bg-[#0b2446] text-cyan-300 hover:text-white border border-cyan-400/40 shadow-[5px_7px_16px_rgba(2,6,18,0.7),inset_2px_2px_4px_rgba(0,240,255,0.25),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] focus:ring-cyan-500",
     secondary:
-      "bg-slate-900/80 hover:bg-slate-800/90 text-slate-200 border border-slate-700/80 backdrop-blur-md focus:ring-slate-500",
+      "bg-[#0d1a38] hover:bg-[#122248] text-slate-200 border border-white/10 shadow-[4px_6px_14px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.15),inset_-2px_-2px_4px_rgba(0,0,0,0.45)] focus:ring-slate-500",
     outline:
-      "bg-slate-950/40 hover:bg-cyan-950/30 text-slate-300 hover:text-cyan-300 border border-slate-700/80 hover:border-cyan-500/40 backdrop-blur-md focus:ring-cyan-500",
+      "bg-[#081226] hover:bg-[#0c1a36] text-slate-300 hover:text-white border border-white/10 hover:border-cyan-500/40 shadow-[4px_6px_14px_rgba(2,6,18,0.6),inset_1.5px_1.5px_3px_rgba(255,255,255,0.1),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] focus:ring-cyan-500",
     danger:
-      "cyber-shimmer bg-gradient-to-r from-red-600/90 to-rose-700/90 hover:from-red-500 hover:to-rose-600 text-white shadow-lg shadow-red-600/25 border border-red-500/40 backdrop-blur-md focus:ring-red-500",
+      "bg-gradient-to-r from-rose-600 to-red-700 hover:from-rose-500 hover:to-red-600 text-white border border-rose-400/40 shadow-[5px_7px_16px_rgba(2,6,18,0.7),0_0_18px_rgba(244,63,94,0.35),inset_2px_2px_4px_rgba(255,255,255,0.45),inset_-2px_-2px_4px_rgba(0,0,0,0.4)] focus:ring-rose-500",
     ghost:
       "bg-transparent hover:bg-white/[0.06] text-slate-400 hover:text-slate-100 focus:ring-slate-500",
   }[variant];

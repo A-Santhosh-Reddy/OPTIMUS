@@ -719,67 +719,67 @@ export default function DomainMonitoringPage() {
 
       {/* Summary Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Metric 1 */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] relative overflow-hidden">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-plex-mono">
+        {/* Metric 1 - Cyber Cyan */}
+        <div className="p-4 sm:p-5 rounded-2xl clay-cyan relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-cyan-200/80 text-xs font-plex-mono">
             <span>DOMAINS MONITORED</span>
             <Globe className="w-4 h-4 text-cyan-400" />
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold text-white font-unbounded mt-2">
             {summaryMetrics.total}
           </div>
-          <div className="text-[11px] text-cyan-400/80 font-plex-mono mt-1 flex items-center gap-1">
-            <span className="text-emerald-400">+{domains.length - INITIAL_DOMAINS.length >= 0 ? `+${domains.length}` : domains.length}</span>
+          <div className="text-[11px] text-cyan-300 font-plex-mono mt-1 flex items-center gap-1">
+            <span className="text-emerald-400 font-bold">+{domains.length - INITIAL_DOMAINS.length >= 0 ? `+${domains.length}` : domains.length}</span>
             <span>across registered brands</span>
           </div>
         </div>
 
-        {/* Metric 2 */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] relative overflow-hidden">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-plex-mono">
+        {/* Metric 2 - Sunset Amber */}
+        <div className="p-4 sm:p-5 rounded-2xl clay-amber relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-amber-200/80 text-xs font-plex-mono">
             <span>CRITICAL LOOKALIKES</span>
             <AlertTriangle className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 font-unbounded mt-2">
             {summaryMetrics.lookalikesToday}
           </div>
-          <div className="text-[11px] text-slate-400 font-plex-mono mt-1">
-            <span className="text-amber-400">Risk &ge; 70</span> requiring analyst review
+          <div className="text-[11px] text-amber-200/70 font-plex-mono mt-1">
+            <span className="text-amber-400 font-bold">Risk &ge; 70</span> requiring analyst review
           </div>
         </div>
 
-        {/* Metric 3 */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] relative overflow-hidden">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-plex-mono">
+        {/* Metric 3 - Crimson Rose */}
+        <div className="p-4 sm:p-5 rounded-2xl clay-rose relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-rose-200/80 text-xs font-plex-mono">
             <span>ACTIVE TAKEDOWNS</span>
             <ShieldAlert className="w-4 h-4 text-rose-400" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-rose-400 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-rose-300 font-unbounded mt-2">
             {summaryMetrics.activeTakedowns}
           </div>
-          <div className="text-[11px] text-slate-400 font-plex-mono mt-1 flex items-center gap-1">
-            <span className="text-emerald-400">{summaryMetrics.takenDown} resolved</span>
+          <div className="text-[11px] text-rose-200/70 font-plex-mono mt-1 flex items-center gap-1">
+            <span className="text-emerald-400 font-bold">{summaryMetrics.takenDown} resolved</span>
             <span>this month</span>
           </div>
         </div>
 
-        {/* Metric 4 */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] relative overflow-hidden">
-          <div className="flex items-center justify-between text-slate-400 text-xs font-plex-mono">
+        {/* Metric 4 - Matrix Emerald */}
+        <div className="p-4 sm:p-5 rounded-2xl clay-emerald relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-emerald-200/80 text-xs font-plex-mono">
             <span>AVG DETECTION TIME</span>
             <Clock className="w-4 h-4 text-emerald-400" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-300 font-unbounded mt-2">
             {summaryMetrics.avgDetectionTime}
           </div>
-          <div className="text-[11px] text-slate-400 font-plex-mono mt-1">
-            <span className="text-emerald-400">-18% faster</span> via lexical triage
+          <div className="text-[11px] text-emerald-200/70 font-plex-mono mt-1">
+            <span className="text-emerald-400 font-bold">-18% faster</span> via lexical triage
           </div>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <Card className="p-4 border-white/10 bg-[#0d1a38]/90 shadow-xl">
+      <Card className="p-4 clay-card">
         <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
           {/* Search Box */}
           <div className="relative flex-1">
@@ -1030,13 +1030,13 @@ export default function DomainMonitoringPage() {
 
       {/* DETAIL DRAWER (SLIDE-OVER FROM RIGHT) */}
       {isDetailOpen && selectedDomain && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
           <div
-            className="w-full sm:w-[540px] h-full bg-[#081228] border-l border-white/10 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
+            className="w-full sm:w-[540px] h-full bg-[#081228] border-l border-white/10 shadow-[-16px_0_40px_rgba(0,0,0,0.85),inset_2px_0_4px_rgba(255,255,255,0.06)] flex flex-col animate-in slide-in-from-right duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drawer Header */}
-            <div className="p-6 border-b border-white/10 bg-[#091535] flex items-center justify-between">
+            <div className="p-6 border-b border-white/10 bg-[#071329] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span
@@ -1073,8 +1073,8 @@ export default function DomainMonitoringPage() {
             {/* Drawer Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {/* Interactive Action Control Panel */}
-              <div className="p-4 rounded-xl bg-[#0d1c3e] border border-cyan-500/30 shadow-lg">
-                <span className="text-[11px] font-plex-mono uppercase text-cyan-300 tracking-wider font-semibold block mb-2.5">
+              <div className="p-4 rounded-2xl clay-cyan border border-cyan-500/30">
+                <span className="text-[11px] font-plex-mono uppercase text-cyan-200 tracking-wider font-bold block mb-2.5">
                   SOC Triage Operations
                 </span>
                 <div className="grid grid-cols-3 gap-2">
@@ -1121,7 +1121,7 @@ export default function DomainMonitoringPage() {
                   {selectedDomain.signals.map((sig, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-[#0a1530] border border-white/10 text-xs"
+                      className="p-3.5 rounded-2xl clay-card border border-white/10 text-xs"
                     >
                       <div className="flex items-center justify-between font-plex-mono font-semibold text-white mb-1">
                         <span className="flex items-center gap-1.5 text-slate-200">

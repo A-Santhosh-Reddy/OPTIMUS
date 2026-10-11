@@ -582,56 +582,56 @@ export default function TakedownCenterPage() {
 
       {/* Small Summary Strip at Top */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {/* Strip 1 */}
-        <div className="p-4 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] flex items-center justify-between">
+        {/* Strip 1 - Crimson Threat Rose */}
+        <div className="p-4 rounded-2xl clay-rose flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-slate-400 font-plex-mono uppercase tracking-wider">
+            <div className="text-[11px] text-rose-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               Open Takedowns
             </div>
-            <div className="text-2xl font-extrabold text-rose-400 font-unbounded mt-1">
+            <div className="text-2xl font-extrabold text-rose-300 font-unbounded mt-1">
               {summaryStrip.openTakedowns}
             </div>
-            <div className="text-[11px] text-slate-400 font-plex-mono mt-0.5">
+            <div className="text-[11px] text-rose-200/70 font-plex-mono mt-0.5">
               Across registrars &amp; CDNs
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-rose-950/60 border border-rose-500/30 flex items-center justify-center text-rose-400">
+          <div className="w-10 h-10 rounded-xl bg-[#1d0810] border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]">
             <ShieldAlert className="w-5 h-5" />
           </div>
         </div>
 
-        {/* Strip 2 */}
-        <div className="p-4 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] flex items-center justify-between">
+        {/* Strip 2 - Matrix Emerald */}
+        <div className="p-4 rounded-2xl clay-emerald flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-slate-400 font-plex-mono uppercase tracking-wider">
+            <div className="text-[11px] text-emerald-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               Median Time to Removal
             </div>
-            <div className="text-2xl font-extrabold text-emerald-400 font-unbounded mt-1">
+            <div className="text-2xl font-extrabold text-emerald-300 font-unbounded mt-1">
               {summaryStrip.medianTimeToRemoval}
             </div>
-            <div className="text-[11px] text-slate-400 font-plex-mono mt-0.5">
+            <div className="text-[11px] text-emerald-200/70 font-plex-mono mt-0.5">
               Fastest: 42 mins (Cloudflare)
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 rounded-xl bg-[#071f1a] border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]">
             <Clock className="w-5 h-5" />
           </div>
         </div>
 
-        {/* Strip 3 */}
-        <div className="p-4 rounded-2xl bg-[#0d1a38]/85 border border-white/10 shadow-[6px_8px_20px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.1)] flex items-center justify-between">
+        {/* Strip 3 - Cyber Cyan */}
+        <div className="p-4 rounded-2xl clay-cyan flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-slate-400 font-plex-mono uppercase tracking-wider">
+            <div className="text-[11px] text-cyan-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               Success Rate This Month
             </div>
-            <div className="text-2xl font-extrabold text-cyan-400 font-unbounded mt-1">
+            <div className="text-2xl font-extrabold text-cyan-200 font-unbounded mt-1">
               {summaryStrip.successRate}
             </div>
-            <div className="text-[11px] text-slate-400 font-plex-mono mt-0.5">
+            <div className="text-[11px] text-cyan-300/70 font-plex-mono mt-0.5">
               Legal compliance benchmark
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+          <div className="w-10 h-10 rounded-xl bg-[#071b33] border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)]">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
@@ -646,7 +646,7 @@ export default function TakedownCenterPage() {
             return (
               <div
                 key={col.id}
-                className="flex-1 flex flex-col rounded-2xl bg-[#0a142c]/90 border border-white/10 shadow-xl overflow-hidden min-w-[250px]"
+                className="flex-1 flex flex-col rounded-3xl clay-card border border-white/10 overflow-hidden min-w-[250px]"
               >
                 {/* Column Header */}
                 <div className={`p-3.5 border-b border-white/10 ${col.bgAccent} flex items-center justify-between`}>
@@ -672,7 +672,7 @@ export default function TakedownCenterPage() {
                       <div
                         key={item.id}
                         onClick={() => handleCardClick(item)}
-                        className="p-4 rounded-xl bg-[#0d1a38] border border-white/10 hover:border-cyan-400/50 cursor-pointer transition-all duration-200 shadow-md hover:shadow-cyan-900/30 group relative"
+                        className="p-4 rounded-2xl bg-[#08152e] border border-cyan-500/20 hover:border-cyan-400/60 cursor-pointer transition-all duration-300 shadow-[5px_6px_16px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.08),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.6)] hover:-translate-y-1 hover:shadow-[8px_12px_24px_rgba(0,0,0,0.8),0_0_16px_rgba(0,240,255,0.25)] group relative"
                       >
                         {/* Card Top: ID & Risk Score */}
                         <div className="flex items-center justify-between mb-2">
@@ -753,13 +753,13 @@ export default function TakedownCenterPage() {
 
       {/* SIDE PANEL (DRAWER) WHEN CARD IS CLICKED */}
       {isSidePanelOpen && selectedCase && (
-        <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
           <div
-            className="w-full sm:w-[560px] h-full bg-[#081228] border-l border-white/10 shadow-2xl flex flex-col animate-in slide-in-from-right duration-300"
+            className="w-full sm:w-[560px] h-full bg-[#081228] border-l border-white/10 shadow-[-16px_0_40px_rgba(0,0,0,0.85),inset_2px_0_4px_rgba(255,255,255,0.06)] flex flex-col animate-in slide-in-from-right duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Panel Header */}
-            <div className="p-6 border-b border-white/10 bg-[#091535] flex items-center justify-between">
+            <div className="p-6 border-b border-white/10 bg-[#071329] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="px-2 py-0.5 rounded-full text-[10px] font-plex-mono font-bold bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">

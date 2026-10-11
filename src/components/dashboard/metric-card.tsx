@@ -25,31 +25,31 @@ export function MetricCard({
   const variantStyles = {
     blue: {
       glow: "blue" as const,
-      iconBg: "bg-gradient-to-br from-blue-500/25 to-sky-600/10 border-blue-400/40 text-blue-300 shadow-inner",
+      iconBg: "bg-[#0a1b38] border border-blue-500/35 text-blue-300 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]",
       valueColor: "text-blue-300 drop-shadow-[0_0_15px_rgba(56,189,248,0.35)]",
       hoverBorder: "hover:border-blue-400/60",
     },
     cyan: {
       glow: "cyan" as const,
-      iconBg: "bg-gradient-to-br from-cyan-500/25 to-blue-600/10 border-cyan-400/40 text-cyan-300 shadow-inner",
+      iconBg: "bg-[#082238] border border-cyan-400/40 text-cyan-300 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.25)]",
       valueColor: "text-cyan-300 drop-shadow-[0_0_15px_rgba(6,182,212,0.35)]",
       hoverBorder: "hover:border-cyan-400/60",
     },
     red: {
       glow: "red" as const,
-      iconBg: "bg-gradient-to-br from-red-500/25 to-rose-600/10 border-red-400/40 text-red-300 shadow-inner",
-      valueColor: "text-red-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.35)]",
-      hoverBorder: "hover:border-red-400/60",
+      iconBg: "bg-[#240a14] border border-rose-500/40 text-rose-300 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]",
+      valueColor: "text-rose-400 drop-shadow-[0_0_15px_rgba(239,68,68,0.35)]",
+      hoverBorder: "hover:border-rose-400/60",
     },
     amber: {
       glow: "amber" as const,
-      iconBg: "bg-gradient-to-br from-amber-500/25 to-orange-600/10 border-amber-400/40 text-amber-300 shadow-inner",
+      iconBg: "bg-[#241707] border border-amber-500/40 text-amber-300 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]",
       valueColor: "text-amber-300 drop-shadow-[0_0_15px_rgba(245,158,11,0.35)]",
       hoverBorder: "hover:border-amber-400/60",
     },
     emerald: {
       glow: "emerald" as const,
-      iconBg: "bg-gradient-to-br from-emerald-500/25 to-teal-600/10 border-emerald-400/40 text-emerald-300 shadow-inner",
+      iconBg: "bg-[#082420] border border-emerald-500/40 text-emerald-300 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]",
       valueColor: "text-emerald-300 drop-shadow-[0_0_15px_rgba(16,185,129,0.35)]",
       hoverBorder: "hover:border-emerald-400/60",
     },

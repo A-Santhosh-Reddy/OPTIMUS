@@ -88,8 +88,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Cyber Shield Command Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl liquid-glass border border-cyan-500/35 relative overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
-        <div className="absolute -top-12 -right-12 w-48 h-48 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none" />
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-3xl clay-card-cyan border border-cyan-500/40 relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
             <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 shadow-[0_0_12px_rgba(6,182,212,0.4)] flex items-center gap-1.5">

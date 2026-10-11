@@ -13,19 +13,19 @@ export function Card({
   ...props
 }: CardProps) {
   const glowClasses = {
-    none: "border-sky-500/15 hover:border-sky-500/30",
-    cyber: "border-cyan-500/35 shadow-liquid-cyan hover:border-cyan-400/60",
-    cyan: "border-cyan-500/30 shadow-liquid-cyan hover:border-cyan-400/50",
-    blue: "border-sky-500/30 shadow-liquid-blue hover:border-sky-400/50",
-    emerald: "border-emerald-500/30 shadow-liquid-emerald hover:border-emerald-400/50",
-    red: "border-red-500/30 shadow-liquid-red hover:border-red-400/50",
-    amber: "border-amber-500/30 hover:border-amber-400/50",
-    purple: "border-purple-500/30 shadow-liquid-purple hover:border-purple-400/50",
+    none: "clay-card",
+    cyber: "clay-card-cyan",
+    cyan: "clay-card-cyan",
+    blue: "clay-card-indigo",
+    emerald: "clay-card-emerald",
+    red: "clay-card-rose",
+    amber: "clay-card-amber",
+    purple: "clay-card-purple",
   }[glow];
 
   return (
     <div
-      className={`liquid-glass-card rounded-2xl p-6 ${glowClasses} ${hudCorner ? "hud-corner" : ""} ${className}`}
+      className={`rounded-2xl p-6 transition-all duration-300 ${glowClasses} ${hudCorner ? "hud-corner" : ""} ${className}`}
       {...props}
     >
       {children}
@@ -48,7 +48,7 @@ export function CardHeader({
     <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4 mb-5">
       <div className="flex items-center gap-3">
         {Icon && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-600/10 border border-cyan-500/30 text-cyan-400 shadow-inner">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#091226] border border-white/10 text-cyan-400 shadow-[4px_6px_12px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.15)]">
             <Icon className="h-5 w-5" />
           </div>
         )}
