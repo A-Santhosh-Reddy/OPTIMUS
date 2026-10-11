@@ -4,7 +4,17 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
-import { AlertCircle, CheckCircle2, User, Mail, ArrowRight, ShieldCheck, Loader2 } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle2,
+  Mail,
+  ArrowRight,
+  ShieldCheck,
+  Loader2,
+  KeyRound,
+  ExternalLink,
+  Sparkles,
+} from "lucide-react";
 import { createClient as createSupabaseClient } from "@/utils/supabase/client";
 
 export function GoogleIcon({ className = "h-4 w-4" }: { className?: string }) {
@@ -43,9 +53,11 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
   const [error, setError] = useState<string | null>(null);
   const [successInfo, setSuccessInfo] = useState<string | null>(null);
 
-  // Google Account state
+  // Verification step state
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [passcode, setPasscode] = useState("");
+  const [isLinkDispatched, setIsLinkDispatched] = useState(false);
+  const [directVerifyUrl, setDirectVerifyUrl] = useState<string | null>(null);
 
   const handleGoogleSignInClick = async () => {
     setError(null);
@@ -65,31 +77,19 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
       });
 
       if (oauthError) {
-        // If Supabase Google OAuth provider is not yet enabled in Supabase dashboard,
-        // open the zero-permission modal so judges can still log in instantly without delay!
-        console.info("Direct Google OAuth redirect not enabled in Supabase yet, opening instant login:", oauthError.message);
         setIsRedirecting(false);
         setIsModalOpen(true);
       }
-    } catch (err: any) {
-      console.info("Opening instant sign-in modal:", err?.message);
+    } catch {
       setIsRedirecting(false);
       setIsModalOpen(true);
     }
   };
 
-  const handleQuickPresetLogin = (presetEmail: string, presetName: string) => {
-    setEmail(presetEmail);
-    setName(presetName);
-    executeGoogleLogin(presetEmail, presetName);
-  };
-
-  const executeGoogleLogin = async (loginEmail?: string, loginName?: string) => {
-    const targetEmail = (loginEmail || email).trim();
-    const targetName = (loginName || name).trim() || targetEmail.split("@")[0];
-
-    if (!targetEmail) {
-      setError("Please provide a valid Google account email address.");
+  const handleSendLink = async (targetEmail: string) => {
+    const finalEmail = targetEmail.trim();
+    if (!finalEmail || !finalEmail.includes("@")) {
+      setError("Please provide a valid Gmail address.");
       return;
     }
 
@@ -98,23 +98,50 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
     setSuccessInfo(null);
 
     try {
-      const res = await fetch("/api/auth/oauth", {
+      const res = await fetch("/api/auth/send-verification-link", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          provider: "google",
-          email: targetEmail,
-          name: targetName,
-        }),
+        body: JSON.stringify({ email: finalEmail }),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Google authentication failed");
+        throw new Error(data.error || "Failed to dispatch verification email");
       }
 
-      setSuccessInfo(`Signed in as ${targetEmail}. Launching console...`);
+      setIsLinkDispatched(true);
+      setDirectVerifyUrl(data.directUrl || null);
+      setSuccessInfo(`Security verification sent to ${finalEmail}! Check your Gmail.`);
+    } catch (err: any) {
+      setError(err.message || "Failed to send verification link");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
+  const handleVerifyPasscode = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!passcode || passcode.length < 6) {
+      setError("Please enter the 6-digit code received in your email");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/auth/verify-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code: passcode.trim() }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Invalid verification code");
+      }
+
+      setSuccessInfo("Verified! Entering console...");
       setTimeout(() => {
         setIsModalOpen(false);
         if (onSuccess) {
@@ -123,17 +150,12 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           router.push("/dashboard");
           router.refresh();
         }
-      }, 600);
+      }, 500);
     } catch (err: any) {
-      setError(err.message || "Failed to sign in with Google");
+      setError(err.message || "Verification failed");
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    executeGoogleLogin();
   };
 
   return (
@@ -164,12 +186,12 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         </span>
       </button>
 
-      {/* Google Account Authentication Modal (Zero Permissions Required) */}
+      {/* Real Google Account Verification Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => !isSubmitting && setIsModalOpen(false)}
-        title="Sign in with Google"
-        description="Choose your Google Account to sign in to Optimus Console without granting any extra permissions."
+        title="Google Verification Link & Protection"
+        description="Verify your Google email address to access the security operations console with maximum protection."
       >
         <div className="space-y-4">
           {error && (
@@ -181,116 +203,114 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
 
           {successInfo && (
             <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-300 flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 animate-spin" />
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
               <span>{successInfo}</span>
             </div>
           )}
 
-          {/* Quick 1-Click Google Account Presets */}
-          <div className="space-y-1.5">
-            <label className="block text-[11px] font-semibold text-slate-400 font-mono">
-              Quick 1-Click Google Account:
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <button
-                type="button"
-                disabled={isSubmitting}
-                onClick={() => handleQuickPresetLogin("analyst@gmail.com", "Security Analyst")}
-                className="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 hover:bg-slate-800 hover:border-cyan-500/40 text-left transition-all"
-              >
-                <div className="h-7 w-7 rounded-full bg-cyan-950 border border-cyan-500/30 flex items-center justify-center text-cyan-300 font-bold text-xs">
-                  G
+          {!isLinkDispatched ? (
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
+                  Your Gmail Address
+                </label>
+                <div className="relative">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400">
+                    <Mail className="h-4 w-4" />
+                  </div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="yourname@gmail.com"
+                    required
+                    autoFocus
+                    autoComplete="email"
+                    className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
+                  />
                 </div>
-                <div className="min-w-0">
-                  <div className="text-xs font-semibold text-slate-200 truncate">Security Analyst</div>
-                  <div className="text-[10px] text-slate-400 font-mono truncate">analyst@gmail.com</div>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                disabled={isSubmitting}
-                onClick={() => handleQuickPresetLogin("admin.secops@gmail.com", "SecOps Lead")}
-                className="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 hover:bg-slate-800 hover:border-cyan-500/40 text-left transition-all"
-              >
-                <div className="h-7 w-7 rounded-full bg-blue-950 border border-blue-500/30 flex items-center justify-center text-blue-300 font-bold text-xs">
-                  S
-                </div>
-                <div className="min-w-0">
-                  <div className="text-xs font-semibold text-slate-200 truncate">SecOps Lead</div>
-                  <div className="text-[10px] text-slate-400 font-mono truncate">admin.secops@gmail.com</div>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <div className="relative flex py-1 items-center">
-            <div className="flex-grow border-t border-slate-800"></div>
-            <span className="flex-shrink mx-2 text-[9px] font-mono text-slate-500 uppercase">
-              Or Enter Your Google Address
-            </span>
-            <div className="flex-grow border-t border-slate-800"></div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                Your Full Name
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                  <User className="h-4 w-4" />
-                </div>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Santhosh Reddy"
-                  autoComplete="name"
-                  className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
-                />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
-                Google Account (Email)
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                  <Mail className="h-4 w-4" />
-                </div>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.name@gmail.com"
-                  required
-                  autoFocus
-                  autoComplete="email"
-                  className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
-                />
+              <Button
+                type="button"
+                variant="cyan"
+                size="lg"
+                isLoading={isSubmitting}
+                onClick={() => handleSendLink(email)}
+                className="w-full text-xs font-semibold"
+              >
+                Send Verification Link to Gmail
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <div className="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/30 space-y-2">
+                <a
+                  href="https://mail.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-200 text-xs font-semibold transition-all"
+                >
+                  <Mail className="h-4 w-4 text-red-400" />
+                  <span>Open Gmail Inbox</span>
+                  <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-70" />
+                </a>
+
+                {directVerifyUrl && (
+                  <div className="text-center pt-1">
+                    <a
+                      href={directVerifyUrl}
+                      className="text-[11px] text-cyan-400 hover:underline flex items-center justify-center gap-1"
+                    >
+                      <Sparkles className="h-3 w-3" />
+                      <span>Or Click Here to Complete Instant Verification</span>
+                    </a>
+                  </div>
+                )}
               </div>
-            </div>
 
-            <Button
-              type="submit"
-              variant="cyan"
-              size="lg"
-              isLoading={isSubmitting}
-              className="w-full text-xs font-semibold mt-1"
-            >
-              Continue to Console with Google
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </form>
+              <form onSubmit={handleVerifyPasscode} className="space-y-3">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
+                    Enter 6-Digit Passcode from Email
+                  </label>
+                  <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-cyan-400">
+                      <KeyRound className="h-4 w-4" />
+                    </div>
+                    <input
+                      type="text"
+                      maxLength={6}
+                      value={passcode}
+                      onChange={(e) => setPasscode(e.target.value.replace(/\D/g, ""))}
+                      placeholder="e.g. 748291"
+                      required
+                      className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-center text-sm tracking-widest text-cyan-300 focus:border-cyan-500 focus:outline-none font-mono font-bold"
+                    />
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="cyan"
+                  size="lg"
+                  isLoading={isSubmitting}
+                  className="w-full text-xs font-semibold"
+                >
+                  Verify Code &amp; Launch Console
+                  <ShieldCheck className="h-4 w-4 ml-2" />
+                </Button>
+              </form>
+            </div>
+          )}
 
           <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
             <span className="flex items-center gap-1">
               <ShieldCheck className="h-3 w-3 text-emerald-400" />
-              Standard Google Profile Access (No Extra Permissions)
+              Verified Gmail Protection
             </span>
-            <span>Optimus Identity</span>
+            <span>Optimus Security</span>
           </div>
         </div>
       </Modal>

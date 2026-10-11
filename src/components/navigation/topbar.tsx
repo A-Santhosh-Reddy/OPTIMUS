@@ -14,6 +14,7 @@ import {
   ArrowRight,
   Cpu,
   Layers,
+  Menu,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Modal } from "../ui/modal";
@@ -47,22 +48,33 @@ export function Topbar({ userName, organizationName = "Security Operations" }: T
 
   return (
     <>
-      <header className="h-16 clay-header px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
-        <div className="flex items-center gap-3">
+      <header className="h-16 clay-header px-3 sm:px-6 flex items-center justify-between sticky top-0 z-30">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          {/* Mobile Navigation Drawer Toggle */}
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("toggle-mobile-sidebar"))}
+            className="md:hidden p-2 rounded-xl bg-[#091530] border border-white/10 text-cyan-400 hover:text-white transition-all shrink-0 shadow-[2px_3px_8px_rgba(2,6,18,0.7)]"
+            aria-label="Toggle navigation menu"
+          >
+            <Menu className="h-4 w-4" />
+          </button>
+
           <img
             src="/logo.png"
             alt="OPTIMUS Eagle Shield"
-            className="h-7 w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(0,240,255,0.45)]"
+            className="h-6 w-6 sm:h-7 sm:w-7 object-contain filter drop-shadow-[0_2px_8px_rgba(0,240,255,0.45)] shrink-0"
           />
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <span className="font-semibold text-slate-100 flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-              <span className="truncate max-w-[140px] sm:max-w-none">{organizationName}</span>
+          <div className="flex items-center gap-1.5 sm:gap-2 text-xs text-slate-400 min-w-0">
+            <span className="font-semibold text-slate-100 flex items-center gap-1.5 truncate">
+              <ShieldCheck className="h-4 w-4 text-cyan-400 shrink-0 hidden sm:block" />
+              <span className="truncate max-w-[110px] sm:max-w-none">{organizationName}</span>
             </span>
-            <span className="text-slate-600">/</span>
-            <span className="text-cyan-400 font-mono text-[11px] bg-[#081d38] px-2.5 py-0.5 rounded-full border border-cyan-500/40 flex items-center gap-1 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)] flex-shrink-0">
+            <span className="text-slate-600 hidden sm:inline">/</span>
+            <span className="text-cyan-400 font-mono text-[10px] sm:text-[11px] bg-[#081d38] px-2 py-0.5 rounded-full border border-cyan-500/40 hidden xs:flex items-center gap-1 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)] shrink-0">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              {t("topbar.shield", "CYBER MATRIX SHIELD")}
+              <span className="hidden md:inline">{t("topbar.shield", "CYBER MATRIX SHIELD")}</span>
+              <span className="md:hidden">ACTIVE</span>
             </span>
           </div>
         </div>

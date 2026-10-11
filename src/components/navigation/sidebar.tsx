@@ -39,6 +39,7 @@ import {
   Mail,
   Layers,
   TrendingUp,
+  X,
 } from "lucide-react";
 import { Modal } from "../ui/modal";
 import { Button } from "../ui/button";
@@ -65,11 +66,29 @@ export function Sidebar({
   const router = useRouter();
   const { language, setLanguage, t, availableLanguages } = useLanguage();
 
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<
     "upgrade" | "personalization" | "profile" | "settings" | "help" | null
   >(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  // Auto-close mobile drawer on route change
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [pathname]);
+
+  // Listen for toggle and close events from topbar
+  useEffect(() => {
+    const handleToggle = () => setIsMobileOpen((prev) => !prev);
+    const handleClose = () => setIsMobileOpen(false);
+    window.addEventListener("toggle-mobile-sidebar", handleToggle);
+    window.addEventListener("close-mobile-sidebar", handleClose);
+    return () => {
+      window.removeEventListener("toggle-mobile-sidebar", handleToggle);
+      window.removeEventListener("close-mobile-sidebar", handleClose);
+    };
+  }, []);
 
   // Settings State (Interactive)
   const [criticalThreshold, setCriticalThreshold] = useState(70);
@@ -330,26 +349,50 @@ export function Sidebar({
 
   return (
     <>
-      <aside className="w-64 shrink-0 liquid-glass-sidebar flex flex-col justify-between h-screen fixed inset-y-0 left-0 z-30 select-none overflow-hidden">
+      {/* Mobile Backdrop Overlay */}
+      {isMobileOpen && (
+        <div
+          onClick={() => setIsMobileOpen(false)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-200"
+        />
+      )}
+
+      <aside
+        className={`w-64 shrink-0 liquid-glass-sidebar flex flex-col justify-between h-screen fixed inset-y-0 left-0 z-50 select-none overflow-hidden transition-transform duration-300 md:translate-x-0 ${
+          isMobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+        }`}
+      >
         <div className="flex-1 overflow-y-auto min-h-0">
           {/* Brand Logo & Header */}
-          <div className="p-5 border-b border-white/[0.08] flex items-center gap-3">
-            <div className="relative flex h-11 w-11 shrink-0 items-center justify-center">
-              <img
-                src="/logo.png"
-                alt="OPTIMUS Cyber Defense"
-                className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,240,255,0.4)]"
-              />
+          <div className="p-4 sm:p-5 border-b border-white/[0.08] flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center">
+                <img
+                  src="/logo.png"
+                  alt="OPTIMUS Cyber Defense"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(0,240,255,0.4)]"
+                />
+              </div>
+              <div className="min-w-0">
+                <h1 className="text-sm font-bold tracking-wider text-white flex items-center gap-1.5 font-mono">
+                  OPTIMUS{" "}
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-sm shadow-cyan-500/20">
+                    DRP
+                  </span>
+                </h1>
+                <p className="text-[11px] text-cyan-300/70 font-medium tracking-tight truncate">Cyber Defense Platform</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-sm font-bold tracking-wider text-white flex items-center gap-1.5 font-mono">
-                OPTIMUS{" "}
-                <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-sm shadow-cyan-500/20">
-                  DRP
-                </span>
-              </h1>
-              <p className="text-[11px] text-cyan-300/70 font-medium tracking-tight">Cyber Defense Platform</p>
-            </div>
+
+            {/* Mobile Close Button */}
+            <button
+              type="button"
+              onClick={() => setIsMobileOpen(false)}
+              className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
+              aria-label="Close sidebar"
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
 
           {/* Live System Status Tag with Radar Pulse */}

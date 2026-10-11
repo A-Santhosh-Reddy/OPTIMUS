@@ -81,13 +81,13 @@ export default async function DashboardLayout({
         organizationName={user.organizationName}
       />
 
-      {/* Main Content Area (Offset by fixed sidebar width) */}
-      <div className="ml-64 flex-1 flex flex-col min-w-0 z-10 relative">
+      {/* Main Content Area (Responsive margin: 0 on mobile, 64 on desktop) */}
+      <div className="ml-0 md:ml-64 flex-1 flex flex-col min-w-0 z-10 relative w-full">
         <Topbar
           userName={user.name}
           organizationName={user.organizationName}
         />
-        <main className="flex-1 p-6 lg:p-8 overflow-y-auto max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-8 overflow-y-auto max-w-7xl w-full mx-auto">
           {children}
         </main>
       </div>
