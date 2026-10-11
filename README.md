@@ -1,192 +1,212 @@
-<<<<<<< HEAD
-# Optimus Digital Risk Protection Platform (DRP)
+# 🛡️ OPTIMUS — Digital Risk Protection Platform (DRP)
 
-An enterprise-grade, evidence-based Digital Risk Protection (DRP) and Threat Intelligence Platform built for security operations centers (SOCs) and incident responders.
+> **Protect every domain, link & brand.**  
+> OPTIMUS helps security teams spot fake websites, copycat brand names, and other online threats before they reach customers. Paste a link, see why it is risky, and track it to resolution.
 
----
-
-## 1. Executive Summary & Core Capabilities
-
-The **Optimus DRP Platform** provides proactive defensive visibility into external digital threats targeting an organization's brand, domains, and users:
-
-1. **Suspicious URL & Domain Heuristic Analysis**:
-   - 10+ transparent heuristic detection rules (Shannon entropy for DGAs, direct IP address hosts, excessive subdomain nesting, deceptive userinfo `@` symbols, non-standard web ports, credential-targeting keywords, and high-abuse TLDs).
-   - **100% SSRF-Safe**: Performs structural and lexical inspection offline without issuing unauthenticated outbound HTTP requests to untrusted target endpoints.
-
-2. **Brand Protection & Lookalike Detection**:
-   - Algorithmic evaluation of corporate brand assets against candidate hostnames.
-   - Computes **Levenshtein edit distance** for typosquatting variants.
-   - Identifies visual **homoglyph substitutions** (e.g. `0` &rarr; `o`, `1` &rarr; `l`, `vv` &rarr; `w`, `rn` &rarr; `m`).
-   - Detects multi-tier subdomain brand hijacking (e.g. `login.microsoft.com.attacker-domain.xyz`).
-
-3. **Multi-Source Threat Intelligence**:
-   - Modular adapters for Google Safe Browsing API, VirusTotal, and built-in IoC feeds.
-   - Preserves strict distinction between **Confirmed Match**, **No Match**, **Inconclusive**, and **Service Unavailable**.
-   - Zero-key fallback: Automatically operates with built-in heuristic and verified dataset rules if API keys are not supplied.
-
-4. **Deterministic Evidence-Based Risk Scoring**:
-   - Computes an explainable composite risk score from 0 to 100.
-   - Categorizes risk into **Critical (70–100)**, **High (40–69)**, **Medium (20–39)**, and **Low (0–19)**.
-   - Every score increment is mapped to explicit evidence with documented point contributions.
-
-5. **Explainable AI / Expert Threat Reasoning**:
-   - Provides executive threat summaries, uncertainty disclosures, why individual indicators matter, and proportional defensive actions.
-   - Supports Gemini/OpenAI API or runs deterministically with built-in expert cybersecurity rules.
-
-6. **SOC Incident Response & Forensics Reporting**:
-   - Direct escalation of threat analyses to active SOC incident tracking cases.
-   - Chronological investigation notes, status progression (`NEW` &rarr; `INVESTIGATING` &rarr; `ESCALATED` &rarr; `RESOLVED` / `FALSE_POSITIVE`), and analyst conclusion recording.
-   - **Downloadable Forensic PDF Reports** compiled via `jsPDF`.
-
-7. **Enterprise Security, RBAC & Audit Trails**:
-   - Role-Based Access Control (`ADMIN`, `ANALYST`, `VIEWER`).
-   - Tamper-evident, immutable Security Audit Event logging.
-   - Bcrypt password hashing and Jose cryptographic JWT sessions.
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2-black.svg)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
+[![Prisma ORM](https://img.shields.io/badge/Prisma-5.22-2d3748.svg)](https://www.prisma.io/)
+[![Vitest Tests](https://img.shields.io/badge/Tests-29%20Passed-emerald.svg)](https://vitest.dev/)
 
 ---
 
-## 2. Technology Stack
+## 📖 Quick Overview — User Guide & Quick Start (v1.0)
 
-- **Framework**: Next.js 14 (App Router & Server Actions)
-- **Language**: TypeScript & Node.js
-- **Styling**: Tailwind CSS & Lucide Icons (Dark Cybersecurity SOC Theme)
-- **Visualization**: Recharts (Risk distribution & threat breakdown charts)
-- **Database & ORM**: SQLite (Default zero-config local run) / PostgreSQL compatible via Prisma ORM
-- **Authentication**: JWT session cookies (`jose`), Bcrypt password encryption (`bcryptjs`)
-- **Validation**: Zod schema validation
-- **Reporting**: jsPDF client/server forensic PDF compiler
-- **Testing**: Vitest unit & integration test runner
+| Core Pillar | Description |
+| :--- | :--- |
+| 🛡️ **Check links safely** | **100% SSRF-Safe** offline parsing. Never visits or opens the site you check. |
+| 📊 **Explained risk scores** | Transparent scoring from 0 to 100. Every single point has an explicit reason. |
+| 📁 **Case tracking** | End-to-end incident response lifecycle from first alert to closed case. |
+| 👥 **Clear roles** | Enterprise Role-Based Access Control (`Admin`, `Analyst`, and `Viewer`). |
 
 ---
 
-## 3. Quick Start & Windows Run Instructions
+## ⚡ What Can OPTIMUS Do?
+
+1. 🔗 **Check a link**: Paste any web address to see whether it looks safe. OPTIMUS explains each warning it finds with exact point contributions.
+2. 🏢 **Catch fake copies of your brand**: Finds lookalike addresses targeting corporate assets, such as `paypa1.com` instead of `paypal.com`.
+3. 📧 **Check an email**: Paste raw RFC 5322 email headers to detect sender spoofing, failed SPF/DKIM/DMARC authentication, and suspicious relay hops.
+4. 🌐 **Look up domain details**: Query WHOIS registration age and DNS infrastructure via public RDAP & DNS-over-HTTPS. Automatically flags newly registered domains (<30 days).
+5. 🗂️ **Check many links at once**: Upload a CSV or TXT file of up to 500 URLs. Get instant batch triage, auto-escalation, and downloadable CSV reports.
+6. 📈 **Trend analytics dashboard**: Longitudinal reporting on attack volumes, most targeted brands, and top abused TLDs (`.xyz`, `.top`, `.click`).
+7. 🔔 **Real-time alerts**: Push critical alerts immediately to Slack channels (Block Kit), webhook endpoints, or email distribution lists.
+8. 🤖 **Plain-English summaries**: Built-in AI Copilot **BILY** explains findings, unpacks technical indicators, and recommends proportional defensive actions.
+
+---
+
+## 🔄 How OPTIMUS Works (In 4 Steps)
+
+```mermaid
+graph LR
+    A["1️⃣ Paste a Link\nAny web address or batch"] --> B["2️⃣ OPTIMUS Checks It\nOffline heuristics, brands & WHOIS"]
+    B --> C["3️⃣ Get a Risk Score\n0 (safe) to 100 (danger)"]
+    C --> D["4️⃣ Open a Case\nTrack investigation to resolution"]
+```
+
+---
+
+## 📊 Understanding Results: Risk Scores & Cases
+
+### How to Read the Risk Score
+
+Every analyzed asset receives a score from **0 to 100**. Scores are grouped into four standardized risk tiers:
+
+| Tier | Score Range | Meaning | Recommended Action |
+| :--- | :---: | :--- | :--- |
+| 🟢 **Low** | `0 – 19` | Nothing suspicious detected | Safe to allow; normal operational domain |
+| 🟡 **Medium** | `20 – 39` | Worth a closer look | Monitor asset; potential low-risk anomaly |
+| 🟠 **High** | `40 – 69` | Be cautious | Elevated threat vectors; block or sandbox |
+| 🔴 **Critical** | `70 – 100` | High-confidence malicious threat | **Act now**: Initiate takedown and block on firewalls |
+
+### What Happens to a Case (SOC Lifecycle)
+
+When a link represents an active threat, analysts open an incident case. Cases move through structured stages:
+
+```mermaid
+graph LR
+    New["New\n(Case Created)"] --> Investigating["Investigating\n(Evidence Reviewed)"]
+    Investigating --> Escalated["Escalated\n(Takedown / Tier 2)"]
+    Escalated --> Resolved["Resolved\n(Takedown Complete)"]
+    Investigating --> FalseAlarm["False Alarm\n(Marked as Safe)"]
+```
+
+* **Download a report**: Compile and download comprehensive forensic PDF reports with a single click to share with executive leadership or external registrars.
+
+---
+
+## 👥 Access: Roles & Sample Accounts
+
+Each user is assigned one of three role tiers. Every significant action is automatically logged in an immutable security audit trail.
+
+| Role | Permissions & Capabilities |
+| :--- | :--- |
+| **Admin** | Manages everything: users, protected brand assets, alert channels, cases, and audit logs |
+| **Analyst** | Investigates threats, analyzes links and emails, manages incident cases, exports PDF reports |
+| **Viewer** | Read-only access: reviews executive dashboards, findings, and reports without modification rights |
+
+### Pre-Configured Demonstration Accounts
+
+The default seed database comes pre-configured with the following credentials:
+
+| Role | Email | Password | Access Level |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin@optimus-drp.io` | `admin123!` | Full administrator permissions |
+| **Analyst** | `analyst@optimus-drp.io` | `analyst123!` | Check links, triage cases, export reports |
+| **Viewer** | `viewer@optimus-drp.io` | `viewer123!` | Read-only dashboards and findings |
+
+> [!WARNING]
+> **Before going live in production**: Change these default passwords or remove the sample accounts.
+
+---
+
+## 🚀 Setup & Getting Started
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher (v20+ recommended)
-- **npm**: v9+ (Included with Node.js)
+* **Node.js**: v18.0.0 or newer (v20+ recommended)
+* **Database**: PostgreSQL (e.g., Supabase / Neon) or local SQLite for development
 
 ### Step 1: Install Dependencies
-Open PowerShell or Command Prompt in the project folder:
-```powershell
-cmd /c npm install
+```bash
+npm install
 ```
 
-### Step 2: Environment Configuration
-Copy the example environment file:
-```powershell
-Copy-Item .env.example .env
+### Step 2: Configure Environment
+Copy the example settings file:
+```bash
+cp .env.example .env
 ```
-*(The default `.env` is already configured for out-of-the-box local operation with SQLite and local heuristic intelligence).*
+Fill in your database connection string (`DATABASE_URL`) and session secret (`JWT_SECRET`). Keep `.env` private and never commit it to public version control.
 
-### Step 3: Initialize Database & Seed Demonstration Data
-```powershell
-cmd /c "npx prisma db push"
-cmd /c "node prisma/seed.js"
+### Step 3: Initialize Database & Seed Sample Data
+```bash
+npm run db:setup
 ```
+*(Or run `npx prisma db push && node prisma/seed.js`)*
 
-### Step 4: Run Automated Tests
-```powershell
-cmd /c "npx vitest run"
+### Step 4: Start the Application
+```bash
+npm run dev
 ```
-
-### Step 5: Launch Development Server
-```powershell
-cmd /c "npm run dev"
-```
-The application will be accessible at: **[http://localhost:3000](http://localhost:3000)**
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## 4. Demonstration Accounts & Roles
+## 🧪 Try It: Sample Links to Test
 
-The seed command populates 3 role-based user accounts for testing:
+Paste these test vectors into the **URL & Threat Analyzer** to see the deterministic heuristic scoring in action:
 
-| Role | Email | Password | Permissions |
-| :--- | :--- | :--- | :--- |
-| **Administrator** | `admin@optimus-drp.io` | `admin123!` | Full access: Brand Asset Registry, Audit Logs, Findings, Incidents, Threat Intel |
-| **Security Analyst**| `analyst@optimus-drp.io`| `analyst123!`| Analyze URLs, Manage Incidents, Add Notes, Export Reports |
-| **Read-Only Viewer**| `viewer@optimus-drp.io` | `viewer123!` | Read dashboards, findings, and reports |
-
----
-
-## 5. Pre-Configured Test Vectors
-
-When testing in the **URL & Domain Analyzer**, you can use the built-in quick test buttons or submit any of these URLs:
-
-1. **Subdomain Brand Impersonation (Critical Risk - Score 85/100)**:
-   `https://login.microsoft.com.account-update-portal.xyz/verify/session?auth=token`
-   *Heuristics flagged: Subdomain brand hijacking, credential targeting path, high-abuse .xyz TLD.*
-
-2. **Homoglyph Typo-squatting (Critical Risk - Score 75/100)**:
-   `https://paypa1-security-center.top/update-billing`
-   *Heuristics flagged: Homoglyph substitution (`l` -> `1`), security keyword chaining.*
-
-3. **Direct IP Phishing Endpoint (High Risk - Score 70/100)**:
-   `https://194.26.29.112:8443/login/verify.php`
-   *Heuristics flagged: Direct IPv4 hostname, non-standard web port 8443, credential path.*
-
-4. **Legitimate Verified Domain (Low / Benign - Score 0/100)**:
-   `https://www.apple.com/iphone-16-pro/specs/`
-   *Result: Matches official brand asset, zero malicious heuristics.*
+| Sample Link | Expected Result | Why It Is Flagged |
+| :--- | :---: | :--- |
+| `login.microsoft.com.account-update-portal.xyz/verify/session` | **Critical** (~85) | Real brand name hidden inside deceptive subdomain on high-risk `.xyz` TLD |
+| `paypa1-security-center.top/update-billing` | **Critical** (~75) | Typo-squatting homoglyph substitution (`1` for `l`) targeting registered brand |
+| `194.26.29.112:8443/login/verify.php` | **High** (~70) | Direct raw IP address hostname with non-standard web port `8443` |
+| `https://www.apple.com/iphone-16-pro/specs/` | **Low** (0) | Verified official domain matching approved brand assets; zero malicious signals |
 
 ---
 
-## 6. Project Architecture & Directory Layout
+## ❓ Frequently Asked Questions (FAQ)
+
+### Does OPTIMUS visit the links I check?
+**No.** OPTIMUS performs 100% offline lexical, structural, and algorithmic inspection. It **never** issues unauthenticated outbound HTTP GET/POST requests to untrusted targets, eliminating Server-Side Request Forgery (SSRF) and malicious payload triggers.
+
+### Can I fully trust a Critical result?
+A high risk score indicates strong, correlated evidence of malicious intent (such as homoglyph typosquatting or high Shannon entropy). While statistically reliable, analysts should double-check findings before taking legal takedown actions.
+
+### What if an external threat database is not configured?
+OPTIMUS values transparency. If an external API key (such as VirusTotal or Google Safe Browsing) is omitted, the platform explicitly displays `NOT_CONFIGURED` and relies on its built-in heuristic rules. It **never** fabricates results or fills gaps with guesses.
+
+---
+
+## 🏗️ Technology Architecture
+
+* **Frontend**: Next.js 14 App Router, Tailwind CSS, Lucide Icons, Recharts
+* **Backend**: Next.js Server Actions & Route Handlers, TypeScript
+* **Database & ORM**: PostgreSQL / SQLite with Prisma ORM (10 relational models)
+* **Auth & Security**: Stateless JWTs (`jose`), Bcrypt hashing, SSRF sandbox guards
+* **Reporting**: `jsPDF` client & server forensic report generator
+* **Testing**: Vitest unit & integration test runner (29 automated tests)
+
+---
+
+## 📂 Project Directory Structure
 
 ```
 optimus/
 ├── prisma/
-│   ├── schema.prisma              # Relational database schema with 10 entities
-│   ├── seed.js                    # Demo seeding script with realistic threat data
-│   └── dev.db                     # Local SQLite database
+│   ├── schema.prisma              # Relational models (Analysis, Brand, Incident, etc.)
+│   └── seed.js                    # Enterprise demonstration seed data
+├── public/
+│   ├── bily-avatar.png            # Optimus Prime avatar for BILY AI Copilot
+│   └── logo.png                   # Official platform eagle shield emblem
 ├── src/
 │   ├── app/
-│   │   ├── (dashboard)/           # Authenticated SOC workspace routes
-│   │   │   ├── dashboard/         # Real-time metrics & charts
-│   │   │   ├── analyzer/          # URL & domain analysis form
-│   │   │   ├── findings/          # Searchable findings repository
-│   │   │   ├── incidents/         # SOC incident management & detail views
-│   │   │   ├── brands/            # Brand asset registry & protection
-│   │   │   ├── threat-intel/      # Threat feed status center
-│   │   │   └── audit-logs/        # Immutable security audit logs
-│   │   ├── api/                   # RESTful API routes & Server handlers
-│   │   │   ├── auth/              # Login, register, logout, me
-│   │   │   ├── analyze/           # Threat analysis orchestrator
-│   │   │   ├── brands/            # Brand asset CRUD
-│   │   │   ├── incidents/         # Incident creation, notes, status patch
-│   │   │   ├── dashboard/stats/   # Live database aggregation statistics
-│   │   │   └── reports/generate/  # Forensic report generation
-│   │   ├── layout.tsx             # Root layout & cyber theme styling
-│   │   └── page.tsx               # Public landing page
+│   │   ├── (dashboard)/           # Authenticated SOC workspace
+│   │   │   ├── dashboard/         # Real-time metrics & threat feeds
+│   │   │   ├── analyzer/          # Single URL & domain inspector
+│   │   │   ├── email-analyzer/    # Phishing email header forensics
+│   │   │   ├── batch-scanner/     # Bulk URL & CSV triage scanner
+│   │   │   ├── analytics/         # Threat trend analytics dashboard
+│   │   │   ├── alerts/            # Real-time Slack/Webhook alert rules
+│   │   │   ├── findings/          # Searchable detection repository
+│   │   │   ├── incidents/         # SOC incident management cases
+│   │   │   ├── brands/            # Protected brand assets registry
+│   │   │   └── audit-logs/        # Immutable compliance audit log
+│   │   └── api/                   # RESTful API endpoints & handlers
 │   ├── components/
-│   │   ├── analyzer/              # URL analyzer form & result inspector
-│   │   ├── dashboard/             # Metric cards & Recharts graphs
-│   │   ├── navigation/            # SOC sidebar & topbar
-│   │   └── ui/                    # Badges, cards, buttons, modals
+│   │   ├── ai/                    # BILY Copilot floating assistant widget
+│   │   ├── analyzer/              # WhoisPanel, BatchUpload, EmailResultCard
+│   │   ├── dashboard/             # TrendCharts & KPI widgets
+│   │   └── navigation/            # Liquid glass sidebar & topbar
 │   └── lib/
-│       ├── auth/                  # JWT session management & RBAC guards
-│       ├── detection/             # URL parser, 10+ signals, brand matcher, risk scorer
-│       ├── threat-intel/          # Multi-provider threat intelligence adapters
-│       ├── ai/                    # Explainable threat reasoning engine
-│       ├── audit/                 # Security audit logger
-│       ├── pdf/                   # jsPDF report compilation service
-│       └── db.ts                  # Prisma Client singleton
-└── tests/                         # Vitest automated test suites
+│       ├── alerts/                # Webhook & Slack notification dispatcher
+│       ├── detection/             # Parser, signals, WHOIS/RDAP, risk scorer
+│       ├── threat-intel/          # Multi-source threat feed adapters
+│       └── pdf/                   # Forensic PDF report compiler
+└── tests/                         # Vitest automated test suite (9 test suites)
 ```
 
 ---
 
-## 7. Security Safeguards & Limitations
-
-- **Strict SSRF Protection**: The URL analysis engine performs structural, lexical, and algorithmic inspection purely on the submitted string without issuing outbound socket/HTTP connections to the target.
-- **Explainable Heuristics**: Heuristic scores indicate elevated suspiciousness and pattern correlation rather than infallible proof of active compromise.
-- **Provider Status Honesty**: If an external API key is omitted, the platform transparently marks the feed as `NOT_CONFIGURED` and falls back to local deterministic intelligence without fabricating third-party scan results.
-
----
-
-## 8. License
-Built for educational and defensive cybersecurity operations hackathons.
-=======
-# OPTIMUS
-An evidence-driven Digital Risk Protection Platform for detecting suspicious URLs, identifying potential brand impersonation, integrating threat intelligence, and assessing digital risks through explainable scoring, AI-powered insights, and incident investigation.
->>>>>>> 5ee7f74f73e77930240d4cb96c31e59696aa2374
+## 📄 License
+Educational and defensive cybersecurity operations platform. Built for digital risk protection and SOC operations.
