@@ -16,21 +16,22 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen theme-lapis-vermilion bg-[#eef0fc] text-[#080f2a] flex relative overflow-hidden font-sans">
-      {/* Lapis Vermilion (Clay · Imperial) Ambient Lighting Environment */}
+    <div className="min-h-screen bg-gradient-to-br from-[#060c1e] via-[#091535] to-[#040816] text-slate-100 flex relative overflow-hidden">
+      {/* Dynamic Cyber Shield Defense Ambient Environment */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Ultramarine Lapis & Vermilion Glow Orbs */}
-        <div className="cyber-glow-orb -top-24 -left-24 w-[750px] h-[750px] bg-[#1e3a8a]/12" />
-        <div className="cyber-glow-orb top-1/4 -right-40 w-[850px] h-[850px] bg-[#dc2626]/10" />
-        <div className="cyber-glow-orb -bottom-32 left-1/3 w-[800px] h-[800px] bg-[#1e3a8a]/10" />
-        <div className="cyber-glow-orb top-2/3 right-1/4 w-[600px] h-[600px] bg-[#b4bce8]/30" />
+        {/* Luminous Cyber Defense Nebula Orbs */}
+        <div className="cyber-glow-orb -top-24 -left-24 w-[750px] h-[750px] bg-cyan-500/25" />
+        <div className="cyber-glow-orb top-1/4 -right-40 w-[850px] h-[850px] bg-blue-600/22" />
+        <div className="cyber-glow-orb -bottom-32 left-1/3 w-[800px] h-[800px] bg-teal-500/18" />
+        <div className="cyber-glow-orb top-2/3 right-1/4 w-[600px] h-[600px] bg-indigo-600/15" />
 
-        {/* Soft Imperial Clay Matrix Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(180,188,232,0.22)_1px,transparent_1px),linear-gradient(to_bottom,rgba(180,188,232,0.22)_1px,transparent_1px)] bg-[size:48px_48px] opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_85%)]" />
+        {/* High-Tech Cyber Grid & Hex Node Overlay */}
+        <div className="absolute inset-0 cyber-grid-overlay opacity-40" />
+        <div className="absolute inset-0 cyber-hex-pattern opacity-30" />
 
-        {/* Imperial Defense Radar Shield Watermark */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] pointer-events-none opacity-[0.05] animate-shield-pulse">
-          <svg viewBox="0 0 400 400" className="w-full h-full text-[#1e3a8a]">
+        {/* Holographic Cyber Defense Shield Watermark */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] pointer-events-none opacity-20 animate-shield-pulse">
+          <svg viewBox="0 0 400 400" className="w-full h-full text-cyan-400">
             {/* Concentric Defense Radar Rings */}
             <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="6 6" className="opacity-40" />
             <circle cx="200" cy="200" r="140" fill="none" stroke="currentColor" strokeWidth="1.5" className="opacity-60" />
@@ -44,9 +45,10 @@ export default async function DashboardLayout({
             {/* Giant Cyber Shield Emblem */}
             <path
               d="M 200 65 L 310 115 C 310 240 200 325 200 325 C 200 325 90 240 90 115 Z"
-              fill="rgba(30, 58, 138, 0.05)"
+              fill="rgba(6, 182, 212, 0.04)"
               stroke="currentColor"
               strokeWidth="2.5"
+              className="drop-shadow-[0_0_25px_rgba(6,182,212,0.8)]"
             />
             {/* Inner Shield Trace */}
             <path
@@ -59,7 +61,7 @@ export default async function DashboardLayout({
             />
 
             {/* Shield Center Core / Lock Emblem */}
-            <circle cx="200" cy="195" r="24" fill="rgba(30, 58, 138, 0.12)" stroke="currentColor" strokeWidth="2" />
+            <circle cx="200" cy="195" r="24" fill="rgba(6, 182, 212, 0.12)" stroke="currentColor" strokeWidth="2" />
             <path
               d="M 194 195 L 206 195 M 200 189 L 200 201"
               stroke="currentColor"
