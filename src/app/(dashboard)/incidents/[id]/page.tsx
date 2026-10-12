@@ -179,33 +179,33 @@ export default function IncidentDetailPage() {
       </div>
 
       {/* Incident Case Header Card */}
-      <Card glow="cyan">
+      <Card glow="blue">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="flex flex-wrap items-center gap-2">
               <StatusBadge status={incident.status} />
               <SeverityBadge severity={incident.severity} size="sm" />
-              <span className="text-xs font-mono text-[#718C85]">Case ID: {incident.id}</span>
+              <span className="text-xs font-mono text-slate-500">Case ID: {incident.id}</span>
             </div>
-            <h1 className="text-xl font-bold text-[#E7F4F1]">{incident.title}</h1>
-            <p className="text-xs text-[#A0B8B2] leading-relaxed">{incident.description}</p>
+            <h1 className="text-xl font-bold text-white">{incident.title}</h1>
+            <p className="text-xs text-slate-400 leading-relaxed">{incident.description}</p>
           </div>
 
           {/* Quick Info Panel */}
-          <div className="rounded-xl border border-[#28504A] bg-[#031C1B] p-4 text-xs font-mono space-y-1.5 w-full lg:w-72">
-            <div className="flex justify-between text-[#718C85]">
+          <div className="rounded-xl border border-slate-800 bg-[#090d16] p-4 text-xs font-mono space-y-1.5 w-full lg:w-72">
+            <div className="flex justify-between text-slate-400">
               <span>Target Host:</span>
-              <span className="text-[#00DCC2] truncate max-w-[140px]">
+              <span className="text-cyan-400 truncate max-w-[140px]">
                 {incident.analysis?.normalizedHostname}
               </span>
             </div>
-            <div className="flex justify-between text-[#718C85]">
+            <div className="flex justify-between text-slate-400">
               <span>Risk Score:</span>
-              <span className="text-[#FF6474] font-bold">{incident.analysis?.riskScore}/100</span>
+              <span className="text-red-400 font-bold">{incident.analysis?.riskScore}/100</span>
             </div>
-            <div className="flex justify-between text-[#718C85]">
+            <div className="flex justify-between text-slate-400">
               <span>Assignee:</span>
-              <span className="text-[#E7F4F1]">{incident.assignedUser?.name || "Unassigned"}</span>
+              <span className="text-slate-200">{incident.assignedUser?.name || "Unassigned"}</span>
             </div>
           </div>
         </div>
@@ -223,19 +223,19 @@ export default function IncidentDetailPage() {
               icon={ShieldAlert}
               action={
                 <Link href={`/findings?id=${incident.analysis.id}`}>
-                  <Button variant="outline" size="sm" className="text-xs border-[#28504A] hover:border-[#00DCC2] text-[#E7F4F1]">
-                    Inspect Finding <ExternalLink className="h-3 w-3 ml-1 text-[#00DCC2]" />
+                  <Button variant="outline" size="sm" className="text-xs">
+                    Inspect Finding <ExternalLink className="h-3 w-3 ml-1" />
                   </Button>
                 </Link>
               }
             />
             <div className="space-y-2 text-xs">
-              <div className="p-3 rounded-lg bg-[#0B302D] border border-[#193E39] font-mono flex items-center justify-between">
-                <span className="text-[#718C85]">Submitted URL:</span>
-                <span className="text-[#E7F4F1] truncate max-w-md">{incident.analysis.submittedUrl}</span>
+              <div className="p-3 rounded-lg bg-[#0c121e] border border-slate-800 font-mono flex items-center justify-between">
+                <span className="text-slate-400">Submitted URL:</span>
+                <span className="text-slate-200 truncate max-w-md">{incident.analysis.submittedUrl}</span>
               </div>
-              <div className="p-3 rounded-lg bg-[#0B302D] border border-[#193E39] flex items-center justify-between">
-                <span className="text-[#718C85]">Threat Intel Feeds:</span>
+              <div className="p-3 rounded-lg bg-[#0c121e] border border-slate-800 flex items-center justify-between">
+                <span className="text-slate-400">Threat Intel Feeds:</span>
                 <IntelStatusBadge status={incident.analysis.intelligenceStatus} />
               </div>
             </div>
@@ -256,7 +256,7 @@ export default function IncidentDetailPage() {
                 value={newNote}
                 onChange={(e) => setNewNote(e.target.value)}
                 placeholder="Add investigation note, registrar response, or forensic finding..."
-                className="w-full rounded-lg border border-[#28504A] bg-[#031C1B] p-3 text-xs text-[#E7F4F1] placeholder-[#718C85] focus:border-[#00DCC2] focus:outline-none"
+                className="w-full rounded-lg border border-slate-700 bg-[#0c121e] p-3 text-xs text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
               />
               <div className="flex justify-end">
                 <Button
@@ -275,21 +275,21 @@ export default function IncidentDetailPage() {
             {/* Notes List */}
             <div className="space-y-3">
               {incident.notes?.length === 0 ? (
-                <p className="text-xs text-[#718C85] py-4 text-center">No notes recorded yet.</p>
+                <p className="text-xs text-slate-500 py-4 text-center">No notes recorded yet.</p>
               ) : (
                 incident.notes.map((note: any) => (
                   <div
                     key={note.id}
-                    className="rounded-lg border border-[#193E39] bg-[#0B302D] p-3 text-xs space-y-1.5"
+                    className="rounded-lg border border-slate-800 bg-[#0c121e] p-3 text-xs space-y-1.5"
                   >
-                    <div className="flex items-center justify-between text-[#718C85] font-mono text-[11px]">
-                      <span className="font-semibold text-[#E7F4F1] flex items-center gap-1.5">
-                        <User className="h-3 w-3 text-[#00DCC2]" />
+                    <div className="flex items-center justify-between text-slate-400 font-mono text-[11px]">
+                      <span className="font-semibold text-slate-300 flex items-center gap-1.5">
+                        <User className="h-3 w-3 text-blue-400" />
                         {note.authorName}
                       </span>
                       <span>{new Date(note.createdAt).toLocaleString()}</span>
                     </div>
-                    <p className="text-[#E7F4F1] leading-relaxed">{note.content}</p>
+                    <p className="text-slate-200 leading-relaxed">{note.content}</p>
                   </div>
                 ))
               )}
@@ -308,13 +308,13 @@ export default function IncidentDetailPage() {
 
             <div className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-[#A0B8B2] mb-1.5">
+                <label className="block font-semibold text-slate-300 mb-1.5">
                   Workflow Status
                 </label>
                 <select
                   value={statusUpdate}
                   onChange={(e) => setStatusUpdate(e.target.value)}
-                  className="w-full rounded-lg border border-[#28504A] bg-[#031C1B] px-3 py-2 text-[#E7F4F1] focus:border-[#00DCC2] focus:outline-none"
+                  className="w-full rounded-lg border border-slate-700 bg-[#0c121e] px-3 py-2 text-slate-200 focus:border-blue-500 focus:outline-none"
                 >
                   <option value="NEW">New (Triage)</option>
                   <option value="INVESTIGATING">Investigating</option>
@@ -325,7 +325,7 @@ export default function IncidentDetailPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-[#A0B8B2] mb-1.5">
+                <label className="block font-semibold text-slate-300 mb-1.5">
                   Final Analyst Conclusion / Action Taken
                 </label>
                 <textarea
@@ -333,7 +333,7 @@ export default function IncidentDetailPage() {
                   value={conclusion}
                   onChange={(e) => setConclusion(e.target.value)}
                   placeholder="e.g. Domain confirmed malicious phishing portal. DNS sinkhole applied and abuse takedown filed with registrar."
-                  className="w-full rounded-lg border border-[#28504A] bg-[#031C1B] p-2.5 text-[#E7F4F1] placeholder-[#718C85] focus:border-[#00DCC2] focus:outline-none"
+                  className="w-full rounded-lg border border-slate-700 bg-[#0c121e] p-2.5 text-slate-100 placeholder-slate-500 focus:border-blue-500 focus:outline-none"
                 />
               </div>
 
@@ -342,7 +342,7 @@ export default function IncidentDetailPage() {
                 size="sm"
                 onClick={handleUpdateStatus}
                 isLoading={isUpdatingStatus}
-                className="w-full font-semibold text-xs shadow-md shadow-[#00DCC2]/20"
+                className="w-full font-semibold text-xs"
               >
                 Save Incident Updates
               </Button>

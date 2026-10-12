@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen bg-[#062321] text-[#E7F4F1] antialiased selection:bg-[#00DCC2]/25 selection:text-[#20F5DB] relative">
+      <body className="min-h-screen bg-[#030712] text-slate-100 antialiased selection:bg-teal-500/30 selection:text-teal-200 relative">
         <LanguageProvider>
           {children}
           {/* Floating AI Threat Copilot Widget (Bottom-Right Corner) */}

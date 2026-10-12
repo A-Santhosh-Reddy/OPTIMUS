@@ -91,34 +91,34 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Metric KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="p-3 rounded-xl bg-[#0B302D] border border-[#193E39] text-center">
-          <p className="text-[10px] text-[#A0B8B2] font-mono uppercase">Total Processed</p>
-          <p className="text-xl font-bold font-mono text-[#E7F4F1] mt-1">{summary.total}</p>
+        <div className="p-3 rounded-xl bg-slate-900/60 border border-white/10 text-center">
+          <p className="text-[10px] text-slate-400 font-mono uppercase">Total Processed</p>
+          <p className="text-xl font-bold font-mono text-white mt-1">{summary.total}</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#FF6474]/15 border border-[#FF6474]/30 text-center">
-          <p className="text-[10px] text-[#FF6474] font-mono uppercase">Critical Threats</p>
-          <p className="text-xl font-bold font-mono text-[#FF6474] mt-1">{summary.critical}</p>
+        <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/30 text-center">
+          <p className="text-[10px] text-red-400 font-mono uppercase">Critical Threats</p>
+          <p className="text-xl font-bold font-mono text-red-400 mt-1">{summary.critical}</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#FFB454]/15 border border-[#FFB454]/30 text-center">
-          <p className="text-[10px] text-[#FFB454] font-mono uppercase">High Risk</p>
-          <p className="text-xl font-bold font-mono text-[#FFB454] mt-1">{summary.high}</p>
+        <div className="p-3 rounded-xl bg-orange-950/40 border border-orange-500/30 text-center">
+          <p className="text-[10px] text-orange-400 font-mono uppercase">High Risk</p>
+          <p className="text-xl font-bold font-mono text-orange-400 mt-1">{summary.high}</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#F0D66B]/15 border border-[#F0D66B]/30 text-center">
-          <p className="text-[10px] text-[#F0D66B] font-mono uppercase">Medium</p>
-          <p className="text-xl font-bold font-mono text-[#F0D66B] mt-1">{summary.medium}</p>
+        <div className="p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-center">
+          <p className="text-[10px] text-amber-400 font-mono uppercase">Medium</p>
+          <p className="text-xl font-bold font-mono text-amber-400 mt-1">{summary.medium}</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#45D6A0]/15 border border-[#45D6A0]/30 text-center">
-          <p className="text-[10px] text-[#45D6A0] font-mono uppercase">Low / Benign</p>
-          <p className="text-xl font-bold font-mono text-[#45D6A0] mt-1">{summary.low + summary.info}</p>
+        <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-center">
+          <p className="text-[10px] text-emerald-400 font-mono uppercase">Low / Benign</p>
+          <p className="text-xl font-bold font-mono text-emerald-400 mt-1">{summary.low + summary.info}</p>
         </div>
 
-        <div className="p-3 rounded-xl bg-[#031C1B] border border-[#193E39] text-center">
-          <p className="text-[10px] text-[#718C85] font-mono uppercase">Failed / Invalid</p>
-          <p className="text-xl font-bold font-mono text-[#718C85] mt-1">{summary.failed}</p>
+        <div className="p-3 rounded-xl bg-slate-900/40 border border-white/5 text-center">
+          <p className="text-[10px] text-slate-500 font-mono uppercase">Failed / Invalid</p>
+          <p className="text-xl font-bold font-mono text-slate-400 mt-1">{summary.failed}</p>
         </div>
       </div>
 
@@ -132,7 +132,7 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
               variant="outline"
               size="sm"
               onClick={handleExportCsv}
-              className="text-xs font-mono border-[#28504A] text-[#A0B8B2]"
+              className="text-xs font-mono"
             >
               <Download className="h-3.5 w-3.5 mr-1.5" />
               Export CSV
@@ -151,8 +151,8 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
                 onClick={() => setSeverityFilter(sev)}
                 className={`px-2.5 py-1 rounded-lg border transition-colors cursor-pointer ${
                   severityFilter === sev
-                    ? "bg-[#00DCC2]/15 border-[#00DCC2] text-[#00DCC2] font-bold"
-                    : "bg-[#0B302D] border-[#193E39] text-[#A0B8B2] hover:text-[#E7F4F1] hover:bg-[#163632]"
+                    ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 font-bold"
+                    : "bg-slate-900/60 border-white/10 text-slate-400 hover:text-white hover:bg-slate-800"
                 }`}
               >
                 {sev}
@@ -162,21 +162,21 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
 
           {/* Search box */}
           <div className="relative w-full sm:w-64">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#718C85]" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Filter by domain or URL..."
-              className="w-full pl-8 pr-3 py-1.5 rounded-lg text-xs font-mono bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] placeholder-[#718C85] focus:border-[#00DCC2] focus:outline-none"
+              className="w-full pl-8 pr-3 py-1.5 rounded-lg text-xs font-mono bg-slate-950/80 border border-white/10 text-slate-200 focus:border-cyan-400/50"
             />
           </div>
         </div>
 
         {/* Results Table */}
-        <div className="overflow-x-auto rounded-xl border border-[#193E39]">
+        <div className="overflow-x-auto rounded-xl border border-white/10">
           <table className="w-full text-left text-xs font-mono">
-            <thead className="bg-[#042422] border-b border-[#193E39] text-[#A0B8B2]">
+            <thead className="bg-slate-950/80 border-b border-white/10 text-slate-400">
               <tr>
                 <th className="py-2.5 px-3">#</th>
                 <th className="py-2.5 px-3">Target Asset URL</th>
@@ -187,32 +187,32 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
                 <th className="py-2.5 px-3 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#193E39] text-[#E7F4F1]">
+            <tbody className="divide-y divide-white/[0.06] text-slate-300">
               {filteredResults.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-[#718C85]">
+                  <td colSpan={7} className="text-center py-8 text-slate-500">
                     No results matching current filter criteria
                   </td>
                 </tr>
               ) : (
                 filteredResults.map((item) => (
-                  <tr key={item.index} className="hover:bg-[#163632]/50 transition-colors">
-                    <td className="py-2.5 px-3 text-[#718C85]">{item.index + 1}</td>
+                  <tr key={item.index} className="hover:bg-white/[0.02] transition-colors">
+                    <td className="py-2.5 px-3 text-slate-500">{item.index + 1}</td>
                     <td className="py-2.5 px-3 max-w-[280px] truncate" title={item.url}>
-                      <span className="font-semibold text-[#E7F4F1]">{item.hostname || item.url}</span>
-                      <p className="text-[10px] text-[#718C85] truncate">{item.url}</p>
+                      <span className="font-semibold text-slate-200">{item.hostname || item.url}</span>
+                      <p className="text-[10px] text-slate-500 truncate">{item.url}</p>
                     </td>
-                    <td className="py-2.5 px-3 font-bold text-[#E7F4F1]">
+                    <td className="py-2.5 px-3 font-bold text-white">
                       {item.riskScore}
-                      <span className="text-[10px] text-[#718C85]">/100</span>
+                      <span className="text-[10px] text-slate-500">/100</span>
                     </td>
                     <td className="py-2.5 px-3">
                       <SeverityBadge severity={item.severity} />
                     </td>
                     <td className="py-2.5 px-3">
-                      <span className="text-[#00DCC2] font-bold">{item.signalCount}</span>
+                      <span className="text-cyan-400 font-bold">{item.signalCount}</span>
                       {item.brandMatchCount > 0 && (
-                        <span className="ml-1 text-[10px] text-[#FFB454]">({item.brandMatchCount} brand)</span>
+                        <span className="ml-1 text-[10px] text-orange-400">({item.brandMatchCount} brand)</span>
                       )}
                     </td>
                     <td className="py-2.5 px-3">
@@ -221,7 +221,7 @@ export function BatchResults({ summary, results }: BatchResultsProps) {
                     <td className="py-2.5 px-3 text-right">
                       <Link
                         href={`/analyzer?url=${encodeURIComponent(item.url)}`}
-                        className="inline-flex items-center gap-1 text-[11px] text-[#00DCC2] hover:text-[#20F5DB] bg-[#00DCC2]/10 border border-[#00DCC2]/30 px-2 py-1 rounded transition-colors"
+                        className="inline-flex items-center gap-1 text-[11px] text-cyan-400 hover:text-cyan-300 bg-cyan-950/60 border border-cyan-500/30 px-2 py-1 rounded transition-colors"
                       >
                         Inspect <ExternalLink className="h-3 w-3" />
                       </Link>

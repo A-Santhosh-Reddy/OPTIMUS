@@ -520,12 +520,12 @@ export default function TakedownCenterPage() {
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#031C1B] border border-[#00DCC2]/40 text-[#E7F4F1] px-4 py-3 rounded-xl shadow-2xl shadow-[#00DCC2]/10 flex items-center gap-3 text-xs font-mono animate-in slide-in-from-top-3 duration-200">
-          <Sparkles className="w-4 h-4 text-[#00DCC2] shrink-0 animate-spin" />
+        <div className="fixed top-20 right-6 z-50 bg-[#0c1a38] border border-cyan-400/40 text-cyan-200 px-4 py-3 rounded-xl shadow-2xl shadow-cyan-900/50 flex items-center gap-3 text-xs font-plex-mono animate-in slide-in-from-top-3 duration-200">
+          <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 animate-spin" />
           <span>{toastMessage}</span>
           <button
             onClick={() => setToastMessage(null)}
-            className="ml-2 text-[#718C85] hover:text-[#E7F4F1]"
+            className="ml-2 text-slate-400 hover:text-white"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -535,14 +535,14 @@ export default function TakedownCenterPage() {
       {/* Page Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#FF6474]/30 bg-[#FF6474]/10 text-[#FF6474] text-[11px] font-mono mb-2">
-            <span className="h-2 w-2 rounded-full bg-[#FF6474] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-rose-500/30 bg-rose-950/40 text-rose-300 text-[11px] font-plex-mono mb-2">
+            <span className="h-2 w-2 rounded-full bg-rose-400 animate-pulse" />
             <span>ENFORCEMENT DISPATCH &bull; REGISTRAR &amp; CDN ESCALATION</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#E7F4F1] font-mono">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-unbounded">
             {t("Takedown Center")}
           </h1>
-          <p className="text-xs sm:text-sm text-[#A0B8B2] mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 font-plex-sans max-w-2xl">
             {t("takedowns.desc")}
           </p>
         </div>
@@ -552,16 +552,16 @@ export default function TakedownCenterPage() {
             variant="outline"
             size="sm"
             onClick={handleResetSampleCases}
-            className="text-xs font-mono border-[#28504A] hover:bg-[#163632] text-[#E7F4F1]"
+            className="text-xs font-plex-mono border-white/10 hover:bg-white/5 text-slate-300"
           >
-            <RefreshCw className="w-3.5 h-3.5 mr-1.5 text-[#00DCC2]" />
+            <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
             {t("Reset Sample Cases", "Reset Sample Cases")}
           </Button>
           <Button
             variant="cyan"
             size="sm"
             onClick={() => setIsNewModalOpen(true)}
-            className="font-semibold text-xs font-mono shadow-[0_0_15px_rgba(0,220,194,0.2)]"
+            className="font-semibold text-xs font-plex-mono shadow-liquid-cyan"
           >
             <Plus className="w-4 h-4 mr-1.5" />
             {t("New Takedown", "New Takedown")}
@@ -570,70 +570,70 @@ export default function TakedownCenterPage() {
       </div>
 
       {/* Example Cases Notice Banner */}
-      <div className="flex items-center justify-between p-3 rounded-xl bg-[#0B302D] border border-[#28504A] text-xs font-mono text-[#00DCC2]">
+      <div className="flex items-center justify-between p-3 rounded-xl bg-cyan-950/25 border border-cyan-500/20 text-xs font-plex-mono text-cyan-300">
         <div className="flex items-center gap-2.5">
-          <Info className="w-4 h-4 text-[#00DCC2] shrink-0" />
+          <Info className="w-4 h-4 text-cyan-400 shrink-0" />
           <span>
             <strong>SIMULATED ENFORCEMENT BOARD:</strong> Displaying example active and resolved takedowns. Connected to Heuristic Core abuse dispatcher.
           </span>
         </div>
-        <span className="hidden sm:inline-flex px-2 py-0.5 rounded bg-[#031C1B] text-[10px] uppercase font-bold tracking-wider text-[#A0B8B2] border border-[#193E39]">
+        <span className="hidden sm:inline-flex px-2 py-0.5 rounded bg-cyan-900/50 text-[10px] uppercase font-bold tracking-wider">
           Example Cases Active
         </span>
       </div>
 
       {/* Small Summary Strip at Top */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {/* Strip 1 - Critical Threats */}
-        <div className="p-4 rounded-2xl bg-[#112624] border border-[#193E39] flex items-center justify-between transition-all duration-300">
+        {/* Strip 1 - Crimson Threat Rose */}
+        <div className="p-4 rounded-2xl clay-rose flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-[#A0B8B2] font-mono uppercase tracking-wider font-semibold">
+            <div className="text-[11px] text-rose-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               {t("Open Takedown Cases")}
             </div>
-            <div className="text-2xl font-extrabold text-[#FF6474] font-mono mt-1">
+            <div className="text-2xl font-extrabold text-rose-300 font-unbounded mt-1">
               {summaryStrip.openTakedowns}
             </div>
-            <div className="text-[11px] text-[#718C85] font-mono mt-0.5">
+            <div className="text-[11px] text-rose-200/70 font-plex-mono mt-0.5">
               Across registrars &amp; CDNs
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#031C1B] border border-[#FF6474]/40 flex items-center justify-center text-[#FF6474] shadow-[0_2px_8px_rgba(255,100,116,0.2)]">
+          <div className="w-10 h-10 rounded-xl bg-[#1d0810] border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]">
             <ShieldAlert className="w-5 h-5" />
           </div>
         </div>
 
-        {/* Strip 2 - Removal Time */}
-        <div className="p-4 rounded-2xl bg-[#112624] border border-[#193E39] flex items-center justify-between transition-all duration-300">
+        {/* Strip 2 - Matrix Emerald */}
+        <div className="p-4 rounded-2xl clay-emerald flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-[#A0B8B2] font-mono uppercase tracking-wider font-semibold">
+            <div className="text-[11px] text-emerald-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               {t("Median Takedown Time")}
             </div>
-            <div className="text-2xl font-extrabold text-[#45D6A0] font-mono mt-1">
+            <div className="text-2xl font-extrabold text-emerald-300 font-unbounded mt-1">
               {summaryStrip.medianTimeToRemoval}
             </div>
-            <div className="text-[11px] text-[#718C85] font-mono mt-0.5">
+            <div className="text-[11px] text-emerald-200/70 font-plex-mono mt-0.5">
               Fastest: 42 mins (Cloudflare)
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#031C1B] border border-[#45D6A0]/40 flex items-center justify-center text-[#45D6A0] shadow-[0_2px_8px_rgba(69,214,160,0.2)]">
+          <div className="w-10 h-10 rounded-xl bg-[#071f1a] border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(255,255,255,0.15)]">
             <Clock className="w-5 h-5" />
           </div>
         </div>
 
-        {/* Strip 3 - Success Rate */}
-        <div className="p-4 rounded-2xl bg-[#112624] border border-[#193E39] flex items-center justify-between transition-all duration-300">
+        {/* Strip 3 - Cyber Cyan */}
+        <div className="p-4 rounded-2xl clay-cyan flex items-center justify-between transition-all duration-300">
           <div>
-            <div className="text-[11px] text-[#A0B8B2] font-mono uppercase tracking-wider font-semibold">
+            <div className="text-[11px] text-cyan-200/80 font-plex-mono uppercase tracking-wider font-semibold">
               {t("Success Rate This Month")}
             </div>
-            <div className="text-2xl font-extrabold text-[#00DCC2] font-mono mt-1">
+            <div className="text-2xl font-extrabold text-cyan-200 font-unbounded mt-1">
               {summaryStrip.successRate}
             </div>
-            <div className="text-[11px] text-[#718C85] font-mono mt-0.5">
+            <div className="text-[11px] text-cyan-300/70 font-plex-mono mt-0.5">
               Legal compliance benchmark
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-[#031C1B] border border-[#00DCC2]/40 flex items-center justify-center text-[#00DCC2] shadow-[0_2px_8px_rgba(0,220,194,0.2)]">
+          <div className="w-10 h-10 rounded-xl bg-[#071b33] border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-[3px_4px_10px_rgba(2,6,18,0.7),inset_1px_1px_2px_rgba(0,240,255,0.2)]">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
@@ -648,17 +648,17 @@ export default function TakedownCenterPage() {
             return (
               <div
                 key={col.id}
-                className="flex-1 flex flex-col rounded-3xl bg-[#082E2B] border border-[#193E39] overflow-hidden min-w-[250px]"
+                className="flex-1 flex flex-col rounded-3xl clay-card border border-white/10 overflow-hidden min-w-[250px]"
               >
                 {/* Column Header */}
-                <div className={`p-3.5 border-b border-[#193E39] bg-[#042422] flex items-center justify-between`}>
+                <div className={`p-3.5 border-b border-white/10 ${col.bgAccent} flex items-center justify-between`}>
                   <div className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${col.id === "Resolved" ? "bg-[#45D6A0]" : col.id === "Awaiting removal" ? "bg-[#FFB454]" : col.id === "Submitted to host" ? "bg-[#F0D66B]" : "bg-[#00DCC2]"}`} />
-                    <h2 className="font-mono font-bold text-xs text-[#E7F4F1] uppercase tracking-wider">
+                    <span className={`w-2 h-2 rounded-full ${col.id === "Resolved" ? "bg-emerald-400" : col.id === "Awaiting removal" ? "bg-purple-400" : col.id === "Submitted to host" ? "bg-amber-400" : "bg-cyan-400"}`} />
+                    <h2 className="font-plex-mono font-bold text-xs text-white uppercase tracking-wider">
                       {t(col.label)}
                     </h2>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full bg-[#031C1B] text-xs font-mono text-[#A0B8B2] font-semibold border border-[#193E39]">
+                  <span className="px-2 py-0.5 rounded-full bg-black/40 text-xs font-plex-mono text-slate-300 font-semibold border border-white/5">
                     {columnCases.length}
                   </span>
                 </div>
@@ -666,7 +666,7 @@ export default function TakedownCenterPage() {
                 {/* Column Cards Container */}
                 <div className="p-3 space-y-3 flex-1 overflow-y-auto max-h-[680px]">
                   {columnCases.length === 0 ? (
-                    <div className="py-10 text-center text-[#718C85] text-xs font-mono">
+                    <div className="py-10 text-center text-slate-500 text-xs font-plex-mono">
                       No tickets currently in {col.label.toLowerCase()}
                     </div>
                   ) : (
@@ -674,21 +674,21 @@ export default function TakedownCenterPage() {
                       <div
                         key={item.id}
                         onClick={() => handleCardClick(item)}
-                        className="p-4 rounded-2xl bg-[#112624] border border-[#193E39] hover:border-[#00DCC2]/50 hover:bg-[#163632] cursor-pointer transition-all duration-300 shadow-md hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(3,28,27,0.8),0_0_12px_rgba(0,220,194,0.15)] group relative"
+                        className="p-4 rounded-2xl bg-[#08152e] border border-cyan-500/20 hover:border-cyan-400/60 cursor-pointer transition-all duration-300 shadow-[5px_6px_16px_rgba(2,6,18,0.7),inset_1.5px_1.5px_3px_rgba(255,255,255,0.08),inset_-1.5px_-1.5px_3px_rgba(0,0,0,0.6)] hover:-translate-y-1 hover:shadow-[8px_12px_24px_rgba(0,0,0,0.8),0_0_16px_rgba(0,240,255,0.25)] group relative"
                       >
                         {/* Card Top: ID & Risk Score */}
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-[10px] font-mono text-[#718C85] font-semibold flex items-center gap-1">
-                            <Hash className="w-3 h-3 text-[#00DCC2]" />
+                          <span className="text-[10px] font-plex-mono text-slate-400 font-semibold flex items-center gap-1">
+                            <Hash className="w-3 h-3 text-cyan-400" />
                             {item.id}
                           </span>
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border ${
+                            className={`px-2 py-0.5 rounded-full text-[10px] font-plex-mono font-bold border ${
                               item.riskScore >= 75
-                                ? "bg-[#FF6474]/20 text-[#FF6474] border-[#FF6474]/40"
+                                ? "bg-rose-950/70 text-rose-300 border-rose-500/40"
                                 : item.riskScore >= 50
-                                ? "bg-[#FFB454]/20 text-[#FFB454] border-[#FFB454]/40"
-                                : "bg-[#00DCC2]/20 text-[#00DCC2] border-[#00DCC2]/40"
+                                ? "bg-amber-950/70 text-amber-300 border-amber-500/40"
+                                : "bg-cyan-950/70 text-cyan-300 border-cyan-500/40"
                             }`}
                           >
                             RISK {item.riskScore}
@@ -696,23 +696,23 @@ export default function TakedownCenterPage() {
                         </div>
 
                         {/* Card Target URL */}
-                        <h3 className="font-mono font-bold text-xs text-[#E7F4F1] break-all group-hover:text-[#00DCC2] transition-colors mb-2">
+                        <h3 className="font-plex-mono font-bold text-xs text-white break-all group-hover:text-cyan-300 transition-colors mb-2">
                           {item.target}
                         </h3>
 
                         {/* Category & Host Badges */}
                         <div className="flex flex-wrap gap-1.5 mb-3">
-                          <span className="px-2 py-0.5 rounded bg-[#031C1B] text-[10px] font-mono text-[#00DCC2] uppercase border border-[#193E39]">
+                          <span className="px-2 py-0.5 rounded bg-slate-800 text-[10px] font-plex-mono text-cyan-300 uppercase">
                             {item.category}
                           </span>
-                          <span className="px-2 py-0.5 rounded bg-[#031C1B]/80 text-[10px] font-mono text-[#A0B8B2] flex items-center gap-1 border border-[#193E39]">
-                            <Building2 className="w-2.5 h-2.5 text-[#718C85]" />
+                          <span className="px-2 py-0.5 rounded bg-slate-800/80 text-[10px] font-plex-mono text-slate-300 flex items-center gap-1">
+                            <Building2 className="w-2.5 h-2.5 text-slate-400" />
                             <span className="truncate max-w-[120px]">{item.host}</span>
                           </span>
                         </div>
 
                         {/* Card Footer: Date & Owner Avatar */}
-                        <div className="pt-2 border-t border-[#193E39] flex items-center justify-between text-[11px] font-mono text-[#718C85]">
+                        <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-plex-mono text-slate-400">
                           <span className="flex items-center gap-1 text-[10px]">
                             <Calendar className="w-3 h-3" />
                             {item.dateOpened}
@@ -722,7 +722,7 @@ export default function TakedownCenterPage() {
                             {/* Owner Avatar */}
                             <div
                               title={`Assigned to: ${item.ownerName}`}
-                              className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#00DCC2] to-[#00BFA9] text-[#031C1B] font-bold text-[9px] flex items-center justify-center border border-[#00DCC2]/40 shadow"
+                              className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 text-white font-bold text-[9px] flex items-center justify-center border border-white/20 shadow"
                             >
                               {item.ownerInitials}
                             </div>
@@ -730,20 +730,18 @@ export default function TakedownCenterPage() {
                         </div>
 
                         {/* Quick Advance Button */}
-                        <div className="mt-2.5 pt-2 border-t border-[#193E39]" onClick={(e) => e.stopPropagation()}>
-                          <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-mono text-[#718C85]">Move stage:</span>
-                            <select
-                              value={item.stage}
-                              onChange={(e) => handleUpdateStage(item.id, e.target.value as TakedownStage)}
-                              className="text-[10px] font-mono bg-[#031C1B] border border-[#28504A] rounded px-1.5 py-0.5 text-[#E7F4F1] focus:outline-none focus:border-[#00DCC2]"
-                            >
-                              <option value="Requested">Requested</option>
-                              <option value="Submitted to host">Submitted to host</option>
-                              <option value="Awaiting removal">Awaiting removal</option>
-                              <option value="Resolved">Resolved</option>
-                            </select>
-                          </div>
+                        <div className="mt-2.5 pt-2 border-t border-white/[0.06] flex items-center justify-between" onClick={(e) => e.stopPropagation()}>
+                          <span className="text-[10px] font-plex-mono text-slate-400">Move stage:</span>
+                          <select
+                            value={item.stage}
+                            onChange={(e) => handleUpdateStage(item.id, e.target.value as TakedownStage)}
+                            className="text-[10px] font-plex-mono bg-[#091226] border border-white/10 rounded px-1.5 py-0.5 text-slate-200 focus:outline-none focus:border-cyan-400"
+                          >
+                            <option value="Requested">Requested</option>
+                            <option value="Submitted to host">Submitted to host</option>
+                            <option value="Awaiting removal">Awaiting removal</option>
+                            <option value="Resolved">Resolved</option>
+                          </select>
                         </div>
                       </div>
                     ))
@@ -759,37 +757,37 @@ export default function TakedownCenterPage() {
       {isSidePanelOpen && selectedCase && (
         <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
           <div
-            className="w-full sm:w-[560px] h-full bg-[#082E2B] border-l border-[#28504A] shadow-[-16px_0_40px_rgba(0,0,0,0.85)] flex flex-col animate-in slide-in-from-right duration-300"
+            className="w-full sm:w-[560px] h-full bg-[#081228] border-l border-white/10 shadow-[-16px_0_40px_rgba(0,0,0,0.85),inset_2px_0_4px_rgba(255,255,255,0.06)] flex flex-col animate-in slide-in-from-right duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Panel Header */}
-            <div className="p-6 border-b border-[#193E39] bg-[#042422] flex items-center justify-between">
+            <div className="p-6 border-b border-white/10 bg-[#071329] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#031C1B] text-[#00DCC2] border border-[#28504A]">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-plex-mono font-bold bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
                     {selectedCase.id}
                   </span>
                   <span
-                    className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border ${
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-plex-mono font-bold border ${
                       selectedCase.riskScore >= 75
-                        ? "bg-[#FF6474]/20 text-[#FF6474] border-[#FF6474]/40"
-                        : "bg-[#FFB454]/20 text-[#FFB454] border-[#FFB454]/40"
+                        ? "bg-rose-950/70 text-rose-300 border-rose-500/40"
+                        : "bg-amber-950/70 text-amber-300 border-amber-500/40"
                     }`}
                   >
                     RISK {selectedCase.riskScore}
                   </span>
                 </div>
-                <h2 className="text-base font-bold text-[#E7F4F1] font-mono break-all">
+                <h2 className="text-base font-bold text-white font-plex-mono break-all">
                   {selectedCase.target}
                 </h2>
-                <p className="text-xs text-[#A0B8B2] font-mono mt-0.5">
-                  Host: <strong className="text-[#E7F4F1]">{selectedCase.host}</strong> &bull; Category: <span className="uppercase text-[#00DCC2]">{selectedCase.category}</span>
+                <p className="text-xs text-slate-400 font-plex-mono mt-0.5">
+                  Host: <strong className="text-slate-200">{selectedCase.host}</strong> &bull; Category: <span className="uppercase text-cyan-400">{selectedCase.category}</span>
                 </p>
               </div>
 
               <button
                 onClick={() => setIsSidePanelOpen(false)}
-                className="p-2 rounded-xl bg-[#031C1B] hover:bg-[#163632] text-[#A0B8B2] hover:text-[#E7F4F1] transition-colors border border-[#193E39]"
+                className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -798,8 +796,8 @@ export default function TakedownCenterPage() {
             {/* Panel Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {/* Stage Stepper Selector */}
-              <div className="p-4 rounded-xl bg-[#0B302D] border border-[#193E39]">
-                <span className="text-[11px] font-mono uppercase text-[#A0B8B2] tracking-wider font-bold block mb-2.5">
+              <div className="p-4 rounded-xl bg-[#0d1a38] border border-white/10">
+                <span className="text-[11px] font-plex-mono uppercase text-slate-400 tracking-wider font-bold block mb-2.5">
                   Current Workflow Stage
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -807,10 +805,10 @@ export default function TakedownCenterPage() {
                     <button
                       key={s.id}
                       onClick={() => handleUpdateStage(selectedCase.id, s.id)}
-                      className={`px-2.5 py-2 rounded-lg text-xs font-mono text-center border transition-all ${
+                      className={`px-2.5 py-2 rounded-lg text-xs font-plex-mono text-center border transition-all ${
                         selectedCase.stage === s.id
-                          ? "bg-[#031C1B] text-[#00DCC2] border-[#00DCC2] font-bold shadow-[0_0_12px_rgba(0,220,194,0.2)]"
-                          : "bg-[#031C1B] text-[#718C85] border-[#193E39] hover:text-[#E7F4F1] hover:border-[#28504A]"
+                          ? "bg-cyan-500/20 text-cyan-300 border-cyan-400 font-bold shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+                          : "bg-[#091226] text-slate-400 border-white/10 hover:text-white hover:border-white/20"
                       }`}
                     >
                       {s.label}
@@ -821,38 +819,38 @@ export default function TakedownCenterPage() {
 
               {/* Evidence Attached */}
               <div>
-                <h3 className="text-xs font-mono uppercase text-[#A0B8B2] tracking-wider font-bold mb-2.5 flex items-center justify-between">
+                <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-2.5 flex items-center justify-between">
                   <span className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[#00DCC2]" />
+                    <FileText className="w-4 h-4 text-cyan-400" />
                     <span>{t("Evidence Attached & Abuse Telemetry")}</span>
                   </span>
                   <button
                     onClick={() => handleCopyNotice(selectedCase.formalNoticeText)}
-                    className="text-[11px] text-[#00DCC2] hover:text-[#20F5DB] flex items-center gap-1 font-mono lowercase"
+                    className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-plex-mono lowercase"
                   >
                     <Copy className="w-3 h-3" />
                     <span>{copiedNotice ? t("copied!") : t("copy notice")}</span>
                   </button>
                 </h3>
 
-                <div className="p-4 rounded-xl bg-[#0B302D] border border-[#193E39] space-y-3 text-xs">
+                <div className="p-4 rounded-xl bg-[#0a1530] border border-white/10 space-y-3 text-xs">
                   <div>
-                    <span className="text-[#718C85] font-mono text-[11px] block mb-0.5">{t("Summary of Threat:")}</span>
-                    <p className="text-[#E7F4F1] leading-relaxed">
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-0.5">{t("Summary of Threat:")}</span>
+                    <p className="text-white font-plex-sans leading-relaxed">
                       {selectedCase.evidenceSummary}
                     </p>
                   </div>
 
-                  <div className="pt-2 border-t border-[#193E39]">
-                    <span className="text-[#718C85] font-mono text-[11px] block mb-1">{t("Host Abuse Channel:")}</span>
-                    <span className="font-mono text-[#00DCC2] bg-[#031C1B] px-2 py-1 rounded inline-block border border-[#193E39]">
+                  <div className="pt-2 border-t border-white/[0.08]">
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">{t("Host Abuse Channel:")}</span>
+                    <span className="font-plex-mono text-cyan-300 bg-black/40 px-2 py-1 rounded inline-block">
                       {selectedCase.abuseEmail}
                     </span>
                   </div>
 
-                  <div className="pt-2 border-t border-[#193E39]">
-                    <span className="text-[#718C85] font-mono text-[11px] block mb-1">{t("Formal Legal Abuse Notice:")}</span>
-                    <pre className="p-2.5 rounded-lg bg-[#031C1B] text-[11px] font-mono text-[#A0B8B2] whitespace-pre-wrap leading-relaxed overflow-x-auto max-h-36 border border-[#193E39]">
+                  <div className="pt-2 border-t border-white/[0.08]">
+                    <span className="text-slate-400 font-plex-mono text-[11px] block mb-1">{t("Formal Legal Abuse Notice:")}</span>
+                    <pre className="p-2.5 rounded-lg bg-black/50 text-[11px] font-plex-mono text-slate-300 whitespace-pre-wrap leading-relaxed overflow-x-auto max-h-36">
                       {selectedCase.formalNoticeText}
                     </pre>
                   </div>
@@ -861,26 +859,26 @@ export default function TakedownCenterPage() {
 
               {/* Timeline of Status Changes */}
               <div>
-                <h3 className="text-xs font-mono uppercase text-[#A0B8B2] tracking-wider font-bold mb-3 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#00DCC2]" />
+                <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-3 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-cyan-400" />
                   <span>{t("Timeline of Status Changes")} ({selectedCase.timeline.length} Events)</span>
                 </h3>
 
-                <div className="relative pl-5 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-[#193E39]">
+                <div className="relative pl-5 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-white/10">
                   {selectedCase.timeline.map((entry) => (
                     <div key={entry.id} className="relative text-xs">
                       {/* Timeline Dot */}
-                      <div className="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-[#00DCC2] shadow-[0_0_8px_#00DCC2] border-2 border-[#082E2B]" />
-                      <div className="font-mono text-[11px] text-[#718C85] flex items-center gap-2">
+                      <div className="absolute -left-5 top-1 w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] border-2 border-[#081228]" />
+                      <div className="font-plex-mono text-[11px] text-slate-400 flex items-center gap-2">
                         <span>{entry.timestamp}</span>
                         <span>&bull;</span>
-                        <span className="text-[#00DCC2] font-semibold">{entry.author}</span>
+                        <span className="text-cyan-300 font-semibold">{entry.author}</span>
                       </div>
-                      <p className="text-[#E7F4F1] mt-0.5">
+                      <p className="text-slate-200 mt-0.5 font-plex-sans">
                         {entry.action}
                       </p>
                       {entry.note && (
-                        <div className="mt-1.5 p-2 rounded-lg bg-[#031C1B] border border-[#28504A] text-[#00DCC2] font-mono text-[11px]">
+                        <div className="mt-1.5 p-2 rounded-lg bg-[#091535] border border-cyan-500/20 text-cyan-200 font-plex-mono text-[11px]">
                           <strong>Note:</strong> {entry.note}
                         </div>
                       )}
@@ -889,9 +887,9 @@ export default function TakedownCenterPage() {
                 </div>
               </div>
 
-              {/* Add Note Field */}
-              <form onSubmit={handleAddNote} className="p-4 rounded-xl bg-[#0B302D] border border-[#193E39] space-y-2.5">
-                <label className="block text-xs font-mono uppercase text-[#A0B8B2] font-bold tracking-wider">
+              {/* Add Note Field (FUNCTIONAL) */}
+              <form onSubmit={handleAddNote} className="p-4 rounded-xl bg-[#0d1a38] border border-white/10 space-y-2.5">
+                <label className="block text-xs font-plex-mono uppercase text-slate-400 font-bold tracking-wider">
                   Add Analyst Case Note
                 </label>
                 <textarea
@@ -899,7 +897,7 @@ export default function TakedownCenterPage() {
                   placeholder="Record host correspondence, ticket ID, or forensic updates..."
                   value={newNoteInput}
                   onChange={(e) => setNewNoteInput(e.target.value)}
-                  className="w-full px-3 py-2 text-xs font-mono bg-[#031C1B] border border-[#28504A] rounded-xl text-[#E7F4F1] placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2]"
+                  className="w-full px-3 py-2 text-xs font-plex-mono bg-[#091226] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                 />
                 <div className="flex justify-end">
                   <Button
@@ -907,7 +905,7 @@ export default function TakedownCenterPage() {
                     variant="cyan"
                     size="sm"
                     disabled={!newNoteInput.trim()}
-                    className="text-xs font-mono"
+                    className="text-xs font-plex-mono"
                   >
                     <Send className="w-3 h-3 mr-1.5" />
                     Record Note
@@ -917,13 +915,13 @@ export default function TakedownCenterPage() {
             </div>
 
             {/* Panel Footer */}
-            <div className="p-4 border-t border-[#193E39] bg-[#042422] flex items-center justify-between">
+            <div className="p-4 border-t border-white/10 bg-[#070e20] flex items-center justify-between">
               <Button
                 variant={selectedCase.stage === "Resolved" ? "outline" : "danger"}
                 size="sm"
                 onClick={() => handleUpdateStage(selectedCase.id, "Resolved")}
                 disabled={selectedCase.stage === "Resolved"}
-                className="text-xs font-mono"
+                className="text-xs font-plex-mono"
               >
                 <CheckCircle2 className="w-3.5 h-3.5 mr-1.5" />
                 {selectedCase.stage === "Resolved" ? "Already Resolved" : "Mark as Resolved"}
@@ -933,7 +931,7 @@ export default function TakedownCenterPage() {
                 variant="outline"
                 size="sm"
                 onClick={() => setIsSidePanelOpen(false)}
-                className="text-xs font-mono border-[#28504A] text-[#E7F4F1]"
+                className="text-xs font-plex-mono border-white/10 text-slate-300"
               >
                 Close Side Panel
               </Button>
@@ -954,15 +952,15 @@ export default function TakedownCenterPage() {
       >
         <form onSubmit={handleCreateTakedownSubmit} className="space-y-4 pt-2">
           {formError && (
-            <div className="p-3 rounded-xl bg-[#0B302D] border border-[#FF6474]/50 text-[#FF6474] text-xs font-mono flex items-start gap-2">
-              <AlertTriangle className="w-4 h-4 text-[#FF6474] shrink-0 mt-0.5" />
+            <div className="p-3 rounded-xl bg-rose-950/70 border border-rose-500/50 text-rose-300 text-xs font-plex-mono flex items-start gap-2">
+              <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
               <span>{formError}</span>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-mono text-[#A0B8B2] mb-1 font-semibold">
-              Target URL or Domain <span className="text-[#FF6474]">*</span>
+            <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
+              Target URL or Domain <span className="text-rose-400">*</span>
             </label>
             <input
               type="text"
@@ -972,19 +970,19 @@ export default function TakedownCenterPage() {
                 setTargetInput(e.target.value);
                 if (formError) setFormError(null);
               }}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2] focus:ring-1 focus:ring-[#00DCC2]"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-mono text-[#A0B8B2] mb-1 font-semibold">
-                Reason Category <span className="text-[#FF6474]">*</span>
+              <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
+                Reason Category <span className="text-rose-400">*</span>
               </label>
               <select
                 value={categoryInput}
                 onChange={(e) => setCategoryInput(e.target.value as any)}
-                className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono focus:outline-none focus:border-[#00DCC2]"
+                className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono focus:outline-none focus:border-cyan-400"
               >
                 <option value="phishing">Phishing</option>
                 <option value="impersonation">Brand Impersonation</option>
@@ -994,7 +992,7 @@ export default function TakedownCenterPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-mono text-[#A0B8B2] mb-1 font-semibold">
+              <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
                 Hosting Provider / Registrar
               </label>
               <input
@@ -1002,13 +1000,14 @@ export default function TakedownCenterPage() {
                 placeholder="e.g. Cloudflare, Namecheap, AWS"
                 value={hostInput}
                 onChange={(e) => setHostInput(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono focus:outline-none focus:border-[#00DCC2]"
-              />
+                className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono focus:outline-none focus:border-cyan-400"
+              >
+              </input>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-[#A0B8B2] mb-1 font-semibold">
+            <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
               Priority Level
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -1017,14 +1016,14 @@ export default function TakedownCenterPage() {
                   type="button"
                   key={p}
                   onClick={() => setPriorityInput(p)}
-                  className={`py-1.5 rounded-lg text-xs font-mono font-bold border transition-colors ${
+                  className={`py-1.5 rounded-lg text-xs font-plex-mono font-bold border transition-colors ${
                     priorityInput === p
                       ? p === "CRITICAL"
-                        ? "bg-[#FF6474]/20 text-[#FF6474] border-[#FF6474]"
+                        ? "bg-rose-950 text-rose-300 border-rose-500"
                         : p === "HIGH"
-                        ? "bg-[#FFB454]/20 text-[#FFB454] border-[#FFB454]"
-                        : "bg-[#00DCC2]/20 text-[#00DCC2] border-[#00DCC2]"
-                      : "bg-[#031C1B] text-[#718C85] border-[#193E39]"
+                        ? "bg-amber-950 text-amber-300 border-amber-500"
+                        : "bg-cyan-950 text-cyan-300 border-cyan-500"
+                      : "bg-[#091226] text-slate-400 border-white/10"
                   }`}
                 >
                   {p}
@@ -1034,7 +1033,7 @@ export default function TakedownCenterPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-mono text-[#A0B8B2] mb-1 font-semibold">
+            <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
               Supporting Evidence Description
             </label>
             <textarea
@@ -1042,7 +1041,7 @@ export default function TakedownCenterPage() {
               placeholder="Describe fraudulent behaviors, cloned stylesheets, credential endpoints, or screenshot references..."
               value={evidenceInput}
               onChange={(e) => setEvidenceInput(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2]"
+              className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono placeholder-slate-500 focus:outline-none focus:border-cyan-400"
             />
           </div>
 

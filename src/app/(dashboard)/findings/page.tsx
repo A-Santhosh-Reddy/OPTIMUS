@@ -98,27 +98,27 @@ export default function FindingsPage() {
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-[#E7F4F1] flex items-center gap-2">
+        <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
           Threat Findings Repository
         </h1>
-        <p className="text-xs text-[#A0B8B2] mt-1">
+        <p className="text-xs text-slate-400 mt-1">
           Historical repository of analyzed URLs, detection signals, and correlation records.
         </p>
       </div>
 
-      {/* Selected Detail View Overlay / Panel */}
+      {/* Selected Detail View Overlay / Panel in Liquid Glass */}
       {selectedAnalysis && (
-        <div className="space-y-4 rounded-2xl border border-[#28504A] bg-[#0B302D] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
-          <div className="flex items-center justify-between border-b border-[#193E39] pb-3">
-            <h2 className="text-base font-bold text-[#E7F4F1] flex items-center gap-2 font-mono">
-              <ShieldAlert className="h-5 w-5 text-[#00DCC2]" />
+        <div className="space-y-4 rounded-2xl border border-cyan-500/40 liquid-glass-card p-6 shadow-liquid-cyan">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
+            <h2 className="text-base font-bold text-white flex items-center gap-2 font-mono">
+              <ShieldAlert className="h-5 w-5 text-cyan-400" />
               Detailed Threat Inspection &bull; {selectedAnalysis.normalizedHostname}
             </h2>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setSelectedAnalysis(null)}
-              className="text-xs border-[#28504A] text-[#A0B8B2]"
+              className="text-xs"
             >
               Close Inspector
             </Button>
@@ -127,17 +127,17 @@ export default function FindingsPage() {
         </div>
       )}
 
-      {/* Filter & Search Bar */}
+      {/* Filter & Search Bar in Liquid Glass */}
       <Card glow="cyan">
         <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="h-4 w-4 absolute inset-y-0 left-3.5 my-auto text-[#00DCC2]" />
+            <Search className="h-4 w-4 absolute inset-y-0 left-3.5 my-auto text-cyan-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by hostname, domain, or submitted URL..."
-              className="w-full rounded-xl bg-[#031C1B] border border-[#28504A] pl-10 pr-4 py-2.5 text-xs text-[#E7F4F1] placeholder-[#718C85] font-mono focus:border-[#00DCC2] focus:outline-none"
+              className="liquid-glass-input w-full rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-100 placeholder-slate-500 font-mono"
             />
           </div>
 
@@ -148,7 +148,7 @@ export default function FindingsPage() {
                 setSeverityFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl bg-[#031C1B] border border-[#28504A] px-3 py-2.5 text-xs text-[#E7F4F1] font-mono focus:border-[#00DCC2] focus:outline-none"
+              className="liquid-glass-input rounded-xl px-3 py-2.5 text-xs text-slate-200 font-mono"
             >
               <option value="ALL">All Severities</option>
               <option value="CRITICAL">Critical</option>
@@ -163,7 +163,7 @@ export default function FindingsPage() {
                 setIntelFilter(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl bg-[#031C1B] border border-[#28504A] px-3 py-2.5 text-xs text-[#E7F4F1] font-mono focus:border-[#00DCC2] focus:outline-none"
+              className="liquid-glass-input rounded-xl px-3 py-2.5 text-xs text-slate-200 font-mono"
             >
               <option value="ALL">All Threat Intel</option>
               <option value="MATCH_FOUND">Match Found</option>
@@ -191,49 +191,49 @@ export default function FindingsPage() {
         {isLoadingList ? (
           <div className="space-y-2 py-8">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-12 bg-[#0B302D]/60 rounded-lg animate-pulse" />
+              <div key={i} className="h-12 bg-slate-800/50 rounded-lg animate-pulse" />
             ))}
           </div>
         ) : items.length === 0 ? (
-          <div className="py-12 text-center text-xs text-[#718C85]">
+          <div className="py-12 text-center text-xs text-slate-500">
             No threat findings match the specified search or filter criteria.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="border-b border-[#193E39] bg-[#042422] text-[#A0B8B2] font-mono">
+              <thead className="border-b border-slate-800 text-slate-400 font-mono">
                 <tr>
-                  <th className="py-3 pl-3">Target Hostname</th>
-                  <th className="py-3">Registrable Domain</th>
-                  <th className="py-3">Risk Score</th>
-                  <th className="py-3">Severity</th>
-                  <th className="py-3">Threat Intel</th>
-                  <th className="py-3">Signals</th>
-                  <th className="py-3">Timestamp</th>
-                  <th className="py-3 text-right pr-3">Inspect</th>
+                  <th className="pb-3 pl-2">Target Hostname</th>
+                  <th className="pb-3">Registrable Domain</th>
+                  <th className="pb-3">Risk Score</th>
+                  <th className="pb-3">Severity</th>
+                  <th className="pb-3">Threat Intel</th>
+                  <th className="pb-3">Signals</th>
+                  <th className="pb-3">Timestamp</th>
+                  <th className="pb-3 text-right pr-2">Inspect</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#193E39] font-mono">
+              <tbody className="divide-y divide-slate-800/60 font-mono">
                 {items.map((item) => (
                   <tr
                     key={item.id}
                     onClick={() => loadAnalysisDetail(item.id)}
-                    className="hover:bg-[#163632]/50 cursor-pointer transition-colors"
+                    className="hover:bg-slate-800/50 cursor-pointer transition-colors"
                   >
-                    <td className="py-3.5 pl-3 font-semibold text-[#E7F4F1]">
+                    <td className="py-3.5 pl-2 font-semibold text-slate-200">
                       <div className="max-w-xs truncate">{item.normalizedHostname || item.submittedUrl}</div>
                     </td>
-                    <td className="py-3.5 text-[#A0B8B2]">{item.registrableDomain}</td>
+                    <td className="py-3.5 text-slate-400">{item.registrableDomain}</td>
                     <td className="py-3.5">
                       <span
                         className={`font-bold ${
                           item.riskScore >= 70
-                            ? "text-[#FF6474]"
+                            ? "text-red-400"
                             : item.riskScore >= 40
-                            ? "text-[#FFB454]"
+                            ? "text-orange-400"
                             : item.riskScore >= 20
-                            ? "text-[#F0D66B]"
-                            : "text-[#00DCC2]"
+                            ? "text-amber-400"
+                            : "text-blue-400"
                         }`}
                       >
                         {item.riskScore}/100
@@ -245,19 +245,19 @@ export default function FindingsPage() {
                     <td className="py-3.5">
                       <IntelStatusBadge status={item.intelligenceStatus} />
                     </td>
-                    <td className="py-3.5 text-[#A0B8B2]">
+                    <td className="py-3.5 text-slate-400">
                       {item.signals?.length || 0} indicators
                     </td>
-                    <td className="py-3.5 text-[#A0B8B2] text-[11px]">
+                    <td className="py-3.5 text-slate-400 text-[11px]">
                       {new Date(item.createdAt).toLocaleDateString()} {new Date(item.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </td>
-                    <td className="py-3.5 text-right pr-3">
+                    <td className="py-3.5 text-right pr-2">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           loadAnalysisDetail(item.id);
                         }}
-                        className="text-xs text-[#00DCC2] hover:text-[#20F5DB] font-semibold"
+                        className="text-xs text-blue-400 hover:text-blue-300 font-semibold"
                       >
                         Inspect
                       </button>
@@ -271,8 +271,8 @@ export default function FindingsPage() {
 
         {/* Pagination Bar */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between border-t border-[#193E39] pt-4 mt-4">
-            <span className="text-xs text-[#A0B8B2] font-mono">
+          <div className="flex items-center justify-between border-t border-slate-800 pt-4 mt-4">
+            <span className="text-xs text-slate-400 font-mono">
               Page {page} of {totalPages}
             </span>
             <div className="flex items-center gap-2">
@@ -281,7 +281,6 @@ export default function FindingsPage() {
                 size="sm"
                 disabled={page <= 1}
                 onClick={() => setPage(page - 1)}
-                className="border-[#28504A] text-[#A0B8B2]"
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Previous
@@ -291,7 +290,6 @@ export default function FindingsPage() {
                 size="sm"
                 disabled={page >= totalPages}
                 onClick={() => setPage(page + 1)}
-                className="border-[#28504A] text-[#A0B8B2]"
               >
                 Next
                 <ChevronRight className="h-4 w-4 ml-1" />

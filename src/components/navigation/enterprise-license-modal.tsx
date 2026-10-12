@@ -194,49 +194,33 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
               </div>
             </div>
 
-            {/* Daily Scans Meter */}
-            <div className="p-3 rounded-xl bg-[#082E2B] border border-[#193E39] space-y-1.5">
-              <div className="flex justify-between items-center text-[10px] font-mono text-[#A0B8B2]">
-                <span>Daily Scans Used</span>
-                <span className="text-[#00DCC2] font-bold">
-                  {licenseData.usage.todayScansCount} / {licenseData.usage.maxDailyScansLimit}
-                </span>
-              </div>
-              <div className="w-full bg-[#031C1B] rounded-full h-1.5 overflow-hidden">
-                <div
-                  className="bg-[#00DCC2] h-1.5 rounded-full transition-all duration-500"
-                  style={{ width: `${licenseData.usage.dailyScansPercent}%` }}
-                />
-              </div>
-            </div>
-
             {/* Brand Shields Meter */}
-            <div className="p-3 rounded-xl bg-[#082E2B] border border-[#193E39] space-y-1.5">
-              <div className="flex justify-between items-center text-[10px] font-mono text-[#A0B8B2]">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <div className="flex justify-between items-center text-[10px] font-mono text-slate-400">
                 <span>Protected Brand Assets</span>
-                <span className="text-[#45D6A0] font-bold">
+                <span className="text-emerald-400 font-bold">
                   {licenseData.usage.totalBrandsCount} / {licenseData.usage.maxBrandsLimit}
                 </span>
               </div>
-              <div className="w-full bg-[#031C1B] rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
                 <div
-                  className="bg-[#45D6A0] h-1.5 rounded-full transition-all duration-500"
+                  className="bg-emerald-400 h-1.5 rounded-full transition-all duration-500"
                   style={{ width: `${licenseData.usage.brandsPercent}%` }}
                 />
               </div>
             </div>
 
             {/* Threat Intel Feeds Quota */}
-            <div className="p-3 rounded-xl bg-[#082E2B] border border-[#193E39] space-y-1.5">
-              <div className="flex justify-between items-center text-[10px] font-mono text-[#A0B8B2]">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+              <div className="flex justify-between items-center text-[10px] font-mono text-slate-400">
                 <span>Threat Feeds Enabled</span>
-                <span className="text-[#00BFA9] font-bold">
+                <span className="text-blue-400 font-bold">
                   {licenseData.tierConfig.threatFeeds} of 4 Feeds
                 </span>
               </div>
-              <div className="w-full bg-[#031C1B] rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden">
                 <div
-                  className="bg-[#00BFA9] h-1.5 rounded-full transition-all duration-500"
+                  className="bg-blue-400 h-1.5 rounded-full transition-all duration-500"
                   style={{ width: `${(licenseData.tierConfig.threatFeeds / 4) * 100}%` }}
                 />
               </div>
@@ -249,28 +233,28 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
           <div
             className={`p-3 rounded-xl text-xs flex items-center gap-2 border animate-in fade-in duration-200 ${
               keyFeedback.type === "success"
-                ? "bg-[#45D6A0]/15 border-[#45D6A0]/40 text-[#45D6A0]"
-                : "bg-[#FF6474]/15 border-[#FF6474]/40 text-[#FF6474]"
+                ? "bg-emerald-950/60 border-emerald-500/40 text-emerald-300"
+                : "bg-red-950/60 border-red-500/40 text-red-300"
             }`}
           >
             {keyFeedback.type === "success" ? (
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-[#45D6A0]" />
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
             ) : (
-              <ShieldAlert className="h-4 w-4 shrink-0 text-[#FF6474]" />
+              <ShieldAlert className="h-4 w-4 shrink-0 text-red-400" />
             )}
             <span>{keyFeedback.message}</span>
           </div>
         )}
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 border-b border-[#193E39] pb-2">
+        <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
           <button
             type="button"
             onClick={() => setActiveTab("tiers")}
             className={`text-xs font-semibold px-3 py-1.5 rounded-lg transition-all font-mono ${
               activeTab === "tiers"
-                ? "bg-[#163632] text-[#00DCC2] border border-[#00DCC2]/40 shadow-sm"
-                : "text-[#718C85] hover:text-[#E7F4F1]"
+                ? "bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             Tier Switcher & Entitlements
@@ -280,8 +264,8 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
             onClick={() => setActiveTab("license-key")}
             className={`text-xs font-semibold px-3 py-1.5 rounded-lg transition-all font-mono flex items-center gap-1.5 ${
               activeTab === "license-key"
-                ? "bg-[#163632] text-[#00DCC2] border border-[#00DCC2]/40 shadow-sm"
-                : "text-[#718C85] hover:text-[#E7F4F1]"
+                ? "bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             <KeyRound className="h-3 w-3" />
@@ -297,31 +281,31 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
               <div
                 className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between space-y-3 ${
                   currentTier === "COMMUNITY"
-                    ? "bg-[#112624] border-[#00DCC2]/50 shadow-[0_0_12px_rgba(0,220,194,0.15)]"
-                    : "bg-[#082E2B] border-[#193E39] opacity-80 hover:opacity-100"
+                    ? "bg-slate-900/90 border-cyan-500/50 shadow-[0_0_10px_rgba(6,182,212,0.2)]"
+                    : "bg-[#070b14] border-slate-800/80 opacity-80 hover:opacity-100"
                 }`}
               >
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-[#E7F4F1] font-mono">Community Tier</h4>
+                    <h4 className="text-xs font-bold text-white font-mono">Community Tier</h4>
                     {currentTier === "COMMUNITY" && (
-                      <span className="text-[9px] font-mono font-bold bg-[#031C1B] text-[#00DCC2] px-1.5 py-0.5 rounded border border-[#28504A]">
+                      <span className="text-[9px] font-mono font-bold bg-cyan-950 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-500/40">
                         ACTIVE
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-[#718C85]">Open source baseline access</p>
-                  <ul className="text-[10px] text-[#A0B8B2] space-y-1 font-mono pt-1">
+                  <p className="text-[10px] text-slate-400">Open source baseline access</p>
+                  <ul className="text-[10px] text-slate-300 space-y-1 font-mono pt-1">
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       15 URL Lexical Scans / day
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       2 Protected Brand Assets
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       1 Threat Feed (Local Feed)
                     </li>
                   </ul>
@@ -341,35 +325,35 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
               <div
                 className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between space-y-3 ${
                   currentTier === "PROFESSIONAL"
-                    ? "bg-[#112624] border-[#00DCC2]/50 shadow-[0_0_12px_rgba(0,220,194,0.15)]"
-                    : "bg-[#082E2B] border-[#193E39] opacity-80 hover:opacity-100"
+                    ? "bg-slate-900/90 border-blue-500/50 shadow-[0_0_10px_rgba(59,130,246,0.2)]"
+                    : "bg-[#070b14] border-slate-800/80 opacity-80 hover:opacity-100"
                 }`}
               >
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-[#E7F4F1] font-mono">Professional SOC</h4>
+                    <h4 className="text-xs font-bold text-white font-mono">Professional SOC</h4>
                     {currentTier === "PROFESSIONAL" && (
-                      <span className="text-[9px] font-mono font-bold bg-[#031C1B] text-[#00DCC2] px-1.5 py-0.5 rounded border border-[#28504A]">
+                      <span className="text-[9px] font-mono font-bold bg-blue-950 text-blue-300 px-1.5 py-0.5 rounded border border-blue-500/40">
                         ACTIVE
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-[#718C85]">Dedicated SecOps hunting team</p>
-                  <ul className="text-[10px] text-[#A0B8B2] space-y-1 font-mono pt-1">
+                  <p className="text-[10px] text-slate-400">Dedicated SecOps hunting team</p>
+                  <ul className="text-[10px] text-slate-300 space-y-1 font-mono pt-1">
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       250 Scans / day
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       10 Protected Brands
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       Google Safe Browsing &amp; Local
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#45D6A0]" />
+                      <Check className="h-3 w-3 text-emerald-400" />
                       Executive PDF Reports
                     </li>
                   </ul>
@@ -389,35 +373,35 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
               <div
                 className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between space-y-3 ${
                   currentTier === "ENTERPRISE"
-                    ? "bg-[#112624] border-[#00DCC2] shadow-[0_0_16px_rgba(0,220,194,0.25)]"
-                    : "bg-[#082E2B] border-[#193E39] opacity-80 hover:opacity-100"
+                    ? "bg-slate-900/90 border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+                    : "bg-[#070b14] border-slate-800/80 opacity-80 hover:opacity-100"
                 }`}
               >
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-[#00DCC2] font-mono">Enterprise Matrix</h4>
+                    <h4 className="text-xs font-bold text-cyan-300 font-mono">Enterprise Matrix</h4>
                     {currentTier === "ENTERPRISE" && (
-                      <span className="text-[9px] font-mono font-bold bg-[#031C1B] text-[#00DCC2] px-1.5 py-0.5 rounded border border-[#00DCC2]/40">
+                      <span className="text-[9px] font-mono font-bold bg-cyan-950 text-cyan-300 px-1.5 py-0.5 rounded border border-cyan-400">
                         ACTIVE
                       </span>
                     )}
                   </div>
-                  <p className="text-[10px] text-[#718C85]">Complete cyber defense suite</p>
-                  <ul className="text-[10px] text-[#A0B8B2] space-y-1 font-mono pt-1">
+                  <p className="text-[10px] text-slate-400">Complete cyber defense suite</p>
+                  <ul className="text-[10px] text-slate-300 space-y-1 font-mono pt-1">
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#00DCC2] font-bold" />
+                      <Check className="h-3 w-3 text-cyan-400 font-bold" />
                       <strong>Unlimited URL Scans</strong>
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#00DCC2] font-bold" />
+                      <Check className="h-3 w-3 text-cyan-400 font-bold" />
                       <strong>Unlimited Brand Assets</strong>
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#00DCC2] font-bold" />
+                      <Check className="h-3 w-3 text-cyan-400 font-bold" />
                       <strong>All 4 Threat Intel Feeds</strong>
                     </li>
                     <li className="flex items-center gap-1.5">
-                      <Check className="h-3 w-3 text-[#00DCC2] font-bold" />
+                      <Check className="h-3 w-3 text-cyan-400 font-bold" />
                       <strong>Forensic PDF &amp; Audit Logs</strong>
                     </li>
                   </ul>
@@ -436,32 +420,32 @@ export function EnterpriseLicenseModal({ isOpen, onClose }: EnterpriseLicenseMod
 
             {/* Entitlement List */}
             <div className="space-y-2 pt-2 text-xs">
-              <h4 className="font-semibold text-[#A0B8B2] font-mono text-[11px] uppercase tracking-wider">
+              <h4 className="font-semibold text-slate-300 font-mono text-[11px] uppercase tracking-wider">
                 Verified Active Entitlements on this Node:
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono">
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>Unlimited URL Lexical Scans</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>10+ Detection Heuristics</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>Multi-Source Threat Intel Feeds (4 Adapters)</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>Executive Forensic PDF Export</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>Protected Brand Typosquat Shields</span>
                 </div>
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-[#082E2B] border border-[#193E39]">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#45D6A0] shrink-0" />
+                <div className="flex items-center gap-2 p-2 rounded-lg bg-slate-950/60 border border-white/[0.06]">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
                   <span>365-Day SOC Audit Trail Logging</span>
                 </div>
               </div>

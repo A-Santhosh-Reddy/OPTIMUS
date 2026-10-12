@@ -20,40 +20,40 @@ export function MetricCard({
   subtitle,
   icon: Icon,
   trend,
-  variant = "cyan",
+  variant = "blue",
   href,
 }: MetricCardProps) {
   const { t } = useLanguage();
   const variantStyles = {
     blue: {
-      glow: "cyber" as const,
-      iconBg: "bg-[#0B302D] border border-[#28504A] text-[#00DCC2]",
-      valueColor: "text-[#E7F4F1]",
-      hoverBorder: "hover:border-[#00DCC2]/40",
+      glow: "blue" as const,
+      iconBg: "bg-[#0f172a] border border-blue-500/25 text-sky-400 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]",
+      valueColor: "text-sky-300 drop-shadow-[0_2px_12px_rgba(56,189,248,0.25)]",
+      hoverBorder: "hover:border-blue-400/50",
     },
     cyan: {
-      glow: "cyber" as const,
-      iconBg: "bg-[#0B302D] border border-[#28504A] text-[#00DCC2]",
-      valueColor: "text-[#E7F4F1]",
-      hoverBorder: "hover:border-[#00DCC2]/40",
+      glow: "cyan" as const,
+      iconBg: "bg-[#0b1b2d] border border-sky-400/30 text-sky-300 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]",
+      valueColor: "text-sky-200 drop-shadow-[0_2px_12px_rgba(56,189,248,0.25)]",
+      hoverBorder: "hover:border-sky-400/50",
     },
     red: {
       glow: "red" as const,
-      iconBg: "bg-[#0B302D] border border-[#FF6474]/30 text-[#FF6474]",
-      valueColor: "text-[#FF6474]",
-      hoverBorder: "hover:border-[#FF6474]/40",
+      iconBg: "bg-[#1f0f15] border border-rose-500/30 text-rose-300 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]",
+      valueColor: "text-rose-400 drop-shadow-[0_2px_12px_rgba(239,68,68,0.25)]",
+      hoverBorder: "hover:border-rose-400/50",
     },
     amber: {
       glow: "amber" as const,
-      iconBg: "bg-[#0B302D] border border-[#FFB454]/30 text-[#FFB454]",
-      valueColor: "text-[#FFB454]",
-      hoverBorder: "hover:border-[#FFB454]/40",
+      iconBg: "bg-[#1d140a] border border-amber-500/30 text-amber-300 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]",
+      valueColor: "text-amber-300 drop-shadow-[0_2px_12px_rgba(245,158,11,0.25)]",
+      hoverBorder: "hover:border-amber-400/50",
     },
     emerald: {
       glow: "emerald" as const,
-      iconBg: "bg-[#0B302D] border border-[#45D6A0]/30 text-[#45D6A0]",
-      valueColor: "text-[#45D6A0]",
-      hoverBorder: "hover:border-[#45D6A0]/40",
+      iconBg: "bg-[#0a1a16] border border-emerald-500/30 text-emerald-300 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.08)]",
+      valueColor: "text-emerald-300 drop-shadow-[0_2px_12px_rgba(16,185,129,0.25)]",
+      hoverBorder: "hover:border-emerald-400/50",
     },
   }[variant];
 
@@ -61,40 +61,40 @@ export function MetricCard({
     <Card
       glow={variantStyles.glow}
       className={`relative overflow-hidden group transition-all duration-200 h-full flex flex-col justify-between ${
-        href ? `cursor-pointer ${variantStyles.hoverBorder} hover:-translate-y-0.5 hover:shadow-lg` : ""
+        href ? `cursor-pointer ${variantStyles.hoverBorder} hover:-translate-y-1 hover:shadow-xl` : ""
       }`}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <p className="text-[11px] font-semibold text-[#718C85] uppercase tracking-wider font-mono truncate">
+            <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest font-mono truncate">
               {t(title)}
             </p>
             {href && (
-              <ArrowUpRight className="h-3 w-3 text-[#718C85] group-hover:text-[#00DCC2] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
+              <ArrowUpRight className="h-3 w-3 text-slate-500 group-hover:text-sky-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0" />
             )}
           </div>
           <h4 className={`text-3xl font-extrabold tracking-tight mt-2 font-mono ${variantStyles.valueColor}`}>
             {value}
           </h4>
-          {subtitle && <p className="text-xs text-[#A0B8B2] mt-1.5 truncate">{t(subtitle)}</p>}
+          {subtitle && <p className="text-xs text-slate-400 mt-1.5 truncate">{t(subtitle)}</p>}
         </div>
 
         <div
-          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border ${variantStyles.iconBg} shadow-sm group-hover:scale-105 transition-transform duration-200`}
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border ${variantStyles.iconBg} group-hover:scale-105 transition-transform duration-200`}
         >
-          <Icon className="h-5 w-5" />
+          <Icon className="h-6 w-6" />
         </div>
       </div>
 
       {trend && (
-        <div className="mt-4 pt-2.5 flex items-center justify-between border-t border-[#193E39]">
-          <p className="text-[11px] text-[#00DCC2] font-mono flex items-center gap-1.5 bg-[#082E2B] border border-[#193E39] px-2 py-0.5 rounded-md w-fit">
-            <span className="h-1 w-1 rounded-full bg-[#00DCC2]" />
+        <div className="mt-4 pt-2 flex items-center justify-between border-t border-white/[0.05]">
+          <p className="text-[11px] text-sky-300/90 font-mono flex items-center gap-1.5 bg-blue-950/40 border border-sky-500/20 px-2 py-0.5 rounded-md w-fit">
+            <span className="h-1 w-1 rounded-full bg-sky-400" />
             {t(trend)}
           </p>
           {href && (
-            <span className="text-[10px] font-mono text-[#718C85] group-hover:text-[#00DCC2] transition-colors hidden sm:inline">
+            <span className="text-[10px] font-mono text-slate-500 group-hover:text-sky-400 transition-colors hidden sm:inline">
               {t("View page →")}
             </span>
           )}

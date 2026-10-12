@@ -63,14 +63,14 @@ export function BatchUpload({ onStartScan, isLoading }: BatchUploadProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* File Upload Zone */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-xl border border-[#193E39] bg-[#031C1B]">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-xl border border-white/10 bg-slate-950/60">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-[#00DCC2]/10 border border-[#00DCC2]/30 flex items-center justify-center text-[#00DCC2] shrink-0">
+          <div className="h-10 w-10 rounded-xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
             <Upload className="h-5 w-5" />
           </div>
           <div>
-            <h4 className="text-xs font-semibold text-[#E7F4F1]">Upload CSV / TXT File</h4>
-            <p className="text-[11px] text-[#A0B8B2]">One URL per line or comma-separated (Max 500 URLs)</p>
+            <h4 className="text-xs font-semibold text-slate-100">Upload CSV / TXT File</h4>
+            <p className="text-[11px] text-slate-400">One URL per line or comma-separated (Max 500 URLs)</p>
           </div>
         </div>
 
@@ -87,7 +87,7 @@ export function BatchUpload({ onStartScan, isLoading }: BatchUploadProps) {
             variant="outline"
             size="sm"
             onClick={() => fileInputRef.current?.click()}
-            className="text-xs font-mono border-[#28504A] text-[#A0B8B2]"
+            className="text-xs font-mono"
           >
             <FileText className="h-3.5 w-3.5 mr-1.5" />
             {fileName ? fileName : "Choose File"}
@@ -98,7 +98,7 @@ export function BatchUpload({ onStartScan, isLoading }: BatchUploadProps) {
             variant="outline"
             size="sm"
             onClick={handleLoadDemo}
-            className="text-[11px] font-mono text-[#00DCC2] hover:text-[#20F5DB] border-[#00DCC2]/30"
+            className="text-[11px] font-mono text-cyan-300 hover:text-cyan-200 border-cyan-500/30"
           >
             Load Sample
           </Button>
@@ -108,11 +108,11 @@ export function BatchUpload({ onStartScan, isLoading }: BatchUploadProps) {
       {/* Manual Paste Textarea */}
       <div>
         <div className="flex justify-between items-center mb-1.5">
-          <label className="text-xs font-semibold text-[#A0B8B2] font-mono">
+          <label className="text-xs font-semibold text-slate-300 font-mono">
             Or Paste URLs Directly ({currentUrls.length} detected)
           </label>
           {currentUrls.length > 500 && (
-            <span className="text-[10px] text-[#FFB454] font-mono">
+            <span className="text-[10px] text-amber-400 font-mono">
               Note: Capped at first 500 URLs
             </span>
           )}
@@ -122,18 +122,18 @@ export function BatchUpload({ onStartScan, isLoading }: BatchUploadProps) {
           onChange={(e) => setInputText(e.target.value)}
           placeholder="https://suspicious-login.xyz&#10;https://bank-verification.top&#10;https://paypal-update.online..."
           rows={6}
-          className="w-full rounded-xl p-3 text-xs font-mono text-[#E7F4F1] bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] transition-colors resize-y placeholder:text-[#718C85] focus:outline-none"
+          className="w-full liquid-glass-input rounded-xl p-3 text-xs font-mono text-slate-200 bg-slate-950/80 border border-white/10 focus:border-cyan-400/60 transition-colors resize-y placeholder:text-slate-600"
         />
       </div>
 
       {/* Options & Action Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-        <label className="flex items-center gap-2.5 text-xs text-[#A0B8B2] cursor-pointer select-none">
+        <label className="flex items-center gap-2.5 text-xs text-slate-300 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={autoEscalate}
             onChange={(e) => setAutoEscalate(e.target.checked)}
-            className="rounded border-[#28504A] bg-[#031C1B] text-[#00DCC2] focus:ring-[#00DCC2]/30"
+            className="rounded border-white/20 bg-slate-900 text-cyan-500 focus:ring-cyan-500/30"
           />
           <span>Auto-create Incident Cases for CRITICAL findings</span>
         </label>

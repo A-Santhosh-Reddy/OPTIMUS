@@ -13,19 +13,19 @@ export function Card({
   ...props
 }: CardProps) {
   const glowClasses = {
-    none: "border-[#193E39] hover:border-[#28504A]",
-    cyber: "border-[#28504A] hover:border-[#00DCC2]/50 hover:shadow-[0_4px_24px_rgba(3,28,27,0.7),0_0_20px_rgba(0,220,194,0.08)]",
-    cyan: "border-[#28504A] hover:border-[#00DCC2]/50 hover:shadow-[0_4px_24px_rgba(3,28,27,0.7),0_0_20px_rgba(0,220,194,0.08)]",
-    blue: "border-[#193E39] hover:border-[#28504A]",
-    emerald: "border-[#193E39] hover:border-[#45D6A0]/40",
-    red: "border-[#193E39] hover:border-[#FF6474]/40",
-    amber: "border-[#193E39] hover:border-[#FFB454]/40",
-    purple: "border-[#193E39] hover:border-[#28504A]",
+    none: "clay-card",
+    cyber: "clay-card-cyan",
+    cyan: "clay-card-cyan",
+    blue: "clay-card-indigo",
+    emerald: "clay-card-emerald",
+    red: "clay-card-rose",
+    amber: "clay-card-amber",
+    purple: "clay-card-purple",
   }[glow];
 
   return (
     <div
-      className={`rounded-xl p-5 sm:p-6 transition-all duration-200 bg-[#112624] text-[#E7F4F1] shadow-[0_4px_20px_-2px_rgba(3,28,27,0.6)] border ${glowClasses} ${className}`}
+      className={`rounded-2xl p-6 transition-all duration-300 ${glowClasses} ${className}`}
       {...props}
     >
       {children}
@@ -45,19 +45,19 @@ export function CardHeader({
   icon?: any;
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 border-b border-[#193E39] pb-4 mb-4 sm:mb-5">
+    <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4 mb-5">
       <div className="flex items-center gap-3">
         {Icon && (
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0B302D] border border-[#193E39] text-[#00DCC2] shadow-[0_2px_8px_rgba(3,28,27,0.4)]">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#101728] border border-white/[0.08] text-sky-400 shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.1)]">
             <Icon className="h-5 w-5" />
           </div>
         )}
         <div>
-          <h3 className="text-sm font-semibold tracking-wide text-[#E7F4F1] flex items-center gap-2">
+          <h3 className="text-sm font-semibold tracking-wide text-slate-100 flex items-center gap-2">
             {title}
           </h3>
           {description && (
-            <p className="text-xs text-[#718C85] mt-0.5">{description}</p>
+            <p className="text-xs text-slate-400 mt-0.5">{description}</p>
           )}
         </div>
       </div>

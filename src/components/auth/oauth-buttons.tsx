@@ -162,11 +162,11 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
     <div className="space-y-3">
       {/* Clean Divider */}
       <div className="relative flex py-1 items-center">
-        <div className="flex-grow border-t border-[#193E39]"></div>
-        <span className="flex-shrink mx-3 text-[10px] font-mono uppercase tracking-wider text-[#718C85]">
+        <div className="flex-grow border-t border-slate-700/60"></div>
+        <span className="flex-shrink mx-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
           Or Continue With Google
         </span>
-        <div className="flex-grow border-t border-[#193E39]"></div>
+        <div className="flex-grow border-t border-slate-700/60"></div>
       </div>
 
       {/* Prominent Standard Google Login Button */}
@@ -174,10 +174,10 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
         type="button"
         disabled={isRedirecting || isSubmitting}
         onClick={handleGoogleSignInClick}
-        className="w-full relative flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-[#28504A] bg-[#0B302D] hover:bg-[#163632] hover:border-[#00DCC2]/50 text-[#E7F4F1] text-xs font-semibold shadow-md transition-all hover:shadow-[0_0_16px_rgba(0,220,194,0.15)] active:scale-[0.98] disabled:opacity-60"
+        className="w-full relative flex items-center justify-center gap-3 px-4 py-3 rounded-xl border border-white/[0.08] bg-[#0c121e]/95 hover:bg-[#111927] hover:border-blue-500/40 text-slate-100 text-xs font-semibold shadow-md transition-all hover:shadow-[0_0_16px_rgba(37,99,235,0.25)] active:scale-[0.98] disabled:opacity-60"
       >
         {isRedirecting ? (
-          <Loader2 className="h-4 w-4 animate-spin text-[#00DCC2]" />
+          <Loader2 className="h-4 w-4 animate-spin text-sky-400" />
         ) : (
           <GoogleIcon className="h-4 w-4 shrink-0" />
         )}
@@ -195,15 +195,15 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
       >
         <div className="space-y-4">
           {error && (
-            <div className="p-3 rounded-xl bg-[#0B302D] border border-[#FF6474]/40 text-xs text-[#FF6474] flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 shrink-0 text-[#FF6474]" />
+            <div className="p-3 rounded-xl bg-red-950/60 border border-red-500/40 text-xs text-red-300 flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
               <span>{error}</span>
             </div>
           )}
 
           {successInfo && (
-            <div className="p-3 rounded-xl bg-[#0B302D] border border-[#45D6A0]/40 text-xs text-[#45D6A0] flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 shrink-0 text-[#45D6A0]" />
+            <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-xs text-emerald-300 flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400" />
               <span>{successInfo}</span>
             </div>
           )}
@@ -211,11 +211,11 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
           {!isLinkDispatched ? (
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-[#A0B8B2] mb-1 font-mono">
+                <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
                   Your Gmail Address
                 </label>
                 <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#00DCC2]">
+                  <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400">
                     <Mail className="h-4 w-4" />
                   </div>
                   <input
@@ -226,7 +226,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                     required
                     autoFocus
                     autoComplete="email"
-                    className="w-full rounded-xl border border-[#28504A] bg-[#031C1B] pl-9 pr-3 py-2.5 text-xs text-[#E7F4F1] focus:border-[#00DCC2] focus:outline-none font-mono"
+                    className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-xs text-white focus:border-blue-500 focus:outline-none font-mono"
                   />
                 </div>
               </div>
@@ -245,14 +245,14 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
             </div>
           ) : (
             <div className="space-y-3">
-              <div className="p-3 rounded-xl bg-[#031C1B] border border-[#28504A] space-y-2">
+              <div className="p-3 rounded-xl bg-[#101a30] border border-blue-500/25 space-y-2">
                 <a
                   href="https://mail.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-[#FF6474]/15 hover:bg-[#FF6474]/25 border border-[#FF6474]/40 text-[#E7F4F1] text-xs font-semibold transition-all"
+                  className="flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-red-600/20 hover:bg-red-600/30 border border-red-500/40 text-red-200 text-xs font-semibold transition-all"
                 >
-                  <Mail className="h-4 w-4 text-[#FF6474]" />
+                  <Mail className="h-4 w-4 text-red-400" />
                   <span>Open Gmail Inbox</span>
                   <ExternalLink className="h-3.5 w-3.5 ml-1 opacity-70" />
                 </a>
@@ -261,7 +261,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                   <div className="text-center pt-1">
                     <a
                       href={directVerifyUrl}
-                      className="text-[11px] text-[#00DCC2] hover:underline flex items-center justify-center gap-1"
+                      className="text-[11px] text-sky-400 hover:underline flex items-center justify-center gap-1"
                     >
                       <Sparkles className="h-3 w-3" />
                       <span>Or Click Here to Complete Instant Verification</span>
@@ -272,11 +272,11 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
 
               <form onSubmit={handleVerifyPasscode} className="space-y-3">
                 <div>
-                  <label className="block text-xs font-semibold text-[#A0B8B2] mb-1 font-mono">
+                  <label className="block text-xs font-semibold text-slate-300 mb-1 font-mono">
                     Enter 6-Digit Passcode from Email
                   </label>
                   <div className="relative">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#00DCC2]">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-sky-400">
                       <KeyRound className="h-4 w-4" />
                     </div>
                     <input
@@ -286,7 +286,7 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
                       onChange={(e) => setPasscode(e.target.value.replace(/\D/g, ""))}
                       placeholder="e.g. 748291"
                       required
-                      className="w-full rounded-xl border border-[#28504A] bg-[#031C1B] pl-9 pr-3 py-2.5 text-center text-sm tracking-widest text-[#00DCC2] focus:border-[#00DCC2] focus:outline-none font-mono font-bold"
+                      className="w-full rounded-xl border border-slate-700 bg-[#070b14] pl-9 pr-3 py-2.5 text-center text-sm tracking-widest text-sky-300 focus:border-blue-500 focus:outline-none font-mono font-bold"
                     />
                   </div>
                 </div>
@@ -305,9 +305,9 @@ export function OAuthButtons({ onSuccess, mode = "login" }: OAuthButtonsProps) {
             </div>
           )}
 
-          <div className="pt-2 border-t border-[#193E39] text-[10px] text-[#718C85] flex items-center justify-between">
+          <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
             <span className="flex items-center gap-1">
-              <ShieldCheck className="h-3 w-3 text-[#45D6A0]" />
+              <ShieldCheck className="h-3 w-3 text-emerald-400" />
               Verified Gmail Protection
             </span>
             <span>Optimus Security</span>

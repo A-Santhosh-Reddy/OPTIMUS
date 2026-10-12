@@ -45,22 +45,22 @@ export function Modal({
   }[maxWidth];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#031C1B]/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in duration-200">
       <div
-        className={`w-full ${widthClasses} rounded-2xl border border-[#28504A] bg-[#0B302D] p-5 sm:p-7 shadow-[0_24px_60px_rgba(3,28,27,0.95)] max-h-[90vh] overflow-y-auto relative`}
+        className={`w-full ${widthClasses} rounded-3xl border border-white/[0.1] bg-[#0e1526] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] max-h-[90vh] overflow-y-auto relative`}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-[#193E39] pb-4 mb-4">
+        <div className="flex items-start justify-between gap-4 border-b border-white/[0.08] pb-4 mb-4">
           <div>
-            <h3 className="text-base font-bold text-[#E7F4F1] font-mono flex items-center gap-2">
+            <h3 className="text-base font-bold text-white font-mono flex items-center gap-2">
               {title}
             </h3>
             {description && (
-              <p className="text-xs text-[#718C85] mt-1">{description}</p>
+              <p className="text-xs text-slate-400 mt-1">{description}</p>
             )}
           </div>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-[#718C85] hover:bg-[#163632] hover:text-[#00DCC2] transition-colors"
+            className="rounded-xl p-1.5 text-slate-400 hover:bg-white/[0.06] hover:text-sky-300 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>

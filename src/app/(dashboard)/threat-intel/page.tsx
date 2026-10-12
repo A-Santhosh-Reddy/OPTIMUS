@@ -265,7 +265,7 @@ export default function ThreatIntelPage() {
               </p>
             </div>
           </div>
-          <span className="text-[10px] font-mono px-2 py-1 rounded bg-[#0B302D] text-[#00DCC2] border border-[#28504A]">
+          <span className="text-[10px] font-mono px-2 py-1 rounded bg-slate-800/80 text-cyan-400 border border-slate-700">
             {providers.filter((p) => p.isConfigured).length}/4 Active Adapters
           </span>
         </div>
@@ -273,14 +273,14 @@ export default function ThreatIntelPage() {
         {/* Query Input Bar */}
         <div className="mt-4 flex flex-col sm:flex-row gap-2">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#718C85]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
             <input
               type="text"
               value={targetInput}
               onChange={(e) => setTargetInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleRunLiveQuery()}
               placeholder="Enter URL, domain, or IP (e.g. banking-update-verify.top, paypal-security-alert.xyz, clean-domain.com)..."
-              className="w-full rounded-xl border border-[#28504A] bg-[#031C1B] pl-10 pr-4 py-2.5 text-xs text-[#E7F4F1] placeholder-[#718C85] focus:border-[#00DCC2] focus:outline-none focus:ring-1 focus:ring-[#00DCC2] font-mono transition-all"
+              className="w-full rounded-xl border border-slate-700/80 bg-[#070b14] pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 font-mono transition-all"
             />
           </div>
           <Button
@@ -288,7 +288,7 @@ export default function ThreatIntelPage() {
             size="sm"
             onClick={() => handleRunLiveQuery()}
             isLoading={isQuerying}
-            className="text-xs font-semibold px-4 whitespace-nowrap shadow-lg shadow-[#00DCC2]/20"
+            className="text-xs font-semibold px-4 whitespace-nowrap shadow-lg shadow-cyan-950/40"
           >
             <Radio className="h-3.5 w-3.5 mr-1.5" />
             Query Feeds
@@ -296,8 +296,8 @@ export default function ThreatIntelPage() {
         </div>
 
         {/* Quick Presets */}
-        <div className="mt-3 flex flex-wrap items-center gap-1.5 text-[11px] text-[#A0B8B2]">
-          <span className="text-[#718C85] font-mono text-[10px]">Test Threat Presets:</span>
+        <div className="mt-3 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-400">
+          <span className="text-slate-500 font-mono text-[10px]">Test Threat Presets:</span>
           {[
             { label: "Banking Trojan Phish", val: "banking-update-verify.top" },
             { label: "PayPal Credential Harvester", val: "paypal-security-alert.xyz" },
@@ -310,7 +310,7 @@ export default function ThreatIntelPage() {
                 setTargetInput(preset.val);
                 handleRunLiveQuery(preset.val);
               }}
-              className="px-2 py-0.5 rounded-md bg-[#0B302D] hover:bg-[#163632] hover:text-[#00DCC2] text-[#A0B8B2] font-mono text-[10px] border border-[#193E39] transition-colors"
+              className="px-2 py-0.5 rounded-md bg-slate-800/80 hover:bg-slate-700 hover:text-cyan-300 text-slate-300 font-mono text-[10px] border border-slate-700/60 transition-colors"
             >
               {preset.label}
             </button>
@@ -319,15 +319,15 @@ export default function ThreatIntelPage() {
 
         {/* Live Query Results */}
         {queryResults && (
-          <div className="mt-5 rounded-xl border border-[#28504A] bg-[#031C1B]/95 p-4 space-y-4 animate-in fade-in duration-200">
+          <div className="mt-5 rounded-xl border border-slate-800 bg-[#070b14]/90 p-4 space-y-4 animate-in fade-in duration-200">
             {/* Results Header */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#193E39] pb-3">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-[#718C85]">Inspected Host:</span>
-                <span className="text-xs font-mono font-bold text-[#00DCC2]">
+                <span className="text-xs font-mono text-slate-400">Inspected Host:</span>
+                <span className="text-xs font-mono font-bold text-cyan-400">
                   {queryResults.hostname}
                 </span>
-                <span className="text-[10px] font-mono text-[#718C85]">
+                <span className="text-[10px] font-mono text-slate-500">
                   (Elapsed: {queryResults.totalLatencyMs}ms)
                 </span>
               </div>
@@ -335,8 +335,8 @@ export default function ThreatIntelPage() {
                 <span
                   className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
                     queryResults.hasConfirmedThreat
-                      ? "bg-[#FF6474]/20 text-[#FF6474] border border-[#FF6474]/40"
-                      : "bg-[#45D6A0]/20 text-[#45D6A0] border border-[#45D6A0]/40"
+                      ? "bg-red-950/80 text-red-400 border border-red-800/60"
+                      : "bg-emerald-950/80 text-emerald-400 border border-emerald-800/60"
                   }`}
                 >
                   {queryResults.hasConfirmedThreat
@@ -358,16 +358,16 @@ export default function ThreatIntelPage() {
                     key={idx}
                     className={`rounded-xl border p-3.5 space-y-2.5 transition-all ${
                       isMatch
-                        ? "border-[#FF6474]/40 bg-[#FF6474]/10 shadow-[0_0_12px_rgba(255,100,116,0.15)]"
+                        ? "border-red-500/40 bg-red-950/20 shadow-[0_0_12px_rgba(239,68,68,0.1)]"
                         : isNoMatch
-                        ? "border-[#193E39] bg-[#0B302D]/80"
-                        : "border-[#193E39]/60 bg-[#0B302D]/40 opacity-75"
+                        ? "border-slate-800 bg-[#0c121e]/80"
+                        : "border-slate-800/60 bg-[#0c121e]/40 opacity-75"
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <Radio className={`h-3.5 w-3.5 ${isMatch ? "text-[#FF6474]" : "text-[#00DCC2]"}`} />
-                        <span className="text-xs font-bold text-[#E7F4F1]">
+                        <Radio className={`h-3.5 w-3.5 ${isMatch ? "text-red-400" : "text-cyan-400"}`} />
+                        <span className="text-xs font-bold text-white">
                           {res.provider.replace(/_/g, " ")}
                         </span>
                       </div>
@@ -502,24 +502,24 @@ export default function ThreatIntelPage() {
               </div>
 
               {/* Feed Telemetry Details */}
-              <div className="space-y-2 rounded-lg bg-[#031C1B] p-3 text-xs font-mono border border-[#193E39]">
-                <div className="flex justify-between text-[#718C85]">
+              <div className="space-y-2 rounded-lg bg-[#0c121e] p-3 text-xs font-mono">
+                <div className="flex justify-between text-slate-400">
                   <span>Environment Variable:</span>
-                  <span className="text-[#00DCC2]">{p.envVar}</span>
+                  <span className="text-cyan-400">{p.envVar}</span>
                 </div>
-                <div className="flex justify-between text-[#718C85]">
+                <div className="flex justify-between text-slate-400">
                   <span>Rate Limit:</span>
-                  <span className="text-[#E7F4F1]">{p.rateLimit}</span>
+                  <span className="text-slate-200">{p.rateLimit}</span>
                 </div>
-                <div className="flex justify-between text-[#718C85]">
+                <div className="flex justify-between text-slate-400">
                   <span>Adapter Mode:</span>
                   <span
                     className={
                       p.isLiveKey
-                        ? "text-[#45D6A0] font-semibold"
+                        ? "text-emerald-400 font-semibold"
                         : p.isSandbox
-                        ? "text-[#00DCC2] font-semibold"
-                        : "text-[#FFB454]"
+                        ? "text-cyan-400 font-semibold"
+                        : "text-amber-400"
                     }
                   >
                     {p.isLiveKey
@@ -531,7 +531,7 @@ export default function ThreatIntelPage() {
                 </div>
               </div>
 
-              <p className="text-[11px] text-[#A0B8B2] leading-relaxed">
+              <p className="text-[11px] text-slate-400 leading-relaxed">
                 {p.description ||
                   (p.isConfigured
                     ? "Adapter is actively verifying submitted targets against live feeds with automated timeout protection."
@@ -539,20 +539,20 @@ export default function ThreatIntelPage() {
               </p>
 
               {/* Interactive Adapter Controls */}
-              <div className="pt-2 border-t border-[#193E39] flex items-center justify-between gap-2">
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => handlePingAdapter(p.key)}
                     isLoading={ping?.loading}
-                    className="text-xs border-[#28504A] hover:bg-[#163632] text-[#E7F4F1] py-1 h-auto"
+                    className="text-xs border-slate-700 hover:bg-slate-800 text-slate-300 py-1 h-auto"
                   >
-                    <Activity className="h-3 w-3 mr-1 text-[#00DCC2]" />
+                    <Activity className="h-3 w-3 mr-1 text-cyan-400" />
                     Test Ping
                   </Button>
                   {ping && !ping.loading && (
-                    <span className="text-[10px] font-mono text-[#45D6A0]">
+                    <span className="text-[10px] font-mono text-emerald-400">
                       {ping.latency}ms ({ping.status})
                     </span>
                   )}
@@ -566,7 +566,7 @@ export default function ThreatIntelPage() {
                       setConfigureModalProvider(p);
                       setCustomKeyInput("");
                     }}
-                    className="text-xs text-[#A0B8B2] hover:text-[#00DCC2] py-1 h-auto"
+                    className="text-xs text-slate-400 hover:text-cyan-300 py-1 h-auto"
                   >
                     <KeyRound className="h-3 w-3 mr-1" />
                     Configure
@@ -585,7 +585,7 @@ export default function ThreatIntelPage() {
           description="Guidelines for defensive threat telemetry ingestion and multi-engine correlation"
           icon={ShieldCheck}
         />
-        <div className="text-xs text-[#A0B8B2] space-y-2 leading-relaxed">
+        <div className="text-xs text-slate-300 space-y-2 leading-relaxed">
           <p>
             • <strong>Clear Status Separation:</strong> The platform explicitly separates <em>Confirmed Match</em>, <em>No Match</em>, <em>Inconclusive</em>, and <em>Unavailable</em> results.
           </p>
@@ -610,9 +610,9 @@ export default function ThreatIntelPage() {
       >
         <div className="space-y-4 max-h-[75vh] overflow-y-auto pr-1">
           {/* Add IoC Form */}
-          <form onSubmit={handleAddIoc} className="p-3 rounded-xl border border-[#28504A] bg-[#031C1B] space-y-3">
-            <h4 className="text-xs font-bold text-[#E7F4F1] flex items-center gap-1.5">
-              <Plus className="h-3.5 w-3.5 text-[#00DCC2]" />
+          <form onSubmit={handleAddIoc} className="p-3 rounded-xl border border-slate-800 bg-[#070b14] space-y-3">
+            <h4 className="text-xs font-bold text-white flex items-center gap-1.5">
+              <Plus className="h-3.5 w-3.5 text-cyan-400" />
               Add Custom IoC Indicator to Feed
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -622,12 +622,12 @@ export default function ThreatIntelPage() {
                 onChange={(e) => setNewIocDomain(e.target.value)}
                 placeholder="Domain (e.g. evil-phish-domain.xyz)"
                 required
-                className="w-full rounded-lg border border-[#28504A] bg-[#0B302D] px-3 py-1.5 text-xs text-[#E7F4F1] placeholder-[#718C85] font-mono focus:border-[#00DCC2] focus:outline-none"
+                className="w-full rounded-lg border border-slate-700 bg-[#0c121e] px-3 py-1.5 text-xs text-white placeholder-slate-500 font-mono"
               />
               <select
                 value={newIocType}
                 onChange={(e) => setNewIocType(e.target.value)}
-                className="w-full rounded-lg border border-[#28504A] bg-[#0B302D] px-3 py-1.5 text-xs text-[#E7F4F1] focus:border-[#00DCC2] focus:outline-none"
+                className="w-full rounded-lg border border-slate-700 bg-[#0c121e] px-3 py-1.5 text-xs text-white"
               >
                 <option value="PHISHING_CREDENTIAL_HARVESTER">Phishing Credential Harvester</option>
                 <option value="MALWARE_C2">Malware Command & Control</option>
@@ -640,7 +640,7 @@ export default function ThreatIntelPage() {
               value={newIocDesc}
               onChange={(e) => setNewIocDesc(e.target.value)}
               placeholder="Description (e.g. Targeted spear-phishing lure targeting executive staff)"
-              className="w-full rounded-lg border border-[#28504A] bg-[#0B302D] px-3 py-1.5 text-xs text-[#E7F4F1] placeholder-[#718C85] focus:border-[#00DCC2] focus:outline-none"
+              className="w-full rounded-lg border border-slate-700 bg-[#0c121e] px-3 py-1.5 text-xs text-white placeholder-slate-500"
             />
             <div className="flex justify-end">
               <Button type="submit" variant="cyan" size="sm" className="text-xs">
@@ -651,32 +651,32 @@ export default function ThreatIntelPage() {
 
           {/* Active IoCs List */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold text-[#A0B8B2]">
+            <h4 className="text-xs font-bold text-slate-300">
               Active In-Memory Threat IoCs ({iocsList.length})
             </h4>
             {iocsList.map((ioc, idx) => (
               <div
                 key={idx}
-                className="p-3 rounded-lg border border-[#193E39] bg-[#0B302D] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+                className="p-3 rounded-lg border border-slate-800 bg-[#0c121e] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
               >
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-[#FF6474]">{ioc.domain}</span>
-                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#FF6474]/20 text-[#FF6474] border border-[#FF6474]/40">
+                    <span className="text-xs font-mono font-bold text-red-400">{ioc.domain}</span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-red-950/60 text-red-300 border border-red-800/40">
                       {Array.isArray(ioc.type) ? ioc.type.join(", ") : ioc.type}
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#718C85] mt-0.5">{ioc.description}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">{ioc.description}</p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="text-[10px] font-mono text-[#718C85]">{ioc.firstSeen}</span>
+                  <span className="text-[10px] font-mono text-slate-500">{ioc.firstSeen}</span>
                   <button
                     onClick={() => {
                       setIsIocModalOpen(false);
                       setTargetInput(ioc.domain);
                       handleRunLiveQuery(ioc.domain);
                     }}
-                    className="text-[10px] font-mono text-[#00DCC2] hover:text-[#20F5DB] hover:underline"
+                    className="text-[10px] font-mono text-cyan-400 hover:text-cyan-300 hover:underline"
                   >
                     Test Query
                   </button>
@@ -695,19 +695,19 @@ export default function ThreatIntelPage() {
         description={`Set an API key or activate simulation mode for ${configureModalProvider?.name}.`}
       >
         <div className="space-y-4">
-          <div className="p-3 rounded-lg bg-[#031C1B] border border-[#193E39] text-xs space-y-1.5">
+          <div className="p-3 rounded-lg bg-[#070b14] border border-slate-800 text-xs space-y-1.5">
             <div className="flex justify-between">
-              <span className="text-[#718C85]">Environment Variable:</span>
-              <span className="font-mono text-[#00DCC2]">{configureModalProvider?.envVar}</span>
+              <span className="text-slate-400">Environment Variable:</span>
+              <span className="font-mono text-cyan-400">{configureModalProvider?.envVar}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[#718C85]">Current Status:</span>
-              <span className="font-mono text-[#E7F4F1]">{configureModalProvider?.status}</span>
+              <span className="text-slate-400">Current Status:</span>
+              <span className="font-mono text-white">{configureModalProvider?.status}</span>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#A0B8B2] mb-1.5">
+            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
               Enter API Key
             </label>
             <input
@@ -715,18 +715,18 @@ export default function ThreatIntelPage() {
               value={customKeyInput}
               onChange={(e) => setCustomKeyInput(e.target.value)}
               placeholder="Paste provider API key here..."
-              className="w-full rounded-lg border border-[#28504A] bg-[#031C1B] px-3.5 py-2 text-xs text-[#E7F4F1] focus:border-[#00DCC2] focus:outline-none font-mono"
+              className="w-full rounded-lg border border-slate-700 bg-[#0c121e] px-3.5 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none font-mono"
             />
-            <p className="text-[10px] text-[#718C85] mt-1">
+            <p className="text-[10px] text-slate-500 mt-1">
               You can also define this key in your <code>.env</code> file under <code>{configureModalProvider?.envVar}</code>.
             </p>
           </div>
 
-          <div className="p-3 rounded-lg border border-[#00DCC2]/30 bg-[#0B302D] text-xs text-[#00DCC2]">
+          <div className="p-3 rounded-lg border border-cyan-500/20 bg-cyan-950/20 text-xs text-cyan-300">
             <strong>Sandbox Tip:</strong> If you don&apos;t have a paid or free API key, simply toggle <strong>Sandbox Mode: ACTIVE</strong> at the top of the page to run high-fidelity simulations for all 4 feeds.
           </div>
 
-          <div className="flex justify-end gap-2 pt-2 border-t border-[#193E39]">
+          <div className="flex justify-end gap-2 pt-2 border-t border-slate-800">
             <Button
               type="button"
               variant="outline"

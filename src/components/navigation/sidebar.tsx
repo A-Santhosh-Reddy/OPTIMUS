@@ -351,29 +351,29 @@ export function Sidebar({
       )}
 
       <aside
-        className={`w-64 shrink-0 bg-[#031C1B] border-r border-[#193E39] flex flex-col justify-between h-screen fixed inset-y-0 left-0 z-50 select-none overflow-hidden transition-transform duration-300 md:translate-x-0 ${
+        className={`w-64 shrink-0 liquid-glass-sidebar flex flex-col justify-between h-screen fixed inset-y-0 left-0 z-50 select-none overflow-hidden transition-transform duration-300 md:translate-x-0 ${
           isMobileOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
       >
         <div className="flex-1 overflow-y-auto min-h-0">
           {/* Brand Logo & Header */}
-          <div className="p-4 sm:p-5 border-b border-[#193E39] flex items-center justify-between gap-3">
+          <div className="p-4 sm:p-5 border-b border-white/[0.08] flex items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center">
                 <img
                   src="/logo.png"
                   alt="OPTIMUS Cyber Defense"
-                  className="h-full w-full object-contain filter drop-shadow-[0_2px_8px_rgba(0,220,194,0.3)]"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_10px_rgba(16,185,129,0.45)]"
                 />
               </div>
               <div className="min-w-0">
-                <h1 className="text-sm font-bold tracking-wider text-[#E7F4F1] flex items-center gap-1.5 font-mono">
+                <h1 className="text-sm font-bold tracking-wider text-white flex items-center gap-1.5 font-mono">
                   OPTIMUS{" "}
-                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#0B302D] text-[#00DCC2] border border-[#28504A] shadow-sm">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 shadow-sm shadow-emerald-500/20">
                     DRP
                   </span>
                 </h1>
-                <p className="text-[11px] text-[#718C85] font-medium tracking-tight truncate">Cyber Defense Platform</p>
+                <p className="text-[11px] text-slate-400 font-medium tracking-tight truncate">Cyber Defense Platform</p>
               </div>
             </div>
 
@@ -381,7 +381,7 @@ export function Sidebar({
             <button
               type="button"
               onClick={() => setIsMobileOpen(false)}
-              className="md:hidden p-1.5 rounded-lg text-[#A0B8B2] hover:text-[#E7F4F1] hover:bg-[#0B302D] transition-colors shrink-0"
+              className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
               aria-label="Close sidebar"
             >
               <X className="h-4 w-4" />
@@ -390,25 +390,25 @@ export function Sidebar({
 
           {/* Live System Status Tag with Radar Pulse */}
           <div className="px-4 py-3">
-            <div className="relative overflow-hidden flex items-center justify-between rounded-xl bg-[#082E2B] border border-[#193E39] px-3.5 py-2.5 text-xs shadow-inner">
+            <div className="relative overflow-hidden flex items-center justify-between rounded-xl bg-[#06101c]/80 border border-white/[0.08] px-3.5 py-2.5 text-xs shadow-inner backdrop-blur-md">
               <div className="flex items-center gap-2.5">
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00DCC2] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00DCC2] shadow-sm shadow-[#00DCC2]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-sm shadow-emerald-400" />
                 </span>
-                <span className="text-[#A0B8B2] font-semibold text-[11px] tracking-wide flex items-center gap-1">
-                  <Cpu className="h-3 w-3 text-[#00DCC2]" />
+                <span className="text-slate-200 font-semibold text-[11px] tracking-wide flex items-center gap-1">
+                  <Cpu className="h-3 w-3 text-teal-400" />
                   {t("nav.heuristicCore", "Heuristic Core")}
                 </span>
               </div>
-              <span className="text-[10px] text-[#00DCC2] font-mono font-bold tracking-widest bg-[#00DCC2]/10 border border-[#00DCC2]/25 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] text-emerald-400 font-mono font-bold tracking-widest bg-emerald-500/10 border border-emerald-500/25 px-1.5 py-0.5 rounded">
                 {t("nav.online", "ONLINE")}
               </span>
             </div>
           </div>
 
           {/* Navigation Links */}
-          <nav className="p-3 space-y-1.5">
+          <nav className="p-3 space-y-2">
             {navItems
               .filter((item) => item.roles.includes(userRole))
               .map((item) => {
@@ -418,20 +418,20 @@ export function Sidebar({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group relative flex items-center gap-3 px-3.5 py-2 rounded-xl text-xs font-medium transition-all duration-200 select-none ${
+                    className={`group relative flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 select-none ${
                       isActive
-                        ? "bg-[#0B302D] text-[#E7F4F1] border border-[#00DCC2]/40 shadow-[0_2px_10px_rgba(3,28,27,0.5),0_0_12px_rgba(0,220,194,0.1)] font-semibold"
-                        : "text-[#A0B8B2] hover:text-[#E7F4F1] hover:bg-[#0B302D]/70 hover:border-[#193E39] border border-transparent"
+                        ? "bg-[#081a20] text-teal-200 border border-teal-500/35 shadow-[0_2px_10px_rgba(0,0,0,0.4),0_0_14px_rgba(20,184,166,0.15),inset_0_1px_0_rgba(255,255,255,0.1)] font-semibold"
+                        : "text-slate-400 hover:text-white hover:bg-[#071322] hover:shadow-[0_2px_6px_rgba(0,0,0,0.25)] border border-transparent hover:border-white/[0.06]"
                     }`}
                   >
                     <Icon
                       className={`h-4 w-4 transition-colors shrink-0 ${
-                        isActive ? "text-[#00DCC2]" : "text-[#718C85] group-hover:text-[#00DCC2]"
+                        isActive ? "text-teal-400" : "text-slate-400 group-hover:text-teal-300"
                       }`}
                     />
-                    <span className="tracking-wide font-mono text-[11px] truncate">{item.name}</span>
+                    <span className="tracking-wide font-plex-mono text-[11px] truncate">{item.name}</span>
                     {isActive && (
-                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#00DCC2] shadow-[0_0_6px_#00DCC2] shrink-0" />
+                      <span className="ml-auto h-2 w-2 rounded-full bg-teal-400 shadow-[0_0_8px_#2dd4bf] shrink-0" />
                     )}
                   </Link>
                 );
@@ -440,47 +440,47 @@ export function Sidebar({
         </div>
 
         {/* User Info Pill & Interactive Dropdown Menu Container */}
-        <div className="shrink-0 relative p-3 border-t border-[#193E39] bg-[#031C1B]" ref={menuRef}>
+        <div className="shrink-0 relative p-3 border-t border-white/[0.08] bg-[#0a0f1d]" ref={menuRef}>
           {/* The Rich Popup Dropdown */}
           {isUserMenuOpen && (
-            <div className="absolute bottom-[72px] left-3 right-3 rounded-2xl border border-[#28504A] bg-[#0B302D] p-2.5 shadow-[0_12px_36px_rgba(3,28,27,0.85),inset_0_1px_0_rgba(255,255,255,0.04)] z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
+            <div className="absolute bottom-[72px] left-3 right-3 rounded-2xl border border-white/[0.1] bg-[#0e1628] p-2.5 shadow-[0_12px_36px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(255,255,255,0.08)] z-50 animate-in fade-in slide-in-from-bottom-2 duration-150">
               {/* Header: User identity */}
               <div
                 onClick={() => {
                   setIsUserMenuOpen(false);
                   setActiveModal("profile");
                 }}
-                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#163632] transition-colors cursor-pointer group"
+                className="flex items-center justify-between p-2.5 rounded-xl hover:bg-white/[0.06] transition-colors cursor-pointer group"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="h-9 w-9 rounded-xl bg-[#163632] text-[#00DCC2] flex items-center justify-center font-bold text-xs shadow-md border border-[#28504A] shrink-0">
+                  <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md border border-white/[0.1] shrink-0">
                     {getInitials(userName)}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold text-[#E7F4F1] truncate group-hover:text-[#00DCC2] transition-colors">
+                    <p className="text-xs font-semibold text-slate-100 truncate group-hover:text-sky-300 transition-colors">
                       {userName}
                     </p>
-                    <p className="text-[10px] text-[#718C85] font-mono truncate">{userRole} &bull; Active</p>
+                    <p className="text-[10px] text-slate-400 font-mono truncate">{userRole} &bull; Active</p>
                   </div>
                 </div>
-                <ChevronRight className="h-4 w-4 text-[#718C85] group-hover:text-[#00DCC2] transition-colors shrink-0" />
+                <ChevronRight className="h-4 w-4 text-slate-500 group-hover:text-sky-400 transition-colors shrink-0" />
               </div>
 
-              <div className="h-px bg-[#193E39] my-1" />
+              <div className="h-px bg-white/[0.08] my-1" />
 
               {/* Menu items */}
-              <div className="space-y-0.5 text-xs text-[#A0B8B2] font-medium">
+              <div className="space-y-0.5 text-xs text-slate-300 font-medium">
                 <button
                   type="button"
                   onClick={() => {
                     setIsUserMenuOpen(false);
                     setActiveModal("upgrade");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-[#163632] hover:text-[#00DCC2] transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-sky-300 transition-colors text-left"
                 >
-                  <Sparkles className="h-4 w-4 text-[#00DCC2] shrink-0" />
+                  <Sparkles className="h-4 w-4 text-sky-400 shrink-0" />
                   <span>{t("menu.upgrade", "Upgrade plan")}</span>
-                  <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#031C1B] text-[#00DCC2] border border-[#28504A]">
+                  <span className="ml-auto text-[9px] font-mono px-1.5 py-0.5 rounded bg-blue-950/80 text-sky-400 border border-blue-500/30">
                     PRO
                   </span>
                 </button>
@@ -491,9 +491,9 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("personalization");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-[#163632] hover:text-[#00DCC2] transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-sky-300 transition-colors text-left"
                 >
-                  <Sliders className="h-4 w-4 text-[#00DCC2] shrink-0" />
+                  <Sliders className="h-4 w-4 text-sky-400 shrink-0" />
                   <span>{t("menu.personalization", "Personalization")}</span>
                 </button>
 
@@ -503,9 +503,9 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("profile");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-[#163632] hover:text-[#00DCC2] transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-sky-300 transition-colors text-left"
                 >
-                  <User className="h-4 w-4 text-[#00BFA9] shrink-0" />
+                  <User className="h-4 w-4 text-indigo-400 shrink-0" />
                   <span>{t("menu.profile", "Profile")}</span>
                 </button>
 
@@ -515,13 +515,13 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("settings");
                   }}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-[#163632] hover:text-[#00DCC2] transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-sky-300 transition-colors text-left"
                 >
-                  <Settings className="h-4 w-4 text-[#718C85] shrink-0" />
+                  <Settings className="h-4 w-4 text-slate-400 shrink-0" />
                   <span>{t("menu.settings", "Settings")}</span>
                 </button>
 
-                <div className="h-px bg-[#193E39] my-1" />
+                <div className="h-px bg-white/[0.08] my-1" />
 
                 <button
                   type="button"
@@ -529,13 +529,13 @@ export function Sidebar({
                     setIsUserMenuOpen(false);
                     setActiveModal("help");
                   }}
-                  className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-[#163632] hover:text-[#00DCC2] transition-colors text-left"
+                  className="w-full flex items-center justify-between px-3 py-2 rounded-xl hover:bg-white/[0.06] hover:text-sky-300 transition-colors text-left"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src="/bily-avatar.png" alt="Bily" className="h-4 w-4 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(0,220,194,0.6)]" />
-                    <span className="font-semibold text-[#00DCC2]">{t("menu.help", "Help Desk & AI Copilot")}</span>
+                    <img src="/bily-avatar.png" alt="Bily" className="h-4 w-4 object-contain shrink-0 filter drop-shadow-[0_0_6px_rgba(56,189,248,0.8)]" />
+                    <span className="font-semibold text-sky-300">{t("menu.help", "Help Desk & AI Copilot")}</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-[#031C1B] text-[#00DCC2] border border-[#28504A]">
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-blue-950 text-sky-400 border border-blue-500/30">
                     BILY
                   </span>
                 </button>
@@ -544,7 +544,7 @@ export function Sidebar({
                   type="button"
                   onClick={handleLogout}
                   disabled={isLoggingOut}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-[#FF6474]/15 text-[#718C85] hover:text-[#FF6474] transition-colors text-left"
+                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl hover:bg-red-950/40 text-slate-400 hover:text-red-400 transition-colors text-left"
                 >
                   <LogOut className="h-4 w-4 shrink-0" />
                   <span>{isLoggingOut ? t("menu.loggingOut", "Signing out...") : t("menu.logout", "Log out")}</span>
@@ -557,27 +557,27 @@ export function Sidebar({
           <button
             type="button"
             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-            className={`w-full flex items-center gap-3 p-2 rounded-xl border transition-all text-left group cursor-pointer ${
+            className={`w-full flex items-center gap-3 p-2 rounded-2xl border transition-all text-left group cursor-pointer ${
               isUserMenuOpen
-                ? "bg-[#163632] border-[#00DCC2]/40 shadow-[0_4px_16px_rgba(3,28,27,0.5)]"
-                : "bg-[#082E2B] border-[#193E39] hover:border-[#28504A] hover:bg-[#0B302D] shadow-[0_2px_8px_rgba(3,28,27,0.35)]"
+                ? "bg-[#16223b] border-sky-500/40 shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]"
+                : "bg-[#0e1628] border-white/[0.08] hover:border-sky-500/30 hover:bg-[#131d33] shadow-[0_2px_8px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.06)]"
             }`}
           >
-            <div className="h-9 w-9 rounded-xl bg-[#163632] border border-[#28504A] flex items-center justify-center font-bold text-xs text-[#00DCC2] shadow-inner shrink-0 group-hover:scale-105 transition-transform">
+            <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-blue-600/40 to-indigo-500/30 border border-blue-500/30 flex items-center justify-center font-bold text-xs text-sky-300 shadow-inner shrink-0 group-hover:scale-105 transition-transform">
               {userName ? userName.charAt(0).toUpperCase() : "U"}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-semibold text-[#E7F4F1] truncate group-hover:text-[#00DCC2] transition-colors">
+              <p className="text-xs font-semibold text-slate-100 truncate group-hover:text-sky-300 transition-colors">
                 {userName}
               </p>
               <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-[10px] font-mono text-[#00DCC2] bg-[#031C1B] border border-[#28504A] px-1.5 py-0.2 rounded font-semibold tracking-wider">
+                <span className="text-[10px] font-mono text-sky-400 bg-blue-950/80 border border-blue-500/30 px-1.5 py-0.2 rounded font-semibold tracking-wider">
                   {userRole}
                 </span>
               </div>
             </div>
             <ChevronDown
-              className={`h-4 w-4 text-[#718C85] group-hover:text-[#00DCC2] transition-transform ${
+              className={`h-4 w-4 text-slate-400 group-hover:text-sky-400 transition-transform ${
                 isUserMenuOpen ? "rotate-180" : ""
               }`}
             />
@@ -603,16 +603,16 @@ export function Sidebar({
       >
         <div className="space-y-4 pt-1 text-slate-200 text-xs">
           {/* Multi-Language Selector (English, Spanish, French, German) */}
-          <div className="p-3.5 rounded-xl bg-[#082E2B] border border-[#193E39] space-y-2.5 shadow-sm">
+          <div className="p-3.5 rounded-xl bg-slate-950/70 border border-cyan-500/30 space-y-2.5 shadow-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <Globe className="h-4 w-4 text-[#00DCC2] shrink-0" />
+                <Globe className="h-4 w-4 text-cyan-400 shrink-0" />
                 <div>
-                  <p className="font-semibold text-[#E7F4F1]">{t("personalization.language", "Console Language")}</p>
-                  <p className="text-[11px] text-[#718C85] mt-0.5">{t("personalization.languageSub", "Select primary interface display locale")}</p>
+                  <p className="font-semibold text-slate-100">{t("personalization.language", "Console Language")}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">{t("personalization.languageSub", "Select primary interface display locale")}</p>
                 </div>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#031C1B] text-[#00DCC2] border border-[#28504A] uppercase font-bold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 uppercase font-bold">
                 {language.toUpperCase()}
               </span>
             </div>
@@ -631,15 +631,15 @@ export function Sidebar({
                     }}
                     className={`flex items-center justify-between p-2.5 rounded-xl border transition-all text-left cursor-pointer ${
                       isSelected
-                        ? "bg-[#163632] border-[#00DCC2] text-[#E7F4F1] shadow-[0_0_12px_rgba(0,220,194,0.2)] font-semibold"
-                        : "bg-[#0B302D] border-[#193E39] text-[#A0B8B2] hover:border-[#28504A] hover:bg-[#163632]"
+                        ? "bg-cyan-950/80 border-cyan-400 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.3)] font-semibold"
+                        : "bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-800"
                     }`}
                   >
                     <span className="flex items-center gap-2">
                       <span className="text-base">{lang.flag}</span>
                       <span className="text-[11px] font-sans">{lang.nativeName}</span>
                     </span>
-                    {isSelected && <Check className="h-3.5 w-3.5 text-[#00DCC2] shrink-0" />}
+                    {isSelected && <Check className="h-3.5 w-3.5 text-cyan-400 shrink-0" />}
                   </button>
                 );
               })}
@@ -951,17 +951,17 @@ export function Sidebar({
       >
         <div className="space-y-4 pt-1 text-slate-200 text-xs">
           {/* Top Navigation Tabs */}
-          <div className="flex items-center gap-2 p-1 rounded-xl bg-[#082E2B] border border-[#193E39]">
+          <div className="flex items-center gap-2 p-1 rounded-xl bg-slate-950/80 border border-cyan-500/20">
             <button
               type="button"
               onClick={() => setHelpTab("ai-copilot")}
               className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-mono text-xs transition-all cursor-pointer ${
                 helpTab === "ai-copilot"
-                  ? "bg-[#0B302D] text-[#00DCC2] border border-[#00DCC2]/40 shadow-sm font-semibold"
-                  : "text-[#718C85] hover:text-[#E7F4F1]"
+                  ? "bg-gradient-to-r from-cyan-950 to-blue-950 text-cyan-300 border border-cyan-500/40 shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              <Bot className="h-4 w-4 text-[#00DCC2]" />
+              <Bot className="h-4 w-4 text-cyan-400" />
               <span>AI Cyber Copilot</span>
             </button>
             <button
@@ -969,11 +969,11 @@ export function Sidebar({
               onClick={() => setHelpTab("hotkeys")}
               className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-mono text-xs transition-all cursor-pointer ${
                 helpTab === "hotkeys"
-                  ? "bg-[#0B302D] text-[#00DCC2] border border-[#00DCC2]/40 shadow-sm font-semibold"
-                  : "text-[#718C85] hover:text-[#E7F4F1]"
+                  ? "bg-gradient-to-r from-cyan-950 to-blue-950 text-cyan-300 border border-cyan-500/40 shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              <Terminal className="h-4 w-4 text-[#00BFA9]" />
+              <Terminal className="h-4 w-4 text-sky-400" />
               <span>Hotkeys &amp; Navigation</span>
             </button>
             <button
@@ -981,11 +981,11 @@ export function Sidebar({
               onClick={() => setHelpTab("ssrf")}
               className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg font-mono text-xs transition-all cursor-pointer ${
                 helpTab === "ssrf"
-                  ? "bg-[#0B302D] text-[#00DCC2] border border-[#00DCC2]/40 shadow-sm font-semibold"
-                  : "text-[#718C85] hover:text-[#E7F4F1]"
+                  ? "bg-gradient-to-r from-cyan-950 to-blue-950 text-cyan-300 border border-cyan-500/40 shadow-sm font-semibold"
+                  : "text-slate-400 hover:text-slate-200"
               }`}
             >
-              <ShieldCheck className="h-4 w-4 text-[#45D6A0]" />
+              <ShieldCheck className="h-4 w-4 text-emerald-400" />
               <span>SSRF Architecture</span>
             </button>
           </div>
