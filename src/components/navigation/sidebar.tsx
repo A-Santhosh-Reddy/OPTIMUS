@@ -36,7 +36,6 @@ import {
   Check,
   Globe,
   Gavel,
-  Mail,
   Layers,
   TrendingUp,
   X,
@@ -281,12 +280,6 @@ export function Sidebar({
       name: t("nav.analyzer", "URL & Threat Analyzer"),
       href: "/analyzer",
       icon: Search,
-      roles: ["ADMIN", "ANALYST"],
-    },
-    {
-      name: t("nav.emailAnalyzer", "Email Forensics"),
-      href: "/email-analyzer",
-      icon: Mail,
       roles: ["ADMIN", "ANALYST"],
     },
     {
