@@ -6,22 +6,35 @@ node_modules
 # Testing
 /coverage
 
-# Next.js
+# Next.js build output
 /.next/
 /out/
 
 # Production
 /build
+/dist
 
-# Database
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Database files
+*.db
+*.db-journal
 prisma/*.db
 prisma/*.db-journal
 
-# Environment
+# Environment files containing secrets
+.env
+.env.*
+.env*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Keep the public example template in Git
+!.env.example
 
 # Debug logs
 npm-debug.log*
@@ -29,6 +42,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# OS Files
+# OS & Editor files
 .DS_Store
 Thumbs.db
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

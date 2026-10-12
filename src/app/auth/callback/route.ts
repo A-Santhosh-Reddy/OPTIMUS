@@ -17,8 +17,12 @@ export async function GET(request: Request) {
   }
 
   const cookieStore = cookies();
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://hkcrfffhimsuiatzhbed.supabase.co";
-  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || "";
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_PUBLISHABLE_KEY || "";
+
+  if (!supabaseUrl || !supabaseKey) {
+    return NextResponse.redirect(new URL("/login?error=missing_auth_configuration", origin));
+  }
 
   const response = NextResponse.redirect(new URL(next, origin));
 
@@ -29,7 +33,11 @@ export async function GET(request: Request) {
       },
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value, options }) => {
-          cookieStore.set(name, value, options);
+          try {
+            cookieStore.set({ name, value, ...options });
+          } catch {
+            // Ignore if in read-only phase
+          }
           response.cookies.set(name, value, options);
         });
       },
