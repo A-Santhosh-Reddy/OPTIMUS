@@ -55,10 +55,10 @@ export default function DashboardPage() {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <div className="h-8 w-48 bg-slate-800/60 rounded-xl animate-pulse" />
+        <div className="h-8 w-48 bg-[#0B302D]/60 border border-[#193E39] rounded-xl animate-pulse" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-28 liquid-glass-card rounded-2xl animate-pulse" />
+            <div key={i} className="h-28 bg-[#112624] border border-[#193E39] rounded-2xl animate-pulse" />
           ))}
         </div>
       </div>
@@ -67,10 +67,10 @@ export default function DashboardPage() {
 
   if (error || !data) {
     return (
-      <div className="liquid-glass-card rounded-2xl border border-red-500/30 p-8 text-center text-xs text-red-400">
-        <AlertTriangle className="h-9 w-9 mx-auto mb-3 text-red-400" />
-        <p className="font-semibold text-sm">Unable to connect to database metrics</p>
-        <p className="text-slate-400 mt-1 max-w-md mx-auto">{error}</p>
+      <div className="bg-[#0B302D] rounded-2xl border border-[#FF6474]/40 p-8 text-center text-xs text-[#FF6474]">
+        <AlertTriangle className="h-9 w-9 mx-auto mb-3 text-[#FF6474]" />
+        <p className="font-semibold text-sm text-[#E7F4F1]">Unable to connect to database metrics</p>
+        <p className="text-[#A0B8B2] mt-1 max-w-md mx-auto">{error}</p>
         <div className="flex items-center justify-center gap-3 mt-4">
           <Button size="sm" variant="outline" onClick={fetchStats}>
             Retry Connection
@@ -90,34 +90,34 @@ export default function DashboardPage() {
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       {/* Cyber Shield Command Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-[#0d162a] via-[#101b33] to-[#0a1122] border border-blue-500/20 shadow-[0_4px_24px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)] relative overflow-hidden">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-[#0B302D] via-[#0e3733] to-[#082E2B] border border-[#28504A] shadow-[0_4px_24px_rgba(3,28,27,0.5),inset_0_1px_0_rgba(0,220,194,0.1)] relative overflow-hidden">
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-blue-950/80 border border-blue-500/30 text-sky-300 shadow-[0_1px_4px_rgba(0,0,0,0.3)] flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded-full bg-[#031C1B]/90 border border-[#28504A] text-[#00DCC2] shadow-[0_1px_4px_rgba(0,0,0,0.3)] flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#45D6A0] animate-ping" />
               {t("cyberShieldActive")}
             </span>
-            <span className="text-[10px] font-mono text-slate-400 border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 rounded-md">
+            <span className="text-[10px] font-mono text-[#A0B8B2] border border-[#193E39] bg-[#031C1B]/40 px-2 py-0.5 rounded-md">
               {t("perimeterSurveillance")}
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(37,99,235,0.25)]">
-            <ShieldAlert className="h-7 w-7 text-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]" />
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#E7F4F1] flex items-center gap-2.5 font-mono drop-shadow-[0_2px_10px_rgba(0,220,194,0.15)]">
+            <ShieldAlert className="h-7 w-7 text-[#00DCC2] drop-shadow-[0_0_8px_rgba(0,220,194,0.4)]" />
             {t("Security Operations Console")}
           </h1>
-          <p className="text-xs text-slate-300 mt-1">
+          <p className="text-xs text-[#A0B8B2] mt-1">
             {t("dash.socDesc")}
           </p>
         </div>
         <Link href="/analyzer" className="relative z-10 shrink-0">
-          <Button variant="cyan" size="md" className="font-semibold text-xs">
+          <Button variant="cyan" size="md" className="font-semibold text-xs shadow-[0_0_15px_rgba(0,220,194,0.2)]">
             <Search className="h-4 w-4 mr-2" />
             {t("Analyze Threat Vector")}
           </Button>
         </Link>
       </div>
 
-      {/* Primary KPI Metrics Grid in Liquid Glass */}
+      {/* Primary KPI Metrics Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
           title="Total Monitored Assets"
@@ -164,44 +164,44 @@ export default function DashboardPage() {
       />
 
       {/* Recent Analysis Activity Table */}
-      <Card glow="blue">
+      <Card glow="cyan">
         <CardHeader
           title={t("Recent Threat Telemetry Stream")}
           description={t("Latest digital assets evaluated by the heuristic and brand protection engine")}
           icon={ShieldCheck}
           action={
             <Link href="/findings">
-              <Button variant="outline" size="sm" className="text-xs">
+              <Button variant="outline" size="sm" className="text-xs border-[#28504A] hover:border-[#00DCC2] text-[#E7F4F1]">
                 {t("View All Findings")}
-                <ArrowRight className="h-3.5 w-3.5 ml-1.5" />
+                <ArrowRight className="h-3.5 w-3.5 ml-1.5 text-[#00DCC2]" />
               </Button>
             </Link>
           }
         />
 
         {recentAnalyses.length === 0 ? (
-          <div className="py-14 text-center text-xs text-slate-500 font-mono">
-            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-sky-400" />
+          <div className="py-14 text-center text-xs text-[#718C85] font-mono">
+            <Search className="h-8 w-8 mx-auto mb-2.5 opacity-40 text-[#00DCC2]" />
             {t("No threat analyses recorded yet. Submit a URL to begin monitoring.")}
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="border-b border-white/[0.08] text-slate-400 font-mono text-[11px]">
+              <thead className="border-b border-[#193E39] text-[#718C85] font-mono text-[11px]">
                 <tr>
-                  <th className="pb-3 pl-2">{t("Target Asset Hostname")}</th>
+                  <th className="pb-3 pl-3">{t("Target Asset Hostname")}</th>
                   <th className="pb-3">{t("Risk Score")}</th>
                   <th className="pb-3">{t("Severity")}</th>
                   <th className="pb-3">{t("Threat Intel")}</th>
                   <th className="pb-3">{t("Timestamp")}</th>
-                  <th className="pb-3 text-right pr-2">{t("Action")}</th>
+                  <th className="pb-3 text-right pr-3">{t("Action")}</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.05] font-mono">
+              <tbody className="divide-y divide-[#193E39]/60 font-mono">
                 {recentAnalyses.map((item: any) => (
-                  <tr key={item.id} className="hover:bg-white/[0.03] transition-colors group">
-                    <td className="py-3.5 pl-2 font-semibold text-slate-200">
-                      <div className="max-w-xs sm:max-w-sm truncate text-slate-200 group-hover:text-sky-300 transition-colors">
+                  <tr key={item.id} className="hover:bg-[#163632]/50 transition-colors group">
+                    <td className="py-3.5 pl-3 font-semibold text-[#E7F4F1]">
+                      <div className="max-w-xs sm:max-w-sm truncate text-[#E7F4F1] group-hover:text-[#00DCC2] transition-colors">
                         {item.normalizedHostname || item.submittedUrl}
                       </div>
                     </td>
@@ -209,12 +209,12 @@ export default function DashboardPage() {
                       <span
                         className={`font-bold ${
                           item.riskScore >= 70
-                            ? "text-rose-400 drop-shadow-[0_0_8px_rgba(244,63,94,0.4)]"
+                            ? "text-[#FF6474] drop-shadow-[0_0_8px_rgba(255,100,116,0.3)]"
                             : item.riskScore >= 40
-                            ? "text-orange-400"
+                            ? "text-[#FFB454]"
                             : item.riskScore >= 20
-                            ? "text-amber-400"
-                            : "text-sky-400"
+                            ? "text-[#F0D66B]"
+                            : "text-[#45D6A0]"
                         }`}
                       >
                         {item.riskScore}/100
@@ -226,12 +226,12 @@ export default function DashboardPage() {
                     <td className="py-3.5">
                       <IntelStatusBadge status={item.intelligenceStatus} />
                     </td>
-                    <td className="py-3.5 text-slate-400 text-[11px]">
+                    <td className="py-3.5 text-[#718C85] text-[11px]">
                       {new Date(item.createdAt).toLocaleDateString()} {new Date(item.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                     </td>
-                    <td className="py-3.5 text-right pr-2">
+                    <td className="py-3.5 text-right pr-3">
                       <Link href={`/findings?id=${item.id}`}>
-                        <button className="text-xs text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-medium transition-colors">
+                        <button className="text-xs text-[#00DCC2] hover:text-[#20F5DB] inline-flex items-center gap-1 font-medium transition-colors">
                           {t("Inspect")} <ExternalLink className="h-3 w-3" />
                         </button>
                       </Link>

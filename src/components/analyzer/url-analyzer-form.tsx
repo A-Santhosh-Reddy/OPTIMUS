@@ -60,7 +60,7 @@ export function UrlAnalyzerForm({ onAnalyze, isLoading }: UrlAnalyzerFormProps) 
       <form onSubmit={handleSubmit} className="relative">
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-cyan-400">
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-[#00DCC2]">
               <Search className="h-5 w-5" />
             </div>
             <input
@@ -69,7 +69,7 @@ export function UrlAnalyzerForm({ onAnalyze, isLoading }: UrlAnalyzerFormProps) 
               onChange={(e) => setInputUrl(e.target.value)}
               placeholder="Enter suspicious URL or domain (e.g. https://login.microsoft.com.account-portal.xyz/verify)"
               disabled={isLoading}
-              className="liquid-glass-input w-full rounded-2xl pl-12 pr-4 py-3.5 text-sm text-slate-100 placeholder-slate-500 font-mono"
+              className="w-full rounded-2xl bg-[#031C1B] border border-[#28504A] pl-12 pr-4 py-3.5 text-sm text-[#E7F4F1] placeholder-[#718C85] font-mono focus:border-[#00DCC2] focus:outline-none focus:ring-1 focus:ring-[#00DCC2]"
             />
           </div>
           <Button
@@ -77,7 +77,7 @@ export function UrlAnalyzerForm({ onAnalyze, isLoading }: UrlAnalyzerFormProps) 
             size="lg"
             isLoading={isLoading}
             variant="cyan"
-            className="sm:w-auto w-full px-7 font-semibold shadow-liquid-cyan"
+            className="sm:w-auto w-full px-7 font-semibold shadow-[0_0_15px_rgba(0,220,194,0.2)]"
           >
             <ShieldAlert className="h-4 w-4 mr-2" />
             Inspect Vector
@@ -85,17 +85,17 @@ export function UrlAnalyzerForm({ onAnalyze, isLoading }: UrlAnalyzerFormProps) 
         </div>
 
         {error && (
-          <div className="mt-3.5 flex items-center gap-2 rounded-xl border border-red-500/40 bg-red-950/50 p-3.5 text-xs text-red-300 backdrop-blur-md">
-            <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
+          <div className="mt-3.5 flex items-center gap-2 rounded-xl border border-[#FF6474]/40 bg-[#FF6474]/15 p-3.5 text-xs text-[#FF6474]">
+            <AlertCircle className="h-4 w-4 shrink-0 text-[#FF6474]" />
             <span>{error}</span>
           </div>
         )}
       </form>
 
-      {/* Quick Test Vectors in Liquid Glass */}
-      <div className="rounded-2xl border border-white/[0.08] bg-slate-950/40 p-4.5 backdrop-blur-md">
-        <p className="text-xs font-semibold text-slate-300 mb-2.5 flex items-center gap-1.5 font-mono">
-          <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+      {/* Quick Test Vectors */}
+      <div className="rounded-2xl border border-[#193E39] bg-[#0B302D] p-4">
+        <p className="text-xs font-semibold text-[#A0B8B2] mb-2.5 flex items-center gap-1.5 font-mono">
+          <Sparkles className="h-3.5 w-3.5 text-[#00DCC2]" />
           <span>Verified Demonstration Threat Vectors:</span>
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -104,23 +104,23 @@ export function UrlAnalyzerForm({ onAnalyze, isLoading }: UrlAnalyzerFormProps) 
               key={idx}
               type="button"
               onClick={() => handleQuickSelect(sample.url)}
-              className="flex items-center justify-between text-left p-3 rounded-xl border border-white/[0.06] bg-slate-900/40 hover:bg-cyan-950/30 hover:border-cyan-500/30 transition-all text-xs group"
+              className="flex items-center justify-between text-left p-3 rounded-xl border border-[#193E39] bg-[#112624] hover:bg-[#163632] hover:border-[#28504A] transition-all text-xs group"
             >
               <div className="min-w-0 pr-2">
-                <span className="font-semibold text-slate-200 block truncate group-hover:text-cyan-300 transition-colors">
+                <span className="font-semibold text-[#E7F4F1] block truncate group-hover:text-[#00DCC2] transition-colors">
                   {sample.label}
                 </span>
-                <span className="text-[11px] font-mono text-slate-500 block truncate mt-0.5">
+                <span className="text-[11px] font-mono text-[#718C85] block truncate mt-0.5">
                   {sample.url}
                 </span>
               </div>
               <span
                 className={`text-[10px] px-2 py-0.5 rounded-full font-mono font-bold shrink-0 ${
                   sample.type === "CRITICAL"
-                    ? "bg-red-950/80 text-red-400 border border-red-500/40 shadow-[0_0_10px_rgba(239,68,68,0.2)]"
+                    ? "bg-[#FF6474]/15 text-[#FF6474] border border-[#FF6474]/40 shadow-[0_0_10px_rgba(255,100,116,0.2)]"
                     : sample.type === "HIGH"
-                    ? "bg-orange-950/80 text-orange-400 border border-orange-500/40"
-                    : "bg-emerald-950/80 text-emerald-400 border border-emerald-500/40"
+                    ? "bg-[#FFB454]/15 text-[#FFB454] border border-[#FFB454]/40"
+                    : "bg-[#45D6A0]/15 text-[#45D6A0] border border-[#45D6A0]/40"
                 }`}
               >
                 {sample.type}

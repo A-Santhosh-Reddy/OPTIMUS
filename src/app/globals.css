@@ -1,318 +1,306 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Unbounded:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* =========================================================================
+     OPTIMUS ENTERPRISE CYBERSECURITY DESIGN SYSTEM - PALETTE TOKENS
+     ========================================================================= */
+  --bg-main: #062321;
+  --bg-outer: #082E2B;
+  --bg-sidebar: #031C1B;
+  --bg-header: #042422;
+  --bg-card: #112624;
+  --bg-secondary: #0B302D;
+  --bg-elevated: #163632;
+
+  --accent-primary: #00DCC2;
+  --accent-secondary: #00BFA9;
+  --accent-glow: #20F5DB;
+
+  --text-primary: #E7F4F1;
+  --text-secondary: #A0B8B2;
+  --text-muted: #718C85;
+
+  --border-color: #28504A;
+  --border-subtle: #193E39;
+
+  --risk-critical: #FF6474;
+  --risk-high: #FFB454;
+  --risk-medium: #F0D66B;
+  --risk-low: #45D6A0;
+
+  /* App Theme Tokens */
+  --background: #062321;
+  --foreground: #E7F4F1;
+  --card: #112624;
+  --card-hover: #163632;
+  --sidebar: #031C1B;
+  --header: #042422;
+
+  /* Elevation Shadows */
+  --shadow-card: 0 4px 20px -2px rgba(3, 28, 27, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-card-hover: 0 8px 28px -4px rgba(3, 28, 27, 0.8), 0 0 20px rgba(0, 220, 194, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-inset: inset 0 1.5px 3px rgba(3, 28, 27, 0.8);
+
+  /* Legacy mappings */
+  --aurora-bg-canvas: var(--bg-main);
+  --aurora-bg-surface: var(--bg-secondary);
+  --aurora-bg-card: var(--bg-card);
+  --aurora-bg-card-hover: var(--bg-elevated);
+  --aurora-shadow-card: var(--shadow-card);
+  --aurora-shadow-card-hover: var(--shadow-card-hover);
+  --aurora-shadow-inset: var(--shadow-inset);
+
+  --clay-bg-canvas: var(--bg-main);
+  --clay-bg-surface: var(--bg-secondary);
+  --clay-bg-card: var(--bg-card);
+  --clay-bg-card-hover: var(--bg-elevated);
+  --clay-shadow-card: var(--shadow-card);
+  --clay-shadow-card-hover: var(--shadow-card-hover);
+  --clay-shadow-inset: var(--shadow-inset);
+}
+
+.font-sans {
+  font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 .font-unbounded {
-  font-family: 'Unbounded', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-plex-mono {
-  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  font-family: 'Geist Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
 .font-plex-sans {
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @layer base {
-  :root {
-    --background: #030712;
-    --foreground: #f8fafc;
-  }
-
   body {
-    color: var(--foreground);
-    background-color: #030712;
+    color: var(--text-primary);
+    background-color: #062321;
     background-image: 
-      radial-gradient(ellipse 95% 65% at 50% -18%, rgba(16, 185, 129, 0.18), transparent 60%),
-      radial-gradient(ellipse 75% 55% at 85% 20%, rgba(99, 102, 241, 0.16), transparent 55%),
-      radial-gradient(ellipse 75% 55% at 15% 45%, rgba(20, 184, 166, 0.14), transparent 60%),
-      radial-gradient(ellipse 90% 70% at 50% 85%, rgba(139, 92, 246, 0.12), transparent 70%),
-      radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.4), #030712);
+      radial-gradient(ellipse 90% 55% at 50% -12%, rgba(0, 220, 194, 0.05), transparent 60%),
+      radial-gradient(ellipse 70% 45% at 85% 15%, rgba(11, 48, 45, 0.4), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 15% 45%, rgba(22, 54, 50, 0.35), transparent 60%),
+      radial-gradient(ellipse 85% 60% at 50% 85%, rgba(8, 46, 43, 0.4), transparent 70%),
+      radial-gradient(circle at 50% 50%, rgba(6, 35, 33, 0.6), #062321);
     background-attachment: fixed;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Inter', 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: hidden;
     position: relative;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Custom Cyber Aurora Scrollbars */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #031C1B;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
+  background: #193E39;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid #28504A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(20, 184, 166, 0.5);
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  background: #00BFA9;
+  box-shadow: 0 0 8px rgba(0, 220, 194, 0.3);
 }
 
 /* =========================================================================
-   AURORA BOREALIS & NORDIC GLASS DESIGN SYSTEM
+   CARDS & PANELS
    ========================================================================= */
 
-:root {
-  --aurora-bg-canvas: #030712;
-  --aurora-bg-surface: #070d1e;
-  --aurora-bg-card: rgba(10, 17, 34, 0.72);
-  --aurora-bg-card-hover: rgba(13, 23, 46, 0.85);
-
-  --aurora-shadow-card:
-    0 4px 20px -2px rgba(0, 0, 0, 0.5),
-    0 12px 36px -4px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 20px rgba(16, 185, 129, 0.03);
-
-  --aurora-shadow-card-hover:
-    0 8px 30px -4px rgba(0, 0, 0, 0.6),
-    0 20px 48px -8px rgba(0, 0, 0, 0.5),
-    0 0 35px rgba(20, 184, 166, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-
-  --aurora-shadow-inset:
-    inset 0 1.5px 3px rgba(0, 0, 0, 0.5),
-    0 1px 2px rgba(0, 0, 0, 0.2);
-
-  --clay-bg-canvas: var(--aurora-bg-canvas);
-  --clay-bg-surface: var(--aurora-bg-surface);
-  --clay-bg-card: var(--aurora-bg-card);
-  --clay-bg-card-hover: var(--aurora-bg-card-hover);
-  --clay-shadow-card: var(--aurora-shadow-card);
-  --clay-shadow-card-hover: var(--aurora-shadow-card-hover);
-  --clay-shadow-inset: var(--aurora-shadow-inset);
-  --clay-shadow-pill: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* 1. Base Aurora Frosted Glass Card */
 .clay-card,
 .liquid-glass-card,
 .aurora-card {
-  background: var(--aurora-bg-card);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  box-shadow: var(--aurora-shadow-card);
-  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .clay-card:hover,
 .liquid-glass-card:hover,
 .aurora-card:hover {
-  background: var(--aurora-bg-card-hover);
-  border-color: rgba(52, 211, 153, 0.35);
-  box-shadow: var(--aurora-shadow-card-hover);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: #28504A;
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
-/* 2. Aurora Spectrum Accented Palettes */
-
-/* A. Emerald / Mint Aurora Wave */
+/* Accented Card Variations */
 .clay-cyan,
 .clay-card-cyan {
-  background: rgba(8, 24, 38, 0.75);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(45, 212, 191, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
-              0 0 24px rgba(20, 184, 166, 0.15),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: #112624;
+  border: 1px solid #28504A;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .clay-cyan:hover,
 .clay-card-cyan:hover {
-  background: rgba(12, 32, 50, 0.85);
-  border-color: rgba(45, 212, 191, 0.5);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6),
-              0 0 36px rgba(20, 184, 166, 0.25),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: rgba(0, 220, 194, 0.45);
+  box-shadow: 0 8px 28px -4px rgba(3, 28, 27, 0.8), 0 0 20px rgba(0, 220, 194, 0.12);
+  transform: translateY(-1px);
 }
 
-/* B. Royal Indigo & Violet Wave */
-.clay-purple,
-.clay-card-purple {
-  background: rgba(18, 14, 38, 0.75);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
-              0 0 24px rgba(139, 92, 246, 0.15),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-.clay-purple:hover,
-.clay-card-purple:hover {
-  background: rgba(24, 18, 50, 0.85);
-  border-color: rgba(168, 85, 247, 0.45);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6),
-              0 0 36px rgba(139, 92, 246, 0.25),
-              inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-/* C. Matrix Jade / Emerald */
 .clay-emerald,
 .clay-card-emerald {
-  background: #091a18;
-  border: 1px solid rgba(16, 185, 129, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
 }
 .clay-emerald:hover,
 .clay-card-emerald:hover {
-  background: #0d2421;
-  border-color: rgba(16, 185, 129, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: rgba(69, 214, 160, 0.4);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
-/* D. Sunset Gold / Amber */
 .clay-amber,
 .clay-card-amber {
-  background: #1a1309;
-  border: 1px solid rgba(245, 158, 11, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
 }
 .clay-amber:hover,
 .clay-card-amber:hover {
-  background: #241b0d;
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: rgba(240, 214, 107, 0.4);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
-/* E. Crimson Shield / Rose */
 .clay-rose,
 .clay-card-rose {
-  background: #1a0b12;
-  border: 1px solid rgba(244, 63, 94, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
 }
 .clay-rose:hover,
 .clay-card-rose:hover {
-  background: #250f1a;
-  border-color: rgba(244, 63, 94, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: rgba(255, 100, 116, 0.4);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
-/* F. Deep Cobalt Sapphire / Indigo */
+.clay-purple,
+.clay-card-purple,
 .clay-indigo,
-.clay-card-indigo {
-  background: #0c152e;
-  border: 1px solid rgba(59, 130, 246, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-.clay-indigo:hover,
-.clay-card-indigo:hover {
-  background: #111d3d;
-  border-color: rgba(59, 130, 246, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-}
-
-/* G. Radiant Tangerine / Orange */
+.clay-card-indigo,
 .clay-orange,
 .clay-card-orange {
-  background: #1c1109;
-  border: 1px solid rgba(249, 115, 22, 0.22);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
 }
+.clay-purple:hover,
+.clay-card-purple:hover,
+.clay-indigo:hover,
+.clay-card-indigo:hover,
 .clay-orange:hover,
 .clay-card-orange:hover {
-  background: #27180d;
-  border-color: rgba(249, 115, 22, 0.45);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
+  background: #163632;
+  border-color: #28504A;
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
-/* 3. Clay Sidebar & Header Infrastructure */
+/* =========================================================================
+   SIDEBAR & HEADER
+   ========================================================================= */
+
 .clay-sidebar,
 .liquid-glass-sidebar,
 .aurora-sidebar {
-  background: rgba(5, 11, 24, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.5), inset -1px 0 0 rgba(20, 184, 166, 0.05);
+  background: #031C1B;
+  border-right: 1px solid #193E39;
+  box-shadow: 4px 0 24px rgba(3, 28, 27, 0.5);
 }
 
 .clay-header,
 .liquid-glass-header,
 .aurora-header {
-  background: rgba(4, 9, 20, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 -1px 0 rgba(20, 184, 166, 0.06);
+  background: #042422;
+  border-bottom: 1px solid #193E39;
+  box-shadow: 0 4px 20px rgba(3, 28, 27, 0.4);
 }
 
 .clay-container,
 .liquid-glass,
 .aurora-container {
-  background: rgba(8, 16, 32, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.125rem;
-  box-shadow: var(--aurora-shadow-card);
+  background: #112624;
+  border: 1px solid #193E39;
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
 }
 
-/* 4. Clay Input (Tactile Sunken Bevel) */
+/* =========================================================================
+   INPUTS & BUTTONS
+   ========================================================================= */
+
 .clay-input,
 .liquid-glass-input,
 .aurora-input {
-  background: rgba(6, 12, 24, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 0.75rem;
-  box-shadow: var(--clay-shadow-inset);
-  color: #f8fafc;
+  background: #082E2B;
+  border: 1px solid #193E39;
+  border-radius: 8px;
+  box-shadow: var(--shadow-inset);
+  color: #E7F4F1;
   transition: all 0.2s ease;
+}
+
+.clay-input::placeholder,
+.liquid-glass-input::placeholder,
+.aurora-input::placeholder {
+  color: #718C85;
 }
 
 .clay-input:focus,
 .liquid-glass-input:focus,
 .aurora-input:focus {
-  border-color: rgba(45, 212, 191, 0.5);
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15),
-              inset 0 1.5px 3px rgba(0, 0, 0, 0.5);
-  background: rgba(8, 17, 34, 0.95);
+  border-color: #00DCC2;
+  box-shadow: 0 0 0 2px rgba(0, 220, 194, 0.2), var(--shadow-inset);
+  background: #0B302D;
+  outline: none;
 }
 
-/* 5. Claymorphic Button Elevation Engine */
 .clay-btn {
-  border-radius: 0.875rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 .clay-btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 .clay-btn:active {
   transform: translateY(1px);
 }
 
-/* Cyber Shimmer Specular Light Beam */
+/* Shimmer Specular Accent */
 .cyber-shimmer {
   position: relative;
   overflow: hidden;
@@ -325,7 +313,7 @@
   left: -100%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 220, 194, 0.15), transparent);
   transform: skewX(-25deg);
   transition: all 0.75s ease;
   pointer-events: none;
@@ -336,41 +324,25 @@
 }
 
 /* =========================================================================
-   CYBER SHIELD DEFENSE MATRIX & WATERMARKS
+   CYBER MATRIX & RADAR OVERLAYS
    ========================================================================= */
 
-/* Cyber Grid & Aurora Matrix */
 .cyber-grid-overlay {
-  background-size: 52px 52px, 52px 52px, 260px 260px;
+  background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 1px 1px, rgba(52, 211, 153, 0.12) 1.5px, transparent 0);
+    linear-gradient(to right, rgba(40, 80, 74, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(40, 80, 74, 0.12) 1px, transparent 1px);
 }
 
-/* Hex Defense Circuit Pattern */
-.cyber-hex-pattern {
-  background-color: transparent;
-  background-image: 
-    radial-gradient(rgba(6, 182, 212, 0.14) 2px, transparent 2px),
-    radial-gradient(rgba(37, 99, 235, 0.12) 2px, transparent 2px);
-  background-size: 60px 60px;
-  background-position: 0 0, 30px 30px;
-}
-
-/* Ambient Glowing Cyber Nebula Orbs */
 .cyber-glow-orb {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(110px);
+  filter: blur(120px);
   pointer-events: none;
-  opacity: 0.65;
+  opacity: 0.25;
   will-change: transform;
 }
 
-
-
-/* Scanning Line Animation */
 @keyframes cyberScan {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(1000%); }
@@ -380,26 +352,24 @@
   animation: cyberScan 4s linear infinite;
 }
 
-/* Radar Wave Pulse */
 @keyframes radarPing {
-  0% { transform: scale(0.9); opacity: 0.8; }
-  50% { opacity: 0.3; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% { transform: scale(0.9); opacity: 0.6; }
+  50% { opacity: 0.2; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 .animate-radar {
   animation: radarPing 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Floating Shield Beacon Pulse */
 @keyframes shieldPulse {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 0.4));
+    filter: drop-shadow(0 0 15px rgba(0, 220, 194, 0.25));
   }
   50% {
-    transform: scale(1.03);
-    filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.6));
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 25px rgba(0, 220, 194, 0.45));
   }
 }
 
@@ -407,40 +377,37 @@
   animation: shieldPulse 6s ease-in-out infinite;
 }
 
-/* =========================================================================
-   NORTHERN LIGHTS (AURORA BOREALIS) UNDULATING KEYFRAMES
-   ========================================================================= */
-
+/* Subtle Ambient Flow Keyframes */
 @keyframes auroraWave1 {
   0%, 100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.55;
+    transform: translate(0, 0) scale(1);
+    opacity: 0.22;
   }
   50% {
-    transform: translate(40px, -25px) scale(1.12) rotate(6deg);
-    opacity: 0.85;
+    transform: translate(25px, -15px) scale(1.06);
+    opacity: 0.35;
   }
 }
 
 @keyframes auroraWave2 {
   0%, 100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.5;
+    transform: translate(0, 0) scale(1);
+    opacity: 0.18;
   }
   50% {
-    transform: translate(-30px, 30px) scale(1.15) rotate(-6deg);
-    opacity: 0.8;
+    transform: translate(-20px, 20px) scale(1.08);
+    opacity: 0.3;
   }
 }
 
 @keyframes auroraWave3 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.45;
+    opacity: 0.16;
   }
   50% {
-    transform: translate(25px, 20px) scale(1.08);
-    opacity: 0.75;
+    transform: translate(15px, 15px) scale(1.05);
+    opacity: 0.26;
   }
 }
 
@@ -455,4 +422,3 @@
 .animate-aurora-3 {
   animation: auroraWave3 26s ease-in-out infinite;
 }
-

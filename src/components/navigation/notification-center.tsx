@@ -191,21 +191,21 @@ export function NotificationCenter() {
     switch (severity) {
       case "CRITICAL":
         return (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-red-950/80 border border-red-500/50 text-red-400 font-semibold flex items-center gap-1 shadow-[0_0_8px_rgba(239,68,68,0.3)]">
-            <Flame className="h-3 w-3 text-red-400 animate-pulse" />
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#FF6474]/15 border border-[#FF6474]/40 text-[#FF6474] font-semibold flex items-center gap-1 shadow-sm">
+            <Flame className="h-3 w-3 text-[#FF6474] animate-pulse" />
             CRITICAL
           </span>
         );
       case "HIGH":
         return (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-amber-950/80 border border-amber-500/50 text-amber-300 font-semibold flex items-center gap-1">
-            <AlertTriangle className="h-3 w-3 text-amber-400" />
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#FFB454]/15 border border-[#FFB454]/40 text-[#FFB454] font-semibold flex items-center gap-1">
+            <AlertTriangle className="h-3 w-3 text-[#FFB454]" />
             HIGH
           </span>
         );
       case "MEDIUM":
         return (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-yellow-950/60 border border-yellow-500/40 text-yellow-300 font-medium">
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#F0D66B]/15 border border-[#F0D66B]/40 text-[#F0D66B] font-medium">
             MEDIUM
           </span>
         );
@@ -213,8 +213,8 @@ export function NotificationCenter() {
       case "INFO":
       default:
         return (
-          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 font-medium flex items-center gap-1">
-            <ShieldCheck className="h-3 w-3 text-cyan-400" />
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#00DCC2]/15 border border-[#00DCC2]/40 text-[#00DCC2] font-medium flex items-center gap-1">
+            <ShieldCheck className="h-3 w-3 text-[#00DCC2]" />
             SEC-DEFENSE
           </span>
         );
@@ -239,25 +239,25 @@ export function NotificationCenter() {
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`relative flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-xl border backdrop-blur-md transition-all duration-200 cursor-pointer ${
+        className={`relative flex items-center justify-center h-8 w-8 sm:h-9 sm:w-9 rounded-xl border transition-all duration-200 cursor-pointer ${
           isOpen
-            ? "bg-cyan-950/60 border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.4)]"
+            ? "bg-[#163632] border-[#00DCC2] text-[#00DCC2] shadow-[0_0_15px_rgba(0,220,194,0.3)]"
             : unreadCount > 0
-            ? "bg-slate-900/80 border-slate-700/80 hover:border-cyan-500/60 text-slate-200 hover:text-cyan-300 hover:shadow-[0_0_12px_rgba(6,182,212,0.25)]"
-            : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
+            ? "bg-[#082E2B] border-[#28504A] hover:border-[#00DCC2]/60 text-[#E7F4F1] hover:text-[#00DCC2]"
+            : "bg-[#082E2B] border-[#193E39] text-[#718C85] hover:text-[#E7F4F1] hover:border-[#28504A]"
         }`}
         title={`Security Notifications (${unreadCount} unread)`}
         aria-label="Open Security Notifications"
       >
-        <Bell className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-12 text-cyan-300" : ""}`} />
+        <Bell className={`h-4 w-4 transition-transform duration-200 ${isOpen ? "rotate-12 text-[#00DCC2]" : ""}`} />
 
         {/* Dynamic Badge Counter */}
         {unreadCount > 0 && (
           <span
-            className={`absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold font-mono text-white border shadow-md transition-transform ${
+            className={`absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full text-[10px] font-bold font-mono border shadow-md transition-transform ${
               hasCriticalUnread
-                ? "bg-red-600 border-red-400 shadow-[0_0_10px_rgba(239,68,68,0.7)] animate-pulse"
-                : "bg-cyan-500 border-cyan-300 text-slate-950 shadow-[0_0_8px_rgba(6,182,212,0.6)]"
+                ? "bg-[#FF6474] border-[#FF6474] text-white shadow-[0_0_10px_rgba(255,100,116,0.6)] animate-pulse"
+                : "bg-[#00DCC2] border-[#00DCC2] text-[#031C1B] shadow-[0_0_8px_rgba(0,220,194,0.5)]"
             }`}
           >
             {unreadCount > 9 ? "9+" : unreadCount}
@@ -266,29 +266,29 @@ export function NotificationCenter() {
 
         {/* Ambient Radar Ping for Critical Alerts */}
         {hasCriticalUnread && (
-          <span className="absolute -top-1 -right-1 h-[18px] w-[18px] rounded-full bg-red-500/40 animate-ping pointer-events-none" />
+          <span className="absolute -top-1 -right-1 h-[18px] w-[18px] rounded-full bg-[#FF6474]/40 animate-ping pointer-events-none" />
         )}
       </button>
 
-      {/* Cyber Glassmorphism Dropdown Popover */}
+      {/* Cyber Dropdown Popover */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-[340px] sm:w-[410px] rounded-2xl bg-[#090e1a]/95 border border-cyan-500/30 backdrop-blur-2xl shadow-[0_15px_45px_rgba(0,0,0,0.85),0_0_25px_rgba(6,182,212,0.15)] z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div className="absolute right-0 mt-2 w-[340px] sm:w-[410px] rounded-2xl bg-[#0B302D] border border-[#28504A] shadow-[0_15px_45px_rgba(3,28,27,0.95)] z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
           {/* Header */}
-          <div className="p-3.5 border-b border-slate-800/80 bg-slate-950/70 flex items-center justify-between">
+          <div className="p-3.5 border-b border-[#193E39] bg-[#082E2B] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="h-7 w-7 rounded-lg bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-300">
+              <div className="h-7 w-7 rounded-lg bg-[#0B302D] border border-[#28504A] flex items-center justify-center text-[#00DCC2]">
                 <Bell className="h-3.5 w-3.5" />
               </div>
               <div>
-                <h3 className="text-xs font-semibold text-white tracking-wide flex items-center gap-1.5">
+                <h3 className="text-xs font-semibold text-[#E7F4F1] tracking-wide flex items-center gap-1.5">
                   {t("topbar.notifications", "Security Notifications")}
                   {unreadCount > 0 && (
-                    <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-300 font-mono border border-cyan-500/30">
+                    <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[#00DCC2]/20 text-[#00DCC2] font-mono border border-[#00DCC2]/30">
                       {unreadCount} new
                     </span>
                   )}
                 </h3>
-                <p className="text-[10px] text-slate-400 font-mono">{t("topbar.notifSub", "Live SOC telemetry & incident feed")}</p>
+                <p className="text-[10px] text-[#718C85] font-mono">{t("topbar.notifSub", "Live SOC telemetry & incident feed")}</p>
               </div>
             </div>
 
@@ -299,8 +299,8 @@ export function NotificationCenter() {
                 onClick={() => setSoundEnabled(!soundEnabled)}
                 className={`p-1.5 rounded-lg border text-xs transition-colors ${
                   soundEnabled
-                    ? "bg-slate-900 border-slate-700 text-cyan-400 hover:border-cyan-500"
-                    : "bg-slate-900/40 border-slate-800 text-slate-500 hover:text-slate-300"
+                    ? "bg-[#0B302D] border-[#28504A] text-[#00DCC2] hover:border-[#00DCC2]"
+                    : "bg-[#082E2B] border-[#193E39] text-[#718C85] hover:text-[#A0B8B2]"
                 }`}
                 title={soundEnabled ? "Mute alert audio" : "Enable alert audio"}
               >
@@ -311,7 +311,7 @@ export function NotificationCenter() {
                 <button
                   type="button"
                   onClick={markAllAsRead}
-                  className="px-2 py-1 rounded-lg border border-slate-700 bg-slate-900/80 hover:bg-slate-800 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-300 text-[10px] font-mono font-medium flex items-center gap-1 transition-colors"
+                  className="px-2 py-1 rounded-lg border border-[#28504A] bg-[#082E2B] hover:bg-[#163632] hover:border-[#00DCC2]/40 text-[#A0B8B2] hover:text-[#00DCC2] text-[10px] font-mono font-medium flex items-center gap-1 transition-colors"
                   title="Mark all notifications as read"
                 >
                   <CheckCheck className="h-3 w-3" />
@@ -322,15 +322,15 @@ export function NotificationCenter() {
           </div>
 
           {/* Filter Bar */}
-          <div className="px-3 py-2 border-b border-slate-800/60 bg-[#070b14]/60 flex items-center justify-between text-xs font-mono">
+          <div className="px-3 py-2 border-b border-[#193E39] bg-[#062321] flex items-center justify-between text-xs font-mono">
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={() => setFilter("all")}
                 className={`px-2 py-0.5 rounded-md text-[11px] transition-colors ${
                   filter === "all"
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-[#163632] text-[#00DCC2] border border-[#00DCC2]/40"
+                    : "text-[#718C85] hover:text-[#E7F4F1]"
                 }`}
               >
                 {t("topbar.all", "All")} ({notifications.length})
@@ -340,8 +340,8 @@ export function NotificationCenter() {
                 onClick={() => setFilter("unread")}
                 className={`px-2 py-0.5 rounded-md text-[11px] transition-colors ${
                   filter === "unread"
-                    ? "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-[#163632] text-[#00DCC2] border border-[#00DCC2]/40"
+                    : "text-[#718C85] hover:text-[#E7F4F1]"
                 }`}
               >
                 {t("topbar.unread", "Unread")} ({unreadCount})
@@ -351,8 +351,8 @@ export function NotificationCenter() {
                 onClick={() => setFilter("critical")}
                 className={`px-2 py-0.5 rounded-md text-[11px] transition-colors ${
                   filter === "critical"
-                    ? "bg-red-500/20 text-red-300 border border-red-500/40"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "bg-[#FF6474]/20 text-[#FF6474] border border-[#FF6474]/40"
+                    : "text-[#718C85] hover:text-[#E7F4F1]"
                 }`}
               >
                 {t("topbar.critical", "High/Critical")}
@@ -364,26 +364,26 @@ export function NotificationCenter() {
               type="button"
               disabled={isSimulating}
               onClick={handleSimulateAlert}
-              className="text-[10px] text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1 px-2 py-0.5 rounded-md bg-cyan-950/40 border border-cyan-500/30 hover:border-cyan-400 transition-all cursor-pointer disabled:opacity-50"
+              className="text-[10px] text-[#00DCC2] hover:brightness-110 font-semibold flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#082E2B] border border-[#28504A] hover:border-[#00DCC2]/50 transition-all cursor-pointer disabled:opacity-50"
               title="Dispatches a live simulated threat detection alert to test real-time reception"
             >
-              <Zap className="h-3 w-3 text-cyan-400" />
+              <Zap className="h-3 w-3 text-[#00DCC2]" />
               {isSimulating ? "Simulating..." : t("topbar.testAlert", "+ Test Alert")}
             </button>
           </div>
 
           {/* Notification List Body */}
-          <div className="max-h-[360px] overflow-y-auto divide-y divide-slate-800/40 custom-scrollbar">
+          <div className="max-h-[360px] overflow-y-auto divide-y divide-[#193E39] custom-scrollbar">
             {isLoading ? (
-              <div className="py-8 text-center text-xs text-slate-500 font-mono">
-                <Radio className="h-5 w-5 mx-auto mb-2 text-cyan-500 animate-spin" />
+              <div className="py-8 text-center text-xs text-[#718C85] font-mono">
+                <Radio className="h-5 w-5 mx-auto mb-2 text-[#00DCC2] animate-spin" />
                 Loading security telemetry...
               </div>
             ) : filteredNotifications.length === 0 ? (
-              <div className="py-10 text-center text-xs text-slate-400 space-y-2">
-                <ShieldCheck className="h-8 w-8 mx-auto text-emerald-400/80" />
-                <p className="font-semibold text-slate-300">All Clear &bull; No Alerts</p>
-                <p className="text-[11px] text-slate-500 font-mono">
+              <div className="py-10 text-center text-xs text-[#718C85] space-y-2">
+                <ShieldCheck className="h-8 w-8 mx-auto text-[#45D6A0]" />
+                <p className="font-semibold text-[#E7F4F1]">All Clear &bull; No Alerts</p>
+                <p className="text-[11px] text-[#718C85] font-mono">
                   {filter === "unread"
                     ? "No unread alerts remaining."
                     : "Your monitored surface is currently free of active threats."}
@@ -396,22 +396,22 @@ export function NotificationCenter() {
                   onClick={() => handleNotificationClick(item)}
                   className={`p-3.5 transition-all cursor-pointer group flex items-start gap-3 relative ${
                     item.read
-                      ? "bg-transparent hover:bg-slate-900/40 text-slate-400"
-                      : "bg-cyan-950/20 hover:bg-cyan-950/35 text-slate-200 border-l-2 border-l-cyan-400"
+                      ? "bg-transparent hover:bg-[#163632]/40 text-[#718C85]"
+                      : "bg-[#112624] hover:bg-[#163632] text-[#E7F4F1] border-l-2 border-l-[#00DCC2]"
                   }`}
                 >
                   {/* Left Icon */}
                   <div className="mt-0.5 shrink-0">
                     {item.severity === "CRITICAL" ? (
-                      <div className="h-7 w-7 rounded-lg bg-red-950/80 border border-red-500/40 flex items-center justify-center text-red-400 shadow-[0_0_8px_rgba(239,68,68,0.3)]">
+                      <div className="h-7 w-7 rounded-lg bg-[#FF6474]/15 border border-[#FF6474]/40 flex items-center justify-center text-[#FF6474]">
                         <Flame className="h-3.5 w-3.5" />
                       </div>
                     ) : item.severity === "HIGH" ? (
-                      <div className="h-7 w-7 rounded-lg bg-amber-950/80 border border-amber-500/40 flex items-center justify-center text-amber-400">
+                      <div className="h-7 w-7 rounded-lg bg-[#FFB454]/15 border border-[#FFB454]/40 flex items-center justify-center text-[#FFB454]">
                         <AlertTriangle className="h-3.5 w-3.5" />
                       </div>
                     ) : (
-                      <div className="h-7 w-7 rounded-lg bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+                      <div className="h-7 w-7 rounded-lg bg-[#00DCC2]/15 border border-[#00DCC2]/40 flex items-center justify-center text-[#00DCC2]">
                         <ShieldAlert className="h-3.5 w-3.5" />
                       </div>
                     )}
@@ -420,15 +420,15 @@ export function NotificationCenter() {
                   {/* Body */}
                   <div className="min-w-0 flex-1 space-y-1">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="truncate text-xs font-semibold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                      <span className="truncate text-xs font-semibold text-[#E7F4F1] group-hover:text-[#00DCC2] transition-colors">
                         {item.title}
                       </span>
-                      <span className="text-[10px] text-slate-500 font-mono whitespace-nowrap">
+                      <span className="text-[10px] text-[#718C85] font-mono whitespace-nowrap">
                         {formatTimeAgo(item.timestamp)}
                       </span>
                     </div>
 
-                    <p className="text-[11px] text-slate-400 leading-relaxed line-clamp-2">
+                    <p className="text-[11px] text-[#A0B8B2] leading-relaxed line-clamp-2">
                       {item.message}
                     </p>
 
@@ -440,13 +440,13 @@ export function NotificationCenter() {
                           <button
                             type="button"
                             onClick={(e) => markAsRead(item.id, e)}
-                            className="text-[10px] text-slate-400 hover:text-emerald-400 p-1 rounded hover:bg-slate-800 transition-colors"
+                            className="text-[10px] text-[#718C85] hover:text-[#45D6A0] p-1 rounded hover:bg-[#163632] transition-colors"
                             title="Mark as read"
                           >
                             <Check className="h-3.5 w-3.5" />
                           </button>
                         )}
-                        <span className="text-[10px] font-mono text-cyan-400 flex items-center gap-0.5">
+                        <span className="text-[10px] font-mono text-[#00DCC2] flex items-center gap-0.5">
                           {t("topbar.inspect", "Inspect")}
                           <ExternalLink className="h-2.5 w-2.5" />
                         </span>
@@ -459,9 +459,9 @@ export function NotificationCenter() {
           </div>
 
           {/* Footer */}
-          <div className="p-2.5 bg-slate-950/90 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <span className="flex items-center gap-1.5 text-[10px] text-slate-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="p-2.5 bg-[#082E2B] border-t border-[#193E39] flex items-center justify-between text-[11px] font-mono text-[#718C85]">
+            <span className="flex items-center gap-1.5 text-[10px] text-[#718C85]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#45D6A0] animate-pulse" />
               Live Defense Feed
             </span>
 
@@ -470,7 +470,7 @@ export function NotificationCenter() {
                 <button
                   type="button"
                   onClick={clearAllNotifications}
-                  className="text-[10px] text-slate-500 hover:text-red-400 transition-colors flex items-center gap-1"
+                  className="text-[10px] text-[#718C85] hover:text-[#FF6474] transition-colors flex items-center gap-1"
                 >
                   <Trash2 className="h-3 w-3" />
                   {t("topbar.clearList", "Clear List")}

@@ -162,16 +162,16 @@ Select a prompt below or type your question:`,
       }
       if (line.startsWith("* ") || line.startsWith("- ")) {
         return (
-          <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-300 ml-1 my-0.5 leading-relaxed">
-            <span className="text-cyan-400 mt-0.5">•</span>
+          <div key={idx} className="flex items-start gap-1.5 text-xs text-[#A0B8B2] ml-1 my-0.5 leading-relaxed">
+            <span className="text-[#00DCC2] mt-0.5">•</span>
             <span>{parseInlineStyles(line.replace(/^[*|-]\s+/, ""))}</span>
           </div>
         );
       }
       if (/^\d+\.\s+/.test(line)) {
         return (
-          <div key={idx} className="flex items-start gap-1.5 text-xs text-slate-300 ml-1 my-0.5 leading-relaxed">
-            <span className="text-cyan-400 font-mono font-semibold">{line.match(/^\d+\./)?.[0]}</span>
+          <div key={idx} className="flex items-start gap-1.5 text-xs text-[#A0B8B2] ml-1 my-0.5 leading-relaxed">
+            <span className="text-[#00DCC2] font-mono font-semibold">{line.match(/^\d+\./)?.[0]}</span>
             <span>{parseInlineStyles(line.replace(/^\d+\.\s+/, ""))}</span>
           </div>
         );
@@ -180,7 +180,7 @@ Select a prompt below or type your question:`,
         return <div key={idx} className="h-1.5" />;
       }
       return (
-        <p key={idx} className="text-xs text-slate-200 leading-relaxed my-0.5">
+        <p key={idx} className="text-xs text-[#E7F4F1] leading-relaxed my-0.5">
           {parseInlineStyles(line)}
         </p>
       );
@@ -192,14 +192,14 @@ Select a prompt below or type your question:`,
     return parts.map((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={i} className="text-white font-semibold">
+          <strong key={i} className="text-[#E7F4F1] font-semibold">
             {part.slice(2, -2)}
           </strong>
         );
       }
       if (part.startsWith("`") && part.endsWith("`")) {
         return (
-          <code key={i} className="px-1.5 py-0.5 bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 rounded text-[11px] font-mono">
+          <code key={i} className="px-1.5 py-0.5 bg-[#062321] border border-[#28504A] text-[#00DCC2] rounded text-[11px] font-mono">
             {part.slice(1, -1)}
           </code>
         );
@@ -217,23 +217,23 @@ Select a prompt below or type your question:`,
             setIsOpen(true);
             setIsMinimized(false);
           }}
-          className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-gradient-to-r from-[#0d162a]/95 via-[#101b33]/95 to-[#0b1324]/95 border border-blue-500/30 hover:border-blue-400/60 text-white shadow-[0_4px_20px_rgba(0,0,0,0.5),0_0_20px_rgba(37,99,235,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          className="group relative flex items-center gap-2.5 pl-2.5 pr-4 py-2 rounded-full bg-gradient-to-r from-[#0B302D]/95 via-[#0e3733]/95 to-[#082E2B]/95 border border-[#28504A] hover:border-[#00DCC2]/60 text-[#E7F4F1] shadow-[0_4px_20px_rgba(3,28,27,0.6),0_0_20px_rgba(0,220,194,0.15),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl transition-all duration-300 hover:scale-105 active:scale-95"
           aria-label="Open Bily AI Threat Copilot"
         >
           {/* Optimus Prime Premium Emblem with Live Radar Dot */}
-          <div className="relative flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 shadow-[0_2px_8px_rgba(37,99,235,0.25)] group-hover:border-blue-400/60 transition-all shrink-0">
+          <div className="relative flex items-center justify-center h-9 w-9 rounded-full bg-gradient-to-br from-[#0B302D] to-[#031C1B] border border-[#28504A] p-1 shadow-[0_2px_8px_rgba(0,220,194,0.2)] group-hover:border-[#00DCC2]/60 transition-all shrink-0">
             <img
               src="/bily-avatar.png"
               alt="Bily Agent"
-              className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(37,99,235,0.5)]"
+              className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,220,194,0.4)]"
             />
             <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#45D6A0] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#45D6A0] shadow-[0_0_8px_#45D6A0]" />
             </span>
           </div>
 
-          <span className="text-sm font-extrabold tracking-widest font-mono text-sky-300 group-hover:text-white drop-shadow-[0_1px_4px_rgba(37,99,235,0.4)]">
+          <span className="text-sm font-extrabold tracking-widest font-mono text-[#00DCC2] group-hover:text-[#20F5DB] drop-shadow-[0_1px_4px_rgba(0,220,194,0.3)]">
             BILY
           </span>
         </button>
@@ -242,45 +242,45 @@ Select a prompt below or type your question:`,
       {/* Expanded Floating Chat Panel */}
       {isOpen && (
         <div
-          className={`flex flex-col bg-[#0c1220]/95 backdrop-blur-2xl border border-white/[0.1] shadow-[0_24px_60px_rgba(0,0,0,0.85),0_0_30px_rgba(37,99,235,0.15),inset_0_1px_0_rgba(255,255,255,0.08)] rounded-2xl overflow-hidden transition-all duration-300 ${
+          className={`flex flex-col bg-[#082E2B]/95 backdrop-blur-2xl border border-[#28504A] shadow-[0_24px_60px_rgba(3,28,27,0.85),0_0_30px_rgba(0,220,194,0.12),inset_0_1px_0_rgba(255,255,255,0.06)] rounded-2xl overflow-hidden transition-all duration-300 ${
             isMinimized
               ? "w-80 h-14"
               : "w-[92vw] sm:w-[420px] h-[580px] max-h-[85vh]"
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-[#0e1628]/95 border-b border-white/[0.08]">
+          <div className="flex items-center justify-between px-4 py-3 bg-[#042422]/95 border-b border-[#193E39]">
             <div className="flex items-center gap-2.5">
-              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 shadow-md shrink-0">
+              <div className="relative flex items-center justify-center h-9 w-9 rounded-xl bg-gradient-to-br from-[#0B302D] to-[#031C1B] border border-[#28504A] p-1 shadow-md shrink-0">
                 <img
                   src="/bily-avatar.png"
                   alt="Bily Agent"
-                  className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(37,99,235,0.5)]"
+                  className="h-full w-full object-contain filter drop-shadow-[0_2px_6px_rgba(0,220,194,0.4)]"
                 />
-                <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#45D6A0] shadow-[0_0_8px_#45D6A0]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h3 className="text-xs font-bold text-white font-mono tracking-wider">
+                  <h3 className="text-xs font-bold text-[#E7F4F1] font-mono tracking-wider">
                     BILY
                   </h3>
-                  <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-emerald-950 border border-emerald-500/40 text-emerald-300">
+                  <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-[#031C1B] border border-[#45D6A0]/40 text-[#45D6A0]">
                     ONLINE
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-400 font-mono">
+                <p className="text-[10px] text-[#A0B8B2] font-mono">
                   Autonomous SecOps Copilot
                 </p>
               </div>
             </div>
 
             {/* Window Controls */}
-            <div className="flex items-center gap-1 text-slate-400">
+            <div className="flex items-center gap-1 text-[#A0B8B2]">
               {!isMinimized && (
                 <button
                   onClick={clearChat}
                   title="Clear history"
-                  className="p-1.5 rounded-lg hover:bg-slate-800 hover:text-slate-200 transition-colors"
+                  className="p-1.5 rounded-lg hover:bg-[#163632] hover:text-[#E7F4F1] transition-colors"
                 >
                   <RotateCcw className="h-3.5 w-3.5" />
                 </button>
@@ -288,7 +288,7 @@ Select a prompt below or type your question:`,
               <button
                 onClick={() => setIsMinimized(!isMinimized)}
                 title={isMinimized ? "Maximize" : "Minimize"}
-                className="p-1.5 rounded-lg hover:bg-slate-800 hover:text-slate-200 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-[#163632] hover:text-[#E7F4F1] transition-colors"
               >
                 {isMinimized ? (
                   <Maximize2 className="h-3.5 w-3.5" />
@@ -299,7 +299,7 @@ Select a prompt below or type your question:`,
               <button
                 onClick={() => setIsOpen(false)}
                 title="Close chat"
-                className="p-1.5 rounded-lg hover:bg-red-950/60 hover:text-red-300 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-[#FF6474]/20 hover:text-[#FF6474] transition-colors"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
@@ -309,7 +309,7 @@ Select a prompt below or type your question:`,
           {!isMinimized && (
             <>
               {/* Message Feed */}
-              <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-gradient-to-b from-transparent via-[#060a16]/40 to-[#040711]/60">
+              <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-gradient-to-b from-transparent via-[#062321]/40 to-[#031C1B]/60">
                 {messages.map((msg) => (
                   <div
                     key={msg.id}
@@ -318,17 +318,17 @@ Select a prompt below or type your question:`,
                     }`}
                   >
                     <div className="flex items-center gap-1.5 mb-1 px-1">
-                      <span className="text-[9px] font-mono uppercase tracking-wider text-slate-500 flex items-center gap-1">
+                      <span className="text-[9px] font-mono uppercase tracking-wider text-[#718C85] flex items-center gap-1">
                         {msg.role === "user" ? (
                           "SecOps Analyst"
                         ) : (
                           <>
-                            <img src="/bily-avatar.png" alt="Bily" className="h-3.5 w-3.5 object-contain inline-block filter drop-shadow-[0_1px_3px_rgba(37,99,235,0.5)]" />
-                            <span className="text-sky-400 font-bold">Bily</span>
+                            <img src="/bily-avatar.png" alt="Bily" className="h-3.5 w-3.5 object-contain inline-block filter drop-shadow-[0_1px_3px_rgba(0,220,194,0.4)]" />
+                            <span className="text-[#00DCC2] font-bold">Bily</span>
                           </>
                         )}
                       </span>
-                      <span className="text-[9px] text-slate-600 font-mono">
+                      <span className="text-[9px] text-[#718C85] font-mono">
                         {msg.timestamp}
                       </span>
                     </div>
@@ -336,8 +336,8 @@ Select a prompt below or type your question:`,
                     <div
                       className={`relative group max-w-[88%] rounded-2xl p-3 text-xs shadow-md transition-all ${
                         msg.role === "user"
-                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-sm border border-blue-400/30"
-                          : "bg-[#0f172a]/90 border border-white/[0.08] hover:border-blue-500/30 text-slate-200 rounded-bl-sm"
+                          ? "bg-gradient-to-r from-[#00DCC2] to-[#00BFA9] text-[#031C1B] font-medium rounded-br-sm border border-[#20F5DB]/40 shadow-[0_0_12px_rgba(0,220,194,0.2)]"
+                          : "bg-[#112624] border border-[#193E39] hover:border-[#28504A] text-[#E7F4F1] rounded-bl-sm"
                       }`}
                     >
                       {msg.role === "user" ? (
@@ -350,11 +350,11 @@ Select a prompt below or type your question:`,
                       {msg.role === "assistant" && (
                         <button
                           onClick={() => copyToClipboard(msg.id, msg.content)}
-                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-sky-300 transition-all text-[10px]"
+                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 rounded bg-[#031C1B]/80 hover:bg-[#163632] text-[#718C85] hover:text-[#00DCC2] transition-all text-[10px]"
                           title="Copy response"
                         >
                           {copiedId === msg.id ? (
-                            <Check className="h-3 w-3 text-emerald-400" />
+                            <Check className="h-3 w-3 text-[#45D6A0]" />
                           ) : (
                             <Copy className="h-3 w-3" />
                           )}
@@ -367,12 +367,12 @@ Select a prompt below or type your question:`,
                 {/* Loading indicator */}
                 {isLoading && (
                   <div className="flex items-start gap-2">
-                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-[#101c36] to-[#0a1122] border border-blue-500/30 p-1 flex items-center justify-center shrink-0 shadow-md">
-                      <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain animate-pulse filter drop-shadow-[0_1px_4px_rgba(37,99,235,0.5)]" />
+                    <div className="h-7 w-7 rounded-xl bg-gradient-to-br from-[#0B302D] to-[#031C1B] border border-[#28504A] p-1 flex items-center justify-center shrink-0 shadow-md">
+                      <img src="/bily-avatar.png" alt="Bily" className="h-full w-full object-contain animate-pulse filter drop-shadow-[0_1px_4px_rgba(0,220,194,0.4)]" />
                     </div>
-                    <div className="p-3 rounded-2xl bg-[#0f172a]/90 border border-blue-500/30 text-slate-300 text-xs flex items-center gap-2">
-                      <Loader2 className="h-3.5 w-3.5 animate-spin text-sky-400" />
-                      <span className="font-mono text-[11px] text-sky-300">
+                    <div className="p-3 rounded-2xl bg-[#112624] border border-[#28504A] text-[#A0B8B2] text-xs flex items-center gap-2">
+                      <Loader2 className="h-3.5 w-3.5 animate-spin text-[#00DCC2]" />
+                      <span className="font-mono text-[11px] text-[#00DCC2]">
                         {t("Bily analyzing threat vectors...")}
                       </span>
                     </div>
@@ -384,9 +384,9 @@ Select a prompt below or type your question:`,
 
               {/* Quick Prompts (visible when 2 or fewer messages) */}
               {messages.length <= 3 && !isLoading && (
-                <div className="px-3 py-1.5 bg-[#090e1c]/80 border-t border-white/[0.06]">
-                  <p className="text-[10px] text-slate-400 font-mono mb-1.5 flex items-center gap-1">
-                    <Terminal className="h-3 w-3 text-sky-400" />
+                <div className="px-3 py-1.5 bg-[#031C1B]/80 border-t border-[#193E39]">
+                  <p className="text-[10px] text-[#718C85] font-mono mb-1.5 flex items-center gap-1">
+                    <Terminal className="h-3 w-3 text-[#00DCC2]" />
                     Recommended queries:
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -394,7 +394,7 @@ Select a prompt below or type your question:`,
                       <button
                         key={i}
                         onClick={() => handleSendMessage(prompt)}
-                        className="text-[10px] px-2.5 py-1 rounded-lg bg-[#0e172a] hover:bg-[#14203a] border border-white/[0.08] hover:border-blue-500/30 text-slate-300 hover:text-sky-300 transition-all font-mono"
+                        className="text-[10px] px-2.5 py-1 rounded-lg bg-[#0B302D] hover:bg-[#163632] border border-[#193E39] hover:border-[#28504A] text-[#A0B8B2] hover:text-[#00DCC2] transition-all font-mono"
                       >
                         {t(prompt)}
                       </button>
@@ -404,7 +404,7 @@ Select a prompt below or type your question:`,
               )}
 
               {/* Chat Input Bar */}
-              <div className="p-3 bg-[#0e1628]/95 border-t border-white/[0.08]">
+              <div className="p-3 bg-[#042422]/95 border-t border-[#193E39]">
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
@@ -420,12 +420,12 @@ Select a prompt below or type your question:`,
                     onKeyDown={handleKeyDown}
                     disabled={isLoading}
                     placeholder={t("Ask Bily about threats, URLs, or SOC playbooks...")}
-                    className="flex-1 bg-[#090d16] border border-slate-700/80 focus:border-blue-500 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none transition-all font-mono disabled:opacity-50"
+                    className="flex-1 bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] rounded-xl px-3 py-2 text-xs text-[#E7F4F1] placeholder-[#718C85] focus:outline-none transition-all font-mono disabled:opacity-50"
                   />
                   <button
                     type="submit"
                     disabled={isLoading || !input.trim()}
-                    className="h-8 w-8 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95"
+                    className="h-8 w-8 rounded-xl bg-gradient-to-r from-[#00DCC2] to-[#00BFA9] hover:from-[#20F5DB] hover:to-[#00DCC2] text-[#031C1B] flex items-center justify-center shrink-0 shadow-md shadow-[#00DCC2]/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95"
                     aria-label="Send message"
                   >
                     {isLoading ? (
@@ -435,9 +435,9 @@ Select a prompt below or type your question:`,
                     )}
                   </button>
                 </form>
-                <div className="mt-1.5 flex items-center justify-between text-[9px] text-slate-500 font-mono px-1">
+                <div className="mt-1.5 flex items-center justify-between text-[9px] text-[#718C85] font-mono px-1">
                   <span>Press Enter to send</span>
-                  <span className="flex items-center gap-1 text-sky-400/80">
+                  <span className="flex items-center gap-1 text-[#00DCC2]/80">
                     <ShieldAlert className="h-2.5 w-2.5" />
                     Optimus Cyber Copilot
                   </span>

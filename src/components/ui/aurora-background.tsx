@@ -9,22 +9,22 @@ export function AuroraBackground({
 }) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {/* Aurora Ambient Light Curtains */}
+      {/* Dark Teal Ambient Depth Curtains */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Northern Lights - Ribbon 1: Luminous Emerald & Mint */}
-        <div className="absolute -top-[20%] left-[10%] w-[700px] h-[550px] rounded-full bg-gradient-to-br from-emerald-500/20 via-teal-400/18 to-transparent blur-[130px] animate-aurora-1" />
+        {/* Ambient Ribbon 1: Subtle Turquoise Lighting */}
+        <div className="absolute -top-[20%] left-[10%] w-[700px] h-[550px] rounded-full bg-[#00DCC2]/[0.04] blur-[140px] animate-aurora-1" />
 
-        {/* Northern Lights - Ribbon 2: Royal Indigo & Violet */}
-        <div className="absolute top-[25%] -right-[10%] w-[750px] h-[650px] rounded-full bg-gradient-to-bl from-indigo-500/22 via-purple-600/18 to-transparent blur-[140px] animate-aurora-2" />
+        {/* Ambient Ribbon 2: Deep Outer Teal */}
+        <div className="absolute top-[25%] -right-[10%] w-[750px] h-[650px] rounded-full bg-[#082E2B]/40 blur-[150px] animate-aurora-2" />
 
-        {/* Northern Lights - Ribbon 3: Deep Arctic Cyan & Teal */}
-        <div className="absolute -bottom-[15%] left-[25%] w-[800px] h-[600px] rounded-full bg-gradient-to-tr from-teal-500/18 via-cyan-500/15 to-transparent blur-[135px] animate-aurora-3" />
+        {/* Ambient Ribbon 3: Secondary Surface Shadow */}
+        <div className="absolute -bottom-[15%] left-[25%] w-[800px] h-[600px] rounded-full bg-[#0B302D]/35 blur-[135px] animate-aurora-3" />
 
-        {/* Subtle Precision Cyber Starlight Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_90%)]" />
+        {/* Hairline Grid Overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(40,80,74,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(40,80,74,0.12)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_90%)]" />
 
-        {/* Soft Contrast Vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(3,7,18,0.6)_100%)]" />
+        {/* Soft Vignette Depth */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(6,35,33,0.7)_100%)]" />
       </div>
 
       {/* Foreground Content */}

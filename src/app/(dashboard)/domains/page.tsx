@@ -657,12 +657,12 @@ export default function DomainMonitoringPage() {
     <div className="space-y-6 animate-in fade-in duration-200">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-20 right-6 z-50 bg-[#0c1a38] border border-cyan-400/40 text-cyan-200 px-4 py-3 rounded-xl shadow-2xl shadow-cyan-900/50 flex items-center gap-3 text-xs font-plex-mono animate-in slide-in-from-top-3 duration-200">
-          <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 animate-spin" />
+        <div className="fixed top-20 right-6 z-50 bg-[#031C1B] border border-[#00DCC2]/40 text-[#E7F4F1] px-4 py-3 rounded-xl shadow-2xl shadow-[#00DCC2]/10 flex items-center gap-3 text-xs font-mono animate-in slide-in-from-top-3 duration-200">
+          <Sparkles className="w-4 h-4 text-[#00DCC2] shrink-0 animate-spin" />
           <span>{toastMessage}</span>
           <button
             onClick={() => setToastMessage(null)}
-            className="ml-2 text-slate-400 hover:text-white"
+            className="ml-2 text-[#718C85] hover:text-[#E7F4F1]"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -672,14 +672,14 @@ export default function DomainMonitoringPage() {
       {/* Page Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-[11px] font-plex-mono mb-2">
-            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00DCC2]/30 bg-[#00DCC2]/10 text-[#00DCC2] text-[11px] font-mono mb-2">
+            <span className="h-2 w-2 rounded-full bg-[#00DCC2] animate-ping" />
             <span>PERIMETER HEURISTIC RADAR &bull; CONTINUOUS RECONNAISSANCE</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white font-unbounded">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#E7F4F1] font-mono">
             {t("Domain Monitoring")}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 mt-1 font-plex-sans max-w-2xl">
+          <p className="text-xs sm:text-sm text-[#A0B8B2] mt-1 max-w-2xl font-sans">
             {t("domains.desc")}
           </p>
         </div>
@@ -689,16 +689,16 @@ export default function DomainMonitoringPage() {
             variant="outline"
             size="sm"
             onClick={handleResetDemoData}
-            className="text-xs font-plex-mono border-white/10 hover:bg-white/5 text-slate-300"
+            className="text-xs font-mono border-[#28504A] hover:bg-[#163632] text-[#E7F4F1]"
           >
-            <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
+            <RefreshCw className="w-3.5 h-3.5 mr-1.5 text-[#00DCC2]" />
             {t("Reset Demo Data", "Reset Demo Data")}
           </Button>
           <Button
             variant="cyan"
             size="sm"
             onClick={() => setIsAddModalOpen(true)}
-            className="font-semibold text-xs font-plex-mono shadow-liquid-cyan"
+            className="font-semibold text-xs font-mono shadow-[0_0_15px_rgba(0,220,194,0.2)]"
           >
             <Plus className="w-4 h-4 mr-1.5" />
             {t("Add Domain")}
@@ -707,96 +707,96 @@ export default function DomainMonitoringPage() {
       </div>
 
       {/* Example Data Banner */}
-      <div className="flex items-center justify-between p-3 rounded-xl bg-cyan-950/25 border border-cyan-500/20 text-xs font-plex-mono text-cyan-300">
+      <div className="flex items-center justify-between p-3 rounded-xl bg-[#0B302D] border border-[#28504A] text-xs font-mono text-[#00DCC2]">
         <div className="flex items-center gap-2.5">
-          <Info className="w-4 h-4 text-cyan-400 shrink-0" />
+          <Info className="w-4 h-4 text-[#00DCC2] shrink-0" />
           <span>
             <strong>SIMULATED INTEL FEED:</strong> Displaying example lookalike datasets. Real-time WHOIS, RDAP &amp; Certificate Transparency (CT) log streams actively simulated.
           </span>
         </div>
-        <span className="hidden sm:inline-flex px-2 py-0.5 rounded bg-cyan-900/50 text-[10px] uppercase font-bold tracking-wider">
+        <span className="hidden sm:inline-flex px-2 py-0.5 rounded bg-[#031C1B] text-[10px] uppercase font-bold tracking-wider text-[#A0B8B2] border border-[#193E39]">
           Example Telemetry Active
         </span>
       </div>
 
       {/* Summary Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Metric 1 - Cyber Cyan */}
-        <div className="p-4 sm:p-5 rounded-2xl clay-cyan relative overflow-hidden transition-all duration-300">
-          <div className="flex items-center justify-between text-cyan-200/80 text-xs font-plex-mono">
+        {/* Metric 1 - Total */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#112624] border border-[#193E39] relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-[#A0B8B2] text-xs font-mono">
             <span>{t("DOMAINS MONITORED")}</span>
-            <Globe className="w-4 h-4 text-cyan-400" />
+            <Globe className="w-4 h-4 text-[#00DCC2]" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-white font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-[#E7F4F1] font-mono mt-2">
             {summaryMetrics.total}
           </div>
-          <div className="text-[11px] text-cyan-300 font-plex-mono mt-1 flex items-center gap-1">
-            <span className="text-emerald-400 font-bold">+{domains.length - INITIAL_DOMAINS.length >= 0 ? `+${domains.length}` : domains.length}</span>
+          <div className="text-[11px] text-[#718C85] font-mono mt-1 flex items-center gap-1">
+            <span className="text-[#45D6A0] font-bold">+{domains.length - INITIAL_DOMAINS.length >= 0 ? `+${domains.length}` : domains.length}</span>
             <span>across registered brands</span>
           </div>
         </div>
 
-        {/* Metric 2 - Sunset Amber */}
-        <div className="p-4 sm:p-5 rounded-2xl clay-amber relative overflow-hidden transition-all duration-300">
-          <div className="flex items-center justify-between text-amber-200/80 text-xs font-plex-mono">
+        {/* Metric 2 - Lookalikes */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#112624] border border-[#193E39] relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-[#A0B8B2] text-xs font-mono">
             <span>{t("CRITICAL LOOKALIKES")}</span>
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
+            <AlertTriangle className="w-4 h-4 text-[#FFB454]" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-amber-300 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-[#FFB454] font-mono mt-2">
             {summaryMetrics.lookalikesToday}
           </div>
-          <div className="text-[11px] text-amber-200/70 font-plex-mono mt-1">
-            <span className="text-amber-400 font-bold">Risk &ge; 70</span> requiring analyst review
+          <div className="text-[11px] text-[#718C85] font-mono mt-1">
+            <span className="text-[#FFB454] font-bold">Risk &ge; 70</span> requiring analyst review
           </div>
         </div>
 
-        {/* Metric 3 - Crimson Rose */}
-        <div className="p-4 sm:p-5 rounded-2xl clay-rose relative overflow-hidden transition-all duration-300">
-          <div className="flex items-center justify-between text-rose-200/80 text-xs font-plex-mono">
+        {/* Metric 3 - Takedowns */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#112624] border border-[#193E39] relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-[#A0B8B2] text-xs font-mono">
             <span>{t("ACTIVE TAKEDOWNS")}</span>
-            <ShieldAlert className="w-4 h-4 text-rose-400" />
+            <ShieldAlert className="w-4 h-4 text-[#FF6474]" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-rose-300 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-[#FF6474] font-mono mt-2">
             {summaryMetrics.activeTakedowns}
           </div>
-          <div className="text-[11px] text-rose-200/70 font-plex-mono mt-1 flex items-center gap-1">
-            <span className="text-emerald-400 font-bold">{summaryMetrics.takenDown} resolved</span>
+          <div className="text-[11px] text-[#718C85] font-mono mt-1 flex items-center gap-1">
+            <span className="text-[#45D6A0] font-bold">{summaryMetrics.takenDown} resolved</span>
             <span>this month</span>
           </div>
         </div>
 
-        {/* Metric 4 - Matrix Emerald */}
-        <div className="p-4 sm:p-5 rounded-2xl clay-emerald relative overflow-hidden transition-all duration-300">
-          <div className="flex items-center justify-between text-emerald-200/80 text-xs font-plex-mono">
+        {/* Metric 4 - Detection */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#112624] border border-[#193E39] relative overflow-hidden transition-all duration-300">
+          <div className="flex items-center justify-between text-[#A0B8B2] text-xs font-mono">
             <span>{t("AVG DETECTION TIME")}</span>
-            <Clock className="w-4 h-4 text-emerald-400" />
+            <Clock className="w-4 h-4 text-[#45D6A0]" />
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-300 font-unbounded mt-2">
+          <div className="text-2xl sm:text-3xl font-extrabold text-[#45D6A0] font-mono mt-2">
             {summaryMetrics.avgDetectionTime}
           </div>
-          <div className="text-[11px] text-emerald-200/70 font-plex-mono mt-1">
-            <span className="text-emerald-400 font-bold">-18% faster</span> via lexical triage
+          <div className="text-[11px] text-[#718C85] font-mono mt-1">
+            <span className="text-[#45D6A0] font-bold">-18% faster</span> via lexical triage
           </div>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <Card className="p-4 clay-card">
+      <Card className="p-4 bg-[#112624] border border-[#193E39]">
         <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
           {/* Search Box */}
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#718C85]" />
             <input
               type="text"
               placeholder={t("Search by domain, brand, or registrar...")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs font-plex-mono bg-[#091226] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/60 focus:ring-1 focus:ring-cyan-400/60"
+              className="w-full pl-10 pr-4 py-2 text-xs font-mono bg-[#031C1B] border border-[#28504A] rounded-xl text-[#E7F4F1] placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2] focus:ring-1 focus:ring-[#00DCC2]"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#718C85] hover:text-[#E7F4F1]"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -806,13 +806,13 @@ export default function DomainMonitoringPage() {
           {/* Filter Dropdowns */}
           <div className="flex flex-wrap items-center gap-2">
             {/* Status Filter */}
-            <div className="flex items-center gap-1.5 text-xs font-plex-mono text-slate-400">
+            <div className="flex items-center gap-1.5 text-xs font-mono text-[#A0B8B2]">
               <Filter className="w-3.5 h-3.5" />
               <span>{t("Status")}:</span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-[#091226] border border-white/10 text-slate-200 text-xs font-plex-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-400"
+                className="bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#00DCC2]"
               >
                 <option value="ALL">{t("All Statuses")}</option>
                 <option value="Monitoring">{t("Monitoring")}</option>
@@ -822,12 +822,12 @@ export default function DomainMonitoringPage() {
             </div>
 
             {/* Risk Filter */}
-            <div className="flex items-center gap-1.5 text-xs font-plex-mono text-slate-400">
+            <div className="flex items-center gap-1.5 text-xs font-mono text-[#A0B8B2]">
               <span>{t("Risk Score")}:</span>
               <select
                 value={riskFilter}
                 onChange={(e) => setRiskFilter(e.target.value)}
-                className="bg-[#091226] border border-white/10 text-slate-200 text-xs font-plex-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-cyan-400"
+                className="bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-mono rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-[#00DCC2]"
               >
                 <option value="ALL">{t("All Risk Levels")}</option>
                 <option value="CRITICAL">{t("CRITICAL")} (&gt; 75)</option>
@@ -846,7 +846,7 @@ export default function DomainMonitoringPage() {
                   setRiskFilter("ALL");
                   setSearchQuery("");
                 }}
-                className="text-xs font-plex-mono text-cyan-400 hover:text-cyan-300 p-1.5"
+                className="text-xs font-mono text-[#00DCC2] hover:text-[#20F5DB] p-1.5"
               >
                 {t("Reset Filters")}
               </Button>
@@ -856,11 +856,11 @@ export default function DomainMonitoringPage() {
       </Card>
 
       {/* Domain Monitoring Table */}
-      <Card className="border-white/10 bg-[#0d1a38]/90 overflow-hidden shadow-2xl">
+      <Card className="border-[#193E39] bg-[#112624] overflow-hidden shadow-2xl">
         <div className="overflow-x-auto min-w-full">
-          <table className="w-full text-left text-xs font-plex-sans border-collapse">
+          <table className="w-full text-left text-xs font-sans border-collapse">
             <thead>
-              <tr className="border-b border-white/10 bg-[#081124] text-slate-400 font-plex-mono text-[11px] tracking-wider uppercase">
+              <tr className="border-b border-[#193E39] bg-[#042422] text-[#718C85] font-mono text-[11px] tracking-wider uppercase">
                 <th className="py-3.5 px-4">{t("Domain")}</th>
                 <th className="py-3.5 px-4">{t("Risk Score")}</th>
                 <th className="py-3.5 px-4">{t("Status")}</th>
@@ -1034,39 +1034,39 @@ export default function DomainMonitoringPage() {
       {isDetailOpen && selectedDomain && (
         <div className="fixed inset-0 z-50 overflow-hidden bg-black/70 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
           <div
-            className="w-full sm:w-[540px] h-full bg-[#081228] border-l border-white/10 shadow-[-16px_0_40px_rgba(0,0,0,0.85),inset_2px_0_4px_rgba(255,255,255,0.06)] flex flex-col animate-in slide-in-from-right duration-300"
+            className="w-full sm:w-[540px] h-full bg-[#082E2B] border-l border-[#28504A] shadow-[-16px_0_40px_rgba(0,0,0,0.85)] flex flex-col animate-in slide-in-from-right duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drawer Header */}
-            <div className="p-6 border-b border-white/10 bg-[#071329] shadow-[0_4px_16px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.08)] flex items-center justify-between">
+            <div className="p-6 border-b border-[#193E39] bg-[#042422] flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span
                     className={`px-2 py-0.5 rounded-full text-[10px] font-plex-mono font-bold border ${
                       selectedDomain.riskScore >= 75
-                        ? "bg-rose-950/70 text-rose-300 border-rose-500/40"
+                        ? "bg-[#FF6474]/15 text-[#FF6474] border-[#FF6474]/30"
                         : selectedDomain.riskScore >= 50
-                        ? "bg-amber-950/70 text-amber-300 border-amber-500/40"
-                        : "bg-cyan-950/70 text-cyan-300 border-cyan-500/40"
+                        ? "bg-[#FFB454]/15 text-[#FFB454] border-[#FFB454]/30"
+                        : "bg-[#00DCC2]/15 text-[#00DCC2] border-[#00DCC2]/30"
                     }`}
                   >
                     SCORE: {selectedDomain.riskScore}/100 &bull; {selectedDomain.severity}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-plex-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-plex-mono bg-[#00DCC2]/10 text-[#00DCC2] border border-[#00DCC2]/30">
                     {selectedDomain.status}
                   </span>
                 </div>
-                <h2 className="text-lg font-bold text-white font-plex-mono break-all flex items-center gap-2">
+                <h2 className="text-lg font-bold text-[#E7F4F1] font-plex-mono break-all flex items-center gap-2">
                   <span>{selectedDomain.domain}</span>
                 </h2>
-                <p className="text-xs text-slate-400 font-plex-mono mt-0.5">
-                  Target: <strong className="text-cyan-400">{selectedDomain.targetBrand}</strong> &bull; First Seen: {selectedDomain.firstSeen}
+                <p className="text-xs text-[#A0B8B2] font-plex-mono mt-0.5">
+                  Target: <strong className="text-[#00DCC2]">{selectedDomain.targetBrand}</strong> &bull; First Seen: {selectedDomain.firstSeen}
                 </p>
               </div>
 
               <button
                 onClick={() => setIsDetailOpen(false)}
-                className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                className="p-2 rounded-xl bg-[#112624] hover:bg-[#163632] border border-[#193E39] text-[#A0B8B2] hover:text-[#E7F4F1] transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1075,8 +1075,8 @@ export default function DomainMonitoringPage() {
             {/* Drawer Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
               {/* Interactive Action Control Panel */}
-              <div className="p-4 rounded-2xl clay-cyan border border-cyan-500/30">
-                <span className="text-[11px] font-plex-mono uppercase text-cyan-200 tracking-wider font-bold block mb-2.5">
+              <div className="p-4 rounded-2xl bg-[#0B302D] border border-[#28504A]">
+                <span className="text-[11px] font-plex-mono uppercase text-[#00DCC2] tracking-wider font-bold block mb-2.5">
                   SOC Triage Operations
                 </span>
                 <div className="grid grid-cols-3 gap-2">
@@ -1104,9 +1104,9 @@ export default function DomainMonitoringPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => handleDismiss(selectedDomain.id)}
-                    className="text-xs font-plex-mono border-white/10 text-slate-300"
+                    className="text-xs font-plex-mono border-[#28504A] text-[#A0B8B2] hover:text-[#E7F4F1]"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-400" />
+                    <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-[#45D6A0]" />
                     Dismiss
                   </Button>
                 </div>
@@ -1114,8 +1114,8 @@ export default function DomainMonitoringPage() {
 
               {/* Signals behind the score */}
               <div>
-                <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-3 flex items-center gap-2">
-                  <Activity className="w-4 h-4 text-cyan-400" />
+                <h3 className="text-xs font-plex-mono uppercase text-[#A0B8B2] tracking-wider font-bold mb-3 flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-[#00DCC2]" />
                   <span>Signals Behind Risk Score ({selectedDomain.signals.length} Identified)</span>
                 </h3>
 
@@ -1123,22 +1123,22 @@ export default function DomainMonitoringPage() {
                   {selectedDomain.signals.map((sig, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-2xl clay-card border border-white/10 text-xs"
+                      className="p-3.5 rounded-2xl bg-[#112624] border border-[#193E39] text-xs"
                     >
-                      <div className="flex items-center justify-between font-plex-mono font-semibold text-white mb-1">
-                        <span className="flex items-center gap-1.5 text-slate-200">
-                          <AlertTriangle className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <div className="flex items-center justify-between font-plex-mono font-semibold text-[#E7F4F1] mb-1">
+                        <span className="flex items-center gap-1.5 text-[#E7F4F1]">
+                          <AlertTriangle className="w-3.5 h-3.5 text-[#FFB454] shrink-0" />
                           <span>{sig.title}</span>
                         </span>
-                        <span className="text-rose-400 font-plex-mono font-bold text-[11px]">
+                        <span className="text-[#FF6474] font-plex-mono font-bold text-[11px]">
                           +{sig.weight} pts
                         </span>
                       </div>
-                      <p className="text-slate-300 text-[11px] leading-relaxed pl-5 font-plex-sans">
+                      <p className="text-[#A0B8B2] text-[11px] leading-relaxed pl-5 font-plex-sans">
                         {sig.description}
                       </p>
                       <div className="pl-5 mt-1.5">
-                        <span className="inline-block px-1.5 py-0.5 rounded bg-slate-800 text-[9px] font-plex-mono text-cyan-300">
+                        <span className="inline-block px-1.5 py-0.5 rounded bg-[#0B302D] text-[9px] font-plex-mono text-[#00DCC2] border border-[#193E39]">
                           {sig.category}
                         </span>
                       </div>
@@ -1149,37 +1149,37 @@ export default function DomainMonitoringPage() {
 
               {/* DNS & Registration Telemetry */}
               <div>
-                <h3 className="text-xs font-plex-mono uppercase text-slate-400 tracking-wider font-bold mb-3 flex items-center gap-2">
-                  <Server className="w-4 h-4 text-cyan-400" />
+                <h3 className="text-xs font-plex-mono uppercase text-[#A0B8B2] tracking-wider font-bold mb-3 flex items-center gap-2">
+                  <Server className="w-4 h-4 text-[#00DCC2]" />
                   <span>DNS &amp; Registration Telemetry</span>
                 </h3>
 
-                <div className="rounded-xl bg-[#0a1530] border border-white/10 divide-y divide-white/[0.08] text-xs font-plex-mono">
+                <div className="rounded-xl bg-[#112624] border border-[#193E39] divide-y divide-[#193E39] text-xs font-plex-mono">
                   <div className="p-3 flex justify-between items-center">
-                    <span className="text-slate-400">Registrar</span>
-                    <span className="text-white font-medium">{selectedDomain.registrar}</span>
+                    <span className="text-[#A0B8B2]">Registrar</span>
+                    <span className="text-[#E7F4F1] font-medium">{selectedDomain.registrar}</span>
                   </div>
 
                   <div className="p-3 flex justify-between items-center">
-                    <span className="text-slate-400">Creation Date</span>
-                    <span className="text-white">{selectedDomain.createdDate}</span>
+                    <span className="text-[#A0B8B2]">Creation Date</span>
+                    <span className="text-[#E7F4F1]">{selectedDomain.createdDate}</span>
                   </div>
 
                   <div className="p-3 flex justify-between items-center">
-                    <span className="text-slate-400">Expiration</span>
-                    <span className="text-white">{selectedDomain.expiryDate}</span>
+                    <span className="text-[#A0B8B2]">Expiration</span>
+                    <span className="text-[#E7F4F1]">{selectedDomain.expiryDate}</span>
                   </div>
 
                   <div className="p-3 flex justify-between items-center">
-                    <span className="text-slate-400">Hosting ASN &amp; Geo</span>
-                    <span className="text-cyan-300 text-right">{selectedDomain.country} &bull; {selectedDomain.asn}</span>
+                    <span className="text-[#A0B8B2]">Hosting ASN &amp; Geo</span>
+                    <span className="text-[#00DCC2] text-right">{selectedDomain.country} &bull; {selectedDomain.asn}</span>
                   </div>
 
                   <div className="p-3">
-                    <span className="text-slate-400 block mb-1">A Records (IPs)</span>
+                    <span className="text-[#A0B8B2] block mb-1">A Records (IPs)</span>
                     <div className="space-y-1">
                       {selectedDomain.aRecords.map((ip, i) => (
-                        <div key={i} className="text-white font-mono bg-black/30 px-2 py-1 rounded">
+                        <div key={i} className="text-[#E7F4F1] font-mono bg-[#031C1B] border border-[#193E39] px-2 py-1 rounded">
                           {ip}
                         </div>
                       ))}
@@ -1187,10 +1187,10 @@ export default function DomainMonitoringPage() {
                   </div>
 
                   <div className="p-3">
-                    <span className="text-slate-400 block mb-1">MX Records (Mail Server)</span>
+                    <span className="text-[#A0B8B2] block mb-1">MX Records (Mail Server)</span>
                     <div className="space-y-1">
                       {selectedDomain.mxRecords.map((mx, i) => (
-                        <div key={i} className="text-white font-mono bg-black/30 px-2 py-1 rounded">
+                        <div key={i} className="text-[#E7F4F1] font-mono bg-[#031C1B] border border-[#193E39] px-2 py-1 rounded">
                           {mx}
                         </div>
                       ))}
@@ -1198,10 +1198,10 @@ export default function DomainMonitoringPage() {
                   </div>
 
                   <div className="p-3">
-                    <span className="text-slate-400 block mb-1">Authoritative Nameservers</span>
+                    <span className="text-[#A0B8B2] block mb-1">Authoritative Nameservers</span>
                     <div className="space-y-1">
                       {selectedDomain.nameservers.map((ns, i) => (
-                        <div key={i} className="text-slate-300 font-mono bg-black/30 px-2 py-1 rounded text-[11px]">
+                        <div key={i} className="text-[#A0B8B2] font-mono bg-[#031C1B] border border-[#193E39] px-2 py-1 rounded text-[11px]">
                           {ns}
                         </div>
                       ))}
@@ -1212,10 +1212,10 @@ export default function DomainMonitoringPage() {
             </div>
 
             {/* Drawer Footer */}
-            <div className="p-4 border-t border-white/10 bg-[#070e20] flex items-center justify-between">
+            <div className="p-4 border-t border-[#193E39] bg-[#042422] flex items-center justify-between">
               <Link
                 href="/takedowns"
-                className="inline-flex items-center gap-1.5 text-xs font-plex-mono text-cyan-400 hover:text-cyan-300"
+                className="inline-flex items-center gap-1.5 text-xs font-plex-mono text-[#00DCC2] hover:text-[#20F5DB]"
               >
                 <span>Jump to Takedown Center</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -1224,7 +1224,7 @@ export default function DomainMonitoringPage() {
                 variant="outline"
                 size="sm"
                 onClick={() => setIsDetailOpen(false)}
-                className="text-xs font-plex-mono border-white/10 text-slate-300"
+                className="text-xs font-plex-mono border-[#28504A] text-[#A0B8B2]"
               >
                 Close Drawer
               </Button>
@@ -1245,15 +1245,15 @@ export default function DomainMonitoringPage() {
       >
         <form onSubmit={handleAddDomainSubmit} className="space-y-4 pt-2">
           {formError && (
-            <div className="p-3 rounded-xl bg-rose-950/70 border border-rose-500/50 text-rose-300 text-xs font-plex-mono flex items-start gap-2 animate-in fade-in duration-150">
-              <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+            <div className="p-3 rounded-xl bg-[#FF6474]/15 border border-[#FF6474]/50 text-[#FF6474] text-xs font-plex-mono flex items-start gap-2 animate-in fade-in duration-150">
+              <AlertTriangle className="w-4 h-4 text-[#FF6474] shrink-0 mt-0.5" />
               <span>{formError}</span>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
-              Domain Name <span className="text-rose-400">*</span>
+            <label className="block text-xs font-plex-mono text-[#A0B8B2] mb-1 font-semibold">
+              Domain Name <span className="text-[#FF6474]">*</span>
             </label>
             <input
               type="text"
@@ -1263,22 +1263,22 @@ export default function DomainMonitoringPage() {
                 setNewDomainInput(e.target.value);
                 if (formError) setFormError(null);
               }}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-plex-mono placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2] focus:ring-1 focus:ring-[#00DCC2]"
             />
-            <p className="text-[11px] text-slate-400 font-plex-mono mt-1">
+            <p className="text-[11px] text-[#718C85] font-plex-mono mt-1">
               Valid FQDN required. Do not include http://, https://, or URL path parameters.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
+              <label className="block text-xs font-plex-mono text-[#A0B8B2] mb-1 font-semibold">
                 Associated Brand
               </label>
               <select
                 value={newBrandInput}
                 onChange={(e) => setNewBrandInput(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono focus:outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-plex-mono focus:outline-none focus:border-[#00DCC2]"
               >
                 <option value="Optimus Platform">Optimus Platform</option>
                 <option value="CyberDefend">CyberDefend</option>
@@ -1288,13 +1288,13 @@ export default function DomainMonitoringPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
+              <label className="block text-xs font-plex-mono text-[#A0B8B2] mb-1 font-semibold">
                 Threat Classification
               </label>
               <select
                 value={newCategoryInput}
                 onChange={(e) => setNewCategoryInput(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono focus:outline-none focus:border-cyan-400"
+                className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-plex-mono focus:outline-none focus:border-[#00DCC2]"
               >
                 <option value="Phishing lookalike">Phishing lookalike</option>
                 <option value="Combosquatting / Typosquat">Combosquatting / Typosquat</option>
@@ -1306,7 +1306,7 @@ export default function DomainMonitoringPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-plex-mono text-slate-300 mb-1 font-semibold">
+            <label className="block text-xs font-plex-mono text-[#A0B8B2] mb-1 font-semibold">
               Analyst Notes / Context (Optional)
             </label>
             <textarea
@@ -1314,7 +1314,7 @@ export default function DomainMonitoringPage() {
               placeholder="e.g. Intercepted from CT log alert; suspicious mail exchanger configured."
               value={newNotesInput}
               onChange={(e) => setNewNotesInput(e.target.value)}
-              className="w-full px-3 py-2 rounded-xl bg-[#091226] border border-white/10 text-white text-xs font-plex-mono placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+              className="w-full px-3 py-2 rounded-xl bg-[#031C1B] border border-[#28504A] text-[#E7F4F1] text-xs font-plex-mono placeholder-[#718C85] focus:outline-none focus:border-[#00DCC2]"
             />
           </div>
 
@@ -1327,7 +1327,7 @@ export default function DomainMonitoringPage() {
                 setIsAddModalOpen(false);
                 setFormError(null);
               }}
-              className="text-xs font-plex-mono border-white/10"
+              className="text-xs font-plex-mono border-[#28504A] text-[#A0B8B2]"
             >
               Cancel
             </Button>

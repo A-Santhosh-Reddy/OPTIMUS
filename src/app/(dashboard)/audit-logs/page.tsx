@@ -40,10 +40,10 @@ export default function AuditLogsPage() {
   return (
     <div className="space-y-6 animate-in fade-in duration-200">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+        <h1 className="text-2xl font-bold tracking-tight text-[#E7F4F1] flex items-center gap-2">
           Security Audit Event Logs
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#A0B8B2] mt-1">
           Immutable audit trail recording authentication, threat analysis requests, incident status changes, and brand asset modifications.
         </p>
       </div>
@@ -56,50 +56,50 @@ export default function AuditLogsPage() {
         />
 
         {error ? (
-          <div className="p-6 text-center text-xs text-red-400">
+          <div className="p-6 text-center text-xs text-[#FF6474]">
             <Lock className="h-6 w-6 mx-auto mb-2 opacity-60" />
             <p className="font-semibold">{error}</p>
           </div>
         ) : isLoading ? (
           <div className="space-y-2 py-4">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-10 bg-slate-800/50 rounded-lg animate-pulse" />
+              <div key={i} className="h-10 bg-[#0B302D]/60 rounded-lg animate-pulse" />
             ))}
           </div>
         ) : events.length === 0 ? (
-          <div className="py-12 text-center text-xs text-slate-500">
+          <div className="py-12 text-center text-xs text-[#718C85]">
             No audit log events recorded yet.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
-              <thead className="border-b border-slate-800 text-slate-400">
+              <thead className="border-b border-[#193E39] bg-[#042422] text-[#A0B8B2]">
                 <tr>
-                  <th className="pb-3 pl-2">Timestamp</th>
-                  <th className="pb-3">Actor / Analyst</th>
-                  <th className="pb-3">Action</th>
-                  <th className="pb-3">Resource</th>
-                  <th className="pb-3">Metadata</th>
+                  <th className="py-3 pl-3">Timestamp</th>
+                  <th className="py-3">Actor / Analyst</th>
+                  <th className="py-3">Action</th>
+                  <th className="py-3">Resource</th>
+                  <th className="py-3">Metadata</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-[#193E39] text-[#E7F4F1]">
                 {events.map((evt) => (
-                  <tr key={evt.id} className="hover:bg-slate-800/40">
-                    <td className="py-3 pl-2 text-slate-400 text-[11px]">
+                  <tr key={evt.id} className="hover:bg-[#163632]/50 transition-colors">
+                    <td className="py-3 pl-3 text-[#A0B8B2] text-[11px]">
                       {new Date(evt.timestamp).toLocaleDateString()} {new Date(evt.timestamp).toLocaleTimeString()}
                     </td>
-                    <td className="py-3 font-semibold text-slate-200">
+                    <td className="py-3 font-semibold text-[#E7F4F1]">
                       {evt.actorEmail}
                     </td>
                     <td className="py-3">
-                      <span className="px-1.5 py-0.5 rounded bg-blue-950/60 border border-blue-800/50 text-blue-400 text-[10px]">
+                      <span className="px-1.5 py-0.5 rounded bg-[#00DCC2]/10 border border-[#00DCC2]/30 text-[#00DCC2] text-[10px]">
                         {evt.action}
                       </span>
                     </td>
-                    <td className="py-3 text-slate-400">
+                    <td className="py-3 text-[#A0B8B2]">
                       {evt.resourceType} {evt.resourceId ? `(${evt.resourceId.substring(0, 8)}...)` : ""}
                     </td>
-                    <td className="py-3 text-slate-400 text-[11px] truncate max-w-xs">
+                    <td className="py-3 text-[#A0B8B2] text-[11px] truncate max-w-xs">
                       {evt.metadata || "—"}
                     </td>
                   </tr>

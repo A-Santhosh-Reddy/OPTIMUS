@@ -41,33 +41,33 @@ export default function AnalyzerPage() {
     <div className="space-y-8 animate-in fade-in duration-300">
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-300">
+          <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#00DCC2]/10 border border-[#00DCC2]/30 text-[#00DCC2]">
             OFFLINE LEXICAL ENGINE
           </span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2 font-mono">
-          Suspicious URL & Domain Analyzer
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#E7F4F1] flex items-center gap-2 font-mono">
+          Suspicious URL &amp; Domain Analyzer
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-[#A0B8B2] mt-1">
           Perform safe, offline lexical inspection, Shannon entropy evaluation, brand impersonation detection, and threat intelligence correlation.
         </p>
       </div>
 
-      {/* Analysis Input Form in Liquid Glass */}
-      <Card glow="cyber">
+      {/* Analysis Input Form */}
+      <Card glow="cyan">
         <UrlAnalyzerForm onAnalyze={handleAnalyze} isLoading={isLoading} />
       </Card>
 
       {/* Loading Skeleton */}
       {isLoading && (
-        <div className="space-y-4 rounded-2xl border border-sky-500/30 liquid-glass-card p-10 text-center animate-pulse">
-          <div className="relative h-12 w-12 mx-auto rounded-2xl bg-blue-600/20 border border-sky-400/40 flex items-center justify-center text-sky-400 shadow-lg shadow-blue-500/20">
+        <div className="space-y-4 rounded-2xl border border-[#28504A] bg-[#112624] p-10 text-center animate-pulse">
+          <div className="relative h-12 w-12 mx-auto rounded-2xl bg-[#00DCC2]/15 border border-[#00DCC2]/30 flex items-center justify-center text-[#00DCC2] shadow-[0_0_15px_rgba(0,220,194,0.2)]">
             <Search className="h-6 w-6 animate-spin" />
           </div>
-          <h3 className="text-sm font-semibold text-slate-100 font-mono tracking-wide">
-            Executing Multi-Layer Threat Heuristics & Brand Shields...
+          <h3 className="text-sm font-semibold text-[#E7F4F1] font-mono tracking-wide">
+            Executing Multi-Layer Threat Heuristics &amp; Brand Shields...
           </h3>
-          <p className="text-xs text-sky-300/70 font-mono">
+          <p className="text-xs text-[#A0B8B2] font-mono">
             Evaluating Shannon Entropy &bull; Levenshtein Edit Distance &bull; Homoglyph Normalization
           </p>
         </div>

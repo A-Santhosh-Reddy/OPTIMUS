@@ -128,14 +128,14 @@ export default function AlertsConfigPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
-              SOC AUTOMATION & NOTIFICATIONS
+            <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-[#00DCC2]/10 border border-[#00DCC2]/30 text-[#00DCC2]">
+              SOC AUTOMATION &amp; NOTIFICATIONS
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2 font-mono">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#E7F4F1] flex items-center gap-2 font-mono">
             Real-Time Threat Alerts
           </h1>
-          <p className="text-xs text-slate-400 mt-1 max-w-3xl">
+          <p className="text-xs text-[#A0B8B2] mt-1 max-w-3xl">
             Configure instant outbound notifications to Slack channels, SOC webhook endpoints, or email distribution lists
             whenever threat severity exceeds your security criteria.
           </p>
@@ -147,7 +147,7 @@ export default function AlertsConfigPage() {
             size="sm"
             onClick={() => handleTestAlert()}
             disabled={isTesting}
-            className="text-xs font-mono border-cyan-500/30 text-cyan-300"
+            className="text-xs font-mono border-[#28504A] text-[#00DCC2] hover:bg-[#163632]"
           >
             <Send className="h-3.5 w-3.5 mr-1.5" />
             {isTesting ? "Dispatching..." : "Send Test Alert"}
@@ -173,15 +173,15 @@ export default function AlertsConfigPage() {
         <div
           className={`p-4 rounded-xl border text-xs font-mono animate-in fade-in ${
             testResult.success
-              ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-200"
-              : "bg-red-950/40 border-red-500/40 text-red-200"
+              ? "bg-[#45D6A0]/15 border-[#45D6A0]/40 text-[#45D6A0]"
+              : "bg-[#FF6474]/15 border-[#FF6474]/40 text-[#FF6474]"
           }`}
         >
           <div className="flex items-center gap-2">
             {testResult.success ? (
-              <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+              <CheckCircle2 className="h-4 w-4 text-[#45D6A0] shrink-0" />
             ) : (
-              <AlertTriangle className="h-4 w-4 text-red-400 shrink-0" />
+              <AlertTriangle className="h-4 w-4 text-[#FF6474] shrink-0" />
             )}
             <span className="font-bold">
               {testResult.success
@@ -212,53 +212,53 @@ export default function AlertsConfigPage() {
         />
 
         {isLoading ? (
-          <div className="p-8 text-center text-slate-500 font-mono text-xs">
+          <div className="p-8 text-center text-[#718C85] font-mono text-xs">
             Loading notification endpoints...
           </div>
         ) : configs.length === 0 ? (
-          <div className="p-10 text-center rounded-xl bg-slate-950/50 border border-white/5 space-y-3">
-            <Radio className="h-8 w-8 text-cyan-400 mx-auto opacity-70" />
-            <h4 className="text-sm font-semibold text-slate-200 font-mono">No Alert Rules Configured</h4>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+          <div className="p-10 text-center rounded-xl bg-[#031C1B] border border-[#193E39] space-y-3">
+            <Radio className="h-8 w-8 text-[#00DCC2] mx-auto opacity-70" />
+            <h4 className="text-sm font-semibold text-[#E7F4F1] font-mono">No Alert Rules Configured</h4>
+            <p className="text-xs text-[#A0B8B2] max-w-md mx-auto">
               Add a Slack webhook or HTTPS endpoint to receive immediate incident warnings when critical brand impersonations are identified.
             </p>
             <Button
               variant="outline"
               size="sm"
               onClick={() => setIsModalOpen(true)}
-              className="text-xs font-mono mt-2"
+              className="text-xs font-mono mt-2 border-[#28504A] text-[#A0B8B2]"
             >
               Configure First Rule
             </Button>
           </div>
         ) : (
-          <div className="divide-y divide-white/[0.08]">
+          <div className="divide-y divide-[#193E39]">
             {configs.map((rule) => (
               <div
                 key={rule.id}
-                className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-white/[0.02] px-2 rounded-xl transition-colors"
+                className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#163632]/30 px-2 rounded-xl transition-colors"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2.5">
-                    <span className="font-semibold text-sm text-slate-100">{rule.name}</span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/30">
+                    <span className="font-semibold text-sm text-[#E7F4F1]">{rule.name}</span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#0B302D] text-[#00DCC2] border border-[#193E39]">
                       {rule.type}
                     </span>
                     <SeverityBadge severity={rule.minSeverity} />
                   </div>
-                  <p className="text-xs font-mono text-slate-400 truncate max-w-md" title={rule.endpoint}>
-                    Destination: <span className="text-slate-300">{rule.endpoint}</span>
+                  <p className="text-xs font-mono text-[#A0B8B2] truncate max-w-md" title={rule.endpoint}>
+                    Destination: <span className="text-[#E7F4F1]">{rule.endpoint}</span>
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono text-[#45D6A0] bg-[#45D6A0]/15 border border-[#45D6A0]/30 px-2 py-0.5 rounded">
                     Active
                   </span>
                   <button
                     type="button"
                     onClick={() => handleDeleteConfig(rule.id)}
-                    className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-950/30 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-lg text-[#718C85] hover:text-[#FF6474] hover:bg-[#FF6474]/15 transition-colors cursor-pointer"
                     title="Delete rule"
                   >
                     <Trash2 className="h-4 w-4" />
@@ -278,9 +278,9 @@ export default function AlertsConfigPage() {
         description="Establish an automated notification bridge for elevated threat events."
         maxWidth="md"
       >
-        <form onSubmit={handleCreateConfig} className="space-y-4 pt-1 text-slate-200 text-xs">
+        <form onSubmit={handleCreateConfig} className="space-y-4 pt-1 text-[#E7F4F1] text-xs">
           <div>
-            <label className="block text-[11px] font-mono text-slate-400 mb-1">
+            <label className="block text-[11px] font-mono text-[#A0B8B2] mb-1">
               Rule Name
             </label>
             <input
@@ -288,19 +288,19 @@ export default function AlertsConfigPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g., SOC Incident Response Slack Channel"
-              className="w-full liquid-glass-input rounded-xl p-2.5 text-xs font-sans text-slate-100 bg-slate-950 border border-white/10 focus:border-cyan-400"
+              className="w-full rounded-xl p-2.5 text-xs font-sans text-[#E7F4F1] bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] focus:outline-none"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-[11px] font-mono text-slate-400 mb-1">
+              <label className="block text-[11px] font-mono text-[#A0B8B2] mb-1">
                 Channel Type
               </label>
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as any)}
-                className="w-full liquid-glass-input rounded-xl p-2.5 text-xs font-mono text-cyan-300 bg-slate-950 border border-white/10"
+                className="w-full rounded-xl p-2.5 text-xs font-mono text-[#00DCC2] bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] focus:outline-none"
               >
                 <option value="SLACK">Slack Incoming Webhook</option>
                 <option value="WEBHOOK">Generic JSON Webhook</option>
@@ -309,24 +309,24 @@ export default function AlertsConfigPage() {
             </div>
 
             <div>
-              <label className="block text-[11px] font-mono text-slate-400 mb-1">
+              <label className="block text-[11px] font-mono text-[#A0B8B2] mb-1">
                 Minimum Severity Trigger
               </label>
               <select
                 value={minSeverity}
                 onChange={(e) => setMinSeverity(e.target.value as any)}
-                className="w-full liquid-glass-input rounded-xl p-2.5 text-xs font-mono text-cyan-300 bg-slate-950 border border-white/10"
+                className="w-full rounded-xl p-2.5 text-xs font-mono text-[#00DCC2] bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] focus:outline-none"
               >
                 <option value="CRITICAL">Critical Only (Score &gt;= 70)</option>
-                <option value="HIGH">High & Critical (Score &gt;= 40)</option>
-                <option value="MEDIUM">Medium & Above (Score &gt;= 20)</option>
+                <option value="HIGH">High &amp; Critical (Score &gt;= 40)</option>
+                <option value="MEDIUM">Medium &amp; Above (Score &gt;= 20)</option>
                 <option value="LOW">All Detections</option>
               </select>
             </div>
           </div>
 
           <div>
-            <label className="block text-[11px] font-mono text-slate-400 mb-1">
+            <label className="block text-[11px] font-mono text-[#A0B8B2] mb-1">
               Destination Endpoint URL or Email
             </label>
             <input
@@ -340,23 +340,23 @@ export default function AlertsConfigPage() {
                   ? "soc-team@company.com"
                   : "https://siem.corp.internal/webhook/optimus"
               }
-              className="w-full liquid-glass-input rounded-xl p-2.5 text-xs font-mono text-slate-100 bg-slate-950 border border-white/10 focus:border-cyan-400"
+              className="w-full rounded-xl p-2.5 text-xs font-mono text-[#E7F4F1] bg-[#031C1B] border border-[#28504A] focus:border-[#00DCC2] focus:outline-none"
             />
           </div>
 
           {formError && (
-            <p className="text-red-400 text-[11px] font-mono bg-red-950/60 p-2 rounded-lg border border-red-500/30">
+            <p className="text-[#FF6474] text-[11px] font-mono bg-[#FF6474]/15 p-2 rounded-lg border border-[#FF6474]/40">
               {formError}
             </p>
           )}
 
-          <div className="flex justify-end gap-2 pt-3 border-t border-white/[0.08]">
+          <div className="flex justify-end gap-2 pt-3 border-t border-[#193E39]">
             <Button
               type="button"
               variant="outline"
               size="sm"
               onClick={() => setIsModalOpen(false)}
-              className="text-xs"
+              className="text-xs border-[#28504A] text-[#A0B8B2]"
             >
               Cancel
             </Button>
