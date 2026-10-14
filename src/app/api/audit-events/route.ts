@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { db, withDbRetry } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
-import { requireAdmin } from "@/lib/auth/rbac";
+import { requireAnalystOrAdmin } from "@/lib/auth/rbac";
 
 export async function GET(req: Request) {
   try {
@@ -10,9 +10,10 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    if (!requireAdmin(user)) {
+    // Allow both Analysts and Admins to view SOC telemetry audit logs
+    if (!requireAnalystOrAdmin(user)) {
       return NextResponse.json(
-        { error: "Forbidden: Administrator role required to view security audit logs" },
+        { error: "Forbidden: Security Analyst or Administrator role required to view security audit logs" },
         { status: 403 }
       );
     }
@@ -20,17 +21,20 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const limit = Math.min(100, Math.max(1, parseInt(searchParams.get("limit") || "50")));
 
-    const events = await db.auditEvent.findMany({
-      where: { organizationId: user.organizationId },
-      orderBy: { timestamp: "desc" },
-      take: limit,
-      include: {
-        actor: { select: { id: true, name: true, email: true, role: true } },
-      },
-    });
+    const events = await withDbRetry(() =>
+      db.auditEvent.findMany({
+        where: { organizationId: user.organizationId },
+        orderBy: { timestamp: "desc" },
+        take: limit,
+        include: {
+          actor: { select: { id: true, name: true, email: true, role: true } },
+        },
+      })
+    );
 
-    return NextResponse.json({ events });
+    return NextResponse.json({ events: Array.isArray(events) ? events : [] });
   } catch (error: any) {
+    console.error("Failed to fetch audit logs error:", error);
     return NextResponse.json({ error: "Failed to fetch audit logs" }, { status: 500 });
   }
 }

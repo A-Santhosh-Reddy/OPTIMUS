@@ -328,7 +328,7 @@ export function Sidebar({
       name: t("nav.auditLogs", "Security Audit Logs"),
       href: "/audit-logs",
       icon: History,
-      roles: ["ADMIN"],
+      roles: ["ADMIN", "ANALYST"],
     },
   ];
 

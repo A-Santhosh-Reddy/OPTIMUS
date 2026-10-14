@@ -90,8 +90,16 @@ export default function AnalyticsDashboardPage() {
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs font-mono">
-          {error}
+        <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-200 text-xs font-mono flex items-center justify-between gap-4">
+          <span>{error}</span>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => fetchTrends(period)}
+            className="text-xs font-mono border-red-500/40 hover:bg-red-900/30 text-red-200"
+          >
+            Retry Connection
+          </Button>
         </div>
       )}
 

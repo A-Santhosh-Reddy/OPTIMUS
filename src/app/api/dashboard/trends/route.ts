@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/lib/auth/session";
-import { db } from "@/lib/db";
+import { db, withDbRetry } from "@/lib/db";
 
 export async function GET(req: Request) {
   try {
@@ -19,34 +19,36 @@ export async function GET(req: Request) {
 
     const orgId = user.organizationId;
 
-    // 1. Severity distribution over time
-    const analyses = await db.analysis.findMany({
-      where: {
-        organizationId: orgId,
-        createdAt: { gte: startDate },
-      },
-      select: {
-        id: true,
-        riskScore: true,
-        severity: true,
-        normalizedHostname: true,
-        registrableDomain: true,
-        createdAt: true,
-        signals: {
-          select: {
-            signalType: true,
-            category: true,
+    // 1. Severity distribution over time with auto-retry
+    const analyses = await withDbRetry(() =>
+      db.analysis.findMany({
+        where: {
+          organizationId: orgId,
+          createdAt: { gte: startDate },
+        },
+        select: {
+          id: true,
+          riskScore: true,
+          severity: true,
+          normalizedHostname: true,
+          registrableDomain: true,
+          createdAt: true,
+          signals: {
+            select: {
+              signalType: true,
+              category: true,
+            },
+          },
+          brandSimilarities: {
+            select: {
+              brandName: true,
+              matchType: true,
+            },
           },
         },
-        brandSimilarities: {
-          select: {
-            brandName: true,
-            matchType: true,
-          },
-        },
-      },
-      orderBy: { createdAt: "asc" },
-    });
+        orderBy: { createdAt: "asc" },
+      })
+    );
 
     // 2. Daily analysis volume & severity breakdown
     const dailyBreakdown: Record<string, { date: string; critical: number; high: number; medium: number; low: number; total: number }> = {};
@@ -66,9 +68,11 @@ export async function GET(req: Request) {
     // 3. Brand attack frequency
     const brandAttackCounts: Record<string, number> = {};
     for (const a of analyses) {
-      for (const bs of a.brandSimilarities) {
-        if (bs.matchType !== "EXACT_OFFICIAL") {
-          brandAttackCounts[bs.brandName] = (brandAttackCounts[bs.brandName] || 0) + 1;
+      if (Array.isArray(a.brandSimilarities)) {
+        for (const bs of a.brandSimilarities) {
+          if (bs.matchType !== "EXACT_OFFICIAL" && bs.brandName) {
+            brandAttackCounts[bs.brandName] = (brandAttackCounts[bs.brandName] || 0) + 1;
+          }
         }
       }
     }
@@ -77,11 +81,14 @@ export async function GET(req: Request) {
       .slice(0, 10)
       .map(([name, count]) => ({ brandName: name, attackCount: count }));
 
-    // 4. TLD abuse ranking
+    // 4. TLD abuse ranking (safely handle null/missing registrableDomain)
     const tldCounts: Record<string, { total: number; malicious: number }> = {};
     for (const a of analyses) {
-      const parts = a.registrableDomain.split(".");
-      const tld = parts[parts.length - 1];
+      const domain = a.registrableDomain || a.normalizedHostname || "";
+      if (!domain) continue;
+      const parts = domain.split(".");
+      const tld = parts[parts.length - 1]?.toLowerCase();
+      if (!tld || /^\d+$/.test(tld)) continue; // ignore pure numeric TLDs / raw IPs
       if (!tldCounts[tld]) tldCounts[tld] = { total: 0, malicious: 0 };
       tldCounts[tld].total++;
       if (a.riskScore >= 40) tldCounts[tld].malicious++;
@@ -100,8 +107,12 @@ export async function GET(req: Request) {
     // 5. Signal type frequency
     const signalCounts: Record<string, number> = {};
     for (const a of analyses) {
-      for (const sig of a.signals) {
-        signalCounts[sig.signalType] = (signalCounts[sig.signalType] || 0) + 1;
+      if (Array.isArray(a.signals)) {
+        for (const sig of a.signals) {
+          if (sig.signalType) {
+            signalCounts[sig.signalType] = (signalCounts[sig.signalType] || 0) + 1;
+          }
+        }
       }
     }
     const topSignals = Object.entries(signalCounts)
@@ -126,9 +137,10 @@ export async function GET(req: Request) {
     };
 
     // 8. Average risk score
-    const avgRiskScore = analyses.length > 0
-      ? Math.round(analyses.reduce((sum, a) => sum + a.riskScore, 0) / analyses.length)
-      : 0;
+    const avgRiskScore =
+      analyses.length > 0
+        ? Math.round(analyses.reduce((sum, a) => sum + a.riskScore, 0) / analyses.length)
+        : 0;
 
     return NextResponse.json({
       success: true,
@@ -147,6 +159,19 @@ export async function GET(req: Request) {
     });
   } catch (error: any) {
     console.error("Trends API error:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    // Graceful fallback structure so the dashboard charts do not crash
+    return NextResponse.json({
+      success: false,
+      period: "30d",
+      dateRange: { start: new Date().toISOString(), end: new Date().toISOString() },
+      severitySummary: { critical: 0, high: 0, medium: 0, low: 0, total: 0 },
+      avgRiskScore: 0,
+      dailyBreakdown: [],
+      topTargetedBrands: [],
+      tldAbuse: [],
+      topSignals: [],
+      hourlyDistribution: new Array(24).fill(0).map((_, hour) => ({ hour, count: 0 })),
+      error: "Temporary database connectivity issue. Please try refreshing.",
+    }, { status: 200 });
   }
 }

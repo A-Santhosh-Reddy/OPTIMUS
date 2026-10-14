@@ -59,6 +59,14 @@ export default function AuditLogsPage() {
           <div className="p-6 text-center text-xs text-red-400">
             <Lock className="h-6 w-6 mx-auto mb-2 opacity-60" />
             <p className="font-semibold">{error}</p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={fetchLogs}
+              className="mt-4 text-xs font-mono"
+            >
+              Retry Connection
+            </Button>
           </div>
         ) : isLoading ? (
           <div className="space-y-2 py-4">

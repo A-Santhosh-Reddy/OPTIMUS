@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { db, withDbRetry } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth/session";
 
 export async function GET() {
@@ -11,72 +11,114 @@ export async function GET() {
 
     const orgId = user.organizationId;
 
-    // Run parallel queries with safe fallback per query to prevent connection starvation
+    // Run optimized queries wrapped in withDbRetry to prevent connection starvation
     const [
-      totalAnalyses,
-      threatIntelMatches,
       severityGroups,
-      totalIncidents,
-      openIncidents,
-      resolvedIncidents,
+      incidentGroups,
       brandAssetsCount,
       recentAnalyses,
       signalsGrouped,
+      intelMatchesCount,
     ] = await Promise.all([
-      db.analysis.count({ where: { organizationId: orgId } }).catch((err) => {
-        console.warn("Analysis count error:", err.message);
+      // 1. Group analyses by severity to get totals + all severities in 1 query
+      withDbRetry(() =>
+        db.analysis.groupBy({
+          by: ["severity"],
+          where: { organizationId: orgId },
+          _count: { _all: true },
+        })
+      ).catch((err) => {
+        console.warn("Analysis severity groupBy error:", err.message);
+        return [];
+      }),
+
+      // 2. Group incidents by status to get total, open, and resolved in 1 query
+      withDbRetry(() =>
+        db.incident.groupBy({
+          by: ["status"],
+          where: { organizationId: orgId },
+          _count: { _all: true },
+        })
+      ).catch((err) => {
+        console.warn("Incident groupBy error:", err.message);
+        return [];
+      }),
+
+      // 3. Count protected brand assets
+      withDbRetry(() =>
+        db.brandAsset.count({ where: { organizationId: orgId } })
+      ).catch((err) => {
+        console.warn("BrandAsset count error:", err.message);
         return 0;
       }),
-      db.analysis.count({
-        where: { organizationId: orgId, intelligenceStatus: "MATCH_FOUND" },
-      }).catch(() => 0),
-      db.analysis.groupBy({
-        by: ["severity"],
-        where: { organizationId: orgId },
-        _count: { _all: true },
-      }).catch(() => []),
-      db.incident.count({ where: { organizationId: orgId } }).catch(() => 0),
-      db.incident.count({
-        where: {
-          organizationId: orgId,
-          status: { in: ["NEW", "INVESTIGATING", "ESCALATED"] },
-        },
-      }).catch(() => 0),
-      db.incident.count({
-        where: {
-          organizationId: orgId,
-          status: { in: ["RESOLVED", "FALSE_POSITIVE"] },
-        },
-      }).catch(() => 0),
-      db.brandAsset.count({ where: { organizationId: orgId } }).catch(() => 0),
-      db.analysis.findMany({
-        where: { organizationId: orgId },
-        orderBy: { createdAt: "desc" },
-        take: 6,
-        include: {
-          signals: { select: { title: true, weight: true } },
-          brandSimilarities: { select: { brandName: true, matchType: true } },
-        },
-      }).catch(() => []),
-      db.detectionSignal.groupBy({
-        by: ["category"],
-        where: { analysis: { organizationId: orgId } },
-        _count: { _all: true },
-      }).catch(() => []),
+
+      // 4. Fetch recent 6 analyses with relation data
+      withDbRetry(() =>
+        db.analysis.findMany({
+          where: { organizationId: orgId },
+          orderBy: { createdAt: "desc" },
+          take: 6,
+          include: {
+            signals: { select: { title: true, weight: true } },
+            brandSimilarities: { select: { brandName: true, matchType: true } },
+          },
+        })
+      ).catch((err) => {
+        console.warn("Recent analyses fetch error:", err.message);
+        return [];
+      }),
+
+      // 5. Group detection signals by category
+      withDbRetry(() =>
+        db.detectionSignal.groupBy({
+          by: ["category"],
+          where: { analysis: { organizationId: orgId } },
+          _count: { _all: true },
+        })
+      ).catch((err) => {
+        console.warn("Signal category groupBy error:", err.message);
+        return [];
+      }),
+
+      // 6. Threat intelligence matches
+      withDbRetry(() =>
+        db.analysis.count({
+          where: { organizationId: orgId, intelligenceStatus: "MATCH_FOUND" },
+        })
+      ).catch(() => 0),
     ]);
 
-    // Map severity groups efficiently
+    // Map severity groups and compute total analyses
+    let totalAnalyses = 0;
     const severityMap: Record<string, number> = {};
     if (Array.isArray(severityGroups)) {
       for (const item of severityGroups) {
-        severityMap[item.severity] = item._count?._all || 0;
+        const count = item._count?._all || 0;
+        severityMap[item.severity] = count;
+        totalAnalyses += count;
       }
     }
 
     const criticalFindings = severityMap["CRITICAL"] || 0;
     const highFindings = severityMap["HIGH"] || 0;
     const mediumFindings = severityMap["MEDIUM"] || 0;
-    const lowFindings = severityMap["LOW"] || 0;
+    const lowFindings = (severityMap["LOW"] || 0) + (severityMap["INFO"] || 0);
+
+    // Map incident groups
+    let totalIncidents = 0;
+    let openIncidents = 0;
+    let resolvedIncidents = 0;
+    if (Array.isArray(incidentGroups)) {
+      for (const item of incidentGroups) {
+        const count = item._count?._all || 0;
+        totalIncidents += count;
+        if (["NEW", "INVESTIGATING", "ESCALATED"].includes(item.status)) {
+          openIncidents += count;
+        } else if (["RESOLVED", "FALSE_POSITIVE"].includes(item.status)) {
+          resolvedIncidents += count;
+        }
+      }
+    }
 
     // Risk Distribution for Charts
     const riskDistribution = [
@@ -97,7 +139,7 @@ export async function GET() {
     return NextResponse.json({
       metrics: {
         totalAnalyses,
-        threatIntelMatches,
+        threatIntelMatches: intelMatchesCount,
         criticalFindings,
         highFindings,
         mediumFindings,
