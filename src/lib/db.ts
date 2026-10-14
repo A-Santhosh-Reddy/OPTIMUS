@@ -3,8 +3,8 @@ import { PrismaClient } from "@prisma/client";
 /**
  * Sanitizes and optimizes database connection URIs:
  * 1. Encodes special characters in passwords if unencoded.
- * 2. Tunes connection_limit and pool_timeout for Supabase / PostgreSQL poolers to avoid starvation.
- * 3. Ensures pgbouncer=true is present when connecting through port 6543.
+ * 2. Automatically migrates from brittle transaction pooler (port 6543) to stable session pooler (port 5432).
+ * 3. Tunes connection_limit and pool_timeout to avoid starvation in serverless and concurrent environments.
  */
 export function sanitizeDatabaseUrl(rawUrl?: string): string | undefined {
   if (!rawUrl) return rawUrl;
@@ -27,14 +27,25 @@ export function sanitizeDatabaseUrl(rawUrl?: string): string | undefined {
     }
   }
 
-  // Optimize Supabase / PostgreSQL pooler connection parameters
-  if (url.includes(".pooler.supabase.com:6543") && !url.includes("pgbouncer=true")) {
-    const separator = url.includes("?") ? "&" : "?";
-    url = `${url}${separator}pgbouncer=true`;
+  // If using Supabase transaction pooler (6543), migrate to session pooler (5432)
+  // because port 6543 frequently resets idle connections with wsarecv / socket closed errors
+  if (url.includes(".pooler.supabase.com:6543")) {
+    if (process.env.DIRECT_URL && process.env.DIRECT_URL.includes(".pooler.supabase.com:5432")) {
+      url = process.env.DIRECT_URL;
+    } else {
+      url = url.replace(":6543", ":5432")
+               .replace("pgbouncer=true&", "")
+               .replace("&pgbouncer=true", "")
+               .replace("?pgbouncer=true", "?");
+    }
   }
 
+  // Ensure reasonable connection limits and timeouts for high availability
   if (url.includes("connection_limit=1&") || url.endsWith("connection_limit=1")) {
     url = url.replace("connection_limit=1", "connection_limit=10&pool_timeout=30");
+  } else if (!url.includes("connection_limit=")) {
+    const sep = url.includes("?") ? "&" : "?";
+    url = `${url}${sep}connection_limit=10&pool_timeout=30`;
   }
 
   return url;
@@ -56,7 +67,8 @@ export const db =
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
   });
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = db;
+// Retain Prisma Client across warm serverless invocations on Vercel and local dev
+globalForPrisma.prisma = db;
 
 /**
  * Resilient query wrapper that automatically retries transient connection drops or pool timeouts.
@@ -82,6 +94,7 @@ export async function withDbRetry<T>(
         msg.includes("P1017") ||
         msg.includes("P2024") ||
         msg.includes("ECONNRESET") ||
+        msg.includes("wsarecv") ||
         msg.includes("Can't reach database server");
 
       if (attempt < maxRetries && isConnectionIssue) {
